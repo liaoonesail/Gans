@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>地方汇</title>
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/swiper.css" />
+		<link rel="stylesheet" href="../css/bass.css" />
+		<link rel="stylesheet" href="../css/header.css" />
+		<link rel="stylesheet" href="../css/discoNav.css" />
+		<link rel="stylesheet" href="../css/Local.css" />
+		<style>
+			.LocalBanner  .swiper-container{
+				width: 100%;
+			    height: 100%;
+			}
+			.LocalBanner  .swiper-slide {
+				width: 100%;
+				height: 100%;
+			        background-position: center;
+			        background-size: 100% 100%;
+			}
+			
+			.LocalBanner  .swiper-container .swiper-pagination-white .swiper-pagination-bullet-active {
+			    background: #ef1932;
+			}
+			.LocalBanner .swiper-container .swiper-pagination {
+				position: absolute;
+				text-align: center;
+				-webkit-transition: 300ms;
+				-moz-transition: 300ms;
+				-o-transition: 300ms;
+				transition: 300ms;
+				-webkit-transform: translate3d(0, 0, 0);
+				-ms-transform: translate3d(0, 0, 0);
+				-o-transform: translate3d(0, 0, 0);
+				transform: translate3d(0, 0, 0);
+				z-index: 10;
+				right: 0px;
+				bottom: 0px;
+			}			
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">地方汇</h1>
+		    <span class="mui-pull-right mui-action-back"  style="color: #fff;font-size: 13px;line-height: 44px;">关闭</span>
+		</header>
+		<div class="mui-content">
+			<!--地方汇搜索-->
+			<div class="mui-row">
+				<div class="mui-col-xs-12 Localsearch clearfix">
+					<span id="searchCode" class="mui-icon mui-icon-search" style="margin-left: 6px;"></span>
+					<input id="searchName" type="search" class="text-clear-content" placeholder="搜索" />
+					<div class="clear-button22"></div>
+				</div>
+			</div>
+			<!--地方汇搜索-->
+			<div class="mui-row">
+				<div class="mui-col-xs-3">
+					<div class="mui-scroll-wrapper LocalUlLi">
+					    <div class="mui-scroll">
+					        <!--这里放置真实显示的DOM内容-->
+					        <ul id="ListNavService">
+					    		
+					    	</ul>
+					    </div>
+					</div>
+					
+				</div>
+				<div class="mui-col-xs-9">
+					<div class="rightLocal">
+						
+						<div class="rightLocalList" style="display: block;">
+							<!--轮播部分-->
+							<div class="LocalBanner">
+								<div class="swiper-container">
+									<div id="shop_Img_new" class="swiper-wrapper">
+										<!-- <div class="swiper-slide" style="background-image:url(../img/banner/Lobanner.jpg)"></div>
+										<div class="swiper-slide" style="background-image:url(../img/banner/banner2.jpg)"></div>
+										<div class="swiper-slide" style="background-image:url(../img/banner/banner3.png)"></div> -->
+									</div>
+									<!-- Add Pagination -->
+									<div class="swiper-pagination swiper-pagination-white"></div>
+								</div>								
+							</div>
+							<!--轮播部分-->
+							<!--广告图-->
+							<div  id="LocalbannerImg">
+							</div>
+							
+							<!--广告图-->
+							<!--二个商品-->
+							<div class="recommendBox">							
+								<div  id="recommendBox_area_shop" class="mui-row">
+									<!-- <div class="mui-col-xs-6 dssssdf">
+										<img  src="../img/detailImg/12.png" />
+										<p>新鲜美味的水果进口海外次日达</p>
+										<dt>有效期:<span>2017.10.21</span></dt>
+										<div class="picdetails">优惠价：¥<span>9.8</span></div>
+										<dd class="clearfix">
+											<del>市场价：15.00元</del>
+										</dd>
+										<button class="picBttns">立即购买</button>
+									</div> -->
+									
+								</div>
+							</div>
+							<!--二个商品-->
+							
+							<!--商户推荐-->
+							
+							<!--商户推荐-->
+							<!-- 分页-->
+							<style>
+						.mui-btn,button{
+						    font-size: 14px;
+						    font-weight: 400;
+						    line-height: 1.42;
+						    position: relative;
+						    display: inline-block;
+						    margin-bottom: 0;
+						    padding: 6px 5px;
+						    cursor: pointer;
+						    -webkit-transition: all;
+						    transition: all;
+						    -webkit-transition-timing-function: linear;
+						    transition-timing-function: linear;
+						    -webkit-transition-duration: .2s;
+						    transition-duration: .2s;
+						    text-align: center;
+						    vertical-align: top;
+						    white-space: nowrap;
+						    color: #333;
+						    border: 1px solid #ccc;
+						    border-radius: 3px;
+						    border-top-left-radius: 3px;
+						    border-top-right-radius: 3px;
+						    border-bottom-right-radius: 3px;
+						    border-bottom-left-radius: 3px;
+						    background-color: #fff;
+						    background-clip: padding-box;
+						    border: 1px solid #09b6f2;
+                             color: #09b6f2;
+						}
+						.mui-btn:active{
+							border: 1px solid #164a99;
+                            color: #164a99 !important;
+						}
+					</style>
+					<div id="MAPstar" style="width: 100%;height: 40px;background: #fff;padding: 4px;display:none;">
+						<button id='shouyeBtns' class="mui-btn">首页</button>
+						<button id='PagNext' class="mui-btn">下一页</button>
+						<button id="currentPage"></button>
+						<button id='PagPrevious' class="mui-btn">上一页</button>
+						<button id='pagGtover' class="mui-btn">尾页</button>
+						
+					</div>
+							<!-- 分页 -->
+							
+						</div>					
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 加载提示 -->
+		    <div id="loadingicon" class="mui-text-center">
+				<span class="mui-spinner"></span>
+				<p style="margin-bottom: 0px;font-size: 12px;">正在加载中....</p>
+			</div>
+		    <!-- 加载提示 -->
+		    <!-- 手机端返回头部 star-->
+				<div id="scrolltoss" class="dmhg">
+					<img src="../img/top.png" />
+				</div>
+				<!--手机端返回头部 end-->
+        <div style="height: 55px;"></div>
+		<!--底部导航-->
+		<div class="bgcolor footer22">
+			<div class="footer144" onclick="javascript:window.location.href='../../index.html'">
+				<img class="mui-icon-home1" src="../img/smallImg/nav1.png" />
+			    <p>首页</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='discountgo.html'">
+				<img class="mui-icon-email12" src="../img/smallImg/18.png" />
+			    <p>善融</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='../../Local1.html'">
+				<img class="mui-icon-home1" src="../img/smallImg/19.png" />
+			    <p>地方汇</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='../../special1.html'">
+				<img class="mui-icon-home1" src="../img/smallImg/20.png" />
+			    <p>专场</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='personalcenter.html'">
+				<img class="mui-icon-gear1" src="../img/smallImg/nav4.png" />
+			    <p>个人中心</p>
+			</div>	
+		</div>
+		<!--底部导航-->
+	</body>
+	<script type="text/javascript" src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+	<script type="text/javascript" src="../js/swiper.min.js" ></script>
+	<!-- 引入地区js -->
+	<script type="text/javascript" src="../js/publicAddress.js" ></script>
+	<script type="text/javascript" src="../js/activity/activity.js" ></script>
+	<script type="text/javascript" src="../js/area/area.js" ></script>
+	<script type="text/javascript" src="../js/top.js" ></script>
+	<script type="text/javascript" src="../js/search/search.js" ></script>
+	<script>
+		mui.init();
+		/**
+ * 轮播图集合（one_lb,zzh_lb,long_lb,sr_lb,dfh_lb）(首页轮播、周周惠轮播、龙支付轮播、善融轮播、地方汇轮播)
+ * @param location
+ * @param response
+ * @return
+ * @throws IOException 
+ */
+function getAdvertByStatus(location){
+	var url = "advert/lbList.do";
+	var data = {
+			location:location
+    };
+	async = false;
+	var result = ajaxSubmit(url, data, async);
+	//console.log(result)
+	return result;
+}
+/**
+ * 根据位置获取单个图片
+ * @param location
+ * @param response
+ * @return
+ * @throws IOException 
+ */
+function getOnePic(location){
+	var url = "advert/getOne.do";
+	var data = {
+			location:location
+    };
+	async = false;
+	var result = ajaxSubmit(url, data, async);
+	//console.log(result)
+	return result;
+}
+		//让指定的DIV始终显示在屏幕正中间   
+	     left_w=($(document).width()-$('#loadingicon').width())/2;  
+	     top_w = $('html').scrollTop()+($(window).height()-$('#loadingicon').height())/2;  
+	     $('#loadingicon').offset({top:top_w,left:left_w});  
+		//区域滚动
+		mui('.mui-scroll-wrapper').scroll({
+			deceleration: 0.0005 ,//flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+			indicators: true
+		});	
+		 var color_ = "",area_id ="";
+		var getCheckedArea_=getCheckedArea();
+		getCheckedArea_ = JSON.parse(getCheckedArea_);
+		area_id =getCheckedArea_;
+		//console.log(area_id.id)
+		var curpage=1;
+		var area =area_id.id;
+	 $('#loadingicon').show();
+     $('#loadingicon').offset({top:top_w,left:left_w});
+     $("#MAPstar").css("display","none");  
+     setTimeout(function(){
+	       $('#loadingicon').hide();
+	        area_start();
+	       //获取该区域的广告图片
+			shop_area_conts_bannerList();
+			//根据分页显示商品数据方法
+			getPagAreaShopList(curpage,area);
+			 $("#MAPstar").css("display","block"); 
+			  
+ 	 },300);
+	function area_start(){
+		
+		/**
+		 * 获取所有地区
+		 * @returns
+		 */
+		var area_List =getArea();
+		// console.log("获取所有地区=="+area_List)
+		area_List = JSON.parse(area_List);
+		
+		$("#ListNavService").empty();
+		var arae_List_html ="";
+		/**
+		 * 获取用户所选区域
+		 * @returns 该区域对象
+		 */	
+		var getCheckedArea_true =getCheckedArea();
+		getCheckedArea_true = JSON.parse(getCheckedArea_true);
+		var getCheckedArea_true_id =getCheckedArea_true.id;
+		for(var i = 0; i < area_List.length; i++){
+			arae_List_html +="<li id='"+area_List[i].id+"' area_id='"+area_List[i].id+"'>"+area_List[i].name+"</li>";		
+			if(area_List[i].id == getCheckedArea_true_id){
+				area_id = getCheckedArea_true_id;
+				color_ =area_List[i].id;
+			}
+		}
+		$("#ListNavService").append(arae_List_html);
+		var getOnePicCode =getOnePic("dfh_ad1");
+		//console.log(getOnePicCode)
+		getOnePicCode =JSON.parse(getOnePicCode)
+		if(getOnePicCode !=null ||getOnePicCode !=""){
+		  $("#LocalbannerImg").append("<img src='"+getOnePicCode.ad_path+"'/>")
+		}
+		/**
+		 * 获取用户所选区域
+		 * @returns 该区域对象
+		 */	
+		$("#"+color_).addClass("navLocalOk");
+		/**
+		 * 修改所选地区
+		 * @param area 地区ID
+		 * @returns 成功返回"ok"
+		 */
+		 $("ul#ListNavService li").click(function() {
+			$("ul#ListNavService  li").removeClass("navLocalOk"); //siblings是循环遍历
+			$(this).addClass("navLocalOk");
+			 var area_id =$(this).attr("area_id");
+			 /**
+			  * 修改所选地区
+			  * @param area 地区ID
+			  * @returns 成功返回"ok"
+			  */
+			 var getCheckedArea = changeArea(area_id);
+			 setTimeout(function(){
+					mui.openWindow({
+						url: '../../Local1.html',
+						id: 'Local1',
+						showType: 'zoom-fade-out',
+						showTime: 200
+					});
+				},200); 
+			
+		});
+		
+	} 
+	 
+		 //分页数据模板
+		 function getPagList(curpage,area){
+		     var url = "area/getAreaGoods.do";
+			 var data = {
+					curpage:curpage,
+					area:area
+		     };
+			 async = false;
+			 var result = ajaxSubmit(url, data, async);
+			 return result;
+		 }
+		 //首页 #shouyeBtns
+		 $("#shouyeBtns").click(function(){
+		     $('#loadingicon').show();
+		     $('#loadingicon').offset({top:top_w,left:left_w});
+		     $("#MAPstar").css("display","none");  
+		     setTimeout(function(){
+			       $('#loadingicon').hide();
+					//根据分页显示商品数据方法
+					getPagAreaShopList(curpage,area);
+					 $("#MAPstar").css("display","block"); 
+					  
+		 	 },300);
+		 });
+		 //上一页  #PagPrevious
+		  $("#PagPrevious").click(function(){
+		     var curpage = $(this).attr("currentPage");
+		     var pagecount=$(this).attr("pagecount");
+		     curpage--;
+		     if(curpage < 1){
+		       alert("没有数据啦")
+		       return;
+		     }else{
+		         $('#loadingicon').show();
+			     $('#loadingicon').offset({top:top_w,left:left_w});
+			     $("#MAPstar").css("display","none");  
+			     setTimeout(function(){
+				       $('#loadingicon').hide();
+						//根据分页显示商品数据方法
+						getPagAreaShopList(curpage,area);
+						 $("#MAPstar").css("display","block"); 
+						  
+			 	 },300);
+		     }
+		     
+		 });
+		 //下一页 #PagNext
+		  $("#PagNext").click(function(){
+		     var curpage = $(this).attr("currentPage");
+		     var pagecount=$(this).attr("pagecount");
+		     curpage++;
+		     if(curpage > pagecount){
+		       alert("没有数据啦")
+		       return;
+		     }else{
+		         $('#loadingicon').show();
+			     $('#loadingicon').offset({top:top_w,left:left_w});
+			     $("#MAPstar").css("display","none");  
+			     setTimeout(function(){
+				       $('#loadingicon').hide();
+						//根据分页显示商品数据方法
+						getPagAreaShopList(curpage,area);
+						 $("#MAPstar").css("display","block"); 
+						  
+			 	 },300);
+		     }
+		     
+		 });
+		 //尾页 #pagGtover
+		 $("#pagGtover").click(function(){
+		     var curpage = $(this).attr("pagecount");
+		     $('#loadingicon').show();
+		     $('#loadingicon').offset({top:top_w,left:left_w});
+		     $("#MAPstar").css("display","none");  
+		     setTimeout(function(){
+			       $('#loadingicon').hide();
+					//根据分页显示商品数据方法
+					getPagAreaShopList(curpage,area);
+					 $("#MAPstar").css("display","block"); 
+					  
+		 	 },300);
+		 });
+		 function getPagAreaShopList(curpage,area){
+		    var getPagListCode =getPagList(curpage,area);
+		    getPagListCode =JSON.parse(getPagListCode);
+		    //console.log(getPagListCode);
+		    //商品集合
+		    var shopBannnerCode =getPagListCode[0].list;
+		    //console.log(shopBannnerCode);
+		    $("#currentPage").html(getPagListCode[0].page.currentPage)//第几页
+		    $("#PagPrevious").attr("currentPage",getPagListCode[0].page.currentPage)//上一页
+		    $("#PagNext").attr("currentPage",getPagListCode[0].page.currentPage)//上一页
+		    $("#pagGtover").attr("currentPage",getPagListCode[0].page.currentPage)//尾页
+		    $("#PagPrevious").attr("pageCount",getPagListCode[0].page.pageCount)//上一页
+		    $("#PagNext").attr("pageCount",getPagListCode[0].page.pageCount)//上一页
+		    $("#pagGtover").attr("pageCount",getPagListCode[0].page.pageCount)//尾页
+		    $("#recommendBox_area_shop").empty();
+			var area_shop_List_pou ="",miaosha_="";
+			for(var i = 0; i < shopBannnerCode.length ; i++){
+			   area_shop_List_pou +="<div part='-4' id='"+shopBannnerCode[i].id+"' class='mui-col-xs-6 dssssdf'>"
+										+"<img  src='"+shopBannnerCode[i].picture_address+"' />"
+										+"<p>"+shopBannnerCode[i].goods_name+"</p>"
+										+"<div class='picdetails'>优惠价：¥<span>"+shopBannnerCode[i].price+"</span>元</div>"
+										+"<dd class='clearfix'>"
+											+"<del>市场价："+shopBannnerCode[i].cost_price+"元</del>"
+										+"</dd>"
+										+"<button class='picBttns'>立即购买</button>"
+									+"</div>";
+			}
+			 $("#recommendBox_area_shop").append(area_shop_List_pou);
+			//跳转对应的商品详情     
+			var url_="";
+	         var abc = $(".dssssdf")
+				for (var i = 0; i < abc.length; i++) {
+				    (function(e){  //自执行函数实时把i传入e
+				        abc[e].onclick=function(){  //  通过传入的e获取到哪个按钮发生了点击事件
+//				            alert(e) //弹出e（此处e为i实时对应值）
+	                        var shop_details_Id =$(this).attr("id");
+				            var part =$(this).attr("part");
+	                     
+	                        	url_ ='details.html?id='+shop_details_Id+'&part='+part
+		            	 
+	                        setTimeout(function(){
+								mui.openWindow({
+									url: url_,
+									id: 'details',
+									showType: 'zoom-fade-out',
+									showTime: 200
+								});
+							},200); 
+				        }
+				    })(i)    
+				};   //采用闭包和自执行函数获取i
+			 
+		 }
+	 /**
+		 * 获取该区域的广告图片
+		 * @param area
+		 * @returns
+		 */
+		
+		function shop_area_conts_bannerList(){
+		var localImg = getAdvertByStatus("dfh_lb");
+		 localImg = JSON.parse(localImg);
+		if(localImg ==null || localImg ==""){
+		  console.log(localImg);
+		  $(".LocalBanner").css("display","none")
+		}else{
+		    console.log(localImg);
+		   
+			var shop_fenglei_Img = "";
+			$("#shop_Img_new").empty();
+			for(var i = 0;i<localImg.length;i++){
+				shop_fenglei_Img+="<div  onclick=\"javascript:window.location.href='"+localImg[i].ad_url+"'\" class='swiper-slide' style='background-image:url("+localImg[i].picture_address+")'></div>";
+			}
+			$("#shop_Img_new").append(shop_fenglei_Img);
+			//轮播图
+			var swiper = new Swiper('.swiper-container', {
+				pagination: '.swiper-pagination',
+				paginationClickable: '.swiper-pagination',
+				loop: true,
+				spaceBetween: 30,
+				autoplay: 2500,
+				autoplayDisableOnInteraction: false,
+				effect: 'fade'
+			});
+		 }	
+		}
+		 //merchantBoxList跳转对应的店铺详情
+		//单个大的搜索框点击得到焦点清空input的内容
+		$(".text-clear-content").focus(function() {
+	    	$(".clear-button22").hide();
+	    	$(this).next(".clear-button22").show();
+	        
+	    });	
+	    $(".clear-button22").click(function() {
+	    	$(this).prev().val("");
+	    	$(this).prev().focus();
+	    	//$(".text-clear-content").blur(function(){
+	    		$(".clear-button22").hide();
+	    	//});
+	    });
+	    
+	</script>
+
+</html>

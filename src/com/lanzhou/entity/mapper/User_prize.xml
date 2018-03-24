@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC 
+    "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanzhou.entity.User_prize" >
+
+	<insert id="add"  parameterType="com.lanzhou.entity.User_prize" >
+		insert into user_prize(prize_id,user_id,time,prize_describe,status,area,phone) values(#{prize_id},#{user_id},#{time},#{prize_describe},#{status},#{area},#{phone})
+	</insert>
+	
+	<delete id="del"  parameterType="int"  >
+		delete  from user_prize where id=#{id}
+	</delete>
+	
+	<update id="update" parameterType="com.lanzhou.entity.User_prize" >
+		update user_prize 
+			set 
+			prize_id=#{prize_id},
+			user_id=#{user_id},
+			time=#{time},
+			prize_describe=#{prize_describe},
+			ticketNum=#{ticketNum},
+			validateNum=#{validateNum},
+			ticketTime=#{ticketTime},
+			status=#{status}
+			where 
+				id=#{id}
+	</update>
+	<update id="updateStatus" parameterType="int">
+		update user_prize
+		set
+		status=1
+		where
+			id=#{id}
+	</update>
+	<select  id="getById" parameterType="int"  resultType="com.lanzhou.entity.User_prize">
+		select * from user_prize where id=#{id}
+	</select>
+	<select id="count" parameterType="map" resultType="int">
+		select count(*) from user_prize where 1=1
+		<if test="status==1">
+		and prize_id not in (${ids})
+		</if>
+		<if test="status==0">
+		and prize_id in (${ids})
+		</if>
+	</select>
+	<select id="listpage" parameterType="map" resultType="com.lanzhou.entity.User_prize">
+		select * from user_prize where 1=1
+		<if test="status==1">
+		and prize_id not in (${ids})
+		</if>
+		<if test="status==0">
+		and prize_id in (${ids})
+		</if>
+		 order by id desc limit #{startRecord},#{pageSize}
+	</select>
+	<select id="list" parameterType="map" resultType="com.lanzhou.entity.User_prize">
+	select * from user_prize where 1=1
+		<if test="status==1">
+		and prize_id not in (${ids})
+		</if>
+		<if test="status==0">
+		and prize_id in (${ids})
+		</if>
+	</select>
+	<select id="listByUserId" parameterType="int" resultType="com.lanzhou.entity.User_prize">
+		select * from user_prize where user_id=#{userId}
+	</select>
+</mapper>

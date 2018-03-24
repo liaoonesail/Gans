@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<link rel="stylesheet" href="css/frame.css">
+		<link rel="stylesheet" href="css/minPublicBenefit.css">
+		<link rel="stylesheet" href="css/common.css">
+		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="js/popUpWin.js"></script>
+		<!-- 奖品管理js -->
+		<script type="text/javascript" src="js/miaoshatime.js"></script>
+		<script type="text/javascript" src="js/laydate.js"></script>
+		<title>汇聚甘肃后台管理系统--商城管理-商品管理--秒杀时间管理</title>
+    <script type="text/javascript" src="js/angular-1.0.1.min.js"></script>
+	</head>
+	<body style="background-color: #f1f1f1;">
+		<div class="frameRall">
+			<!-- 头部通知搜索栏 -->
+			<div ng-app="">
+            <div ng-include="'head.htm'"></div>
+        </div>
+			<div class="headlineBig ml40 mb20 clearfix">
+				<h1 class="stair">
+					商城管理
+					<span>工作平台</span>
+				</h1>
+				<h1 class="secondLevel">
+					秒杀时间管理
+				</h1>
+			</div>
+			<div class="prizeManage ml40 clearfix">
+				<a href="javascript:;" class="butBox seckillAdd mb30 addType">添加秒杀时间</a>
+				
+				
+				<!-- 点击添加奖项，弹出 -->
+				<div class="seckillAddBox grouponAddBox prizeManAddBox seckillWin"
+					style="height: 120px;">
+					<i class="seckillClose"></i>
+					<form action="" id="addPrize"
+						method="post">
+						<ul>
+							<li class="typeLevel">
+								<span><i class="colorRed">*</i>开始时间：</span>
+								<!-- <select id="startDate-h" style="width: 80px;"></select>
+								:
+								<select id="startDate-m" style="width: 80px;"></select>
+								<span style="color: red;">eg:07:00</span> -->
+								<input id="startDate" type="text" class="seckillUpInp w120"
+									placeholder="请选择开始时间" name="start_time" value="" />
+							</li>
+							<li>
+								<span><i class="colorRed">*</i>结束时间：</span>
+								<!-- <select id="endDate-h" style="width: 80px;"></select>
+								:
+								<select id="endDate-m" style="width: 80px;"></select> -->
+								<input id="endDate" type="text" class="seckillUpInp w120"
+									placeholder="请选择结束时间" name="end_time" value="" />
+							</li>
+							<li>
+								<a id="submit" href="javascript:;" class="butBox submitAddType">提交</a>
+							</li>
+
+						</ul>
+					</form>
+				</div>
+				<table class="infoTabShow przeInKind typeTabelList">
+					<thead>
+						<tr>
+							<td>
+								序号
+							</td>
+							<td>
+								开始时间
+							</td>
+							<td>
+								结束时间
+							</td>
+							<td width="380">
+								操作
+							</td>
+						</tr>
+					</thead>
+					<tbody id="content">
+					</tbody>
+				</table>
+
+			</div>
+		</div>
+		<script type="text/javascript">
+	/**laydate.js**/
+	var start = {
+	     elem:"#startDate",
+	     format: 'YYYY-MM-DD hh:mm:ss',
+	     min: '2017-01-01 00:00:00', //最小日期
+	     //max: laydate.now(),
+	     istime: true, //是否开启时间选择
+	        isclear: true, //是否显示清空
+	        istoday: true, //是否显示今天
+	        issure: true, //是否显示确认
+	        festival: true //是否显示节日
+	};
+	var end = {
+	     elem:"#endDate",
+	     format: 'YYYY-MM-DD hh:mm:ss',
+	     min: '2017-01-01 00:00:00', //最小日期
+	     //max: laydate.now(),
+	     istime: true, //是否开启时间选择
+	     isclear: true, //是否显示清空
+	     istoday: true, //是否显示今天
+	     issure: true, //是否显示确认
+	     festival: true //是否显示节日
+	};
+	laydate(start);
+	laydate(end);
+</script>
+	</body>
+</html>

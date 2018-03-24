@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<link rel="stylesheet" href="css/frame.css">
+	<link rel="stylesheet" href="css/minPublicBenefit.css">
+	<link rel="stylesheet" href="css/common.css">
+    <script type="text/javascript" src="js/angular-1.0.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="js/statisticalStatement.js"></script>
+    <!-- 导出excel -->
+    <script type="text/javascript" src="js/deriveExcl.js"></script>
+    <script type="text/javascript" src="js/laydate.js"></script>
+	<title>汇聚甘肃后台管理系统-微公益-用户管理-统计报表</title>
+</head>
+<body style="background-color: #f1f1f1;">
+	<div class="frameRall">
+		<!-- 头部通知搜索栏 -->
+		<div ng-app="">
+            <div ng-include="'head.htm'"></div>
+        </div>
+		<div class="headlineBig ml40 mb20 clearfix">
+			<h1 class="stair">微公益<span>工作平台</span></h1>
+			<h1 class="secondLevel">统计报表</h1>
+		</div>
+		<div class="prizeManage ml40 clearfix">
+			<div class="userTimeBox clearfix">
+				<select class="staSelect">
+					<option>全省</option>
+				</select>
+				<label class="tit">查询时间</label>
+				<div class="timeControl">
+					<input id="startDate" class="date" placeholder="请选择时间范围起始" type="text" name="startDate"/>
+					<input id="endDate" class="date ml10" placeholder="请选择时间范围结束" type="text" name="endDate"/>
+				</div>
+				<!-- <input type="radio" class="staRadio" name="timeQuantum" value="" checked="checked" />
+				<label class="tit">周</label> -->
+				<label class="tit"><input name="days" type="radio" class="staRadio" value="周" />周</label> 
+				<label class="tit"><input name="days" type="radio" class="staRadio" value="月" />月</label> 
+				<label class="tit"><input name="days" type="radio" class="staRadio" value="季" />季</label> 
+				<a href="javascript:;" class="butBox ml20 query">查询</a>
+				<a href="javascript:;" class="butBox ml20" onclick="javascript:method1('winingTable')">导出Excel或Txt文档</a>
+			</div>
+			<p class="staTips">说明：示例<span>&nbsp;2017年5月6日（默认0点）至2017年6月6日（默认24点）<br/>默认认为捐款系统上线时间到现今的时间为节点，统计出结果，除非指定起始时间</span></p>
+			<table class="infoTabShow statisticalTab" id="winingTable">
+				<thead>
+					<tr>
+						<td>地区</td>
+						<td>总计交易量（次数）</td>
+						<td>总参与人数</td>
+						<td>总捐款金额</td>
+						<td>昨日新增交易量</td>
+						<td>昨日新增捐款人数</td>
+						<td>昨日新增捐款金额</td>
+					</tr>
+				</thead>
+				<tbody>
+				
+				</tbody>
+				<!-- <tr>
+					<td>兰州</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr class="staColorTr">
+					<td>合计</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr> -->
+			</table>
+		</div>
+	</div>
+</body>
+<script>
+    /*活动时间*/
+    /**laydate.js**/
+    var start = {
+        elem : "#startDate",
+        format : 'YYYY-MM-DD',
+        /* min : laydate.now(), */
+        max: laydate.now(),
+        istime : false, //是否开启时间选择
+        isclear : true, //是否显示清空
+        istoday : true, //是否显示今天
+        issure : true, //是否显示确认
+        festival : true
+    //是否显示节日
+    };
+    var end = {
+        elem : "#endDate",
+        format : 'YYYY-MM-DD',
+        /* min : laydate.now(), */
+        max: laydate.now(),
+        istime : false, //是否开启时间选择
+        isclear : true, //是否显示清空
+        istoday : true, //是否显示今天
+        issure : true, //是否显示确认
+        festival : true
+    //是否显示节日
+    };
+    laydate(start);
+    laydate(end);
+</script>
+</html>

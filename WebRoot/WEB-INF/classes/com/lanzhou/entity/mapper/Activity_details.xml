@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC 
+    "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanzhou.entity.Activity_details" >
+
+
+	<insert id="add"  parameterType="com.lanzhou.entity.Activity_details" >
+		insert into activity_details(activity_id,start_time,end_time,real_price,goods_id) 
+		values(#{activity_id},#{start_time},#{end_time},#{real_price},#{goods_id})
+	</insert>
+	
+	<delete id="del"  parameterType="int"  >
+		delete  from activity_details where id=#{id}
+	</delete>
+	<delete id="delBygoods_id" parameterType="int">
+		delete from activity_details where goods_id=#{goods_id}
+	</delete>
+	<update id="update" parameterType="com.lanzhou.entity.Activity_details" >
+		update activity_details 
+			set 
+			activity_id=#{activity_id},
+			start_time=#{start_time},
+			end_time=#{end_time},
+			real_price=#{real_price}
+			where 
+				id=#{id}
+	</update>
+	<update id="updateBygoods_id" parameterType="com.lanzhou.entity.Activity_details">
+		update activity_details 
+			set 
+			activity_id=#{activity_id},
+			start_time=#{start_time},
+			end_time=#{end_time},
+			real_price=#{real_price}
+			where 
+				goods_id=#{goods_id}
+	</update>
+	<select  id="getById" parameterType="int"  resultType="com.lanzhou.entity.Activity_details">
+		select * from activity_details where id=#{id}
+	</select>
+	<select id="list" resultType="com.lanzhou.entity.Activity_details">
+		select * from activity_details
+	</select>
+	<select id="getgoods_id" parameterType="int" resultType="com.lanzhou.entity.Activity_details">
+		select * from activity_details where goods_id=#{goods_id}
+	</select>
+	<select id="count" parameterType="string" resultType="int">
+		select count(*) from activity_details a,goods b where a.goods_id=b.id and (b.goods_name like '%${value}%' or b.goods_num like '%${value}%')
+	</select>
+	<select id="listpage" parameterType="map" resultType="com.lanzhou.entity.Activity_details">
+		select * from activity_details a,goods b where a.goods_id=b.id and (b.goods_name like '%${name}%' or b.goods_num like '%${name}%') order by a.id desc limit #{startRecord},#{pageSize}
+	</select>
+</mapper>

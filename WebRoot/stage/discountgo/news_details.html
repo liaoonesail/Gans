@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>资讯页详情</title>
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/bass.css" />
+		<link rel="stylesheet" href="../css/swiper.css" />
+		<link rel="stylesheet" href="../css/header.css" />
+		<link rel="stylesheet" href="../css/details.css" />
+		<link rel="stylesheet" href="../css/news_details.css" />
+	</head>
+
+	<body>
+		<div class="lodinbox">
+			<!--头部导航-->
+			<header class="mui-bar mui-bar-nav loginheader">
+				<a class="mui-pull-left mui-action-back backstar">
+					<i class="mui-icon mui-icon-left-nav mui-action-back"></i>
+					<span class="mui-action-back"></span>
+				</a>
+				<h1 class="mui-title">资讯页详情</h1>
+				  <span class="mui-pull-right mui-action-back" style="color: #fff;font-size: 13px;line-height: 44px;">关闭</span>
+			</header>
+			<!--头部导航-->
+			<div class="mui-content">
+				<div class="mui-row news_details">
+					<div id="newsdetails_updata" class="mui-col-xs-12">
+						
+						 
+					</div>
+				</div>
+			    <!-- 手机端返回头部 star-->
+				<div id="scrolltoss" class="dmhg">
+					<img src="../img/top.png" />
+				</div>
+				<!--手机端返回头部 end-->
+			</div>
+			 <!-- 加载提示 -->
+		    <div id="loadingicon" class="mui-text-center">
+				<span class="mui-spinner"></span>
+				<p style="margin-bottom: 0px;font-size: 12px;">正在加载中....</p>
+			</div>
+		    <!-- 加载提示 -->
+			<div style="height: 55px;"></div>
+		<!--底部导航-->
+		<div class="bgcolor footer22">
+			<div class="footer144" onclick="javascript:window.location.href='../../index.html'">
+				<img class="mui-icon-home1" src="../img/smallImg/nav1.png" />
+			    <p>首页</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='discountgo.html'">
+				<img class="mui-icon-email12" src="../img/smallImg/18.png" />
+			    <p>善融</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='../../Local1.html'">
+				<img class="mui-icon-home1" src="../img/smallImg/19.png" />
+			    <p>地方汇</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='../../special1.html'">
+				<img class="mui-icon-home1" src="../img/smallImg/20.png" />
+			    <p>专场</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='personalcenter.html'">
+				<img class="mui-icon-gear1" src="../img/smallImg/nav4.png" />
+			    <p>个人中心</p>
+			</div>	
+		</div>
+		<!--底部导航-->
+		</div>
+		<script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+		<script type="text/javascript" src="../js/top.js"></script>
+		<script type="text/javascript" src="../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../js/mui.min.js" ></script>
+		<script charset="UTF-8" type="text/javascript" src="../js/publicAddress.js" ></script>
+	<script type="text/javascript" src="../js/article/article.js"></script>
+		<script>
+		  //让指定的DIV始终显示在屏幕正中间   
+	       left_w=($(document).width()-$('#loadingicon').width())/2;  
+	       top_w = $('html').scrollTop()+($(window).height()-$('#loadingicon').height())/2;  
+	       $('#loadingicon').offset({top:top_w,left:left_w});  
+			var thisURL = document.URL;
+			var getval = thisURL.split('?')[1];
+			var ArticleId =""
+			if (getval != null ||getval != undefined) {
+				ArticleId = getval.split("=")[1];
+				// console.log(ArticleId)
+			} else{
+				ArticleId="";
+			}
+			$("#newsdetails_updata").empty();
+			 $('#loadingicon').show();
+		     $('#loadingicon').offset({top:top_w,left:left_w});  
+		     setTimeout(function(){
+			        $('#loadingicon').hide();
+			        newsdateils();
+		 	},300);
+			
+			function newsdateils(){
+				/**
+				 * 根据ID获取单个文章
+				 * @param id
+				 * @returns
+				 */
+				var getArticleById_ = getArticleById(ArticleId);
+				getArticleById_ = JSON.parse(getArticleById_);
+				//console.log(getArticleById_);
+				var title = "<h4>"+getArticleById_.title+"</h4>";
+				var timestar  = "<p><span>"+getArticleById_.addTime+"</span></p>";
+				$("#newsdetails_updata").append(title);
+				$("#newsdetails_updata").append(timestar);
+				$("#newsdetails_updata").append(getArticleById_.details);
+			}
+		</script>
+	</body>
+
+</html>

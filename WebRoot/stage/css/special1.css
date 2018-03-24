@@ -1,0 +1,63 @@
+.special1Box{
+	position: relative;
+	padding: 10px 2px 0px 2px;
+}
+.preferentialZonebox {
+    width: 100%;
+    padding: 10px 4px;
+    position: relative;
+}
+.preferentialZonebox h3 {
+    font-weight: normal;
+    font-size: 15px;
+    text-align: center;
+    position: relative;
+    padding-bottom: 6px;
+}
+.preferentialZonebox h3:before {
+    content: "";
+    width: 23%;
+    height: 1px;
+    background: #aaaaaa;
+    left: 13%;
+    top: 6px;
+    position: absolute;
+}
+.preferentialZonebox h3:after {
+    content: "";
+    width: 23%;
+    height: 1px;
+    background: #aaaaaa;
+    right: 13%;
+    top: 6px;
+    position: absolute;
+}
+.special1Box .mui-row .mui-col-xs-6 {
+	padding: 4px;
+	height: 160px;
+	overflow: hidden;
+}
+.special1Box .mui-row .mui-col-xs-6 img{
+	display: block;
+	width: 100%;
+	height: auto;
+	max-height: 130px;
+}
+.special1Box .mui-row .mui-col-xs-6 p:nth-of-type(1){
+	color: #040404;
+	text-align: center;
+	margin-bottom: 2px;
+	overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    position: relative;
+}
+.special1Box .mui-row .mui-col-xs-6 p:nth-of-type(2){
+	color: #040404;
+	font-size: 12px;
+	text-align: center;
+	margin-bottom: 0px;
+	overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

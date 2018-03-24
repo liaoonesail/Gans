@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC 
+    "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanzhou.entity.Shop" >
+
+
+	<insert id="add"  parameterType="com.lanzhou.entity.Shop" useGeneratedKeys="true" keyProperty="id">
+		insert into shop(shop_name,province,city,county,address,phone,content,area_id,youhui,picture_address) values(#{shop_name},#{province},#{city},#{county},#{address},#{phone},#{content},#{area_id},#{youhui},#{picture_address})
+	</insert>
+	
+	<delete id="del"  parameterType="int"  >
+		delete  from shop where id=#{id}
+	</delete>
+	
+	<update id="update" parameterType="com.lanzhou.entity.Shop" >
+		update shop 
+			set 
+			shop_name=#{shop_name},
+			province=#{province},
+			city=#{city},
+			county=#{county},
+			address=#{address},
+			phone=#{phone},
+			content=#{content},
+			area_id=#{area_id},
+			youhui=#{youhui},
+			picture_address=#{picture_address}
+			where 
+				id=#{id}
+	</update>
+	<select  id="getById" parameterType="int"  resultType="com.lanzhou.entity.Shop">
+		select * from shop where id=#{id}
+	</select>
+	<select id="list" resultType="com.lanzhou.entity.Shop">
+		select * from shop
+	</select>
+	<select id="getarea_id" parameterType="int" resultType="int">
+		select area_id from shop where id=#{id} 
+	</select>
+	<select id="getlistByarea_id" parameterType="int" resultType="com.lanzhou.entity.Shop">
+		select * from shop where area_id=#{area_id}
+	</select>
+</mapper>

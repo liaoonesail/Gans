@@ -1,0 +1,56 @@
+/*===== margin =====*/
+.m0{margin:0!important;}.mt0{margin-top:0!important;}.mr0{margin-right:0!important;}.ml0{margin-left:0!important;}.ml80{margin-left:80px!important;}.ml140{margin-left:140px!important;}.mb0{margin-bottom:0!important;}.m10{margin:10px}.m15{margin:15px}.m30{margin:30px}.mt5{margin-top:5px}.mt5{margin-top:5px;}.mt10{margin-top:10px}.mt15{margin-top:15px}.mt20{margin-top:20px}.mt30{margin-top:30px}.mt40{margin-top:40px}.mt50{margin-top:50px}.mt100{margin-top:100px}.mb5{margin-bottom:5px}.mb10{margin-bottom:10px !important;}.mb15{margin-bottom:15px}.mb20{margin-bottom:20px}.mb30{margin-bottom:30px}.mb40{margin-bottom:40px}.mb50{margin-bottom:50px}.mb100{margin-bottom:100px}.ml5{margin-left:5px}.ml10{margin-left:10px !important;}.ml15{margin-left:15px}.ml20{margin-left:20px}.ml30{margin-left:30px}.ml40{margin-left:40px}.ml50{margin-left:50px !important;}.ml100{margin-left:100px !important;}.mr5{margin-right:5px !important;}.mr10{margin-right:10px !important;}.mr15{margin-right:15px}.mr20{margin-right:20px}.mr30{margin-right:30px}.mr40{margin-right:40px}.mr50{margin-right:50px}.mr100{margin-right:100px}
+/*===== padding =====*/
+.p0{padding:0!important;}.pt0{padding-top:0!important;}.pr0{padding-right:0!important;}.pl0{padding-left:0!important;}.pb0{padding-bottom:0!important;}.p10{padding:10px;}.p15{padding:15px;}.p20{padding:20px;}.p30{padding:30px;}.pt5{padding-top:5px}.pt10{padding-top:10px}.pt15{padding-top:15px}.pt20{padding-top:20px}.pt30{padding-top:30px}.pt40{padding-top:40px}.pt50{padding-top:50px}.pt100{padding-top:100px}.pb5{padding-bottom:5px}.pb10{padding-bottom:10px}.pb15{padding-bottom:15px}.pb20{padding-bottom:20px}.pb30{padding-bottom:30px}.pb40{padding-bottom:40px}.pb50{padding-bottom:50px}.pb100{padding-bottom:100px}.pl5{padding-left:5px}.pl10{padding-left:10px}.pl15{padding-left:15px}.pl20{padding-left:20px}.pl30{padding-left:30px}.pl40{padding-left:40px}.pl50{padding-left:50px}.pl100{padding-left:100px !important;}.pr5{padding-right:5px !important;}.pr10{padding-right:10px !important;}.pr15{padding-right:15px}.pr20{padding-right:20px}.pr30{padding-right:30px}.pr40{padding-right:40px}.pr50{padding-right:50px}.pr100{padding-right:100px}
+/*===== 常用样式 =====*/
+.fl{float:left!important;}
+.fr{float:right!important;}
+.fbold{font-weight:bold!important;}
+.tc{text-align:center!important;}
+.tl{text-align:left!important;}
+.tr{text-align:right!important;}
+.pr{position:relative!important;}
+.noborder{border:none !important;}
+.ln30{ line-height:30px;}
+.border_1{ border:1px #ddd solid!important;}
+.colorRed{color:#ff0000 !important;}
+.bgcolorGreen1{background-color: #AAB9BE!important;}
+.bgcolorGray{background-color: #f1f1f1!important;}
+
+.displayib{display: inline-block;}
+.displayb{display: block;}
+.displayn{display: none;}
+.textal{text-align: left!important;}
+.textar{text-align: right!important;}
+.textac{text-align: center!important;}
+.overf_auto{overflow: auto!important;}
+.overf_hidden{overflow: hidden!important;}
+.font_12{font-size: 12px !important;}
+.font_14{font-size: 14px !important;}
+.font_16{font-size: 16px !important;}
+.font_18{font-size: 18px !important;}
+.font_20{font-size: 20px !important;}
+.font_weiB: {font-weight: bold !important;}
+.font_weight5{font-weight: 500 !important;}
+.w40{width: 40px !important;}
+.w60{width: 60px !important;}
+.w110{width: 110px!important;}
+.w120{width: 120px !important;}
+.w130{width: 130px !important;}
+.w150{width: 150px !important;}
+.w200{width: 200px !important;}
+.w250{width: 250px !important;}
+.w600{width: 600px !important;}
+.h420{height:420px !important;}
+.wi_300{width: 300px !important;}
+.he_auto300{max-height: 300px;overflow: auto;}
+.he_auto200{max-height: 200px;overflow: auto;}
+.cursorp{cursor: pointer!important;}
+.cursord{cursor: default!important;}
+.ver_middle{vertical-align:middle!important;}
+.resize_text{resize:both;overflow: auto;}
+/*强制换行*/
+.white_space{white-space:normal; word-break:break-all;overflow:hidden;}
+
+.HoverbutBg:hover{background-color: #ebeaea!important;}
+.ver-center{vertical-align:top;}

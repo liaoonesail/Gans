@@ -1,0 +1,129 @@
+package com.lanzhou.service;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+
+
+import com.lanzhou.entity.Shuju;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
+
+
+import com.lanzhou.dao.UserDao;
+import com.lanzhou.entity.User;
+
+@Service
+@Transactional
+public class UserService {
+	@Resource
+	private UserDao dao;
+	
+	/**
+	 * //用户注册
+	 * @param user
+	 * @return
+	 */
+	public int reg(User user){
+		int status=dao.reg(user);
+		return status;
+	}
+	
+	/**
+	 * //根据手机号查询用户
+	 * @param phone
+	 * @return
+	 */
+	public User getphone(String phone){
+		return dao.getphone(phone);
+	}
+	/**
+	 * 
+	 * @param user 修改用户信息
+	 * @return
+	 */
+	public int update(User user,HttpServletRequest request){
+		
+			/*MultipartHttpServletRequest mul=(MultipartHttpServletRequest) request;
+		MultipartFile file = mul.getFile("photo");
+		String time = new Date().getTime()+"";
+		if(file!=null&&file.getSize()>0){
+			String realPath = "D:/upload"+request.getContextPath()+"/head_picture/";
+			File dir = new File(realPath);
+			if(!dir.exists()){
+				dir.mkdirs();
+			}
+			File destFile = new File(dir, time+file.getOriginalFilename());
+			try {
+				file.transferTo(destFile);
+				user.setHead_picture("/upload"+request.getContextPath()+"/head_picture/"+time+file.getOriginalFilename());
+			} catch (IllegalStateException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}*/
+		
+		
+		return dao.update(user);
+	}
+	/**
+	 * 修改头像
+	 * @param user
+	 * @param request
+	 * @return
+	 */
+	public int updateHead(User user,HttpServletRequest request){
+		
+		return dao.updateHead(user);
+	}
+	/**
+	 * 
+	 * @param id 根据用户ID获取用户信息
+	 * @return
+	 */
+	public User getid(Integer id){
+		return dao.getid(id);
+	}
+	/**
+	 *
+	 * @return 获取用户列表
+	 */
+	public List<User> list() {
+		// TODO Auto-generated method stub
+		return dao.list();
+	}
+	/**
+	 * 模糊查询加分页的方法
+	 * @param name
+	 * @return
+	 */
+	public int count(String name) {
+		// TODO Auto-generated method stub
+		return dao.count(name);
+	}
+
+	public List<User> listpage(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return dao.listpage(map);
+	}
+
+	public void del(Integer id) {
+		dao.del(id);
+	}
+
+    public List<Shuju> getShuju(Map<String, Object> map) {
+        return dao.getShuju(map);
+    }
+}

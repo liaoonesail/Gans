@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>抽奖转盘</title>
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/bass.css" />
+		<link rel="stylesheet" href="../css/header.css" />
+		<link rel="stylesheet" href="../css/personalcenter.css" />
+		<link rel="stylesheet" href="../css/luck.css" />
+		<!--弹窗css-->
+		<link rel="stylesheet" href="../css/login_box.css" />
+		<link rel="stylesheet" href="../css/popup.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">抽奖转盘</h1>
+		     <span class="mui-pull-right mui-action-back" style="color: #fff;font-size: 13px;line-height: 44px;">关闭</span>
+		</header>
+		<div class="mui-content">
+			<!--活动规则弹窗-->
+			<div class="huoDongGuizePopup">
+				<div class="guizeBox_conts">
+					<div class="guizeBox_conts_title">
+						活动规则
+					</div>
+					<div class="mui-row">
+						<div class="mui-col-xs-12" style="padding:10px 10px;">
+							<p>1.新老用户皆可参加活动，每人一次抽奖机会，分享活动可再抽一次哦！</p>
+							<p>2.奖品分为流量包（移动电信30M，联通20M）和5元话费。</p>
+							<p>3.获取红包的用户必须注册，并成功存入红包才能获得红包发放资格。</p>
+							<p>4.话费和流量我们将会直接充值到您的平台注册手机号，在活动结束后统一为大家充值。</p>
+							<p>*本活动最终解释权归钱眼金融所有。</p>
+						</div>
+						<div class="mui-col-xs-12">
+						  <div class="maiojiaGoods_cancel guzeBtns_1">关闭</div>
+						</div>
+						
+					</div>
+				</div>
+				<!--按钮-->
+				<!-- <img class="guzeBtns_1" src="../img/popupImg/guzeBtns.png" /> -->
+			</div>
+			<!--活动规则弹窗-->
+			<!-- 抽奖输入手机号弹窗 -->
+			<div class="notLoggedIn-0">
+				<div class="notLoggedIn-0-List" style="margin: 25% auto;">
+					<h3>我要抽奖</h3>
+					<label class="user-label-position">
+						<input id="juankuanphone" class="user_phopeTel1 text-clear-content" type="number" placeholder="请输入手机号"/>
+						<span class="clear-button"></span>
+					</label>
+					<p id="shuru_alert2" style="text-align: center;font-size: 12px;margin-bottom: 2px;color: red;display: none;"></p> 
+					<input  id="juankuanBtns" type="button" value="确定" style="width: 80%;margin: 15px auto;display: block;height:40px;" />
+					<div class="maiojiaGoods_cancel deliverGoods_box_coles">关闭</div>
+				</div>
+			</div>
+			<!-- 抽奖输入手机号弹窗 -->
+			<!--转盘获奖弹窗-->
+			<div class="huojiang_box">
+				<div class="huojian_box_m" style="padding:0px">
+					<!--按钮-->
+					 
+					<div class="huojiang_box_title">获奖提示信息</div>
+					<div class="huojiang_conts">
+						<p class="ptxt">恭喜您获得了50元善融券!</p>
+						<p>所有的获奖记录请前往个人中心查看</p>
+						<p>新老用户皆可参加活动，每人一次抽奖机会，分享活动可再抽一次哦！</p>
+						<p>*本活动最终解释权归钱眼金融所有。</p>
+					</div>
+					<div class="maiojiaGoods_cancel coles_btns" style="position: relative;margin-top: 10px;">关闭</div>
+				</div>
+			</div>
+			<!--转盘获奖弹窗-->
+		    <!--转盘-->
+			<div class="LuckGood">
+				<div class="g-lottery-box">
+					<div class="g-lottery-img">
+						<a class="playbtn" href="javascript:;" title="开始抽奖"></a>
+					</div>
+				</div>
+			</div>
+			<!--转盘-->
+			
+			<!--规则-->
+			<div class="guizeBOx">
+				<div class="guizeBOxImg"></div>
+				<div class="xiangImg">
+					<p>一等奖：50元善融券　</p>
+					<p>二等奖：5元话费!　</p>
+					<button id="juankuaBtns_conts"></button>
+				</div>
+				<img class="guanggaoBoxBtns1" src="../img/person/bt1.png" />
+				<img onclick="javascript:window.location.href='love.html'" class="guanggaoBoxBtns2" src="../img/person/bt2.png" />
+			</div>
+			<!--规则-->
+		</div>
+		<div style="height: 55px;"></div>
+		<!--底部导航-->
+		<div class="bgcolor footer22">
+			<div class="footer144" onclick="javascript:window.location.href='../../index.html'">
+				<img class="mui-icon-home1" src="../img/smallImg/nav1.png" />
+			    <p>首页</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='discountgo.html'">
+				<img class="mui-icon-email12" src="../img/smallImg/18.png" />
+			    <p>善融</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='../../Local1.html'">
+				<img class="mui-icon-home1" src="../img/smallImg/19.png" />
+			    <p>地方汇</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='../../special1.html'">
+				<img class="mui-icon-home1" src="../img/smallImg/20.png" />
+			    <p>专场</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='personalcenter.html'">
+				<img class="mui-icon-gear1" src="../img/smallImg/nav4.png" />
+			    <p>个人中心</p>
+			</div>	
+		</div>
+		<!--底部导航-->
+	</body>
+    <script type="text/javascript" src="../js/mui.min.js" ></script>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js" ></script>
+    <script type="text/javascript" src="../js/jquery.rotate.min.js"></script>
+    <script type="text/javascript" src="../js/publicAddress.js" ></script>
+    <script type="text/javascript" src="../js/userjs/user.js"></script>
+    <script type="text/javascript" src="../js/gongyi/HPgongyi.js" ></script>
+		<script>
+			$(function() {
+				//获取捐款总金额
+				var juankuaAll_ =juankuaAll()*1;
+				var html_list ="累计捐款"+juankuaAll_.toFixed(2)+"元  感谢您的爱心";
+				$("#juankuaBtns_conts").html(html_list);
+				/*表单内容删除按钮*/
+			    $(".text-clear-content").focus(function() {
+			    	$(".clear-button").hide();
+			    	$(this).next(".clear-button").show();
+			        
+			    });
+			    $(".clear-button").click(function() {
+			    	$(this).prev().val("");
+			    	$(this).prev().focus();
+			    });
+			    $(".text-clear-code").click(function() {
+			    	$(".clear-button").hide();
+			    });
+			    
+				var $btn = $('.playbtn');
+				var isture = 0;
+				 $btn.click(function() {
+					 var notLogin = getUserByLogin();  
+					 notLogin = JSON.parse(notLogin);
+					var jiance_ =jiance(notLogin.phone);	
+				  if(jiance_ != "no"){
+							$(".notLoggedIn-0").css("transform", "translateY(-600000px)"); 
+							jiance_ = JSON.parse(jiance_);
+						//	console.log(jiance_)
+							var level =jiance_.level//指定几等奖	
+						//	console.log(jiance_.id)
+							//console.log(notLogin.id)
+						//	console.log(jiance_.orderNum)
+							setTimeout(function(){clickfunc(level);},600)
+							var addLuckOk_ =addLuckOk(jiance_.id,notLogin.id,jiance_.orderNum)
+							 
+						}else if(jiance_ =="no"){
+							$(".notLoggedIn-0").css("transform", "translateY(-600000px)"); 
+							$(".huojiang_box").css("transform","translateY(0px)");
+	                        $(".huojiang_box .huojian_box_m .huojiang_conts .ptxt").text("你没有抽奖次数了");
+	                        setTimeout(function() {
+	                        	 if($(".huojiang_box .huojian_box_m .huojiang_conts .ptxt").text() =="你没有抽奖次数了"){
+	 	                        	setTimeout(function() {
+	 									mui.openWindow({
+	 										url: '../../HPtiny.html',
+	 										id: 'HPtiny',
+	 										showType: 'zoom-fade-out',
+	 										showTime: 200
+	 									});
+	 								}, 100);
+	 		                        $(".huojiang_box").css("transform","translateY(-60000px)");
+	 	                        }
+	                        },1500);
+	                       
+	                       
+	                        $(".huojiang_box").click(function(){
+	                        	$(".huojiang_box").css("display","block");
+	                        	$(".huojiang_box").css("transform","translateY(-60000px)");
+	                        });
+	                        $(".coles_btns").click(function(){
+	                        	$(".huojiang_box").css("transform","translateY(-60000px)");
+	                        });
+						}
+					//$(".notLoggedIn-0").css("transform", "translateY(0px)"); 
+				}); 
+		
+			//	});
+				var clickfunc = function(level) {
+					
+					//获取抽奖集合List
+					var choujiangList_ =choujiangList();
+					choujiangList_ = JSON.parse(choujiangList_);
+				    var	data = level;
+					//console.log("抽中的几等奖"+data)
+					switch(data) {
+						case 1:
+							rotateFunc(1, 0, choujiangList_[0].name);
+							break;
+						case 2:
+							rotateFunc(2, 60, choujiangList_[1].name);
+							break;
+						case 3:
+							rotateFunc(3, 120, choujiangList_[2].name);
+							break;
+						case 4:
+							rotateFunc(4, 180, choujiangList_[3].name);
+							break;
+						case 5:
+							rotateFunc(5, 240, choujiangList_[4].name);
+							break;
+						case 6:
+							rotateFunc(6, 300, choujiangList_[5].name);
+							break;
+					}
+				}
+				var rotateFunc = function(awards, angle, text) {
+					isture = true;
+					$btn.stopRotate();
+					$btn.rotate({
+						angle: 0,
+						duration: 4000, //旋转时间
+						animateTo: angle + 1440, //让它根据得出来的结果加上1440度旋转
+						callback: function() {
+							isture = false; // 标志为 执行完毕
+							//alert(text);
+							$(".huojiang_box").css("transform","translateY(0px)");
+                            $(".huojiang_box .huojian_box_m .huojiang_conts .ptxt").text(text);
+                            $(".huojiang_box").click(function(){
+                            	$(".huojiang_box").css("display","block");
+                            	$(".huojiang_box").css("transform","translateY(-60000px)");
+                            });
+                            $(".coles_btns").click(function(){
+                            	$(".huojiang_box").css("transform","translateY(-60000px)");
+                            });
+						}
+					});
+				};
+			});
+			//查看活动规则
+			$(".guanggaoBoxBtns1").click(function(){
+				$(".huoDongGuizePopup").css("transform","translateY(0px)");
+			});
+			$(".guzeBtns_1").click(function(){
+				$(".huoDongGuizePopup").css("transform","translateY(-60000px)");
+			});
+			$(".deliverGoods_box_coles").click(function() {
+				$(".notLoggedIn-0").css("transform", "translateY(-60000px)");
+			});
+		</script>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<link rel="stylesheet" href="css/frame.css">
+		<link rel="stylesheet" href="css/minPublicBenefit.css">
+		<link rel="stylesheet" href="css/common.css">
+		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="js/popUpWin.js"></script>
+		<!-- 奖品管理js -->
+		<script type="text/javascript" src="js/prize.js"></script>
+		<title>汇聚甘肃后台管理系统-微公益-奖品管理</title>
+    <script type="text/javascript" src="js/angular-1.0.1.min.js"></script>
+	</head>
+	<body style="background-color: #f1f1f1;">
+		<div class="frameRall">
+			<!-- 头部通知搜索栏 -->
+			<div ng-app="">
+            <div ng-include="'head.htm'"></div>
+        </div>
+			<div class="headlineBig ml40 mb20 clearfix">
+				<h1 class="stair">
+					微公益
+					<span>工作平台</span>
+				</h1>
+				<h1 class="secondLevel">
+					奖品管理
+				</h1>
+			</div>
+			<div class="prizeManage ml40 clearfix">
+				<a href="javascript:;" class="butBox seckillAdd mb30">添加奖项</a>
+				<!-- 点击添加奖项，弹出 -->
+				<div class="seckillAddBox grouponAddBox prizeManAddBox seckillWin">
+					<i class="seckillClose"></i>
+					<form id="addPrize">
+						<ul>
+							<li>
+								<span><i class="colorRed">*</i>奖项：</span>
+								<select name="level" class="w200">
+									<option value="1">
+										一等奖
+									</option>
+									<option value="2">
+										二等奖
+									</option>
+									<option value="3">
+										三等奖
+									</option>
+									<option value="4">
+										四等奖
+									</option>
+									<option value="5">
+										五等奖
+									</option>
+									<option value="6">
+										六等奖
+									</option>
+								</select>
+							</li>
+							<li>
+								<span><i class="colorRed">*</i>奖品：</span>
+								<input type="text" class="seckillUpInp w120"
+									placeholder="请输入奖品名称" name="name" value="" />
+							</li>
+							<li>
+								<span><i class="colorRed">*</i>中奖概率：</span>
+								<input type="text" class="seckillUpInp w120"
+									placeholder="请输入中奖概率" name="probability" value="" />
+								<span style="width: 195px;" class="colorRed">此处填写中奖概率的千分之几(整数)</span>
+							</li>
+							<li>
+								<span><i class="colorRed">*</i>奖品数：</span>
+								<input type="text" class="seckillUpInp w120"
+									placeholder="请输入奖品数量" name="amount" value="" />
+							</li>
+							<li class="seckillUpBut">
+								<a href="javascript:;" class="butBox submitAddPrize">提交</a>
+							</li>
+						</ul>
+					</form>
+				</div>
+				<table class="infoTabShow przeInKind">
+					<thead>
+						<tr>
+							<td>
+								奖项
+							</td>
+							<td>
+								奖品
+							</td>
+							<td>
+								中奖概率
+							</td>
+							<td>
+								奖品数
+							</td>
+							<td>
+								剩余奖品数量
+							</td>
+							<td>
+								操作
+							</td>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- <tr>
+							<td>
+								特等奖
+							</td>
+							<td>
+								iphone8&nbsp;64G
+							</td>
+							<td>
+								1/100
+							</td>
+							<td>
+								3
+							</td>
+							<td>
+								1
+							</td>
+							<td>
+								<a href="javascript:;" class="butBox">修改</a>
+							</td>
+						</tr> -->
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</body>
+</html>

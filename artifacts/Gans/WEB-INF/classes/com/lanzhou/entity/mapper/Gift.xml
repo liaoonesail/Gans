@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC 
+    "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanzhou.entity.Gift" >
+
+
+	<insert id="add"  parameterType="com.lanzhou.entity.Gift" >
+		insert into gift(money,time,user_id,area_id,page_parameter_id) values(#{money},#{time},#{user_id},#{area_id},#{page_parameter_id})
+	</insert>
+	
+	<delete id="del"  parameterType="int"  >
+		delete  from gift where id=#{id}
+	</delete>
+	
+	<update id="update" parameterType="com.lanzhou.entity.Gift" >
+		update gift 
+			set 
+			money=#{money},
+			time=#{time},
+			user_id=#{user_id},
+			area_id=#{area_id},
+			page_parameter_id=#{page_parameter_id}
+			where 
+				id=#{id}
+	</update>
+	<select id="getListBy_user_id" parameterType="int" resultType="com.lanzhou.entity.Gift">
+		select * from gift where user_id=#{user_id}
+	</select>
+	<select  id="getById" parameterType="int"  resultType="com.lanzhou.entity.Gift">
+		select * from gift where id=#{id}
+	</select>
+	<select id="listBypage_id" parameterType="int" resultType="com.lanzhou.entity.Gift">
+		select * from gift where page_parameter_id=#{page_parameter_id}
+	</select>
+	<select id="listByuser_id" parameterType="int" resultType="com.lanzhou.entity.Gift">
+		select * from gift where listByuser_id=#{page_parameter_id}
+	</select>
+</mapper>

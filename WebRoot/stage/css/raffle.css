@@ -1,0 +1,114 @@
+*{
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+.raffleBox{
+	width: 100%;
+	height: 600px;
+	padding-top:150px ;
+	background:#09b6f2 url(../img/person/raffleBg.png) no-repeat scroll 0 0;
+	background-size: 100% 70%;
+	position: relative;
+}
+.raffleModel{
+	width: 220px;
+	height:146px;
+	padding: 0!important;
+	background: url(../img/person/raffleModel.gif) no-repeat scroll 0px 0;
+	background-size:100% 100%;
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin:0 auto;
+}
+.raffleModel ul{
+	padding: 10px;
+	position: relative;
+	float: left;
+}
+.raffleModel ul li{
+	width:51px;
+	height:32px;
+	border-radius: 2px;
+	position: absolute;
+}
+.raffleModel ul li.current{
+	background: rgba(225,89,24,0.3);
+}
+.raffleModelBut{
+	padding:5px 10px 10px 10px;
+	background: #ff5918;
+	border-radius: 5px;
+	color: #fff;
+	font-size: 16px;
+	font-weight: 700;
+	box-shadow: 0 -4px 0 #d73c00 inset;
+	position: absolute;
+	top:54px;
+	left: 68px;
+	transition: all 0.3s ease-in-out 0s;
+}
+.raffleModelBut:active{
+	background: #ea4a0c;
+	box-shadow: 0 -3px 0 #d73c00 inset;
+}
+.raffleList{
+	width: 220px;
+	height: 190px;
+	margin:0 auto;
+	position: absolute;
+	top: 320px;
+	left: 0;
+	right: 0;
+	border-radius: 5px;
+	background-color: #fff;
+}
+.raffleListBox{
+	width: 210px;
+	height:180px;
+	margin:5px;
+	border:1px dashed #eee;
+	border-radius: 5px;
+}
+.raffleListTitle{
+	padding:5px 0;
+	text-align:center;
+	color: #09b6f2;
+	font-size: 14px;
+	font-weight: 700;
+	letter-spacing: 1px;
+}
+.raffleroll{
+	margin-top: 10px;
+}
+.rafflerollBox{
+	width: 69px;
+	padding: 0 8px;
+	float:left;
+	border-right: 1px dashed #b7a9a9;
+}
+.rafflerolltitle{
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: 1px;
+	color: #09b6f2;
+	text-align: center;
+}
+.rafflerollUl{
+	height: 108px;
+	overflow: hidden;
+}
+.rafflerollLi{
+	padding: 3px 0;
+	font-size: 12px;
+	color: #562122;
+	text-align: center;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+.rafflBorderRNone{
+	border-right:none;
+}

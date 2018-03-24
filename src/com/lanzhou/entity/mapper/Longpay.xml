@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC 
+    "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanzhou.entity.Longpay" >
+
+
+	<insert id="add"  parameterType="com.lanzhou.entity.Longpay">
+		insert into longpay(goods_id,start_time,end_time,real_price,label) values(#{goods_id},#{start_time},#{end_time},#{real_price},#{label})
+	</insert>
+	
+	<delete id="del"  parameterType="int"  >
+		delete  from longpay where id=#{id}
+	</delete>
+	
+	<update id="update" parameterType="com.lanzhou.entity.Longpay" >
+		update longpay 
+			set 
+			goods_id=#{goods_id},
+			start_time=#{start_time},
+			end_time=#{end_time},
+			real_price=#{real_price},
+			label=#{label}
+			where 
+				id=#{id}
+	</update>
+	<select  id="getById" parameterType="int"  resultType="com.lanzhou.entity.Longpay">
+		select * from longpay where id=#{id}
+	</select>
+	<select id="count" parameterType="string" resultType="int">
+		select count(*) from longpay
+	</select>
+	<select id="listpage" parameterType="map" resultType="com.lanzhou.entity.Longpay">
+		select * from longpay order by id desc limit #{startRecord},#{pageSize}
+	</select>
+	<select id="list" parameterType="int" resultType="com.lanzhou.entity.Longpay">
+		select * from longpay a,goods b where a.goods_id=b.id
+		<if test="_parameter!=0">
+		and b.type_id=#{typeId} 
+		</if>
+		order by b.hot desc,b.price desc
+	</select>
+	<select id="getByGoodsId" parameterType="int" resultType="com.lanzhou.entity.Longpay">
+		select * from longpay where goods_id=#{goodsId}
+	</select>
+	<select id="getTypeList" resultType="com.lanzhou.entity.Type">
+		select a.* from type a ,goods b,longpay c where a.id=b.type_id and c.goods_id=b.id
+	and a.id in (select type_id from goods GROUP BY type_id) GROUP BY a.id ORDER BY count(a.id) desc
+	</select>
+</mapper>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC 
+    "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanzhou.entity.User" >
+
+
+	<insert id="add"  parameterType="com.lanzhou.entity.User" >
+		insert into user(name,nickname,phone,head_picture,email,birthday,type,card,password,area,sex) values(#{name},#{nickname},#{phone},#{head_picture},#{email},#{birthday},#{type},#{card},#{password},#{area},#{sex})
+	</insert>
+	<insert id="reg" parameterType="com.lanzhou.entity.User">
+		insert into user(phone,type,card,password) values(#{phone},#{type},#{card},#{password})
+	</insert>
+	<delete id="del"  parameterType="int"  >
+		delete  from user where id=#{id}
+	</delete>
+	
+	<update id="update" parameterType="com.lanzhou.entity.User" >
+		update user 
+			set 
+			name=#{name},
+			nickname=#{nickname},
+			phone=#{phone},
+			email=#{email},
+			birthday=#{birthday},
+			type=#{type},
+			password=#{password},
+			card=#{card},
+			area=#{area},
+			sex=#{sex}
+			where 
+				id=#{id}
+	</update>
+	<update id="updateHead" parameterType="com.lanzhou.entity.User">
+	update user 
+			set 
+			head_picture=#{head_picture}
+			where 
+				id=#{id}
+	</update>
+	<select  id="getById" parameterType="int"  resultType="com.lanzhou.entity.User">
+		select * from user where id=#{id}
+	</select>
+	<select  id="getphone" parameterType="string"  resultType="com.lanzhou.entity.User">
+		select * from user where phone=#{phone}
+	</select>
+	<select id="list" resultType="com.lanzhou.entity.User">
+		select * from user
+	</select>
+	<select id="count" parameterType="string" resultType="int">
+		select count(*) from user where name like '%${value}%'or phone like '%${value}%'
+	</select>
+	<select id="listpage" parameterType="map" resultType="com.lanzhou.entity.User">
+		select * from user where 
+		name like '%${name}%' or phone like '%${name}%'
+		order by id desc limit #{startRecord},#{pageSize}
+	</select>
+</mapper>

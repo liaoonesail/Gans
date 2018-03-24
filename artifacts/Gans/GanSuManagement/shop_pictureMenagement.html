@@ -1,0 +1,153 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <link rel="stylesheet" href="css/frame.css">
+        <link rel="stylesheet" href="css/minPublicBenefit.css">
+        <link rel="stylesheet" href="css/common.css">
+        <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+        <title>汇聚甘肃后台管理系统--商城管理-商品管理--供应商banner图管理</title>
+    <script type="text/javascript" src="js/angular-1.0.1.min.js"></script>
+    </head>
+    <body style="background-color: #f1f1f1;">
+        <div class="frameRall">
+            <!-- 头部通知搜索栏 -->
+            <div ng-app="">
+                <div ng-include="'head.htm'"></div>
+            </div>
+            <div class="headlineBig ml40 mb20 clearfix">
+                <h1 class="stair">
+                    商城管理
+                    <span>商品管理</span>
+                </h1>
+                <h1 class="secondLevel">
+                    供应商banner图管理
+                </h1>
+            </div>
+            <div class="mb20 ml40" >
+                <span>请选择供应商：</span>
+                <select name="shop_id"></select>
+                <span style="color:red;margin-left: 20px;">默认展示兰州的数据</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="addShop_pictureMenagement.html" class="butBox seckillAdd mb30 addType">添加供应商banner图</a>
+            </div>
+            
+                <table class="infoTabShow przeInKind typeTabelList">
+                    <thead>
+                        <tr>
+                            <td>
+                                序号
+                            </td>
+                            <td>
+                               banner图片预览
+                            </td>
+                            <td>跳转链接</td>
+                            <td width="380">
+                                操作
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </body>
+    
+    <script type="text/javascript">
+        $(function(){
+        
+        /**展示数据列表(默认展示兰州的数据)**/
+            $(document).ready(function(){
+                $.ajax({
+                    url:'../adminshop/list.do',
+                    type:'post',
+                    async:false,
+                    success:function(res){
+	                    res = eval("("+res+")");
+	                    var html = "";
+	                    $(res).each(function(index,obj){
+	                        html += "<option value='"+obj.id+"'>"+obj.shop_name+"</option>";
+	                    });
+	                    $("select[name=shop_id]").html(html);
+                    }
+                });
+                
+                var id = $("select[name=shop_id]").find("option:selected").val();
+                
+                if(id != ""){
+	                $.post("../adminshop_picture/listByshop_id.do",{"shop_id":id},function(res){
+	                    res = eval("("+res+")");
+	                    var html = "";
+	                    console.log(res);
+	                    $(res).each(function(index,obj){
+	                        html +="<tr>";
+	                        html += "<td>"+(index+1)+"</td>";
+	                        html += "<td><img src='"+obj.picture_address+"' alt='' width='150' height='100' /></td>";
+	                       	html += "<td>"+obj.url+"</td>";
+	                        html += "<td><a data-field='delete' class='butBox ml10' data-value='"+obj.id+"'>删除</a></td>";
+	                        html +="</tr>";
+	                    });
+	                    $("table.infoTabShow.przeInKind.typeTabelList tbody").html(html);
+	                });
+                }else{
+                    alert("当前没有供应商,请前往添加供应商添加");
+                    window.location.href="addSupplier.html";
+                }
+            
+            });
+            
+            $(document).on("change","select[name=shop_id]",function(){
+                var id = $(this).val();
+                $.post("../adminshop_picture/listByshop_id.do",{"shop_id":id},function(res){
+                    res = eval("("+res+")");
+                    var html = "";
+                    console.log(res);
+                    $(res).each(function(index,obj){
+                        html +="<tr>";
+                        html += "<td>"+(index+1)+"</td>";
+                        html += "<td><img src='"+obj.picture_address+"' alt='' width='150' height='100' /></td>";
+	                    html += "<td>"+obj.url+"</td>";
+                        html += "<td><a data-field='delete' class='butBox ml10' data-value='"+obj.id+"'>删除</a></td>";
+                        html +="</tr>";
+                    });
+                    $("table.infoTabShow.przeInKind.typeTabelList tbody").html(html);
+                });
+            });
+            
+            
+            /**更新**/
+           $(document).on("click","a[data-field=update]",function(){
+                var id = $(this).attr("data-value");
+                window.location.href="addArea_picture.html?id="+id;            
+           });
+            
+            /**删除**/
+            $(document).on("click","a[data-field=delete]",function(){
+                var id = $(this).attr("data-value");
+                if(confirm("确认删除该数据吗？")){
+                    $.ajax({
+                        url:'../adminshop_picture/del.do',
+                        type:'post',
+                        data:{"id":id},
+                        success:function(res){
+                            if(res == "true"){
+                                alert("删除数据成功");
+                                window.location.reload();
+                            }
+                        },error:function(){alert("删除数据失败!");}
+                    });
+                }else{
+                    alert("删除已取消");
+                }
+            });
+            
+            
+        });
+    
+    </script>
+    
+</html>

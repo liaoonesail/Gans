@@ -1,0 +1,200 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<link rel="stylesheet" href="css/frame.css">
+	<link rel="stylesheet" href="css/minPublicBenefit.css">
+	<link rel="stylesheet" href="css/common.css">
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="js/popUpWin.js"></script>
+	<title>汇聚甘肃后台管理系统-商城管理-营销管理-龙支付管理</title>
+    <script type="text/javascript" src="js/angular-1.0.1.min.js"></script>
+    <script type="text/javascript" src="js/laydate.js"></script>
+    <script type="text/javascript" src="js/loingpay.js"></script>
+</head>
+<body>
+	<div class="frameRall">
+		<!-- 头部通知搜索栏 -->
+		<div ng-app="">
+            <div ng-include="'head.htm'"></div>
+        </div>
+		<div class="headlineBig ml40 mb20 clearfix">
+			<h1 class="stair">商城管理<span>工作平台</span></h1>
+			<h1 class="secondLevel">龙支付管理</h1>
+		</div>
+		<div class="prizeManage ml40 clearfix">
+			<div class="commodityBox">
+				<div class="commodityButBox clearfix mt30 mb30">
+					<a href="javascript:;" class="butBox seckillAdd addLong">添加龙支付活动</a>
+					<!-- 区别与满减活动，一个是发生在支付前，一个发生在支付后。
+					<input type="text" class="commodityInput ml30" name="" value="" placeholder="活动名称" />
+					<a href="javascript:;" class="butBox ml10">搜索</a> -->
+				</div>
+				<!-- 点击添加龙支付活动，弹出 -->
+				<div class="seckillAddBox grouponAddBox dragonAddBox seckillWin" style="height: 305px;">
+					<i class="seckillClose"></i>
+					<form action="" method="get" id="form">
+                        <ul>
+                            <input name="id" type="hidden" value="" />
+                            <li><select name="type2">
+                                    <option value="0">请选择二级分类</option>
+                            </select> <select name="type3" class="ml10">
+                                    <option value="0">请选择三级分类</option>
+                            </select>
+                            </li>
+                            <li><span><i class="colorRed">*</i>团购商品：</span> <select
+                                name="goods_id" class="wi_300">
+                                    <option value="0">请选择</option>
+                            </select>
+                            </li>
+                            <li><span><i class="colorRed">*</i>商品标签：</span> <select
+                                name="label" class="wi_300">
+                                    <!-- <option value="0">请选择</option>
+                                    <option value="1">秒杀</option> -->
+                                    <!--<option value="2">团购</option> -->
+                                     <option value="3">龙支付</option>
+                            </select>
+                            </li>
+                            <li><span><i class="colorRed">*</i>活动开始：</span> <input
+                                type="text" id="startDate" class="seckillUpInp w120"
+                                placeholder="请选择开始时间" name="start_time" value="" />
+                            </li>
+                            <li><span><i class="colorRed">*</i>活动结束：</span> <input
+                                type="text" id="endDate" class="seckillUpInp w120"
+                                placeholder="请选择结束时间" name="end_time" value="" />
+                            </li>
+                            <script>
+                                /*活动时间*/
+                                /**laydate.js**/
+                                var start = {
+                                    elem : "#startDate",
+                                    format : 'YYYY-MM-DD',
+                                    min : laydate.now(),
+                                    //max: laydate.now(),
+                                    istime : false, //是否开启时间选择
+                                    isclear : true, //是否显示清空
+                                    istoday : true, //是否显示今天
+                                    issure : true, //是否显示确认
+                                    festival : true
+                                //是否显示节日
+                                };
+                                var end = {
+                                    elem : "#endDate",
+                                    format : 'YYYY-MM-DD',
+                                    min : laydate.now(),
+                                    //max: laydate.now(),
+                                    istime : false, //是否开启时间选择
+                                    isclear : true, //是否显示清空
+                                    istoday : true, //是否显示今天
+                                    issure : true, //是否显示确认
+                                    festival : true
+                                //是否显示节日
+                                };
+                                laydate(start);
+                                laydate(end);
+                            </script>
+                            <li><span><i class="colorRed">*</i>活动价格：</span> <label class="ml10">享受价格</label> <input
+                                type="text" class="seckillUpInp w40" name="real_price" value="" />
+                                <label class="ml10">原价</label> <input type="text"
+                                class="seckillUpInp w40" name="price" value="" disabled="disabled"/>
+                            </li>
+                            <li class="seckillUpBut"><a href="javascript:;"
+                                class="butBox addGroupGoods">提交</a></li>
+                        </ul>
+                    </form>
+				</div>
+				<!-- 选择商品 -->
+				<div class="seckillAddBox grouponAddBox dragonAddBox chooseCommWin">
+					<i class="seckillClose"></i>
+					<div class="chooseList">
+						<table>
+							<thead>
+								<tr>
+									<th><input type="checkbox" name="" value=""></th>
+									<th>商品编号</th>
+									<th>商品名称</th>
+									<th>供应商名称</th>
+									<th>市价/售价/运费</th>
+									<th>库存</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><input type="checkbox" name="" value=""></td>
+									<td>201706051234</td>
+									<td>
+										<img class="commImg1" src="img/Shopbop1.jpg" alt="">
+										<span class="fl ml10">正品直邮Made</span>
+									</td>
+									<td>嘉峪关自由超市</td>
+									<td>
+										<span class="costList">市场价：10.0元</span>
+										<span class="costList">销售价：10.0元</span>
+										<span class="costList">运费模板：按地区运费</span>
+									</td>
+									<td>100</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<a href="javascript:;" class="butBox mt10 HoverbutBg">确定</a>
+				</div>
+
+				<table class="commodityTab orderFormTab">
+					<thead>
+						<tr class="salesManageTr">
+							<th>编号</th>
+							<th>商品名称</th>
+							<th>供应商名称</th>
+							<th>开始时间</th>
+							<th>结束时间</th>
+							<th>活动价格</th>
+							<th class="tc">操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- <tr>
+							<td>1</td>
+							<td>龙支付减免活动</td>
+							<td>2017-06-02 23:00:00</td>
+							<td>2017-06-02 23:00:00</td>
+							<td>
+								<span class="costList">手机支付后，自动减扣</span>
+								<span class="costList">满50元减5元</span>
+							</td>
+							<td>110</td>
+							<td>已发布/已结束</td>
+							<td>
+								<span class="operationButBox">
+									<a href="javascript:;" class="butBox chooseCommAdd">添加商品</a>
+									<a href="javascript:;" class="butBox ml10">编辑</a>
+									<a href="javascript:;" class="butBox mt10">移除</a>
+								</span>
+							</td>
+						</tr> -->
+					</tbody>
+					<tfoot class="commFootTd">
+						<tr>
+                            <td colspan="4" class="commFootFont textar">总计<span
+                                class='count'>0</span>条数据&emsp;&emsp;分为<span class="pageCount">0</span>页&emsp;每页<span
+                                class="pageSize">10</span>个</td>
+                            <td colspan="3" class="commPageBut">
+                                <div class="commPageBut2 fr pr30">
+                                    <a href="javascript:;" title="第一页" class="commPage1"></a> <a
+                                        href="javascript:;" title="上一页" class="commPage2"></a> <select
+                                        name="curpage" curpage="1">
+                                        <option value="">1</option>
+                                    </select> <a href="javascript:;" title="下一页" class="commPage3"></a> <a
+                                        href="javascript:;" title="尾页" class="commPage4"></a>
+                                </div>
+                            </td>
+                        </tr>
+					</tfoot>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

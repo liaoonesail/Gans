@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<link rel="stylesheet" href="css/frame.css">
+	<link rel="stylesheet" href="css/minPublicBenefit.css">
+	<link rel="stylesheet" href="css/common.css">
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="js/popUpWin.js"></script>
+    <script type="text/javascript" src="kingediter/kindeditor-all-min.js"></script>
+    <script type="text/javascript" src="js/pageParameter.js"></script>
+    <script type="text/javascript" src="js/laydate.js"></script>
+	<title>汇聚甘肃后台管理系统-微公益-页面参数</title>
+    <script type="text/javascript" src="js/angular-1.0.1.min.js"></script>
+</head>
+<body style="background-color: #f1f1f1;">
+	<div class="frameRall">
+		<!-- 头部通知搜索栏 -->
+		<div ng-app="">
+            <div ng-include="'head.htm'"></div>
+        </div>
+		<div class="headlineBig ml40 mb20 clearfix">
+			<h1 class="stair">微公益<span>工作平台</span></h1>
+			<h1 class="secondLevel">页面参数</h1>
+		</div>
+		<div class="prizeManage ml40 clearfix">
+			<div class="commodityBox">
+			<div class="mt30 mb30">
+				<div class="commodityButBox clearfix mt30 mb30">
+					<a href="javascript:;" class="butBox seckillAdd">新增爱心介绍</a>
+					<input type="text" class="commodityInput ml30" id="parameter_name" value="" placeholder="往期" />
+					<a href="javascript:page(1);" class="butBox ml10">搜索</a>
+				</div>
+				<h1 class="loveTit">往期爱心维护：</h1>
+				<table class="commodityTab orderFormTab" id="winingTable">
+					<thead>
+						<tr class="salesManageTr">
+							<th>编号</th>
+							<th>往期维护</th>
+							<th>预览</th>
+							<th>最小金额</th>
+							<th>开始时间</th>
+							<th>结束时间</th>
+							<th class="tc">操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- <tr>
+							<td>第一期</td>
+							<td>http://www.ccb.com/cn/html1/branch/subject/17/0609xrfs/index.html?source_name=12&source_type=srpc_flb&source_content=fhzt</td>
+							<td>151</td>
+							<td><a href="javascript:;" class="butBox">修改</a><a href="javascript:;" class="butBox ml10">删除</a></td>
+						</tr> -->
+					</tbody>
+					<tfoot class="commFootTd">
+						<tr>
+							<td colspan="4" class="commFootFont textar">总计<span id="pageParameter_num">0</span>条数据&emsp;&emsp;分为<span id="pageCount">0</span>页&emsp;每页<span id="pageSize">10</span>个</td>
+							<td colspan="2" class="commPageBut">
+								<div class="commPageBut2 fr pr30">
+									<a href="javascript:;" title="第一页" class="commPage1" onclick="firstpage()"></a>
+									<a href="javascript:;" title="上一页" class="commPage2" onclick="prevpage()"></a>
+									<select name="">
+										<option id="curpage" value=""></option>
+									</select>
+									<a href="javascript:;" title="下一页" class="commPage3" onclick="nextpage()"></a>
+									<a href="javascript:;" title="尾页" class="commPage4" onclick="lastpage()"></a>
+								</div>
+							</td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+			<!-- 新增爱心介绍弹窗 -->
+			<div class="seckillAddBox grouponAddBox pagePostAddBox seckillWin chooseCommWin" style="height:450px!important;width:800px!important;">
+				<i class="seckillClose"></i>
+				<form id="fromAddParameter" action="" method="get">
+					<ul>
+						<li style="display: none">
+								<span>id：</span>
+								<input type="text" class="seckillUpInp" id="id" name="id" value="" />
+							</li>
+						<li>
+							<span><i class="colorRed">*</i>新期活动：</span>
+							<input type="text" class="seckillUpInp" id="name" name="name" value="" />
+						</li>
+						<!-- <li>
+							<span><i class="colorRed">*</i>图片地址：</span>
+							<input type="text" class="seckillUpInp" id="url" name="url" value="" />
+						</li> -->
+						<li>
+							<span><i class="colorRed">*</i>最小金额：</span>
+							<input type="text" class="seckillUpInp" id="min_money" name="min_money" value="" />
+						</li>
+						<li>
+							<span><i class="colorRed">*</i>开始时间：</span>
+							<input id="startDate" name="start_time" class="seckillUpInp" type="text" value=""/>
+                        </li>
+                        <li>
+                        	<span><i class="colorRed">*</i>结束时间：</span>
+                        	<input id="endDate" name="end_time" class="seckillUpInp" type="text" value=""/>
+                        </li>
+                        <span class="ver-center" style="vertical-align:top;"><i class="colorRed">*</i>图片地址：</span>
+						<textarea name="url" class="contentText2" style="width:600px;height:180px;"></textarea>
+						<li class="seckillUpBut"><a href="javascript:;" class="butBox addParameter">添加</a></li>
+					</ul>
+				</form>
+			</div>
+			<p class="imaginaryLine"></p>
+			<div class="mt40">
+				<span class="font_20">活动规则维护</span>
+				<a href="javascript:;" class="butBox ml20">预览</a>
+				<a href="javascript:;" class="butBox ruleupdate ml20">修改</a>
+				<span class="ml20">活动规则为文字展示，直接修改即可</span>
+			</div>
+			<!-- 活动规则维护修改弹窗 -->
+			<div class="seckillAddBox grouponAddBox pagePostRule ruleBox">
+				<i class="seckillClose"></i>
+				<form action="" method="get">
+					<ul>
+						<li>
+							<textarea class="pagePostText"></textarea>
+						</li>
+						<li class="seckillUpBut"><a href="javascript:;" class="butBox">提交</a></li>
+					</ul>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+$(function(){
+	/**laydate.js**/
+	var start = {
+	     elem:"#startDate",
+	     format: 'YYYY-MM-DD',
+	     min: laydate.now(),
+	     //max: laydate.now(),
+	     istime: false, //是否开启时间选择
+	        isclear: true, //是否显示清空
+	        istoday: true, //是否显示今天
+	        issure: true, //是否显示确认
+	        festival: true //是否显示节日
+	};
+	var end = {
+	     elem:"#endDate",
+	     format: 'YYYY-MM-DD',
+	     min: laydate.now(),
+	     //max: laydate.now(),
+	     istime: false, //是否开启时间选择
+	     isclear: true, //是否显示清空
+	     istoday: true, //是否显示今天
+	     issure: true, //是否显示确认
+	     festival: true //是否显示节日
+	};
+	laydate(start);
+	laydate(end);
+});
+</script>
+</html>

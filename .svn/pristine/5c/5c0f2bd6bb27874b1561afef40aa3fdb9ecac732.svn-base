@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC 
+    "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanzhou.entity.Problems" >
+
+
+	<insert id="add"  parameterType="com.lanzhou.entity.Problems" >
+		insert into problems(title,content) values(#{title},#{content})
+	</insert>
+	
+	<delete id="del"  parameterType="int"  >
+		delete  from problems where id=#{id}
+	</delete>
+	
+	<update id="update" parameterType="com.lanzhou.entity.Problems" >
+		update problems 
+			set 
+			title=#{title},
+			content=#{content}
+			where 
+				id=#{id}
+	</update>
+	<select  id="getById" parameterType="int"  resultType="com.lanzhou.entity.Problems">
+		select * from problems where id=#{id}
+	</select>
+	<select id="list" parameterType="string" resultType="com.lanzhou.entity.Problems">
+		select * from problems where title like '%${value}%'
+	</select>
+	<select id="count" parameterType="string" resultType="int">
+		select count(*) from problems where title like '%${value}%'
+	</select>
+	<select id="listpage" parameterType="map" resultType="com.lanzhou.entity.Problems">
+		select * from problems where title like '%${name}%' limit #{startRecord},#{pageSize}
+	</select>
+</mapper>

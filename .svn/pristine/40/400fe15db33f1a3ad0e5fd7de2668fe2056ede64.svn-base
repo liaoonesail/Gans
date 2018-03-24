@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC 
+    "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanzhou.entity.Goods" >
+
+
+	<insert id="add"  parameterType="com.lanzhou.entity.Goods" useGeneratedKeys="true" keyProperty="id">
+		insert into goods
+		(type_next_next_id,goods_num,goods_name,shop_id,cost_price,price,amount,sort,goods_type,goods_describe,goods_brand,picture_address,mould_id,goods_details,shangjia,baoyou,tuijian,type_next_id,type_id,activity_id,area_id,freight,pay_url,limit_num,hot) 
+		values
+		(#{type_next_next_id},#{goods_num},#{goods_name},#{shop_id},#{cost_price},#{price},#{amount},#{sort},#{goods_type},#{goods_describe},#{goods_brand},#{picture_address},#{mould_id},#{goods_details},#{shangjia},#{baoyou},#{tuijian},#{type_next_id},#{type_id},#{activity_id},#{area_id},#{freight},#{pay_url},#{limit_num},#{hot})
+	</insert>
+	
+	<delete id="del"  parameterType="int"  >
+		delete  from goods where id=#{id}
+	</delete>
+	
+	<update id="update" parameterType="com.lanzhou.entity.Goods" >
+		update goods 
+			set 
+			goods_name=#{goods_name},
+			shop_id=#{shop_id},
+			cost_price=#{cost_price},
+			price=#{price},
+			amount=#{amount},
+			sort=#{sort},
+			goods_describe=#{goods_describe},
+			goods_brand=#{goods_brand},
+			picture_address=#{picture_address},
+			mould_id=#{mould_id},
+			goods_details=#{goods_details},
+			shangjia=#{shangjia},
+			baoyou=#{baoyou},
+			tuijian=#{tuijian},
+			activity_id=#{activity_id},
+			area_id=#{area_id},
+			freight=#{freight},
+			pay_url=#{pay_url},
+			limit_num=#{limit_num},
+			hot=#{hot}
+			where 
+				id=#{id}
+	</update>
+	<update id="updateShangjia" parameterType="map">
+		update goods 
+			set 
+			shangjia=#{shangjia}
+			where 
+				id=#{id}
+	</update>
+	<update id="updateTuijian" parameterType="map">
+		update goods 
+			set 
+			tuijian=#{tuijian}
+			where 
+				id=#{goodsId}
+	</update>
+	<update id="updateAmount" parameterType="com.lanzhou.entity.Goods">
+		update goods
+			set
+			amount=#{amount}
+			where
+				id=#{id}
+	</update>
+	<update id="updateAreaByShop" parameterType="map">
+		update goods
+			set
+			area_id=#{area_id}
+			where
+				shop_id=#{shop_id}
+	</update>
+	<select id="listByid" parameterType="int" resultType="com.lanzhou.entity.Goods">
+		select * from goods where goods_type_type_id=#{goods_type_type_id} order by hot desc,price desc
+	</select>
+	<select id="listBytype_id" parameterType="map" resultType="com.lanzhou.entity.Goods"> 
+		select * from goods where type_id=#{type_id} and area_id=#{area_id} and shangjia=1 order by hot desc,price desc
+	</select>
+	<select id="listBytype_next_id" parameterType="map" resultType="com.lanzhou.entity.Goods">
+		select * from goods where type_next_id=#{type_next_id} and area_id=#{area_id} and shangjia=1 order by hot desc,price desc
+	</select>
+	<select id="listBytype_next_next_id" parameterType="map" resultType="com.lanzhou.entity.Goods">
+		select * from goods where type_next_next_id=#{type_next_next_id} and shangjia=1
+		<if test="area_id!=0"> and area_id=#{area_id}</if>
+		order by hot desc,price desc
+	</select>
+	<select id="tuijianCount" parameterType="map" resultType="int">
+		select count(*) from goods where tuijian=#{tuijian}  and shangjia=1;
+	</select>
+	<select id="listBytuijian" parameterType="map" resultType="com.lanzhou.entity.Goods">
+		select * from goods where tuijian=#{tuijian} and area_id=#{area_id} and shangjia=1 order by hot desc,price desc
+	</select>
+	<select id="listBytuijian2" parameterType="map" resultType="com.lanzhou.entity.Goods">
+		select * from goods where tuijian=#{tuijian}  and shangjia=1 order by hot desc,price desc limit #{startRecord},#{pageSize}
+	</select>
+	<select id="listByshop_id" parameterType="int" resultType="com.lanzhou.entity.Goods">
+		select * from goods where shop_id=#{shop_id} and shangjia=1 order by hot desc,price desc
+	</select>
+	<select id="listBylable" parameterType="map" resultType="com.lanzhou.entity.Goods">
+		select * from goods where lable=#{lable} and area_id=#{area_id} and shangjia=1 order by hot desc,price desc
+	</select>
+	<select id="listBygoods_brand" parameterType="map" resultType="com.lanzhou.entity.Goods">
+		select * from goods where goods_brand=#{goods_brand} and area_id=#{area_id} and shangjia=1 order by hot desc,price desc
+	</select>
+	<select id="listBymohu" parameterType="string" resultType="com.lanzhou.entity.Goods">
+		select * from goods where goods_name like CONCAT(CONCAT('%',#{string}),'%') or goods_brand like CONCAT(CONCAT('%',#{string}),'%')
+	</select>
+	<select id="count" parameterType="map" resultType="int">
+		select count(*) from goods where (goods_name like '%${name}%' or goods_brand like '%${name}%' or goods_num like '%${name}%') and goods_type=#{goods_type} and shangjia=#{shangjia}
+	</select>
+	<select  id="getById" parameterType="int"  resultType="com.lanzhou.entity.Goods">
+		select * from goods where id=#{id}
+	</select>
+	<select id="listpage" parameterType="map" resultType="com.lanzhou.entity.Goods">
+		select * from goods where (goods_name like '%${name}%' or goods_brand like '%${name}%' or goods_num like '%${name}%') and goods_type=#{goods_type} and shangjia=#{shangjia} order by hot desc,id desc limit #{startRecord},#{pageSize}
+	</select>
+	<select id="listBymould_id" parameterType="map" resultType="com.lanzhou.entity.Goods">
+		select * from goods where mould_id=#{mould_id} and area_id=#{area_id} and shangjia=1
+	</select>
+	<select id="listByzhouzhou" parameterType="map" resultType="com.lanzhou.entity.Goods">
+		select * from goods where
+		 shangjia=1 and id in (select goods_id from activity_details where STR_TO_DATE(#{end_time},'%Y-%m-%d')>STR_TO_DATE(start_time,'%Y-%m-%d') and STR_TO_DATE(end_time,'%Y-%m-%d')>STR_TO_DATE(#{start_time},'%Y-%m-%d')) order by hot desc,price desc
+	</select>
+	<select id="areaCount" parameterType="int" resultType="int">
+		select count(*) from goods where area_id=#{area_id} and shangjia=1
+	</select>
+	<select id="listByarea_id" parameterType="int" resultType="com.lanzhou.entity.Goods">
+		select * from goods where area_id=#{area_id} and shangjia=1 order by hot desc,id desc limit #{startRecord},#{pageSize}
+	</select>
+	<select id="getGoodsBySearch" parameterType="string" resultType="com.lanzhou.entity.Goods">
+		select * from goods where shangjia=1 and (goods_name like '%${value}%' or goods_brand like '%${value}%') order by hot desc,price desc
+	</select>
+	<select id="getInventedGoods" resultType="com.lanzhou.entity.Goods">
+		select * from goods where shangjia=1 and goods_type=2
+	</select>
+	<select id="getByareaId" parameterType="int" resultType="com.lanzhou.entity.Goods">
+		select * from goods where area_id=#{areaId} and shangjia=1
+	</select>
+	
+	
+	
+	
+	
+	
+	<select id="listByhot" resultType="com.lanzhou.entity.Goods">
+	select * from goods order by hot desc limit 0,8
+	</select>
+	<select id="listBynew" resultType="com.lanzhou.entity.Goods">
+	select * from goods order by id desc limit 0,8
+	</select>
+	<select id="listByrecommend" resultType="com.lanzhou.entity.Goods">
+	select * from goods where recommend=1 order by id desc limit 0,8
+	</select>
+	<select  id="getList" parameterType="map" resultType="com.lanzhou.entity.Goods">
+		select * from goods
+		<where>
+		  <if test="name!=null">
+		     and name like '%${name}%'
+		  </if>
+		  	and goods_type_type_id=#{goods_type_type_id}
+		</where>
+		limit #{startRecord},#{pageSize}
+	</select>
+	<select id="listByname" parameterType="string" resultType="com.lanzhou.entity.Goods">
+		select * from goods where name like CONCAT(CONCAT('%',#{goods_name}),'%')
+	</select>
+	
+	<select  id="getByName" parameterType="string"  resultType="com.lanzhou.entity.Goods">
+		select * from goods where name=#{name}
+	</select>
+	
+	<select  id="getCount" parameterType="string"  resultType="int"  >
+		select count(*) from goods where   name like '%${_parameter}%' 
+	</select>
+	<select id="listbytypeid" parameterType="map" resultType="com.lanzhou.entity.Goods">
+	select * from goods where goods_type_type_id in(select id from goods_type_type 
+	<where>
+		<if test="id!=null and id!='' and id==0" >
+			1=1
+		</if>
+		<if test="id!=null and id!='' and id!=0">
+		 goods_type_id=#{id}
+		</if>
+	</where>
+	)
+	<if test="status!=null and status!='' and status==0"></if>
+	<if test="status!=null and status!='' and status==1">
+	order by id desc
+	</if>
+	<if test="status!=null and status!='' and status==2">
+	order by price
+	</if>
+	<if test="status!=null and status!='' and status==3">
+	order by price desc
+	</if>
+	</select>
+</mapper>
+

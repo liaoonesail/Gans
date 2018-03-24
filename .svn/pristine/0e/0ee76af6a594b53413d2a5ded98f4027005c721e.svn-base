@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>龙支付</title>
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/swiper.css" />
+		<link rel="stylesheet" href="../css/bass.css" />
+		<link rel="stylesheet" href="../css/header.css" />
+		<link rel="stylesheet" href="../css/discoNav.css" />
+		<link rel="stylesheet" href="../css/Local.css" />
+		<link rel="stylesheet" href="../css/zhouzhouhui.css" />
+		<style>
+			.zhouzhouhuibanner {
+				margin-top: 88px;
+				width: 100%;
+				height: 140px;
+			}
+			
+			.zhouzhouhuibanner .swiper-container {
+				width: 100%;
+				height: 100%;
+			}
+			
+			.zhouzhouhuibanner .swiper-slide {
+				width: 100%;
+				height: 100%;
+				background-position: center;
+				background-size: 100% 100%;
+			}
+			
+			.zhouzhouhuibanner .swiper-container .swiper-pagination-white .swiper-pagination-bullet-active {
+				background: #ef1932;
+			}
+			
+			.zhouzhouhuibanner .swiper-container .swiper-pagination {
+				position: absolute;
+				text-align: center;
+				-webkit-transition: 300ms;
+				-moz-transition: 300ms;
+				-o-transition: 300ms;
+				transition: 300ms;
+				-webkit-transform: translate3d(0, 0, 0);
+				-ms-transform: translate3d(0, 0, 0);
+				-o-transform: translate3d(0, 0, 0);
+				transform: translate3d(0, 0, 0);
+				z-index: 10;
+				right: 0px;
+				bottom: 0px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">龙支付</h1>
+			 <span class="mui-pull-right mui-action-back" style="color: #fff;font-size: 13px;line-height: 44px;">关闭</span>
+		</header>
+		<div class="mui-content">
+			<!--顶部nav-->
+			<div class="topNva">
+				<div class="mui-slider mui-fullscreen topNvaUlLi">
+					<div class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+						<div class="mui-scroll">
+							<ul id="ListNavService" class="clearfix">
+								
+							</ul>
+							<!--这里放置真实显示的DOM内容-->
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--顶部nav-->
+			<!--地方汇搜索-->
+			<div class="mui-row">
+				<div class="mui-col-xs-12 Localsearch clearfix" style="top: 77px;">
+					<span id="searchCode" class="mui-icon mui-icon-search" style="margin-left: 6px;"></span>
+					<input id="searchName" type="search" class="text-clear-content" placeholder="搜索" />
+					<div class="clear-button22"></div>
+				</div>
+			</div>
+			<!--地方汇搜索-->
+			<!--banner部分-->
+			<div class="zhouzhouhuibanner">
+				<div class="swiper-container">
+					<div id="indexBannerImg" class="swiper-wrapper">
+						<!-- <div class="swiper-slide" style="background-image:url(../img/banner/zhouzhoubanner.jpg)"></div>
+						<div class="swiper-slide" style="background-image:url(../img/banner/bannergo.jpg)"></div>
+						<div class="swiper-slide" style="background-image:url(../img/banner/banner2.jpg)"></div>
+						<div class="swiper-slide" style="background-image:url(../img/banner/banner3.png)"></div> -->
+					</div>
+					<!-- Add Pagination -->
+					<div class="swiper-pagination swiper-pagination-white"></div>
+				</div>
+			</div>
+			<!--banner部分-->
+			<!-- 加载提示 -->
+		    <div id="loadingicon" class="mui-text-center" style="z-index: 99999;">
+				<span class="mui-spinner"></span>
+				<p style="margin-bottom: 0px;font-size: 12px;">正在加载中....</p>
+			</div>
+		    <!-- 加载提示 -->
+			<div>
+				<div class="recommendBox recommendBoxzhou" style="padding: 0px 4px 10px 0px;display: block;">
+					<div id="LongpayConts" class="mui-row">
+						<!-- <div class="mui-col-xs-6 dssssdf">
+							<img  src="../img/detailImg/12.png" />
+							<p>新鲜美味的水果进口海外次日达</p>
+							<dt>有效期:<span>2017.10.21</span></dt>
+							<div class="picdetails">优惠价：¥<span>9.8</span></div>
+							<dd class="clearfix">
+								<del>市场价：15.00元</del>
+								<img src="../img/smallImg/a1.png" />
+							</dd>
+							<button class="picBttns">立即购买</button>
+						</div> -->
+					</div>
+				</div>	
+			</div>
+		</div>
+		<div style="height: 55px;"></div>
+		<!--底部导航-->
+		<div class="bgcolor footer22">
+			<div class="footer144" onclick="javascript:window.location.href='../../index.html'">
+				<img class="mui-icon-home1" src="../img/smallImg/nav1.png" />
+			    <p>首页</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='discountgo.html'">
+				<img class="mui-icon-email12" src="../img/smallImg/18.png" />
+			    <p>善融</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='../../Local1.html'">
+				<img class="mui-icon-home1" src="../img/smallImg/19.png" />
+			    <p>地方汇</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='../../special1.html'">
+				<img class="mui-icon-home1" src="../img/smallImg/20.png" />
+			    <p>专场</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='personalcenter.html'">
+				<img class="mui-icon-gear1" src="../img/smallImg/nav4.png" />
+			    <p>个人中心</p>
+			</div>	
+		</div>
+		<!--底部导航-->
+	</body>
+	<script type="text/javascript" src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+	<script type="text/javascript" src="../js/swiper.min.js"></script>
+	<script type="text/javascript" src="../js/publicAddress.js" ></script>
+	<script type="text/javascript" src="../js/activity/activity.js"></script>
+	<script type="text/javascript" src="../js/Longpayjs/Longpayjs.js"></script>
+	<script type="text/javascript" src="../js/search/search.js" ></script>
+	<script>
+		mui.init();
+		//区域滚动
+		mui('.mui-scroll-wrapper').scroll({
+			deceleration: 0.0005, //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+			indicators: false
+		});
+		//让指定的DIV始终显示在屏幕正中间   
+        left_w=($(document).width()-$('#loadingicon').width())/2;  
+        top_w = $('html').scrollTop()+($(window).height()-$('#loadingicon').height())/2;  
+        $('#loadingicon').offset({top:top_w,left:left_w});  
+        $('#loadingicon').show();
+   		$('#loadingicon').offset({top:top_w,left:left_w});  
+   		setTimeout(function(){
+   			$('#loadingicon').hide();
+   			Longpaystar();
+		},200);
+		
+		function Longpaystar(){
+			/**
+			 * 获取类别集合
+			 * @param response
+			 * @return
+			 * @throws IOException
+			 */
+			 var typeList_ =typeList();
+			 //console.log("获取龙支付类别集合"+typeList_);
+			 typeList_ = JSON.parse(typeList_);
+			 $("#ListNavService").empty();
+			 var tuangouTypeList ="<li id='0'>全部</li>";
+			 for(var  i = 0 ; i < typeList_.length; i++){
+				 tuangouTypeList +="<li id='"+typeList_[i].id+"'>"+typeList_[i].name+"</li>";
+			 }
+			 $("#ListNavService").append(tuangouTypeList);
+			 //龙支付分类左边导航对应点击样式
+			 $("ul#ListNavService li").eq(0).addClass("ontopOk");
+			 //龙支付默认第一个
+			 var Type_id =$("ul#ListNavService li").eq(0).attr("id");
+			 getByLongpayAllType(Type_id);
+			 $("ul#ListNavService li").click(function() {
+				$("ul#ListNavService  li").removeClass("ontopOk"); //siblings是循环遍历
+				$(this).addClass("ontopOk");
+                var Type_id =$(this).attr("id");
+                $('#loadingicon').show();
+	   		    $('#loadingicon').offset({top:top_w,left:left_w});  
+	   		     setTimeout(function(){
+	   			        $('#loadingicon').hide();
+	   			     getByLongpayAllType(Type_id);
+	   		 	},300);
+               
+			 });
+		}
+		/**
+		 * 根据类别Id获取龙支付商品集合
+		 * @param typeId
+		 * @param response
+		 * @return
+		 * @throws IOException
+		 */
+		 function getByLongpayAllType(typeId){
+			var getByLongpayAllList_ = getByLongpayAllList(typeId);
+			//console.log("获取龙支付商品集合"+getByLongpayAllList_);
+			getByLongpayAllList_ = JSON.parse(getByLongpayAllList_);
+			//console.log(getByLongpayAllList_);
+			$("#LongpayConts").empty();
+			var getLongpayHtml ="";
+			for(var i = 0 ; i < getByLongpayAllList_.length ; i ++){
+				/**
+				 * 根据龙支付Id获取龙支付活动详情
+				 * @param id
+				 * @param response
+				 * @return
+				 * @throws IOException
+				 */
+				 var getLongpayId_ =getLongpayId(getByLongpayAllList_[i].id);
+				 getLongpayId_ = JSON.parse(getLongpayId_);
+				 //console.log(getLongpayId_);
+				 /**
+				  * 根据商品ID获取商品详情
+				  * @param goodsId
+				  * @param response
+				  * @return
+				  * @throws IOException
+				  */
+				  var getGoodsByGoodsID_ =getGoodsByGoodsID(getLongpayId_.goods_id);
+				  getGoodsByGoodsID_ = JSON.parse(getGoodsByGoodsID_);
+				  //console.log(getGoodsByGoodsID_);
+				 
+					 /**
+					  * 根据商品ID获取龙支付活详情
+					  * @param goodsId
+					  * @param response
+					  * @return
+					  * @throws IOException
+					  */
+					  var  getLongpayhuodongByGoodsId_ =getLongpayhuodongByGoodsId(getGoodsByGoodsID_.id);
+					  //console.log("根据商品ID获取龙支付活详情"+getLongpayhuodongByGoodsId_);
+					  getLongpayhuodongByGoodsId_ = JSON.parse(getLongpayhuodongByGoodsId_);
+					if(getLongpayhuodongByGoodsId_ != null){
+						 if(getLongpayhuodongByGoodsId_.label ==3){
+								miaosha_ ="<img src='../img/smallImg/a2.png' />";
+								youxiaoqi_ ="<dt>有效期:<span>"+getLongpayhuodongByGoodsId_.end_time+"</span></dt>";
+								pric_ =getLongpayhuodongByGoodsId_.real_price;
+								
+							}
+					 }
+				  getLongpayHtml +="<div id='"+getGoodsByGoodsID_.id+"' class='mui-col-xs-6 dssssdf'>"
+									+"<img  src='"+getGoodsByGoodsID_.picture_address+"' />"
+									+"<p>"+getGoodsByGoodsID_.goods_name+"</p>"
+									+youxiaoqi_
+									+"<div class='picdetails'>优惠价：¥<span>"+pric_+"</span>元</div>"
+									+"<dd class='clearfix'>"
+										+"<del>市场价："+getGoodsByGoodsID_.cost_price+"元</del>"
+										+miaosha_
+									+"</dd>"
+									+"<button class='picBttns'>立即购买</button>"
+								+"</div>";
+			}
+			$("#LongpayConts").append(getLongpayHtml);
+			  //跳转对应的商品详情     
+	        var abc = $(".dssssdf")
+				for (var i = 0; i < abc.length; i++) {
+				    (function(e){  //自执行函数实时把i传入e
+				        abc[e].onclick=function(){  //  通过传入的e获取到哪个按钮发生了点击事件
+//				            alert(e) //弹出e（此处e为i实时对应值）
+	                        var shop_details_Id =$(this).attr("id");
+	                         setTimeout(function(){
+								mui.openWindow({
+									url: 'details.html?id='+shop_details_Id+'&part=-1',
+									id: 'details',
+									showType: 'zoom-fade-out',
+									showTime: 200
+								});
+							},200);
+				        }
+				    })(i)    
+				};   //采用闭包和自执行函数获取i
+				
+				//S:龙支付广告;
+				//轮播图
+				/**
+				 * 轮播图集合（one_lb,zzh_lb,long_lb,sr_lb,dfh_lb）(首页轮播、周周惠轮播、龙支付轮播、善融轮播、地方汇轮播)
+				 * @param location
+				 * @param response
+				 * @return
+				 * @throws IOException 
+				 */
+				function getAdvertByStatus(location){
+					var url = "advert/lbList.do";
+					var data = {
+							location:location
+				    };
+					async = false;
+					var result = ajaxSubmit(url, data, async);
+					//console.log(result)
+					return result;
+				}
+				$("#indexBannerImg").empty();
+				var indexBannerImgStatus_= getAdvertByStatus("long_lb");
+				//console.log("轮播图=="+indexBannerImgStatus_);
+				indexBannerImgStatus_ = JSON.parse(indexBannerImgStatus_);
+				//console.log(indexBannerImgStatus_);
+				var indexBannerImg ="";
+				for(var i = 0 ; i < indexBannerImgStatus_.length; i++){
+					indexBannerImg +="<div onclick=\"javascript:window.location.href='"+indexBannerImgStatus_[i].ad_url+"'\" class='swiper-slide' style='background-image:url("+indexBannerImgStatus_[i].ad_path+")'></div>";
+				}
+				$("#indexBannerImg").append(indexBannerImg);
+				var swiper = new Swiper('.swiper-container', {
+					pagination: '.swiper-pagination',
+					paginationClickable: '.swiper-pagination',
+					loop: true,
+					spaceBetween: 30,
+					autoplay: 2500,
+					autoplayDisableOnInteraction: false,
+					effect: 'fade'
+				});
+				/*  function getAdvertByStatus(status){
+						var url = "advert/getAdvertByStatus.do";
+						var data = {
+							status:status
+					    };
+						async = false;
+						var result = ajaxSubmit(url, data, async);
+						console.log(result)
+						return result;
+					}
+				$("#indexBannerImg").empty();
+				var indexBannerImgStatus_= getAdvertByStatus("A");
+				console.log("轮播图=="+indexBannerImgStatus_);
+				indexBannerImgStatus_ = JSON.parse(indexBannerImgStatus_);
+				console.log(indexBannerImgStatus_);
+				var indexBannerImg ="";
+				for(var i = 0 ; i < indexBannerImgStatus_.length; i++){
+					indexBannerImg +="<div onclick=\"javascript:window.location.href='"+indexBannerImgStatus_[i].ad_url+"'\" class='swiper-slide' style='background-image:url("+indexBannerImgStatus_[i].ad_path+")'></div>";//"<div class='swiper-slide' style=\"background-image:url("+indexBannerImgStatus_[i].ad_path+")\"></div>;
+				}
+				$("#indexBannerImg").append(indexBannerImg);
+				var swiper = new Swiper('.swiper-container', {
+					pagination: '.swiper-pagination',
+					paginationClickable: '.swiper-pagination',
+					loop: true,
+					spaceBetween: 30,
+					autoplay: 2500,
+					autoplayDisableOnInteraction: false,
+					effect: 'fade'
+				}); */
+			 
+		}
+		
+	</script>
+
+</html>

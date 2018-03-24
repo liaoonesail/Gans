@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC 
+    "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanzhou.entity.Tuangou" >
+
+
+	<insert id="add"  parameterType="com.lanzhou.entity.Tuangou">
+		insert into tuangou(goods_id,start_time,end_time,amount,real_price,label) values(#{goods_id},#{start_time},#{end_time},#{amount},#{real_price},#{label})
+	</insert>
+	
+	<delete id="del"  parameterType="int"  >
+		delete  from tuangou where id=#{id}
+	</delete>
+	
+	<update id="update" parameterType="com.lanzhou.entity.Tuangou" >
+		update tuangou 
+			set 
+			goods_id=#{goods_id},
+			start_time=#{start_time},
+			end_time=#{end_time},
+			amount=#{amount},
+			real_price=#{real_price},
+			label=#{label}
+			where 
+				id=#{id}
+	</update>
+	<select  id="getById" parameterType="int"  resultType="com.lanzhou.entity.Tuangou">
+		select * from tuangou where id=#{id}
+	</select>
+	<select id="count" parameterType="string" resultType="int">
+		select count(*) from tuangou
+	</select>
+	<select id="listpage" parameterType="map" resultType="com.lanzhou.entity.Tuangou">
+		select * from tuangou order by id desc limit #{startRecord},#{pageSize}
+	</select>
+	<select id="list" parameterType="int" resultType="com.lanzhou.entity.Tuangou">
+		select * from tuangou a,goods b where a.goods_id=b.id and b.type_next_next_id=#{typeId} order by b.hot desc,b.price desc
+	</select>
+	<select id="getByGoodsId" parameterType="int" resultType="com.lanzhou.entity.Tuangou">
+		select * from tuangou where goods_id=#{goodsId}
+	</select>
+</mapper>

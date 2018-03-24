@@ -1,0 +1,127 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<link rel="stylesheet" href="css/frame.css">
+	<link rel="stylesheet" href="css/minPublicBenefit.css">
+	<link rel="stylesheet" href="css/common.css">
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="js/popUpWin.js"></script>
+	<title>汇聚甘肃后台管理系统-商城管理-营销管理-券管理-收券商户列表</title>
+    <script type="text/javascript" src="js/angular-1.0.1.min.js"></script>
+</head>
+<body>
+	<div class="frameRall">
+		<!-- 头部通知搜索栏 -->
+		<div ng-app="">
+            <div ng-include="'head.htm'"></div>
+        </div>
+		<div class="headlineBig ml40 mb20 clearfix">
+			<h1 class="stair">商城管理<span>工作平台</span></h1>
+			<h1 class="secondLevel">收券商户列表</span></h1>
+		</div>
+		<div class="prizeManage ml40 clearfix">
+			<div class="commodityBox">
+				<div class="commodityButBox clearfix mt30 mb30">
+					<a href="javascript:;" class="butBox seckillAdd">添加收券商</a>
+					<a href="maintainLotteryTickett.html" class="butBox ml15">定向券维护</a>
+					<input type="text" class="commodityInput ml30" name="" value="" placeholder="供应商名称" />
+					<a href="javascript:;" class="butBox ml10">搜索</a>
+				</div>
+				<!-- 添加收券商弹窗 -->
+				<div class="seckillAddBox lotteryAddBox grouponAddBox seckillWin">
+					<i class="seckillClose"></i>
+					<form action="" method="get">
+						<ul>
+							<li>
+								<span><i class="colorRed">*</i>收券类型：</span>
+								<select name="" class="wi_300">
+									<option value="">专用券</option>
+								</select>
+							</li>
+							<li>
+								<span><i class="colorRed">*</i>供应商名称：</span>
+								<input type="text" class="seckillUpInp w120" placeholder="请输入供应商名称" name="" value="" />
+							</li>
+							<li>
+								<span><i class="colorRed">*</i>所属地区：</span>
+								<select name="">
+									<option value="">兰州</option>
+									<option value="">白银</option>
+									<option value="">武威</option>
+									<option value="">张掖</option>
+									<option value="">酒泉</option>
+									<option value="">天水</option>
+									<option value="">陇南</option>
+									<option value="">甘南</option>
+									<option value="">定西</option>
+								</select>
+							</li>
+							<li>
+								<span><i class="colorRed">*</i>店铺地址：</span>
+								<input type="text" class="seckillUpInp" placeholder="请输入店铺地址（网址）" name="" value="" />
+							</li>
+							<li>
+								<span><i class="colorRed">*</i>规则说明：</span>
+								<textarea></textarea>
+							</li>
+							<li>
+								<span><i class="colorRed">*</i>商品说明：</span>
+								<textarea></textarea>
+							</li>
+							<li class="seckillUpBut"><a href="javascript:;" class="butBox">提交</a></li>
+						</ul>
+					</form>
+				</div>
+				<table class="commodityTab orderFormTab">
+					<thead>
+						<tr class="salesManageTr">
+							<th>收券类型</th>
+							<th>供应商名称</th>
+							<th>所属地区</th>
+							<th>店铺地址</th>
+							<th>规则说明</th>
+							<th>商品说明</th>
+							<th class="tc">操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>专户券</td>
+							<td>嘉峪关自由超市</td>
+							<td>甘肃各地区</td><!-- （捐款地区分区分类即可） -->
+							<td>http://buy.ccb.com/shop/index.jhtml?shopId=082994</td>
+							<td>满200可用50元劵</td>
+							<td>全品类商品</td>
+							<td>
+								<span class="operationButBox">
+									<a href="javascript:;" class="butBox ml10">修改</a>
+									<a href="javascript:;" class="butBox ml10">删除</a>
+								</span>
+							</td>
+						</tr>
+					</tbody>
+					<tfoot class="commFootTd">
+						<tr>
+							<td colspan="5" class="commFootFont textar">总计<span>23351</span>条数据&emsp;&emsp;分为<span>280</span>页&emsp;每页<span>10</span>个</td>
+							<td colspan="2" class="commPageBut">
+								<div class="commPageBut2 fr pr30">
+									<a href="javascript:;" title="第一页" class="commPage1"></a>
+									<a href="javascript:;" title="上一页" class="commPage2"></a>
+									<select name="">
+										<option value="">1</option>
+									</select>
+									<a href="javascript:;" title="下一页" class="commPage3"></a>
+									<a href="javascript:;" title="尾页" class="commPage4"></a>
+								</div>
+							</td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

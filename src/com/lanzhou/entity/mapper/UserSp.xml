@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC 
+    "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanzhou.entity.UserSp" >
+
+
+	<insert id="add"  parameterType="com.lanzhou.entity.UserSp" >
+		insert into user_sp(phone,sp_id,time,status) values(#{phone},#{sp_id},#{time},#{status})
+	</insert>
+	
+	<delete id="del"  parameterType="int"  >
+		delete  from user_sp where id=#{id}
+	</delete>
+	
+	<update id="update" parameterType="com.lanzhou.entity.UserSp" >
+		update user_sp 
+			set 
+			phone=#{phone},
+			sp_id=#{sp_id},
+			time=#{time},
+			status=#{status}
+			where 
+				id=#{id}
+	</update>
+	<select  id="getById" parameterType="int"  resultType="com.lanzhou.entity.UserSp">
+		select * from user_sp where id=#{id}
+	</select>
+	<select id="count" parameterType="string" resultType="int">
+		select count(*) from user_sp a,school_prize b where a.sp_id=b.id and b.phone like '%${value}%'
+	</select>
+	<select id="listpage" parameterType="map" resultType="com.lanzhou.entity.UserSp">
+		select * from user_sp a,school_prize b where a.sp_id=b.id and b.phone like '%${name}%' order by a.id desc limit #{startRecord},#{pageSize}
+	</select>
+	<select id="getPhone" parameterType="string" resultType="com.lanzhou.entity.UserSp">
+		select * from user_sp where phone=#{phone}
+	</select>
+</mapper>

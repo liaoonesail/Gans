@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>确认订单</title>
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/bass.css" />
+		<link rel="stylesheet" href="../css/order.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">确认订单</h1>
+			 <span class="mui-pull-right mui-action-back" style="color: #fff;font-size: 13px;line-height: 44px;">关闭</span>
+		</header>
+		<div class="mui-content">
+			<div class="mui-row">
+				<div class="mui-col-xs-12 orderList clearfix">
+					<div class="orderList1">
+						<img src="" />
+					</div>
+					<div class="orderList2">
+						<p id="goods_name_"></p>
+						<p id="goods_details_conts_"style="color: #000;"></p>
+						<p>￥<sapn id="price_goods" class="rmb"></sapn><small id="lablestaeok"></small></p>
+					</div>
+				</div>
+
+				<div class="mui-col-xs-12">
+					<div class="picShu clearfix">
+						<dd>数量：</span>
+						</dd>
+						<div class="jiaList clearfix">
+							<div class="zin_rd zin101_rdr">-</div>
+							<div class="zin_rd">
+								<div class="inp"></div>
+							</div>
+							<div class="zin_rd zin101_rdl">+</div>
+						</div>
+						<div class="mui-pull-left heji1" >合计:￥<span id="heji"></span>元</div>
+					</div>
+				</div>
+                
+                <div class="mui-col-xs-12 tianjaoaddress">
+                    <div id="noadress" style="text-align: center;line-height:40px;color:#999;display:none;font-size: 12px;">你还没有收货地址点击，赶快添加吧！！！</div>
+                	<div id="xingming_conts" class="xingming">
+                		<p><span id="userName_address"></span><span id="userName_address_tel"></span></p>
+                		<p  id="userName_address_details"></p>
+                	</div>
+                	<div class="xingming11">
+                		<i class="mui-icon mui-icon-plusempty" style="font-size: 32px;color: #b3b3b3;"></i>
+                	</div>
+                </div>
+                
+                <div class="mui-col-xs-12 strong11">
+                	<p>注意事项：</p>
+                	<p>1、全场包邮是指本页面中展示的活动商品全部包邮（部分偏远地区除外）。</p>
+                	<p>2、订单支付有效期为30分钟，抢购订单提交后在30分钟内完成支付视为抢购成功。</p>
+                	<p>3、卖家再开抢前请提前注册为商城会员并开通商城账户。</p>
+                </div>
+			</div>
+			<div style="height: 50px;"></div>
+			<div class="tianjiaaddress">立即支付</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../js/mui.min.js"></script>
+	<!--<script type="text/javascript" src="../js/jquery-1.10.2.js" ></script>-->
+	<!-- 引入添加地址js -->
+	<script src="http://www.css88.com/jqapi-1.9/js/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/address/address2.js"></script>
+    <script type="text/javascript" src="../js/order/order.js"></script>	
+    <script type="text/javascript" src="../js/goods/goods.js"></script>	
+    <script type="text/javascript" src="../js/activity/activity.js" ></script>
+	<script src="//lib.fuqian.la/h5jssdk.4.0.js"></script>
+	<script>
+	/* var thisURL = document.URL;
+	var getval = thisURL.split('?')[1];
+	var order_Id =getval.split("=")[1]; */
+	//截取Url里面的参数   
+    function GetRequest() {  
+        var url = location.search; //获取url中"?"符后的字串  
+        var theRequest = new Object();  
+        if (url.indexOf("?") != -1) {  
+            var str = url.substr(1);  
+            //alert(str);  
+            strs = str.split("&");  
+            for (var i = 0; i < strs.length; i++) {  
+                theRequest[strs[i].split("=")[0]] = decodeURI(strs[i].split("=")[1]);//获取中文参数转码<span style="font-family: Arial, Helvetica, sans-serif;">decodeURI</span>，（unescape只针对数字，中文乱码)  
+            }  
+        }  
+        return theRequest;  
+    }  
+        //通过url取数  
+          
+        var request = new Object();  
+        request = GetRequest();  
+          
+        var order_Id = request['id'] ;  // 获取商品ID 
+        var part = request['part'] ;  // 获取活动Id 
+      //  var  TypeOrder =request['TypeOrder'] ;  // 获取订单类型 
+	//console.log("获取订单类型 ==="+order_Id)
+	//console.log("订单类型==="+part)
+        //添加地址
+        var getxinaddress = getAddressByStatus();
+        getxinaddress = JSON.parse(getxinaddress); 
+        $("#xingming_conts").css("display","none");
+       // console.log(getxinaddress);
+        if(getxinaddress){
+         $("#noadress").css("display","none");
+            $("#xingming_conts").css("display","block");
+            $("#userName_address").html(getxinaddress.user_name);
+            $("#userName_address_tel").html(getxinaddress.phone);
+            $("#userName_address_details").html(getxinaddress.details);
+           
+        }else{
+           $("#xingming_conts").css("display","none");    
+           $("#noadress").css("display","block");
+          
+        }
+        var url_="";
+        if(part){
+        	url_ ='adddiz.html?id='+order_Id+'&part='+part
+        }else{
+        	url_ ='adddiz.html?id='+order_Id
+        }
+         $("#noadress").click(function(){
+              setTimeout(function(){
+					mui.openWindow({
+						url:url_ ,
+						id: 'adddiz',
+						showType: 'zoom-fade-out',
+						showTime: 200
+					});
+				},500);
+         });
+           $(".xingming11,.xingming").click(function(){
+	        	setTimeout(function(){
+					mui.openWindow({
+						url: url_,
+						id: 'adddiz',
+						showType: 'zoom-fade-out',
+						showTime: 200
+					});
+				},500);
+	        })
+       //获取订单
+        var getOrderDetails_ =getOrderById(order_Id); 	   
+           getOrderDetails_ = JSON.parse(getOrderDetails_);
+          // console.log(getOrderDetails_)
+           //console.log("获取订单类型"+getOrderDetails_.type);
+           orderAmount=getOrderDetails_.amount;
+           /**
+			 * 获取单个商品
+			 * @param goodsId
+			 * @returns
+			 */
+          var getGood_or =getGoodsById(getOrderDetails_.goods_id);
+           getGood_or = JSON.parse(getGood_or);
+           var ordertype =getOrderDetails_.type;
+          //console.log(getGood_or)
+          
+          
+           /**
+		  * 根据商品ID获取周周惠活动详情
+		  * @param goodsId 商品ID
+		  * @returns 活动详情对象
+		  */
+		 var getActivityByGoods_ =getActivityByGoods(getOrderDetails_.goods_id);
+		// console.log("根据商品ID获取周周惠活动详情"+getActivityByGoods_);
+		 getActivityByGoods_ = JSON.parse(getActivityByGoods_);
+		 /**
+		  * 根据商品Id获取团购活动详情
+		  * @param goodsId
+		  * @param response
+		  * @return
+		  * @throws IOException 
+		  */
+		 var getTuangouByGoodsId_=getTuangouByGoodsId(getOrderDetails_.goods_id);
+		// console.log("根据商品Id获取团购活动详情"+getTuangouByGoodsId_);
+		 getTuangouByGoodsId_ = JSON.parse(getTuangouByGoodsId_);
+		// console.log(getTuangouByGoodsId_);
+		$("#goods_name_").html(getOrderDetails_.goods_name);//商品名称
+		$("#goods_details_conts_").html(getOrderDetails_.goods_describe)//商品描述
+		   /**
+				 * 根据商品ID获取龙支付活详情
+				 * @param goodsId
+				 * @param response
+				 * @return
+				 * @throws IOException
+				 */
+				var  getLongpayhuodongByGoodsId_ =getLongpayhuodongByGoodsId(getOrderDetails_.goods_id);
+				//console.log("根据商品ID获取龙支付活详情"+getLongpayhuodongByGoodsId_);
+				getLongpayhuodongByGoodsId_ = JSON.parse(getLongpayhuodongByGoodsId_);
+				// console.log(getLongpayhuodongByGoodsId_);
+		/**
+		 * 根据商品Id和 专场类型part 获取专场其它活动详情
+		 * @param goodsId
+		 * @param part
+		 * @param response
+		 * @return
+		 * @throws IOException 
+		 */
+		var getlifeserviceByGoodsId_ =getlifeserviceByGoodsId(getOrderDetails_.goods_id,part);
+		// console.log("根据商品Id和 专场类型part 获取专场其它活动详情"+getlifeserviceByGoodsId_);
+		 getlifeserviceByGoodsId_ = JSON.parse(getlifeserviceByGoodsId_);
+		// console.log(getlifeserviceByGoodsId_);
+		 /**
+		  * 根据商品Id 获取秒杀活动详情
+		  * @param goodsId
+		  * @param response
+		  * @return
+		  * @throws IOException
+		  */
+		 var getseckillByGoodsId_ =getseckillByGoodsId(getOrderDetails_.goods_id);
+		 //console.log("根据商品Id 获取秒杀活动详情"+getseckillByGoodsId_);
+		 getseckillByGoodsId_ = JSON.parse(getseckillByGoodsId_);
+		// console.log(getseckillByGoodsId_);
+         //团购价格getOrderDetails_.goods_id
+		 if(part ==0){
+			 if(getTuangouByGoodsId_ !=null){//团购价格
+				 $("#goods_name_").html(getGood_or.goods_name);//商品名称
+			     $("#goods_details_conts_").html(getTuangouByGoodsId_.end_time);//商品描述
+			     $(".inp").text(getTuangouByGoodsId_.amount);
+				 $("#price_goods").html(getTuangouByGoodsId_.real_price+"元")//售价
+				 $("#lablestaeok").append("<img style='vertical-align: middle;margin-left: 6px;' width='45' height='20' src='../img/smallImg/a3.png'/>");
+			      typeorder =3;
+			  	allRMB(); 
+				//点击数量加
+				$(".zin101_rdl").click(function() {
+					num = $(".inp").text();
+					num++;
+					if(num < 1) {
+						num = 1;
+					}
+					$(".inp").text(num);
+					allRMB();
+					setTimeout(function(){
+						/**
+						 * 修改订单数量
+						 * @param orderId
+						 * @param num
+						 * @returns
+						 */
+						var addOrder_Newest=updateOrderNum(ordertype,order_Id, num);
+						//console.log("最新订单数据"+addOrder_Newest)
+					},200);
+					
+				});
+				//点击数量减
+				$(".zin101_rdr").click(function() {
+
+					num = $(".inp").text();
+					num--;
+					if(num < 1) {
+						num = 1;
+					}
+					$(".inp").text(num);
+					allRMB();
+					setTimeout(function(){
+						/**
+						 * 修改订单数量
+						 * @param orderId
+						 * @param num
+						 * @returns
+						 */
+						var addOrder_Newest=updateOrderNum(ordertype,order_Id, num);
+						//console.log("最新订单数据"+addOrder_Newest)
+					},200);
+				});
+				}
+		 }
+		//龙支付
+		 if(part == -1){
+			 if(getLongpayhuodongByGoodsId_ != null){//龙支付
+				 $("#goods_name_").html(getGood_or.goods_name);//商品名称
+			     $("#goods_details_conts_").html(getLongpayhuodongByGoodsId_.end_time);//商品描述
+			     $(".inp").text(orderAmount);
+				 $("#price_goods").html(getLongpayhuodongByGoodsId_.real_price+"元")//售价
+				 $("#lablestaeok").append("<img style='vertical-align: middle;margin-left: 6px;' width='45' height='20' src='../img/smallImg/a2.png'/>");
+			      typeorder =5;
+			      $(".inp").text(orderAmount);
+			  	allRMB(); 
+				//点击数量加
+				$(".zin101_rdl").click(function() {
+					num = $(".inp").text();
+					num++;
+					if(num < 1) {
+						num = 1;
+					}
+					$(".inp").text(num);
+					allRMB();
+					setTimeout(function(){
+						/**
+						 * 修改订单数量
+						 * @param orderId
+						 * @param num
+						 * @returns
+						 */
+						var addOrder_Newest=updateOrderNum(ordertype,order_Id, num);
+						//console.log("最新订单数据"+addOrder_Newest)
+					},200);
+					
+				});
+				//点击数量减
+				$(".zin101_rdr").click(function() {
+
+					num = $(".inp").text();
+					num--;
+					if(num < 1) {
+						num = 1;
+					}
+					$(".inp").text(num);
+					allRMB();
+					setTimeout(function(){
+						/**
+						 * 修改订单数量
+						 * @param orderId
+						 * @param num
+						 * @returns
+						 */
+						var addOrder_Newest=updateOrderNum(ordertype,order_Id, num);
+					//	console.log("最新订单数据"+addOrder_Newest)
+					},200);
+				});
+				}
+		 }
+		 //秒杀活动
+		 if(part == -2){
+			 if(getseckillByGoodsId_ !=null){//秒杀价格
+				 var endtime=getseckillByGoodsId_.end_time;
+				 	var startime =getseckillByGoodsId_.start_time;
+				 	var systemtime = getNowFormatDate();
+				 	systemtime=systemtime.replace("-", "").replace(" ", "").replace(":", "").replace("-", "").replace(":", "");
+				 	endtime=endtime.replace("-", "").replace(" ", "").replace(":", "").replace("-", "").replace(":", "");
+					startime =startime.replace("-", "").replace(" ", "").replace(":", "").replace("-", "").replace(":", "");
+					var m1 =systemtime-startime;
+					var m2 =systemtime-endtime;
+					//console.log(startime)
+					//console.log(endtime)
+					//console.log(systemtime);
+					//console.log(m1)
+					//console.log(m2)
+					if(m1 >0 &&  m2 <0){
+						$("#price_goods").html(getseckillByGoodsId_.real_price+"元")//售价
+						
+					}else{
+						 $("#price_goods").html(getGood_or.price+"元")//售价
+					}
+				 $("#goods_name_").html(getGood_or.goods_name);//商品名称
+			     $("#goods_details_conts_").html(getseckillByGoodsId_.end_time);//商品描述
+			     $(".inp").text(orderAmount);
+			
+				 $("#lablestaeok").append("<img style='vertical-align: middle;margin-left: 6px;' width='45' height='20' src='../img/smallImg/a4.png'/>");
+			  	allRMB();
+				//点击数量加
+				$(".zin101_rdl").click(function() {
+					num = $(".inp").text();
+					num++;
+					if(num < 1) {
+						num = 1;
+					}
+					$(".inp").text(num);
+					allRMB();
+					setTimeout(function(){
+						/**
+						 * 修改订单数量
+						 * @param orderId
+						 * @param num
+						 * @returns
+						 */
+						var addOrder_Newest=updateOrderNum(ordertype,order_Id, num);
+						//console.log("最新订单数据"+addOrder_Newest)
+					},200);
+					
+				});
+				//点击数量减
+				$(".zin101_rdr").click(function() {
+
+					num = $(".inp").text();
+					num--;
+					if(num < 1) {
+						num = 1;
+					}
+					$(".inp").text(num);
+					allRMB();
+					setTimeout(function(){
+						/**
+						 * 修改订单数量
+						 * @param orderId
+						 * @param num
+						 * @returns
+						 */
+						var addOrder_Newest=updateOrderNum(ordertype,order_Id, num);
+						//console.log("最新订单数据"+addOrder_Newest)
+					},200);
+				});
+				}
+		 }
+		 if(part ==1){//获取专场的生活服务活动详情
+			 if(getlifeserviceByGoodsId_ !=null){
+				 $("#goods_name_").html(getGood_or.goods_name);//商品名称
+			     $("#goods_details_conts_").html(getlifeserviceByGoodsId_.end_time);//商品描述
+			     $(".inp").text(orderAmount);
+				 $("#price_goods").html(getlifeserviceByGoodsId_.real_price+"元")//售价
+				 
+				 $("#lablestaeok").append("");
+				// $("#lablestaeok").append("<img style='vertical-align: middle;margin-left: 6px;' width='45' height='20' src='../img/smallImg/a4.png'/>");
+			      typeorder =5;
+			  	allRMB();
+				//点击数量加
+				$(".zin101_rdl").click(function() {
+					num = $(".inp").text();
+					num++;
+					if(num < 1) {
+						num = 1;
+					}
+					$(".inp").text(num);
+					allRMB();
+					setTimeout(function(){
+						/**
+						 * 修改订单数量
+						 * @param orderId
+						 * @param num
+						 * @returns
+						 */
+						var addOrder_Newest=updateOrderNum(ordertype,order_Id, num);
+						//console.log("最新订单数据"+addOrder_Newest)
+					},200);
+					
+				});
+				//点击数量减
+				$(".zin101_rdr").click(function() {
+
+					num = $(".inp").text();
+					num--;
+					if(num < 1) {
+						num = 1;
+					}
+					$(".inp").text(num);
+					allRMB();
+					setTimeout(function(){
+						/**
+						 * 修改订单数量
+						 * @param orderId
+						 * @param num
+						 * @returns
+						 */
+						var addOrder_Newest=updateOrderNum(ordertype,order_Id, num);
+						//console.log("最新订单数据"+addOrder_Newest)
+					},200);
+				});
+			 }
+		 }
+		 if(part ==2){//获取专场的海涛活动详情
+			 if(getlifeserviceByGoodsId_ !=null){
+				 $("#goods_name_").html(getGood_or.goods_name);//商品名称
+			     $("#goods_details_conts_").html(getlifeserviceByGoodsId_.end_time);//商品描述
+			     $(".inp").text(orderAmount);
+				 $("#price_goods").html(getlifeserviceByGoodsId_.real_price+"元")//售价
+				 $("#lablestaeok").append("");	// $("#lablestaeok").append("<img style='vertical-align: middle;margin-left: 6px;' width='45' height='20' src='../img/smallImg/a4.png'/>");
+			      typeorder =5;
+			  	allRMB();
+				//点击数量加
+				$(".zin101_rdl").click(function() {
+					num = $(".inp").text();
+					num++;
+					if(num < 1) {
+						num = 1;
+					}
+					$(".inp").text(num);
+					allRMB();
+					setTimeout(function(){
+						/**
+						 * 修改订单数量
+						 * @param orderId
+						 * @param num
+						 * @returns
+						 */
+						var addOrder_Newest=updateOrderNum(ordertype,order_Id, num);
+					//	console.log("最新订单数据"+addOrder_Newest)
+					},200);
+					
+				});
+				//点击数量减
+				$(".zin101_rdr").click(function() {
+
+					num = $(".inp").text();
+					num--;
+					if(num < 1) {
+						num = 1;
+					}
+					$(".inp").text(num);
+					allRMB();
+					setTimeout(function(){
+						/**
+						 * 修改订单数量
+						 * @param orderId
+						 * @param num
+						 * @returns
+						 */
+						var addOrder_Newest=updateOrderNum(ordertype,order_Id, num);
+						//console.log("最新订单数据"+addOrder_Newest)
+					},200);
+				});
+			 }
+		 }
+		 if(part ==3){//获取专场的9.9特卖活动详情
+			 if(getlifeserviceByGoodsId_ !=null){
+				 $("#goods_name_").html(getGood_or.goods_name);//商品名称
+			     $("#goods_details_conts_").html(getlifeserviceByGoodsId_.end_time);//商品描述
+			     $(".inp").text(orderAmount);
+				 $("#price_goods").html(getlifeserviceByGoodsId_.real_price+"元")//售价
+				 $("#lablestaeok").append("");//$("#lablestaeok").append("<img style='vertical-align: middle;margin-left: 6px;' width='45' height='20' src='../img/smallImg/a4.png'/>");
+			      typeorder =5;
+			  	allRMB();
+				//点击数量加
+				$(".zin101_rdl").click(function() {
+					num = $(".inp").text();
+					num++;
+					if(num < 1) {
+						num = 1;
+					}
+					$(".inp").text(num);
+					allRMB();
+					setTimeout(function(){
+						/**
+						 * 修改订单数量
+						 * @param orderId
+						 * @param num
+						 * @returns
+						 */
+						var addOrder_Newest=updateOrderNum(ordertype,order_Id, num);
+						//console.log("最新订单数据"+addOrder_Newest)
+					},200);
+					
+				});
+				//点击数量减
+				$(".zin101_rdr").click(function() {
+
+					num = $(".inp").text();
+					num--;
+					if(num < 1) {
+						num = 1;
+					}
+					$(".inp").text(num);
+					allRMB();
+					setTimeout(function(){
+						/**
+						 * 修改订单数量
+						 * @param orderId
+						 * @param num
+						 * @returns
+						 */
+						var addOrder_Newest=updateOrderNum(ordertype,order_Id, num);
+						//console.log("最新订单数据"+addOrder_Newest)
+					},200);
+				});
+			 }
+		 }
+		 if(part ==4){//获取专场的休闲娱乐活动详情
+			 if(getlifeserviceByGoodsId_ !=null){
+				 $("#goods_name_").html(getGood_or.goods_name);//商品名称
+			     $("#goods_details_conts_").html(getlifeserviceByGoodsId_.end_time);//商品描述
+			     $(".inp").text(orderAmount);
+				 $("#price_goods").html(getlifeserviceByGoodsId_.real_price+"元")//售价
+				 $("#lablestaeok").append("");//$("#lablestaeok").append("<img style='vertical-align: middle;margin-left: 6px;' width='45' height='20' src='../img/smallImg/a4.png'/>");
+			      typeorder =5;
+			  	allRMB();
+				//点击数量加
+				$(".zin101_rdl").click(function() {
+					num = $(".inp").text();
+					num++;
+					if(num < 1) {
+						num = 1;
+					}
+					$(".inp").text(num);
+					allRMB();
+					setTimeout(function(){
+						/**
+						 * 修改订单数量
+						 * @param orderId
+						 * @param num
+						 * @returns
+						 */
+						var addOrder_Newest=updateOrderNum(ordertype,order_Id, num);
+						//console.log("最新订单数据"+addOrder_Newest)
+					},200);
+					
+				});
+				//点击数量减
+				$(".zin101_rdr").click(function() {
+
+					num = $(".inp").text();
+					num--;
+					if(num < 1) {
+						num = 1;
+					}
+					$(".inp").text(num);
+					allRMB();
+					setTimeout(function(){
+						/**
+						 * 修改订单数量
+						 * @param orderId
+						 * @param num
+						 * @returns
+						 */
+						var addOrder_Newest=updateOrderNum(ordertype,order_Id, num);
+						//console.log("最新订单数据"+addOrder_Newest)
+					},200);
+				});
+			 }
+		 }
+		 if(part ==5){//获取专场的美食活动详情
+			 if(getlifeserviceByGoodsId_ !=null){
+				 $("#goods_name_").html(getGood_or.goods_name);//商品名称
+			     $("#goods_details_conts_").html(getlifeserviceByGoodsId_.end_time);//商品描述
+			     $(".inp").text(orderAmount);
+				 $("#price_goods").html(getlifeserviceByGoodsId_.real_price+"元")//售价
+				 $("#lablestaeok").append("");// $("#lablestaeok").append("<img style='vertical-align: middle;margin-left: 6px;' width='45' height='20' src='../img/smallImg/a4.png'/>");
+			      typeorder =5;
+			  	allRMB();
+				//点击数量加
+				$(".zin101_rdl").click(function() {
+					num = $(".inp").text();
+					num++;
+					if(num < 1) {
+						num = 1;
+					}
+					$(".inp").text(num);
+					allRMB();
+					setTimeout(function(){
+						/**
+						 * 修改订单数量
+						 * @param orderId
+						 * @param num
+						 * @returns
+						 */
+						var addOrder_Newest=updateOrderNum(ordertype,order_Id, num);
+						//console.log("最新订单数据"+addOrder_Newest)
+					},200);
+					
+				});
+				//点击数量减
+				$(".zin101_rdr").click(function() {
+
+					num = $(".inp").text();
+					num--;
+					if(num < 1) {
+						num = 1;
+					}
+					$(".inp").text(num);
+					allRMB();
+					setTimeout(function(){
+						/**
+						 * 修改订单数量
+						 * @param orderId
+						 * @param num
+						 * @returns
+						 */
+						var addOrder_Newest=updateOrderNum(ordertype,order_Id, num);
+						//console.log("最新订单数据"+addOrder_Newest)
+					},200);
+				});
+			 }
+		 }
+		 //获取专场的虚拟卡卷活动详情
+		  if(part ==6){
+			 if(getlifeserviceByGoodsId_ !=null){
+				 $("#goods_name_").html(getGood_or.goods_name);//商品名称
+			     $("#goods_details_conts_").html(getlifeserviceByGoodsId_.end_time);//商品描述
+			     $(".inp").text(orderAmount);
+				 $("#price_goods").html(getlifeserviceByGoodsId_.real_price+"元")//售价
+				 $("#lablestaeok").append("");// $("#lablestaeok").append("<img style='vertical-align: middle;margin-left: 6px;' width='45' height='20' src='../img/smallImg/a4.png'/>");
+			      typeorder =5;
+			  	allRMB();
+				//点击数量加
+				$(".zin101_rdl").click(function() {
+					num = $(".inp").text();
+					num++;
+					if(num < 1) {
+						num = 1;
+					}
+					$(".inp").text(num);
+					allRMB();
+					setTimeout(function(){
+						/**
+						 * 修改订单数量
+						 * @param orderId
+						 * @param num
+						 * @returns
+						 */
+						var addOrder_Newest=updateOrderNum(ordertype,order_Id, num);
+						//console.log("最新订单数据"+addOrder_Newest)
+					},200);
+					
+				});
+				//点击数量减
+				$(".zin101_rdr").click(function() {
+
+					num = $(".inp").text();
+					num--;
+					if(num < 1) {
+						num = 1;
+					}
+					$(".inp").text(num);
+					allRMB();
+					setTimeout(function(){
+						/**
+						 * 修改订单数量
+						 * @param orderId
+						 * @param num
+						 * @returns
+						 */
+						var addOrder_Newest=updateOrderNum(ordertype,order_Id, num);
+						//console.log("最新订单数据"+addOrder_Newest)
+					},200);
+				});
+			 }
+		 }
+		 if(part ==-4 ){//普通商品详情
+			 $("#goods_details_conts_").html("");
+				$("#lablestaeok").html("");
+				$("#goods_name_").html(getGood_or.goods_name);//商品名称
+		   		$("#goods_details_conts_").html(getGood_or.goods_describe);//商品描述
+				$("#price_goods").html(getGood_or.price+"元")//售价
+				$(".inp").text(orderAmount);//普通购买数量
+				//点击数量加
+				$(".zin101_rdl").click(function() {
+					num = $(".inp").text();
+					num++;
+					if(num < 1) {
+						num = 1;
+					}
+					$(".inp").text(num);
+					allRMB();
+					setTimeout(function(){
+						/**
+						 * 修改订单数量
+						 * @param orderId
+						 * @param num
+						 * @returns
+						 */
+						var addOrder_Newest=updateOrderNum(ordertype,order_Id, num);
+						//console.log("最新订单数据"+addOrder_Newest)
+					},200);
+					
+				});
+				//点击数量减
+				$(".zin101_rdr").click(function() {
+
+					num = $(".inp").text();
+					num--;
+					if(num < 1) {
+						num = 1;
+					}
+					$(".inp").text(num);
+					allRMB();
+					setTimeout(function(){
+						/**
+						 * 修改订单数量
+						 * @param orderId
+						 * @param num
+						 * @returns
+						 */
+						var addOrder_Newest=updateOrderNum(ordertype,order_Id, num);
+						//console.log("最新订单数据"+addOrder_Newest)
+					},200);
+				});
+		 };
+	   		$(".orderList1 img").attr("src",getGood_or.picture_address);
+	   		
+	   	 
+	   		allRMB();
+		
+		 
+		//计算总价格
+		function allRMB() {
+			var allnum = 0;
+            allnum = parseInt($(".inp").text());
+			var total = allnum * parseFloat($("#price_goods").text());
+			total=total.toFixed(2);
+            $("#heji").text(total);
+		};
+		/* 立即支付 */
+		$(".tianjiaaddress").click(function(){
+			if($("#noadress").is(":hidden")){
+				 setTimeout(function(){
+					mui.openWindow({
+						url: '/Gans/ccb/pay.do?orderId='+getOrderDetails_.id,
+						id: 'pay',
+						showType: 'zoom-fade-out',
+						showTime: 200
+					});
+				},500);
+				/*$.post(
+					"/Gans/ccb/fqlPay.do",
+					{"orderId":getOrderDetails_.id},
+					function (data) {
+                       fqlPay(data);
+                    },
+					"json"
+				);*/
+			}else{
+				alert("请填写收货地址")
+			}
+		   /*  */
+		});
+		function fqlPay(data){
+            FUQIANLA.init({
+                'app_id': data.app_id, //应用ID号
+                'order_no': data.order_no, //订单号，此处为模拟订单号。具体以接入为准
+                'channel': data.channel, //开通的通道简称
+                'amount': data.amount*100+"", //支付金额
+                'subject': data.subject, //商品标题
+                'notify_url': data.notify_url, //异步支付结果通知地址，可以当作最终状态更新数据库
+                'extra':{
+                    'ali_pay_wap': {
+                        'return_url': data.return_url
+                    },
+					'wx_pay_pub_scan':{
+                        'qrcode_type':0
+					},
+                    'yl_pay_wap': {
+                        'return_url': data.return_url //同步通知结果只可当跳转展示，不可做数据库更新
+                    }
+                }
+            });
+		}
+		/**
+		 * 获取当前时间
+		 * meiyong
+		 * @returns {String}
+		 */
+		function getNowFormatDate() {
+		    var date = new Date();
+		    var seperator1 = "-";
+		    var seperator2 = ":";
+		    var month = date.getMonth() + 1;
+		    var strDate = date.getDate();
+		    if (month >= 1 && month <= 9) {
+		        month = "0" + month;
+		    }
+		    if (strDate >= 0 && strDate <= 9) {
+		        strDate = "0" + strDate;
+		    }
+		    var seconds=date.getSeconds();
+		    if(seconds<10){
+		    	seconds="0"+seconds;
+		    }
+		    var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate
+		            + " " + date.getHours() + seperator2 + date.getMinutes()
+		            + seperator2 + seconds;
+		    return currentdate;
+		}
+	</script>
+
+</html>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC 
+    "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanzhou.entity.Type_next_next" >
+
+
+	<insert id="add"  parameterType="com.lanzhou.entity.Type_next_next" >
+		insert into type_next_next(name,type_id,type_next_id) values(#{name},#{type_id},#{type_next_id})
+	</insert>
+	
+	<delete id="del"  parameterType="int"  >
+		delete  from type_next_next where id=#{id}
+	</delete>
+	
+	<update id="update" parameterType="com.lanzhou.entity.Type_next_next" >
+		update type_next_next 
+			set 
+			name=#{name},
+			type_id=#{type_id},
+			type_next_id=#{type_next_id}
+			where 
+				id=#{id}
+	</update>
+	<select id="list" resultType="com.lanzhou.entity.Type_next_next">
+		select * from type_next_next
+	</select>
+	<select id="listBytype_id" parameterType="int" resultType="com.lanzhou.entity.Type_next_next">
+		select * from type_next_next where type_id=#{type_id}
+	</select>
+	<select id="listBytype_next_id" parameterType="int" resultType="com.lanzhou.entity.Type_next_next">
+		select * from 
+		type_next_next where type_next_id=#{type_next_id}
+	</select>
+	<select id="getById" parameterType="int" resultType="com.lanzhou.entity.Type_next_next">
+		select * from type_next_next where id=#{id}
+	</select>
+	<select id="xuniList" resultType="com.lanzhou.entity.Type_next_next">
+		select a.* from type_next_next a,goods b where a.id=b.type_next_next_id and b.goods_type=2 group by a.id
+	</select>
+</mapper>

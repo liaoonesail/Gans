@@ -1,0 +1,103 @@
+.mui-content,body{
+	background: #F2F2F2;
+}
+.myOrderList{
+	border-top: 6px solid #f2f2f2;
+	background: #fff;
+	padding: 0px 0px;
+}
+.myOrderList .myOrderLista1{	
+	 background: #fff;
+	 border-bottom: 6px solid #f2f2f2;
+}
+.myOrderLista1 .mui-row {
+	 padding: 4px 6px;
+}
+.myOrderLista1 .mui-row .mui-col-xs-3 img{
+	display: block;
+    width: 77px;
+    height: 70px;
+    margin: 0 auto;
+}
+.myOrderLista1 .mui-row .mui-col-xs-7{
+	padding-left: 4px;
+}
+.myOrderLista1 .mui-row .mui-col-xs-7 p{
+	font-size: 13px;
+	text-align: justify;
+	color: #161c2c;
+	margin-bottom:0px;
+	line-height: 18px;
+	 display: -webkit-box;
+    overflow: hidden;
+    white-space: normal !important;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+.myOrderLista1 .mui-row .mui-col-xs-2 p{
+	text-align: center;
+	font-size: 13px;
+	margin-bottom: 0px;
+}
+.myOrderLista1 .mui-row .mui-col-xs-2 p:nth-of-type(1){
+	font-weight: bold;
+	color: #161c2c;
+}
+.myOrderLista1 .mui-row .mui-col-xs-12 p{
+	margin-bottom: 0px;
+	color: #232326;
+	font-weight: bold;
+	text-align: right;
+}
+.myOrderLista1Btns{
+	background: #fff;
+	padding: 4px 6px;
+	border-top: 1px solid #f5f5f5;
+}
+.myOrderList{
+	display: none;
+}
+.myOrderLista1Btns button{
+	float: right;
+	margin-right: 3px;
+
+	padding:0 15px;
+	border:2px solid #999999;
+	color: #666666;
+	font-size: 14px;
+    text-align: center;
+    height: 35px;
+    border-radius: 35px;
+}
+.myOrderLista1Btns button:active{
+	border:2px solid #191919;
+	color: #333333;
+}
+.myOrderLista1Btns button.colorred{
+	color:#09b6f2  !important;
+	border: 2px solid #09b6f2 !important;
+}
+.myOrderLista1Btns button.colorred:active{
+	color:#164a99  !important;
+	border:2px solid #164a99 !important;
+}
+.myOrderLista1Title{
+	height: 35px;
+	line-height: 35px;
+	overflow: hidden;
+	padding: 0px 6px;
+	background: #fff;
+	border-bottom: 1px solid #f5f5f5;
+}
+.myOrderLista1Title p{
+	margin-bottom: 0px;
+	font-size: 13px;
+	color: red;
+	float: right;
+}
+.myOrderLista1Title p:nth-of-type(1){
+	float: left;
+	color: #232326 !important;
+}

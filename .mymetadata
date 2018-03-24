@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="Gans"
+  id="myeclipse.1497498437199"
+  context-root="/Gans"
+  j2ee-spec="5.0"
+  archive="Gans.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

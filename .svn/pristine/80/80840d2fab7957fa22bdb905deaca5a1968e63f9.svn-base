@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<link rel="stylesheet" href="css/frame.css">
+	<link rel="stylesheet" href="css/minPublicBenefit.css">
+	<link rel="stylesheet" href="css/common.css">
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="js/popUpWin.js"></script>
+	<title>汇聚甘肃后台管理系统-平台管理-类目管理</title>
+    <script type="text/javascript" src="js/angular-1.0.1.min.js"></script>
+</head>
+<body>
+	<div class="frameRall">
+		<!-- 头部通知搜索栏 -->
+		<div ng-app="">
+            <div ng-include="'head.htm'"></div>
+        </div>
+		<div class="headlineBig ml40 mb20 clearfix">
+			<h1 class="stair">平台管理<span>工作平台</span></h1>
+			<h1 class="secondLevel">类目管理</h1>
+		</div>
+		<div class="prizeManage ml40 clearfix">
+			<div class="commodityBox">
+				<div class="commodityButBox clearfix mt30 mb30">
+					<a href="javascript:;" class="butBox seckillAdd">新增类目</a>
+					<input type="text" class="commodityInput ml30" name="" value="" placeholder="关键词" />
+					<a href="javascript:;" class="butBox ml10">搜索</a>
+				</div>
+				<!-- 新增类目 -->
+				<div class="seckillAddBox grouponAddBox categoryAddBox seckillWin">
+					<i class="seckillClose"></i>
+					<form action="" method="get">
+						<ul>
+							<li>
+								<span><i class="colorRed">*</i>一级类目：</span>
+								<input class="seckillUpInp w120" placeholder="请输入一级类目" name="" value="" type="text">
+								<span><i class="colorRed">*</i>二级类目：</span>
+								<input class="seckillUpInp w120" placeholder="请输入二级类目" name="" value="" type="text">
+								<span><i class="colorRed">*</i>三级类目：</span>
+								<input class="seckillUpInp w120" placeholder="请输入三级类目" name="" value="" type="text">
+							</li>
+							<!-- <li>
+								<span><i class="colorRed">*</i>图片：</span>
+								<input type="file" name="" value="上传图片">
+							</li> -->
+							<li class="seckillUpBut"><a href="javascript:;" class="butBox">提交</a></li>
+						</ul>
+					</form>
+				</div>
+				<table class="commodityTab orderFormTab">
+					<thead>
+						<tr class="salesManageTr">
+							<th>编号</th>
+							<th>一级类目</th>
+							<th>二级类目</th>
+							<th>三级类目</th>
+							<th>预览</th>
+							<th>尺寸</th>
+							<th>数据库代码</th>
+							<th class="tc">操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>微公益</td>
+							<td>往期爱心</td>
+							<td>无</td>
+							<td class="advertiseImg"><img src="img/commonFormImg.png" alt=""></td>
+							<td>1000px*200px</td>
+							<td>wholesale_ad1</td>
+							<td>
+								<span class="operationButBox">
+									<a href="javascript:;" class="butBox ml10">修改</a>
+									<a href="javascript:;" class="butBox ml10">删除</a>
+								</span>
+							</td>
+						</tr>
+					</tbody>
+					<tfoot class="commFootTd">
+						<tr>
+							<td colspan="6" class="commFootFont textar">总计<span>23351</span>条数据&emsp;&emsp;分为<span>280</span>页&emsp;每页<span>10</span>个</td>
+							<td colspan="2" class="commPageBut">
+								<div class="commPageBut2 fr pr30">
+									<a href="javascript:;" title="第一页" class="commPage1"></a>
+									<a href="javascript:;" title="上一页" class="commPage2"></a>
+									<select name="">
+										<option value="">1</option>
+									</select>
+									<a href="javascript:;" title="下一页" class="commPage3"></a>
+									<a href="javascript:;" title="尾页" class="commPage4"></a>
+								</div>
+							</td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

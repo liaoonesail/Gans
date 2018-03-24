@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>专场活动首页</title>
+		<link charset="UTF-8" rel="stylesheet" href="stage/css/mui.min.css" />
+		<link charset="UTF-8" rel="stylesheet" href="stage/css/bass.css" />
+		<link charset="UTF-8" rel="stylesheet" href="stage/css/header.css" />		
+		<link charset="UTF-8" rel="stylesheet" href="stage/css/specialevent.css" />
+		<link charset="UTF-8" rel="stylesheet" href="stage/css/special1.css" />
+		<style charset="UTF-8">
+			ul#special1_nav li{
+				display: inline-block;
+				color: #fff;
+				font-size: 13px;
+				line-height: 30px;
+			}
+			p {
+			    font-size: 12px;
+			    margin-top: 0;		    
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--头部导航-->
+		<header class="mui-bar mui-bar-nav">
+			<div class="mui-row">
+				<div class="mui-col-xs-1">
+					<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+				</div>	
+				<div class="mui-col-xs-9 headerRight clearfix">
+					<span id="searchCode2" class="mui-icon mui-icon-search" style="margin-left: 6px;"></span>
+					<input id="searchName" type="search" class="text-clear-content" placeholder="搜索" />
+					<div class="clear-button22" style="top: 11px;"></div>
+				</div>
+				<div class="mui-col-xs-2">
+					<span class="mui-action-back" style="color: #fff;font-size: 13px;line-height: 44px;text-align: center;display: block;">关闭</span>
+				</div>
+				 
+			</div>
+		</header>
+		<!--头部导航-->
+		<div class="mui-content">
+			<div class="special1Box clearfix">
+				<div class="preferentialZonebox">
+				   <h3>各类专场活动推介</h3>
+				</div>
+				<div id="special1" class="mui-row">
+					<!--循环部分-->
+					<!-- <div  class="mui-col-xs-6 specLink">
+						<img src="stage/img/banner/r1.jpg" />
+					</div> -->
+					<!--循环部分-->
+				</div>
+			</div>
+			
+		</div>
+        <div style="height: 55px;"></div>
+		<!--底部导航-->
+		<div class="bgcolor footer22">
+			<div class="footer144" onclick="javascript:window.location.href='index.html'">
+				<img class="mui-icon-home1" src="stage/img/smallImg/nav1.png" />
+			    <p>首页</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='stage/discountgo/discountgo.html'">
+				<img class="mui-icon-email12" src="stage/img/smallImg/18.png" />
+			    <p>善融</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='Local1.html'">
+				<img class="mui-icon-home1" src="stage/img/smallImg/19.png" />
+			    <p>地方汇</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='special1.html'">
+				<img class="mui-icon-home1" src="stage/img/smallImg/20.png" />
+			    <p>专场</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='stage/discountgo/personalcenter.html'">
+				<img class="mui-icon-gear1" src="stage/img/smallImg/nav4.png" />
+			    <p>个人中心</p>
+			</div>	
+		</div>
+		<!--底部导航-->
+	</body>
+	<script charset="UTF-8" type="text/javascript" src="stage/js/mui.min.js"></script>
+	<script charset="UTF-8" type="text/javascript" src="stage/js/jquery-1.10.2.js"></script>
+	<script charset="UTF-8" type="text/javascript" src="stage/js/publicAddress.js" ></script>
+	<!-- <script charset="UTF-8" src="stage/js/special1_.js"></script>  -->
+	<script type="text/javascript" src="stage/js/search/search.js" ></script>
+	<script charset="UTF-8" type="text/javascript">
+		mui.init();
+		$("#searchCode2").click(function(){
+			var searchName = $("#searchName").val();
+			if(searchName == ""){
+				alert("请输入搜索商品名称")
+			}else{
+				setTimeout(function(){
+					mui.openWindow({
+						url: 'stage/discountgo/search_proud.html?searchName='+searchName,
+						id: 'search_proud',
+						showType: 'zoom-fade-out',
+						showTime: 200
+					});
+				},200); 
+			 $("#searchName").val("");
+			}
+		});
+		function getAdvertByStatus(location){
+   			var url = "advert/lbList.do";
+   			var data = {
+   					location:location
+   		    };
+   			async = false;
+   			var result = ajaxSubmit(url, data, async);
+   			console.log(result)
+   			return result;
+   		}
+		var getAdvertByStatus_ =getAdvertByStatus("zc_tj");
+		getAdvertByStatus_banner = JSON.parse(getAdvertByStatus_);
+		var special1_Img = "";
+		var starok ="";
+		var url="";
+		$("#special1").empty();
+		for(var i = 0; i <getAdvertByStatus_banner.length; i++){
+			if(getAdvertByStatus_banner[i].ad_url ==""){
+				starok =0;
+				url =0
+			}else{
+				starok =1;
+				url =getAdvertByStatus_banner[i].ad_url
+			}
+			special1_Img +="<div  onclick=\"pakuan('"+starok+"','"+url+"')\" class='mui-col-xs-6 specLink'>"
+											+"<img src='"+getAdvertByStatus_banner[i].ad_path+"' />"
+										+"</div>"//"<div  onclick=\"javascript:window.location.href='"+getAdvertByStatus_banner[i].ad_url+"'\" class='swiper-slide' style='background-image:url("++")'></div>";
+		 }
+		 $("#special1").append(special1_Img);
+		 function pakuan(starok,url){
+				if(starok == 0 && url ==0){
+					window.location.href="stage/discountgo/specialevent.html";
+				}else{
+					window.location.href=url;
+				}
+			}
+	</script>
+
+</html>

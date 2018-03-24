@@ -1,0 +1,7 @@
+Top_path=D\:
+Phone_Address=http://www.ip138.com:8080/search.asp?mobile=MOBILE&action=mobile
+app_id=fDeKk5NOpRVKnh1XxCQEmA
+channel=ali_pay_wap,wx_pay_pub,yl_pay_wap
+openid=wx123sdfaf
+notify_url=http://127.0.0.1:8080/Gans/ccb//notify.do
+return_url=http://127.0.0.1:8080/Gans/ccb//callback.do

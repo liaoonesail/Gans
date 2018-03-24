@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<link rel="stylesheet" href="css/frame.css">
+	<link rel="stylesheet" href="css/minPublicBenefit.css">
+	<link rel="stylesheet" href="css/common.css">
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="js/popUpWin.js"></script>
+    <script type="text/javascript" src="js/wining.js"></script>
+    <!-- 导出excel -->
+    <script type="text/javascript" src="js/deriveExcl.js"></script>
+    <!-- 导入excel -->
+	<title>汇聚甘肃后台管理系统-微公益-奖品管理-中奖管理</title>
+    <script type="text/javascript" src="js/angular-1.0.1.min.js"></script>
+</head>
+<body style="background-color: #f1f1f1;">
+	<div class="frameRall">
+		<!-- 头部通知搜索栏 -->
+		<div ng-app="">
+            <div ng-include="'head.htm'"></div>
+        </div>
+		<div class="headlineBig ml40 mb20 clearfix">
+			<h1 class="stair">微公益<span>工作平台</span></h1>
+			<h1 class="secondLevel">中奖管理</h1>
+		</div>
+		<div class="prizeManage ml40 clearfix">
+            <a href="javascript:;" class="butBox mt20"  data-field="zhongjiang" title="">中奖名单</a>
+			<a href="javascript:;" class="butBox mt20"  data-field="weizhongjiang" title="">未中奖名单</a>
+			<a href="javascript:;" class="butBox mt20" onclick="showFormBox()">导入数据</a>
+			<a href="javascript:;" class="butBox mt20" myattr="1" id="outPrize">导出获奖信息</a>
+			<table class="infoTabShow userInformation mt30" id="winingTable">
+				<thead>
+					<tr>
+						<td>序列号</td>
+						<td>奖品名称</td>
+						<!-- <td>姓名</td> -->
+						<td>手机号</td>
+						<td>归属地</td>
+						<td>中奖时间</td>
+						<td>领奖状态</td>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+				<tfoot class="commFootTd">
+					<tr>
+						<td colspan="8" class="commPageBut">
+							<span class="commFootFont fl">
+								总计<span id="wining_num">0</span>条数据&emsp;&emsp;分为<span id="pageCount">0</span>页&emsp;每页<span id="pageSize">10</span>个
+							</span>
+							<div class="commPageBut2 fr">
+								<a href="javascript:;" title="第一页" class="commPage1" onclick="firstpage()"></a>
+									<a href="javascript:;" title="上一页" class="commPage2" onclick="prevpage()"></a>
+									<select id="curpage" name="">
+										<option value="">1</option>
+									</select>
+									<a href="javascript:;" title="下一页" class="commPage3" onclick="nextpage()"></a>
+									<a href="javascript:;" title="尾页" class="commPage4" onclick="lastpage()"></a>
+							</div>
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+			
+			<table class="infoTabShow userInformation1 mt30" id="winingTable2" style="display: none;">
+				<thead>
+					<tr>
+						<td>序列号</td>
+						<td>奖品名称</td>
+						<td>手机号</td>
+						<td>归属地</td>
+						<td>中奖时间</td>
+						<td>领奖状态</td>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+			<!-- 填写物流信息 -->
+			<!-- <div class="Recruitment seckillWin">
+				<i class="seckillClose"></i>
+				<div class="informationSe clearfix">
+					<select>
+						<option>顺丰速运</option>
+					</select>
+					<input type="text" placeholder="请输入运单编号" name="" value=""  />
+					<a href="javascript:;" class="butBox butInfoSe bgcolorGray">提交</a>
+				</div>
+			</div> -->
+			<div class="Recruitment seckillWin">
+				<i class="seckillClose"></i>
+				<div class="informationSe clearfix" style="background: #fff;padding:10px 8px;">
+					<form action="../adminTicket/importExcel.do" id="uploadExcel" enctype="multipart/form-data" method="post">
+					   <input type="file" name="excel" value="" />
+					   <a href="javascript:;" class="butBox butInfoSe bgcolorGray submitExcel" onclick="uploadExcelFile()">提交</a>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

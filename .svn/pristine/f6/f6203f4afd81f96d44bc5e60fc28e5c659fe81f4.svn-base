@@ -1,0 +1,32 @@
+package com.lanzhou.entity;
+/**
+ * 购买商品白名单
+ * @author Administrator
+ *
+ */
+public class Whitephone {
+	private int id;
+	private String phone;//手机白名单
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public Whitephone(int id, String phone) {
+		super();
+		this.id = id;
+		this.phone = phone;
+	}
+	public Whitephone() {
+		super();
+	}
+	
+
+}

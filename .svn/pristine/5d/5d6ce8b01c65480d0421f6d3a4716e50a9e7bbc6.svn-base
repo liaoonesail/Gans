@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<link rel="stylesheet" href="css/frame.css">
+	<link rel="stylesheet" href="css/minPublicBenefit.css">
+	<link rel="stylesheet" href="css/common.css">
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<title>汇聚甘肃后台管理系统-平台管理-数据统计</title>
+    <script type="text/javascript" src="js/angular-1.0.1.min.js"></script>
+</head>
+<body>
+	<div class="frameRall">
+		<!-- 头部通知搜索栏 -->
+		<div ng-app="">
+            <div ng-include="'head.htm'"></div>
+        </div>
+		<div class="headlineBig ml40 mb20 clearfix">
+			<h1 class="stair">平台管理<span>工作平台</span></h1>
+			<h1 class="secondLevel">数据统计</span></h1>
+		</div>
+		<div class="prizeManage ml40 clearfix">
+			<div class="commodityBox">
+				<div class="userInquire mb20 supplierOSreach">
+					<select name="" class="ml0">
+						<option value="">全省</option>
+					</select>
+					<label class="tit">选择日期：</label>
+					<input type="text" class="mr5" placeholder="请选择时间范围起始" name="" value="" />
+					<input type="text" class="ml0" placeholder="请选择时间范围结束"name="" value="" />
+					<input type="radio" name="dateType" checked="checked" value="" placeholder="">
+					<label>周</label>
+					<input type="radio" name="dateType" value="" placeholder="">
+					<label>月</label>
+					<input type="radio" name="dateType" value="" placeholder="">
+					<label>季</label>
+					<a href="javascript:;" class="butBox ml15">查询</a>
+					<a href="javascript:;" class="butBox ml15">导出列表</a>
+				</div>
+				<table class="commodityTab orderFormTab mt20">
+					<thead>
+						<tr class="salesManageTr">
+							<th>地区</th>
+							<th>会员总数</th>
+							<th>新增会员数</th>
+							<th>会员订单总数</th>
+							<th>会员有效订单总数</th>
+							<th>善融订单总数</th>
+							<th>手机银行订单总数</th>
+							<th>手机银行有效订单总数</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>兰州</td>
+							<td>1000</td>
+							<td>10</td>
+							<td>10</td>
+							<td>26</td>
+							<td>300</td>
+							<td>40</td>
+							<td>658</td>
+						</tr>
+					</tbody>
+					<tfoot class="commFootTd">
+						<tr>
+							<td colspan="6" class="commFootFont textar">总计<span>23351</span>条数据&emsp;&emsp;分为<span>280</span>页&emsp;每页<span>10</span>个</td>
+							<td colspan="2" class="commPageBut">
+								<div class="commPageBut2 fr pr30">
+									<a href="javascript:;" title="第一页" class="commPage1"></a>
+									<a href="javascript:;" title="上一页" class="commPage2"></a>
+									<select name="">
+										<option value="">1</option>
+									</select>
+									<a href="javascript:;" title="下一页" class="commPage3"></a>
+									<a href="javascript:;" title="尾页" class="commPage4"></a>
+								</div>
+							</td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

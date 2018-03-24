@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC 
+    "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanzhou.entity.Shop_picture" >
+
+
+	<insert id="add"  parameterType="com.lanzhou.entity.Shop_picture" >
+		insert into shop_picture(picture_address,shop_id,url) values(#{picture_address},#{shop_id},#{url})
+	</insert>
+	
+	<delete id="del"  parameterType="int"  >
+		delete  from shop_picture where id=#{id}
+	</delete>
+	
+	<update id="update" parameterType="com.lanzhou.entity.Shop_picture" >
+		update shop_picture 
+			set 
+			picture_address=#{picture_address},
+			shop_id=#{shop_id},
+			url=#{url}
+			where 
+				id=#{id}
+	</update>
+	<select  id="getById" parameterType="int"  resultType="com.lanzhou.entity.Shop_picture">
+		select * from shop_picture where id=#{id}
+	</select>
+	<select id="listByshop_id" parameterType="int" resultType="com.lanzhou.entity.Shop_picture">
+		select * from shop_picture where shop_id=#{shop_id}
+	</select>
+</mapper>

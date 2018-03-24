@@ -1,0 +1,255 @@
+html,body{
+	width: 100%;
+	height: 100%;
+	overflow-y: auto;
+	overflow-x: hidden;
+	background-color: #daf4fd;
+}
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+
+.studenTtitleImg{
+	width: 90%;
+	height: 90%;
+	margin:15px auto 40px auto;
+	display:block;
+}
+.studentActive{
+	width: 90%;
+	margin: 0 auto;
+}
+.studentActiveTitle{
+	height: 18px;
+	width: 100%;
+	margin-bottom: 20px;
+	border-bottom: 2px solid #0d97f9;
+}
+.studentMainTitle{
+	margin-left: 22%;
+	margin-top: 5px;
+	display: inline-block;
+	background: #daf4fd;
+	color: #0d97f9;
+	font-size: 18px;
+	font-weight: 700;
+	letter-spacing: 2px;
+}
+.studentTitle{
+	display: inline-block;
+	padding:1px 5px;
+	margin-top: 10px;
+	background: #0d97f9;
+	font-size: 16px;
+	color: #fff;
+	font-weight: 700;
+	letter-spacing: 1px;
+}
+.studentContent{
+	margin-top: 6px;
+	margin-bottom: 0;
+}
+.studentContentTitle{
+	color: #0d97f9;
+	font-size: 14px;
+	font-weight: 700;
+	letter-spacing: 1px;
+}
+.studentContentInfo{
+	color: #0d97f9;
+	font-size: 12px;
+	letter-spacing: 1px;
+}
+.studentGiftBox{
+	margin-top: 24px;
+	margin-bottom: 16;
+	margin-right: 0!important;
+	text-align: center;
+}
+.studentGiftRight{
+	margin-right: 15px;
+}
+.studentGiftLeft{
+	margin-left: 15px;
+}
+.studentGiftButOne{
+	width:100px;
+	height:90px;
+	display: inline-block;
+	background: url(../img/person/student.png) no-repeat scroll 0 0;
+	background-size:100% 80%;
+}
+.studentBottom{
+	width: 100%;
+	height:50px;
+	margin-top: 30px;
+	background-color:#0d97f9;
+	position: fixed;
+    bottom: 0px;
+    left: 0px;
+}
+
+.studentGiftBottom{
+	height:40px;
+	
+	text-align:center;
+	/*float: left;*/
+	position: absolute;
+	top: 2px;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	
+}
+.studentGiftFl{
+	float: left;
+}
+.studentGiftFr{
+	float: right;
+}
+.studentShade{
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.6);
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index:9.99;
+	display: none;
+}
+.studentPhoneDialogs{
+	width: 280px;
+	height: 170px;
+	background: #fafafa;
+	border-radius: 5px;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+.studentPhoneClose{
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	display: block;
+	background: #e0e0e0 url(../img/person/close-ico.png) no-repeat scroll 4px 4px;
+	background-size:60% 60%;
+	border-radius: 5px;
+}
+.studentPhoneTitle{
+	margin-top: 20px;
+	color: #2775bf;
+	font-size: 14px;
+	text-align: center;
+}
+.studentPhoneText{
+	width: 230px !important;
+	height: 32px !important;
+	padding: 10px 15px;
+	margin-left: 25px;
+	margin-top: 12px;
+	margin-bottom: 5px!important;
+	border: 1px solid #2084e1 !important;
+	background: #fff;
+	font-size: 14px;
+	color: #666;
+}
+.studentPhoneTips{
+	display: block;
+	height: 25px;
+	line-height: 25px;
+	font-size: 12px;
+	color: red;
+	text-align: center;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+.studentPhoneSubmit{
+	width: 90px;
+	height: 35px;
+	margin-left: 95px;
+	border: none;
+	background: url(../img/person/sutdentPhone.svg) no-repeat scroll 0 0;
+	background-size:100% 100%;
+}
+.studentGiftOk{
+	background: #fff url(../img/person/studentGiftOkBg.svg) no-repeat scroll 0 -5px;
+	background-size: 100% 100%;
+}
+.studentGiftOkTips{
+	width: 100%;
+	position: absolute;
+	bottom: 5px;
+	text-align: center;
+	color: #8b8a8a;
+	font-size: 14px;
+	letter-spacing: 1px;
+}
+.studentGiftOkTips a{
+	padding: 0 2px;
+	display: inline-block;
+	color: #ff0000;
+}
+.giftModel{
+	width: 90%;
+	height: 240px;
+	margin: 50px auto;
+	background: url(../img/person/giftBGcontent.png) no-repeat scroll 15px 0;
+	background-size:90% 95%;
+	position: relative;
+}
+.gifTopTitleImg{
+	width: 100%;
+	margin: 0;
+	position: absolute;
+	top: -20px;
+	z-index: 2;
+}
+.gifsorBox{
+	width: 230px;
+	height: 180px;
+	position: absolute;
+	top: 20px;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	z-index: 1;
+	overflow: hidden;
+}
+.giftModelScorll{
+	background: url(../img/person/giftLine.svg) repeat-x scroll 0 45px ;
+}
+.giftModelTop{
+	height: 12px;
+	margin-bottom: 10px!important;
+}
+.giftModelTopl{
+	display: inline-block;
+	float: left;
+	color: #0d97f9;
+	font-size: 12px;
+}
+.giftModelTopr{
+	display: inline-block;
+	float: right;
+	color: #0d97f9;
+	font-size: 12px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.giftModelContent{
+	height: 20px;
+	margin-bottom: 5px;
+	color: #0d97f9;
+	font-size: 14px;
+	text-align: left;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+

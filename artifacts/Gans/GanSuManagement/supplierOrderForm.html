@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<link rel="stylesheet" href="css/frame.css">
+	<link rel="stylesheet" href="css/minPublicBenefit.css">
+	<link rel="stylesheet" href="css/common.css">
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<title>汇聚甘肃后台管理系统-商城管理-供应商管理-供应商订单</title>
+    <script type="text/javascript" src="js/angular-1.0.1.min.js"></script>
+</head>
+<body>
+	<div class="frameRall">
+		<!-- 头部通知搜索栏 -->
+		<div ng-app="">
+            <div ng-include="'head.htm'"></div>
+        </div>
+		<div class="headlineBig ml40 mb20 clearfix">
+			<h1 class="stair">商城管理<span>工作平台</span></h1>
+			<h1 class="secondLevel">供应商订单</span></h1>
+		</div>
+		<div class="prizeManage ml40 clearfix">
+			<div class="commodityBox">
+				<div class="userInquire mb30 supplierOSreach">
+					<label>供应商名称：</label>
+					<input type="text" name="" value="" />
+					<label>供应商编号：</label>
+					<input type="text" name="" value="" />
+					<label class="tit">选择日期：</label>
+					<input type="text" class="mr5" placeholder="请选择时间范围起始" name="" value="" />
+					<input type="text" class="ml0" placeholder="请选择时间范围结束"name="" value="" />
+					<a href="javascript:;" class="butBox">查询</a>
+				</div>
+				<table class="commodityTab orderFormTab">
+					<thead>
+						<tr class="salesManageTr">
+							<th>供应商名称</th>
+							<th>商品名</th>
+							<th>下单人</th>
+							<th>数量</th>
+							<th>单价</th>
+							<th>总金额</th>
+							<th>成交日期</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>嘉峪关自由超市</td>
+							<td><img src="img/Shopbop1.jpg" class="commImg1" alt=""><span class="fl ml10">正品直邮Made</span></td>
+							<td>王老二</td>
+							<td>10</td>
+							<td>100</td>
+							<td>1000</td>
+							<td>2017-06-02 17:15:11</td>
+						</tr>
+					</tbody>
+					<tfoot class="commFootTd">
+						<tr>
+							<td colspan="5" class="commFootFont textar">总计<span>23351</span>条数据&emsp;&emsp;分为<span>280</span>页&emsp;每页<span>10</span>个</td>
+							<td colspan="2" class="commPageBut">
+								<div class="commPageBut2 fr pr30">
+									<a href="javascript:;" title="第一页" class="commPage1"></a>
+									<a href="javascript:;" title="上一页" class="commPage2"></a>
+									<select name="">
+										<option value="">1</option>
+									</select>
+									<a href="javascript:;" title="下一页" class="commPage3"></a>
+									<a href="javascript:;" title="尾页" class="commPage4"></a>
+								</div>
+							</td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

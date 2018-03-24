@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<link rel="stylesheet" href="css/frame.css">
+	<link rel="stylesheet" href="css/minPublicBenefit.css">
+	<link rel="stylesheet" href="css/common.css">
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="js/angular-1.0.1.min.js"></script>
+    <!-- 导出excel -->
+    <script type="text/javascript" src="js/deriveExcl.js"></script>
+    <script type="text/javascript" src="js/donation.js"></script>
+	<title>汇聚甘肃后台管理系统-微公益-用户管理-捐款管理</title>
+    
+</head>
+<body style="background-color: #f1f1f1;">
+	<div class="frameRall">
+		<!-- 头部通知搜索栏 -->
+		<div ng-app="">
+            <div ng-include="'head.htm'"></div>
+        </div>
+		<div class="headlineBig ml40 mb20 clearfix">
+			<h1 class="stair">微公益<span>工作平台</span></h1>
+			<h1 class="secondLevel">捐款管理</h1>
+		</div>
+		<div class="prizeManage ml40 clearfix">
+			<h1 class="donationTit">本期捐款明细</h1>
+			<a href="javascript:;" class="butBox mt20" onclick="javascript:method1('winingTable')">导出Excel或Txt文档</a>
+			<table class="infoTabShow donationTab new mt30" id="winingTable">
+				<thead>
+					<tr>
+						<td>序列号</td>
+						<td>手机号</td>
+						<td>归属地</td>
+						<td>捐款金额</td>
+						<td>捐款时间</td>
+					</tr>
+				</thead>
+				<tbody>
+				<!-- <tr>
+					<td>1</td>
+					<td>新垣结衣</td>
+					<td>1347574747</td>
+					<td>10000元</td>
+					<td>2017年06月05日12:20:30</td>
+				</tr> -->
+				</tbody>
+				<tfoot class="commFootTd">
+					<tr>
+						<td colspan="5" class="commPageBut">
+							<span class="commFootFont fl">
+								总计<span id="donation_num1">0</span>条数据&emsp;&emsp;分为<span id="pageCount1">0</span>页&emsp;每页<span id="pageSize1">20</span>个
+							</span>
+							<div class="commPageBut2 fr">
+								<a href="javascript:;" title="第一页" class="commPage1" onclick="firstpage1()"></a>
+									<a href="javascript:;" title="上一页" class="commPage2" onclick="prevpage1()"></a>
+									<select id="curpage" name="">
+										<option value="">1</option>
+									</select>
+									<a href="javascript:;" title="下一页" class="commPage3" onclick="nextpage1()"></a>
+									<a href="javascript:;" title="尾页" class="commPage4" onclick="lastpage1()"></a>
+							</div>
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+			<h1 class="donationTit">往期捐款报表</h1>
+			<table class="infoTabShow donationTab before mt30">
+				<thead>
+					<tr>
+						<td>序列号</td>
+						<td>往期名称</td>
+						<td>捐款开始时间</td>
+						<td>捐款结束时间</td>
+						<td>捐款总次数</td>
+						<td>捐款总人数</td>
+						<td>捐款总额</td>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+				<tfoot class="commFootTd">
+					<tr>
+						<td colspan="7" class="commPageBut">
+							<span class="commFootFont fl">
+								总计<span id="donation_num">0</span>条数据&emsp;&emsp;分为<span id="pageCount">0</span>页&emsp;每页<span id="pageSize">10</span>个
+							</span>
+							<div class="commPageBut2 fr">
+								<a href="javascript:;" title="第一页" class="commPage1" onclick="firstpage()"></a>
+									<a href="javascript:;" title="上一页" class="commPage2" onclick="prevpage()"></a>
+									<select id="curpage1" name="">
+										<option value="">1</option>
+									</select>
+									<a href="javascript:;" title="下一页" class="commPage3" onclick="nextpage()"></a>
+									<a href="javascript:;" title="尾页" class="commPage4" onclick="lastpage()"></a>
+							</div>
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

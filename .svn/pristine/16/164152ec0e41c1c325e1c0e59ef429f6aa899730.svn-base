@@ -1,0 +1,431 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+    <link rel="stylesheet" href="css/frame.css">
+    <link rel="stylesheet" href="css/minPublicBenefit.css">
+    <link rel="stylesheet" href="css/common.css">
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <title>汇聚甘肃后台管理系统-商城管理-营销管理-供应商管理-添加供应商</title>
+    <script type="text/javascript" src="js/angular-1.0.1.min.js"></script>
+</head>
+<body>
+    <div class="frameRall">
+        <!-- 头部通知搜索栏 -->
+        <div ng-app="">
+                <div ng-include="'head.htm'"></div>
+            </div>
+        <div class="headlineBig ml40 mb20 clearfix">
+            <h1 class="stair">商城管理<span>工作平台</span></h1>
+            <h1 class="secondLevel">添加供应商</h1>
+        </div>
+        <div class="prizeManage ml40 clearfix">
+            <div class="commodityBox">
+                <div class="commonForm">
+                    <form action="" id="addShop" method="post" accept-charset="utf-8" >
+                        <ul>
+                            <li>
+                                <span class="commonFormName">供应商名称：</span>
+                                <input type="text" class="commonFormText" name="shop_name" value="">
+                            </li>
+                            <li>
+                                <span class="commonFormName">地区选择：</span>
+                                <select id="s_province" name="province" class="supplierSe ml10 mr5">
+                                    <option value="">请选择省</option>
+                                </select>
+                                <select id="s_city" name="city" class="supplierSe mr5">
+                                    <option value="">请选择市</option>
+                                </select>
+                                <select id="s_county" name="county" class="supplierSe">
+                                    <option value="">请选择区/县</option>
+                                </select>
+                            </li>
+                            <li>
+                                <span class="commonFormName">选择区域：</span>
+                                <select name="area_id"></select>
+                            </li>
+                            <!-- <li>
+                                <span class="commonFormName">优惠说明：</span>
+                                <input type="text" name="youhui" class="commonFormText"/>
+                                <span style="color:red;">可填文字</span>
+                            </li> -->
+                            <li class="supplierState">
+                                <span class="commonFormName">优惠说明：</span>
+                                <textarea id="youhui" class="supplierText" name="youhui"></textarea>
+                            </li>
+                            <li>
+                                <span class="commonFormName">图片：</span>
+                                <textarea name="picture_address" style="width:600px;height:250px;"></textarea>
+                            </li>
+                            <li>
+                                <span class="commonFormName">总店地址：</span>
+                                <input type="text" class="commonFormText" name="address" value="">
+                            </li>
+                            <li>
+                                <span class="commonFormName">总店电话：</span>
+                                <input type="text" class="commonFormText" name="phone" value="">
+                                <a class="butBox ml20 addSubbranch" href="javascript:;">添加分店</a>
+                            </li>
+                            <li data-value="1" data-name="address" data-field="fendian">
+                                <span class="commonFormName">分店地址：</span>
+                                <input type="text" class="commonFormText" name="address1" value="">
+                            </li>
+                            <li data-value="1" data-name="phone" data-field="fendian">
+                                <span class="commonFormName">分店电话：</span>
+                                <input type="text" class="commonFormText" name="phone1" value="">
+                            </li>
+                            <li class="supplierState">
+                                <span class="commonFormName">活动说明：</span>
+                                <textarea id="content" class="supplierText" name="content"></textarea>
+                            </li>
+                        </ul>
+                        <div class="ml100 mt10">
+                            <a class="butBox ml40 submitAddShop" href="javascript:;">提交</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 自定义js -->
+    <script type="text/javascript" src="js/shop.js"></script>
+    <script type="text/javascript" src="js/area.js" ></script>
+    <script type="text/javascript" src="kingediter/kindeditor-all-min.js"></script>
+    <script type="text/javascript">
+    $(function(){
+		var editor1;
+                 KindEditor.ready(function(K) {
+                     editor1  = K.create('textarea[name="picture_address"]', {
+                         resizeType : 1,
+                         allowPreviewEmoticons : false,
+                         items : [
+                        'source','image','preview'],
+                         });
+                    });
+		var editor2;
+		KindEditor.ready(function(K) {
+			editor2  = K.create('textarea[name="content"]', {
+				resizeType : 1,
+				allowPreviewEmoticons : false,
+				items : [
+					'source','undo','redo','|','formatblock','fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline','strikethrough','removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist','insertunorderedlist','insertorderedlist','insertunorderedlist', '|', 'emoticons', 'link','hr'],
+			});
+		});
+		var editor3;
+		KindEditor.ready(function(K) {
+			editor3  = K.create('textarea[name="youhui"]', {
+				resizeType : 1,
+				allowPreviewEmoticons : false,
+				items : [
+					'source','undo','redo','|','formatblock','fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline','strikethrough','removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist','insertunorderedlist','insertorderedlist','insertunorderedlist', '|', 'emoticons', 'link','hr'],
+			});
+		});
+        $(document).ready(function(){
+            
+            /**加载地区**/
+            /*$.post("../adminarea/list.do",{},function(res){
+                res = eval("("+res+")");
+                $("select[name=area_id]").html("");
+                var html = "";
+                $(res).each(function(index,obj){
+                    html += "<option value='"+obj.id+"'>"+obj.name+"</option>";
+                });
+                $("select[name=area_id]").append(html);
+            });*/
+            $.ajax({
+                url:"../adminarea/list.do",type:'post',async:false,success:function(res){
+                    res = eval("("+res+")");
+	                $("select[name=area_id]").html("");
+	                var html = "";
+	                $(res).each(function(index,obj){
+	                    html += "<option value='"+obj.id+"'>"+obj.name+"</option>";
+	                });
+	                $("select[name=area_id]").append(html);
+                }
+            });
+            
+            /**更新数据还原**/
+            var url = document.URL;
+            var index = url.indexOf("=");
+            if(index != "-1"){
+                var id = url.substring(index+1,url.length);
+                $.post("../adminshop/getid.do",{"id":id},function(res){
+                    res = eval("("+res+")");
+                    console.log(res);
+                    showShop(res,editor1,editor2);
+                });
+            }
+            
+        });
+    
+        /**供应商数据的显示**/
+        function showShop(res,editor1,editor2){
+            $('input[name=shop_name]').val(res.shop_name);
+            //省份
+            $("select[name=province] option").each(function(index,obj){
+                if($(obj).val() == res.province){
+                    $(obj).attr("selected",true);
+                }else{
+                    $(obj).removeAttr("selected");
+                }
+            });
+            $("select[name=area_id] option").each(function(index,obj){
+                if($(obj).val() == res.area_id){
+                    $(obj).attr("selected",true);
+                }else{
+                    $(obj).removeAttr("selected");
+                }
+            });
+            editor1.html("");
+            editor1.html("<img src='"+res.picture_address+"' alt=''/>");
+            /* $('input[name=youhui]').val(res.youhui); */
+            editor3.html("");
+            editor3.html(res.youhui);
+            $('input[name=address]').val(res.address);
+            $('input[name=phone]').val(res.phone);
+            editor2.html("");
+            editor2.html(res.content);
+            /* $('textarea[name=content]').val(res.content); */
+            $("form#addShop ul").after("<input type='hidden' name='id' value='"+res.id+"' />");
+            $(".submitAddShop").html("更新");
+            $(".submitAddShop").addClass("updateShop");
+            $(".submitAddShop").removeClass("submitAddShop");
+        }
+    
+        var addNumber = 1;
+        $(".addSubbranch").click(function() {
+            addNumber++;
+            $(".supplierState").before('<li data-value='+addNumber+' data-name="address" data-field="fendian"><span class="commonFormName">'+addNumber+' 分店地址：</span><input type="text" class="commonFormText" name="address'+addNumber+'" value=""></li><li data-value='+addNumber+' data-name="phone" data-field="fendian"><span class="commonFormName">'+addNumber+' 分店电话：</span><input type="text" class="commonFormText" name="phone'+addNumber+'" value=""></li>')
+        });
+        
+        /**城市联动js**/
+        _init_area();
+        var showArea = function() {
+                Gid('show').innerHTML = "<h3>省" + Gid('s_province').value + " - 市" +
+                    Gid('s_city').value + " - 县/区" +
+                    Gid('s_county').value + "</h3>"
+            }
+            
+            
+                /** 添加供应商* */
+	    $(document).on("click", ".submitAddShop", function() {
+	        addShop();
+	        // return true;
+	    });
+                /** 更新供应商* */
+	    $(document).on("click", ".updateShop", function() {
+	        var shop_name = $("input[name=shop_name]").val();
+            var province = $("select[name=province] option:selected").val();
+            var city = $("select[name=city] option:selected").val();
+            var county = $("select[name=county] option:selected").val();
+            var address = $("input[name=address]").val();
+            var phone = $("input[name=phone]").val();
+            /* var content = $("#content").val(); */
+            var content = editor2.html();
+            var area_id = $("select[name=area_id]").val();
+            /* var youhui = $("input[name=youhui]").val(); */
+            var youhui = editor3.html();
+            var picture_address = editor1.html();
+            var id = $("input[name=id]").val();
+            /**
+             * 
+             */
+            /* 定义分店字符串 */
+            var fen_shop = "";
+            /*获取分店li Dom对象*/
+            var liObj = $("form#addShop ul li[data-field]");
+            var count = 1;
+            $(liObj).each(function(index,obj){
+                if($(obj).attr("data-value") == count){
+                    if($(obj).attr("data-name") == "address"){
+                        fen_shop += $(obj).find("input").val();
+                    }else if($(obj).attr("data-name") == "phone"){
+                        fen_shop += "@"+$(obj).find("input").val();
+                    }
+                }else{
+                    count++;
+                    if($(obj).attr("data-name") == "address"){
+                        fen_shop += "#"+$(obj).find("input").val();
+                    }else if($(obj).attr("data-name") == "phone"){
+                        fen_shop += "@"+$(obj).find("input").val();
+                    }
+                }
+                
+            });
+    
+            if (shop_name == "") {
+                alert("供应商名称不能为空！");
+                $("input[name=name]").focus();
+                return false;
+            }
+            if (province == "省份") {
+                alert("请选择供应商省份");
+                return false;
+            }
+            if (city == "地级市") {
+                alert("请选择城市");
+                return false;
+            }
+            /* if (county == "市、县级市") {
+                alert("请选择县");
+                return false;
+            } */
+            if (address == "") {
+                alert("总店地址不能为空！");
+                $("input[name=address]").focus();
+                return false;
+            }
+            if (phone == "") {
+                alert("总店电话不能为空！");
+                $("input[name=phone]").focus();
+                return false;
+            }
+    
+            /** 提交数据* */
+            $.ajax({
+                url : '../adminshop/update.do',
+                type : 'post',
+                data : {
+                    "id":id,
+                    "shop_name" : shop_name,
+                    "province" : province,
+                    "city" : city,
+                    "county" : county,
+                    "address" : address,
+                    "phone" : phone,
+                    "content":content,
+                    "fen_shop" : fen_shop,
+                    "area_id":area_id,
+                    "youhui":youhui,
+                    "picture_address":picture_address
+                    
+                },
+                success : function(result) {
+                   if(result=="true"){
+	            	alert("更新供应商成功！");
+	                window.location.href="supplierManagement.html";
+	            }else{
+	               window.parent.opener = null;
+	               window.parent.open("index.html", "_self");
+	               window.parent.close();
+	               window.parent.location.reload();
+	            }
+                },
+                error : function() {
+                    alert("网络连接错误，添加供应商失败");
+                }
+    
+            })
+	    });
+        
+        function addShop(){
+            var shop_name = $("input[name=shop_name]").val();
+	        var province = $("select[name=province] option:selected").val();
+	        var city = $("select[name=city] option:selected").val();
+	        var county = $("select[name=county] option:selected").val();
+	        var address = $("input[name=address]").val();
+	        var phone = $("input[name=phone]").val();
+	        /* var content = $("#content").val(); */
+	        var content = editor2.html();
+	        var area_id = $("select[name=area_id]").val();
+	        /* var youhui = $("input[name=youhui]").val(); */
+	        var youhui = editor3.html();
+	        var picture_address = editor1.html();
+        
+	        /**
+	         * 
+	         */
+	        /* 定义分店字符串 */
+	        var fen_shop = "";
+	        /*获取分店li Dom对象*/
+	        var liObj = $("form#addShop ul li[data-field]");
+	        var count = 1;
+	        $(liObj).each(function(index,obj){
+	            if($(obj).attr("data-value") == count){
+	                if($(obj).attr("data-name") == "address"){
+	                    fen_shop += $(obj).find("input").val();
+	                }else if($(obj).attr("data-name") == "phone"){
+	                    fen_shop += "@"+$(obj).find("input").val();
+	                }
+	            }else{
+	                count++;
+	                if($(obj).attr("data-name") == "address"){
+	                    fen_shop += "#"+$(obj).find("input").val();
+	                }else if($(obj).attr("data-name") == "phone"){
+	                    fen_shop += "@"+$(obj).find("input").val();
+	                }
+	            }
+	            
+	        });
+	
+	        if (shop_name == "") {
+	            alert("供应商名称不能为空！");
+	            $("input[name=name]").focus();
+	            return false;
+	        }
+	        if (province == "省份") {
+	            alert("请选择供应商省份");
+	            return false;
+	        }
+	        if (city == "地级市") {
+	            alert("请选择城市");
+	            return false;
+	        }
+	        /* if (county == "市、县级市") {
+	            alert("请选择区县");
+	            return false;
+	        } */
+	        if (address == "") {
+	            alert("总店地址不能为空！");
+	            $("input[name=address]").focus();
+	            return false;
+	        }
+	        if (phone == "") {
+	            alert("总店电话不能为空！");
+	            $("input[name=phone]").focus();
+	            return false;
+	        }
+	
+	        /** 提交数据* */
+	        $.ajax( {
+	            url : '../adminshop/add.do',
+	            type : 'post',
+	            data : {
+	                "shop_name" : shop_name,
+	                "province" : province,
+	                "city" : city,
+	                "county" : county,
+	                "address" : address,
+	                "phone" : phone,
+	                "content":content,
+	                "fen_shop" : fen_shop,
+	                "area_id":area_id,
+	                "youhui":youhui,
+	                "picture_address":picture_address
+	                
+	            },
+	            success : function(result) {
+	            if(result=="true"){
+	            	alert("添加供应商成功！");
+	                window.location.href="supplierManagement.html";
+	            }else{
+	               window.parent.opener = null;
+	               window.parent.open("index.html", "_self");
+	               window.parent.close();
+	                window.parent.location.reload();
+	            }
+	            },
+	            error : function() {
+	                alert("网络连接错误，添加供应商失败");
+	            }
+	
+	        })
+            
+        }
+        
+    });
+    </script>
+</body>
+</html>

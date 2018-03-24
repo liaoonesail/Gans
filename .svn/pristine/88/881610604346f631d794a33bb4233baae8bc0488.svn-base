@@ -1,0 +1,253 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<link rel="stylesheet" href="css/frame.css">
+	<link rel="stylesheet" href="css/minPublicBenefit.css">
+	<link rel="stylesheet" href="css/common.css">
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<title>汇聚甘肃后台管理系统-商城管理-商品管理-普通商品-发布商品-第三步填写商品信息</title>
+    <script type="text/javascript" src="js/angular-1.0.1.min.js"></script>
+</head>
+<body>
+	<div class="frameRall">
+		<!-- 头部通知搜索栏 -->
+		<div ng-app="">
+            <div ng-include="'head.htm'"></div>
+        </div>
+		<div class="headlineBig ml40 mb20 clearfix">
+			<h1 class="stair">商品管理<span>添加新商品</span></h1>
+		</div>
+		<!-- 通用信息 -->
+		<div class="prizeManage ml40 clearfix">
+			<div class="commodityBox">
+				<!-- 操作提示 -->
+				<div class="promptInfo">
+					<div class="clearfix">
+						<i class="promptInfoIco"></i>
+						<span class="promptInfoTit">操作提示</span>
+					</div>
+					<ul>
+						<li>标识"<span class="colorRed">*</span>"的选项为必填项，其余为选填项</li>
+						<li>请按提示栏信息进行商品添加</li>
+						<li>默认模式：不区分仓库货地区模式设置价格与库存；长裤模式：按仓库设置价格与库存；地区模式：按地区设置价格与库存</li>
+						<li>必须点击扫码入库按钮文本框出现光标再使用扫码枪扫码，扫码入库功能必须去店铺基本信息设置里面设置扫码appkey才可以使用</li>
+					</ul>
+				</div>
+				<div class="issueOneBox clearfix">
+					<div class="stepBox clearfix">
+						<i href="javascript:;">1</i>
+						<span></span>
+						<i href="javascript:;">2</i>
+						<span></span>
+						<i href="javascript:;" class="stepBox1">3</i>
+						<span></span>
+						<i href="javascript:;">4</i>
+						<span></span>
+						<i href="javascript:;">5</i>
+					</div>
+				</div>
+				<h1 class="typeCommTit">填写商品信息</h1>
+				<div class="commonForm">
+					<form action="" method="get" accept-charset="utf-8">
+						<ul>
+							<li>
+								<span class="commonFormName">商品类目：</span>
+								<i class="colorRed font_16 ml10">图书、影像、电子书</i>
+							</li>
+							<li>
+								<span class="commonFormName">商品货号：</span>
+								<input type="text" class="commonFormText" name="" value="">
+							</li>
+							<li>
+								<span class="commonFormName">商品名称：</span>
+								<input type="text" class="commonFormText" name="" value="">
+							</li>
+							<li>
+								<span class="commonFormName">推荐理由：</span>
+								<textarea class="commonFormTarea" name=""></textarea>
+							</li>
+							<li>
+								<span class="commonFormName">市场价：</span>
+								<input type="text" class="commonFormText" name="" value="">
+							</li>
+							<li>
+								<span class="commonFormName">实售价：</span>
+								<input type="text" class="commonFormText" name="" value="">
+							</li>
+							<li>
+								<span class="commonFormName">所属供应商：</span>
+								<select name="" class="commonFormSe">
+									<option value="">嘉峪关自然超市</option>
+								</select>
+								<span>（如无所需供应商名称，请到<i class="colorRed font_16">“商城管理-供应商管理-新增”</i>即可）</span>
+							</li>
+							<li>
+								<span class="commonFormName">商品库存：</span>
+								<input type="text" class="commonFormText" name="" value="">
+							</li>
+							<li class="commonBrand">
+								<span class="commonFormName">商品品牌：</span>
+								<input type="text" class="commonFormText FormBrand" id="brandText" name="" value="">
+								<!-- 品牌弹窗 -->
+								<div class="commonBrandWin" id="brandWin">
+									<div class="commonBrandBox">
+										<div class="commonBrandName">
+											<span class="BrandNameFocus">全部品牌</span>
+											<span>A</span>
+											<span>B</span>
+											<span>C</span>
+											<span>D</span>
+											<span>E</span>
+											<span>F</span>
+											<span>G</span>
+											<span>H</span>
+											<span>I</span>
+											<span>J</span>
+											<span>K</span>
+											<span>L</span>
+											<span>M</span>
+											<span>N</span>
+											<span>O</span>
+											<span>P</span>
+											<span>Q</span>
+											<span>R</span>
+											<span>S</span>
+											<span>T</span>
+											<span>U</span>
+											<span>V</span>
+											<span>W</span>
+											<span>X</span>
+											<span>Y</span>
+											<span>Z</span>
+											<span>其他</span>
+										</div>
+										<div class="commonBrandSearch clearfix">
+											<input type="text" name="" value="" placeholder="品牌名称关键字查找">
+											<a href="javascript:;" title=""></a>
+										</div>
+										<div class="commonBrandList">
+											<span>
+												<i>A</i>
+												<b>爱婴美</b>
+											</span>
+											<span>
+												<i>B</i>
+												<b>贝印</b>
+											</span>
+											<span>
+												<i>C</i>
+												<b>陈麻花</b>
+											</span>
+											<span>
+												<i>D</i>
+												<b>地素</b>
+											</span>
+											<span>
+												<i>E</i>
+												<b>鳄鱼牌</b>
+											</span>
+											<span>
+												<i>F</i>
+												<b>饭扫光</b>
+											</span>
+											<span>
+												<i>G</i>
+												<b>钙尔奇</b>
+											</span>
+											<span>
+												<i>H</i>
+												<b>海天</b>
+											</span>
+											<span>
+												<i>I</i>
+												<b>iphone</b>
+											</span>
+											<span>
+												<i>J</i>
+												<b>健宝</b>
+											</span>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<span class="commonFormName">商品图片：</span>
+								<div class="commonFormImg">
+									<img src="img/commonFormImg.png" alt="" />
+									<input type="file" name="" value="上传商品图片">
+								</div>
+							</li>
+							<li>
+								<span class="commonFormName">物流模板：</span>
+								<input type="radio" name="logistics" checked="checked" value="" />
+								<label>按重量收费</label>
+								<input type="radio" name="logistics" value="" />
+								<label>按件数收费</label>
+								<span>（如未设置物流模板，请到<i class="colorRed font_16">“商城管理-物流模板”</i>添加即可）</span>
+							</li>
+							<li>
+								<span class="commonFormName">商品详情：</span>
+								<textarea class="commonFormTarea" name=""></textarea>
+								<!-- 这里的textarea要替换成一个文本编辑器 -->
+							</li>
+							<li>
+								<span class="commonFormName">是否上架：</span>
+								<input type="radio" name="sell" value="" />
+								<label>是</label>
+								<input type="radio" name="sell" checked="checked" value="" />
+								<label>否</label>
+								<span>（选“是”前台会直接显示，客户能直接购买下单，建议选否，预览后再批量上架。默认为“否”）</span>
+							</li>
+							<li>
+								<span class="commonFormName">是否包邮：</span>
+								<input type="radio" name="pinkage" value="" />
+								<label>是</label>
+								<input type="radio" name="pinkage" checked="checked" value="" />
+								<label>否</label>
+								<span>（选“否”表示此商品不包邮，按设定好的物流模板正常计算快递费用）</span>
+							</li>
+						</ul>
+						<div class="typeCommStp clearfix">
+						    <a class="butBox commstp1but" href="typeCommodity.html">上一步&emsp;选择商品类目</a>
+						    <a class="butBox commstp2but" href="activityType.html">下一步&emsp;选择活动类型</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+	$(function(){
+		/*品牌选择弹窗*/
+		$(".FormBrand").focus(function() {
+			$(".commonBrandWin").toggle();
+		});
+		$(".commonBrandName span").click(function() {
+			$(".commonBrandName span").removeClass("BrandNameFocus");
+			$(this).addClass('BrandNameFocus')
+		});
+		$(".commonBrandList b").click(function() {
+			$(".FormBrand").val($(this).html());
+			$(".commonBrandWin").hide();
+     	 });
+     	 $(document).bind('click', function(e) {  
+                    var e = e || window.event; //浏览器兼容性   
+                    var elem = e.target || e.srcElement;  
+                    while (elem) { //循环判断至跟节点，防止点击的是div子元素   
+                        if (elem.id && elem.id == 'brandWin') {  
+                            return;  
+                        }
+                        if (elem.id && elem.id == 'brandText') {  
+                            return;  
+                        }
+                        elem = elem.parentNode;  
+                    }  
+                    $('#brandWin').css('display', 'none'); //点击的不是div或其子元素   
+                });   
+	});
+	</script>
+</body>
+</html>

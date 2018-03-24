@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC 
+    "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanzhou.entity.Page_parameter" >
+
+
+	<insert id="add"  parameterType="com.lanzhou.entity.Page_parameter" >
+		insert into page_parameter(name,url,min_money,start_time,end_time) values(#{name},#{url},#{min_money},#{start_time},#{end_time})
+	</insert>
+	
+	<delete id="del"  parameterType="int"  >
+		delete  from page_parameter where id=#{id}
+	</delete>
+	
+	<update id="update" parameterType="com.lanzhou.entity.Page_parameter" >
+		update page_parameter 
+			set 
+			name=#{name},
+			url=#{url},
+			min_money=#{min_money},
+			start_time=#{start_time},
+			end_time=#{end_time}
+			where 
+				id=#{id}
+	</update>
+	<select  id="getById" parameterType="int"  resultType="com.lanzhou.entity.Page_parameter">
+		select * from page_parameter where id=#{id}
+	</select>
+	<select id="list" resultType="com.lanzhou.entity.Page_parameter">
+		select * from page_parameter
+	</select>
+	
+	<select id="count" parameterType="string" resultType="int">
+		select count(*) from page_parameter where name like '%${value}%'
+	</select>
+	
+	<select id="listpage" parameterType="map" resultType="com.lanzhou.entity.Page_parameter">
+		select * from page_parameter where
+		name like '%${name}%' order by id desc limit #{startRecord},#{pageSize}
+	</select>
+	<select id="getNewOne" resultType="com.lanzhou.entity.Page_parameter">
+		select * from page_parameter ORDER BY id DESC LIMIT 1
+	</select>
+</mapper>

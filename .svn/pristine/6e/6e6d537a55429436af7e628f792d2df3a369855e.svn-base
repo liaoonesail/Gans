@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC 
+    "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanzhou.entity.Weibg_picture" >
+
+	<insert id="add"  parameterType="com.lanzhou.entity.Weibg_picture">
+		insert into 
+		weibg_picture(pic_address) values(#{pic_address})
+	</insert>
+	
+	<delete id="del">
+		delete  from 
+		weibg_picture 
+	</delete>
+	
+	<update id="update" parameterType="com.lanzhou.entity.Weibg_picture" >
+		update weibg_picture 
+			set 
+			pic_address=#{pic_address}
+			where 
+				id=#{id}
+	</update>
+	<select  id="getById" parameterType="int"  resultType="com.lanzhou.entity.Weibg_picture">
+		select * from 
+		weibg_picture where id=#{id}
+	</select>
+	<select id="list" resultType="com.lanzhou.entity.Weibg_picture">
+		select * from weibg_picture
+	</select>
+</mapper>

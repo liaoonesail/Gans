@@ -1,0 +1,27 @@
+package com.lanzhou.service;
+
+import com.lanzhou.dao.WhiteNameDao;
+import com.lanzhou.entity.WhiteName;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.annotation.Resource;
+import java.util.List;
+
+@Service
+@Transactional
+public class WhiteNameService {
+    @Resource
+    private WhiteNameDao dao;
+    public void add(WhiteName whiteName){
+        dao.add(whiteName);
+    }
+
+    public List<WhiteName> list() {
+        return dao.list();
+    }
+
+    public void del(Integer id) {
+        dao.del(id);
+    }
+}

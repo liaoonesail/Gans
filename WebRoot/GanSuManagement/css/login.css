@@ -1,0 +1,155 @@
+@charset "utf-8";
+
+@font-face {font-family: 'webfont';
+  src: url('//at.alicdn.com/t/czao8lt4yghnnrk9.eot'); /* IE9*/
+  src: url('//at.alicdn.com/t/czao8lt4yghnnrk9.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('//at.alicdn.com/t/czao8lt4yghnnrk9.woff') format('woff'), /* chrome、firefox */
+  url('//at.alicdn.com/t/czao8lt4yghnnrk9.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url('//at.alicdn.com/t/czao8lt4yghnnrk9.svg#思源黑体-极细') format('svg'); /* iOS 4.1- */
+}
+*{
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+::-webkit-input-placeholder { color:#fff; }
+::-moz-placeholder { color:#fff; } /* firefox 19+ */
+:-ms-input-placeholder { color:#fff; } /* ie */
+input:-moz-placeholder { color:#fff; }
+.web-font{
+	margin-top: 50px;
+	display: inline-block;
+	color: #fff;
+    font-family:"webfont" !important;
+    font-size:95px;
+    font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+    text-shadow: 0 3px 3px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 0, 0, 0.075);
+}
+html,body,.login-all{
+	width: 100%;
+	height: 100%;
+	background: #a7cfdf; /* Old browsers */
+	background: -moz-linear-gradient(top,  #a7cfdf 0%, #23538a 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  #a7cfdf 0%,#23538a 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  #a7cfdf 0%,#23538a 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a7cfdf', endColorstr='#23538a',GradientType=0 ); /* IE6-9 */
+}
+.login-box{
+	height: 100%;
+	width: 100%;
+	background: url("../img/bs-bg2.png");
+	text-align: center;
+}
+.login-info{
+	width: 400px;
+	height: 360px;
+	padding: 20px 40px;
+	margin: 0 auto;
+	margin-top: 70px;
+	/*background: url("../img/wt-bg.png");*/
+	background: rgba(34,75, 120, 0.27) none repeat scroll 0 0;
+	box-shadow: 0 1px 3px rgba(50, 59, 82, 0.4), 0 0 30px rgba(50, 59, 82, 0.075);
+	position: relative;
+}
+.admin-form{
+	padding:20px 0;
+}
+.admin-form label{
+	width: 50px;
+	height: 50px;
+	margin-right: 25px;
+	display: inline-block;
+	float: left;
+}
+.admin-ico-number{
+	background: url("../img/login-name.png") no-repeat;
+}
+.admin-ico-pwd{
+	background: url("../img/login-pwd.png") no-repeat;
+}
+.admin-ico-code{
+	background: url("../img/login-code.png") no-repeat;
+}
+.admin-input{
+	height: 50px;
+	width: 300px;
+	display: inline-block;
+	background-color: transparent;
+	border-bottom: 1px dashed #fff;
+	font-size: 18px;
+	color: #ffffff !important;
+	letter-spacing: 1px;
+	display: inline-block;
+	float: left;
+}
+.admin-input-code{
+	width: 170px !important;
+}
+.admin-img-code{
+	width: 90px;
+	height: 50px;
+	margin-left: 20px;
+	box-shadow: 0 1px 3px rgba(50, 59, 82, 0.4), 0 0 30px rgba(50, 59, 82, 0.075);
+	float: left;
+	cursor: pointer;
+}
+.code-style{
+	width: 118px;
+	height:43px;
+	margin-left: 10px;
+	padding-top: 5px;
+	float: left;
+	display: inline-block;
+	background-color: #fff;
+	cursor: pointer;
+	border: 1px solid #577C99;
+}
+.admin-button{text-align: center;}
+.admin-button a{
+	width: 250px;
+	height: 40px;
+	margin-top: 10px;
+	display: inline-block;
+	line-height: 35px;
+	font-size: 18px;
+	color: #fff;
+	text-align: center;
+	background-color: #8BADBC;
+	cursor: pointer;
+	box-shadow: 0 1px 5px rgba(50, 59, 82, 0.4), 0 0 30px rgba(50, 59, 82, 0.075);
+	transform: translate(0,0);
+	transition:all .5s ease-in 0s;
+}
+.admin-button a:hover{
+	background-color: #5E839F;
+}
+.admin-tips{
+	margin-bottom: 10px !important;
+	margin-left: 77px;
+	font-size: 16px;
+	color: #ac0000;
+	text-align: left;
+    text-shadow: 0 3px 3px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 0, 0, 0.075);
+    letter-spacing: 1px;
+}
+.error-tips-ico{
+	width: 16px;
+	height: 16px;
+	margin-top: 3px;
+	margin-right: 8px;
+	float: left;
+	display: inline-block;
+	background: url("../img/tips.png") no-repeat scroll 0 0;
+}
+.succeed-tips-ico{
+	width: 16px;
+	height: 16px;
+	margin-top: 3px;
+	margin-right: 8px;
+	float: left;
+	display: inline-block;
+	background: url("../img/succeed-ico.png") no-repeat scroll 0 0;
+}

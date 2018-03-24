@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>商品评论</title>
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/bass.css" />
+		<link rel="stylesheet" href="../css/header.css" />
+		<link rel="stylesheet" href="../css/feedback.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">商品评论</h1>
+			 <span class="mui-pull-right mui-action-back"  style="color: #fff;font-size: 13px;line-height: 44px;">关闭</span>
+		</header>
+		<div class="mui-content">
+			<div class="mui-row">
+				<div class="mui-col-xs-12">
+					<div class="mui-content-padded">
+						<div class="mui-inline">卖家服务态度评分</div>
+						<div class="icons mui-inline" style="margin-left: 6px;">
+							<i data-index="1" class="mui-icon mui-icon-star"></i>
+							<i data-index="2" class="mui-icon mui-icon-star"></i>
+							<i data-index="3" class="mui-icon mui-icon-star"></i>
+							<i data-index="4" class="mui-icon mui-icon-star"></i>
+							<i data-index="5" class="mui-icon mui-icon-star"></i>
+						</div>
+					</div>
+				</div>
+				<div class="mui-col-xs-12 textareapp">
+					<textarea placeholder="请输入评论内容...."></textarea>
+				</div>
+			</div>
+			<div class="feedbackBtns_">发表评论</div>
+		</div>
+		<div style="height: 55px;"></div>
+		<!--底部导航-->
+		<div class="bgcolor footer22">
+			<div class="footer144" onclick="javascript:window.location.href='../../index.html'">
+				<img class="mui-icon-home1" src="../img/smallImg/nav1.png" />
+				<p>首页</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='discountgo.html'">
+				<img class="mui-icon-email12" src="../img/smallImg/18.png" />
+				<p>善融</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='../../Local1.html'">
+				<img class="mui-icon-home1" src="../img/smallImg/19.png" />
+				<p>地方汇</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='../../special1.html'">
+				<img class="mui-icon-home1" src="../img/smallImg/20.png" />
+				<p>专场</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='personalcenter.html'">
+				<img class="mui-icon-gear1" src="../img/smallImg/nav4.png" />
+				<p>个人中心</p>
+			</div>
+		</div>
+		<!--底部导航-->
+	</body>
+	<script type="text/javascript" src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+	<script type="text/javascript" src="../js/feedb.js"></script>
+	<script type="text/javascript" src="../js/comment/comment.js"></script>
+	<script>
+		mui.init();
+		var thisURL = document.URL;
+		var getval = thisURL.split('?')[1];
+		var order_index_id =""
+		if (getval != null ||getval != undefined) {
+			 order_index_id = getval.split("=")[1];
+			// console.log(order_index_id)
+		} else{
+			order_index_id="";
+		}
+		var starIndex = 0;
+		 //应用评分
+		 starxinjie()
+		function starxinjie(){
+			 mui('.icons').on('tap','i',function(){
+				  	var index = parseInt(this.getAttribute("data-index"));
+				  	var parent = this.parentNode;
+				  	var children = parent.children;
+				  	if(this.classList.contains("mui-icon-star")){
+				  		for(var i=0;i<index;i++){
+			  				children[i].classList.remove('mui-icon-star');
+			  				children[i].classList.add('mui-icon-star-filled');
+				  		}
+				  	}else{
+				  		for (var i = index; i < 5; i++) {
+				  			children[i].classList.add('mui-icon-star')
+				  			children[i].classList.remove('mui-icon-star-filled')
+				  		}
+				  	}
+				  	starIndex = index;
+			  });
+		 }
+		$(".feedbackBtns_").click(function(){
+			var content =$("textarea").val();
+			 /**
+			  * 添加商品评价
+			  * @param goodsId 商品ID
+			  * @param xingji  星级
+			  * @param content 评价内容
+			  * @returns       成功返回"ok" 失败返回对应失败信息
+			  */
+			  if(starIndex > 0 && content != "" && content != null && content != undefined){
+				  var addComment_ =addComment(order_index_id, starIndex, content);
+					 if(addComment_ == "ok"){
+					   alert("评论成功！！！")
+					   setTimeout(function() {
+							mui.openWindow({
+								url: 'MyOrder.html?id=3',
+								id: 'MyOrder',
+								showType: 'zoom-fade-out',
+								showTime: 200
+							});
+						}, 500);
+					 }
+			  }else{
+				  alert("请选择评论星级和输入评论内容！！")
+			  }
+			 
+		 })
+		 
+		 
+	</script>
+
+</html>

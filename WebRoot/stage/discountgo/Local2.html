@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>入学季抽奖</title>
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/swiper.css" />
+		<link rel="stylesheet" href="../css/bass.css" />
+		<link rel="stylesheet" href="../css/header.css" />
+		<link rel="stylesheet" href="../css/Local.css" />
+		<link rel="stylesheet" href="../css/Local1.css" />
+		<link rel="stylesheet" href="../css/raffle.css" />
+		<script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+		<!--抽奖-->
+		<script type="text/javascript">
+			function stops() {
+				return false;
+			}
+			document.oncontextmenu = stops;
+		</script>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">地方汇</h1>
+		    <span class="mui-action-back mui-pull-right" style="color: #fff;font-size: 13px;line-height: 44px;text-align: center;display: block;">关闭</span>
+		</header>
+		<div class="mui-content">
+			<!--地方汇搜索-->
+			<div class="mui-row">
+				<div class="mui-col-xs-12 Localsearch clearfix">
+					<span class="mui-icon mui-icon-search" style="margin-left: 6px;"></span>
+					<input type="search" placeholder="搜索" />
+				</div>
+			</div>
+			<!--地方汇搜索-->
+			<div class="mui-row">
+				<div class="mui-col-xs-3">
+					<div class="mui-scroll-wrapper LocalUlLi">
+					    <div class="mui-scroll">
+					        <!--这里放置真实显示的DOM内容-->
+					        <ul id="ListNavService">
+					    		<li>兰州</li>
+								<li>定西</li>
+					    		<li>白银</li>
+					    		<li>武威</li>
+					    		<li>张掖</li>
+					    		<li>酒泉</li>
+					    		<li>天水</li>
+					    		<li>陇南</li>
+					    		<li>甘南</li>
+					    		<li>临夏</li>
+								<li>庆阳</li>
+								<li>金昌</li>
+								<li>平凉</li>
+								<li>嘉峪关</li>
+
+					    	</ul>
+					    </div>
+					</div>
+				</div>
+				<div class="mui-col-xs-9">
+					<div class="rightLocal">
+						<div class="raffleBox">
+							<!--抽奖转盘-->
+							<div class="raffleModel">
+								<ul id="content">
+									<li style="left: 7px;top:10px" class="current" value="未中奖"></li>
+									<li style="left: 59px;top:10px" value="吾家网公仔一个"></li>
+									<li style="left: 110px;top:10px"  value="100元购物代金券"></li>
+									<li style="left: 162px;top:10px" value="未中奖"></li>
+									<li style="left: 162px;top:41px" value="100元购物代金券"></li>
+									<li style="left: 162px;top:73px" value="15积分"></li>
+									<li style="left: 162px;top:105px" value="100元购物代金券"></li>
+									<li style="left: 110px;top:105px" value="吾家网公仔一个"></li>
+									<li style="left: 59px;top:105px" value="100元购物代金券"></li>
+									<li style="left: 7px;top:105px" value="100积分"></li>
+									<li style="left: 7px;top:73px" value="100元购物代金券"></li>
+									<li style="left: 7px;top:41px" value="50积分"></li>
+								</ul>
+								<a href="javascript:void(0);" id="begin" class="raffleModelBut">点击抽奖</a>
+							</div>
+							<!--中奖名单-->
+							<div class="raffleList">
+								<div class="raffleListBox">
+									<h5 class="raffleListTitle">-&nbsp;中奖名单&nbsp;-</h5>
+									<div class="raffleroll clearfix">
+										<!--幸运用户-->
+										<div class="rafflerollBox">
+											<h5 class="rafflerolltitle">幸运用户</h5>
+											<div class="rafflerollUl" id="luckyUser">
+												<ul>
+													<li class="rafflerollLi">张含韵</li>
+													<li class="rafflerollLi">张韶涵</li>
+													<li class="rafflerollLi">张梓琳</li>
+													<li class="rafflerollLi">张馨予</li>
+													<li class="rafflerollLi">张雨绮</li>
+													<li class="rafflerollLi">张俪</li>
+													<li class="rafflerollLi">张歆艺</li>
+												</ul>
+											</div>
+										</div>
+										<!--中奖项目-->
+										<div class="rafflerollBox">
+											<h5 class="rafflerolltitle">中奖项目</h5>
+											<div class="rafflerollUl" id="winningProject">
+												<ul>
+													<li class="rafflerollLi">精美水杯</li>
+													<li class="rafflerollLi">公仔一个</li>
+													<li class="rafflerollLi">100积分</li>
+													<li class="rafflerollLi">优惠券</li>
+													<li class="rafflerollLi">精美水杯</li>
+													<li class="rafflerollLi">100积分</li>
+												</ul>
+											</div>
+										</div>
+										<!--中奖电话-->
+										<div class="rafflBorderRNone rafflerollBox">
+											<h5 class="rafflerolltitle">中奖电话</h5>
+											<div class="rafflerollUl" id="winningPhone">
+												<ul>
+													<li class="rafflerollLi">130***548</li>
+													<li class="rafflerollLi">158***548</li>
+													<li class="rafflerollLi">172***548</li>
+													<li class="rafflerollLi">187***548</li>
+													<li class="rafflerollLi">172***548</li>
+													<li class="rafflerollLi">187***548</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+        <div style="height: 55px;"></div>
+		<!--底部导航-->
+		<div class="bgcolor footer22">
+			<div class="footer144" onclick="javascript:window.location.href='../../index.html'">
+				<img class="mui-icon-home1" src="../img/smallImg/nav1.png" />
+			    <p>首页</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='discountgo.html'">
+				<img class="mui-icon-email12" src="../img/smallImg/18.png" />
+			    <p>善融</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='../../Local1.html'">
+				<img class="mui-icon-home1" src="../img/smallImg/19.png" />
+			    <p>地方汇</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='../../special1.html'">
+				<img class="mui-icon-home1" src="../img/smallImg/20.png" />
+			    <p>专场</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='personalcenter.html'">
+				<img class="mui-icon-gear1" src="../img/smallImg/nav4.png" />
+			    <p>个人中心</p>
+			</div>	
+		</div>
+		<!--底部导航-->
+	</body>
+	<script type="text/javascript" src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/jQuery.textSlider.js" ></script>
+	<script>
+		mui.init();
+		//区域滚动
+		mui('.mui-scroll-wrapper').scroll({
+			deceleration: 0.0005 ,//flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+			indicators: true
+		});
+		//地方汇左边分类导航点击添加css样式	
+		$("ul#ListNavService li").eq(0).addClass("navLocalOk");
+		$(".rightLocalList").eq(0).css("display","block");
+		$("ul#ListNavService li").click(function() {
+			var subscript_ =$(this).index();//下标
+			$(".rightLocalList").css("display","none");
+			$("ul#ListNavService  li").removeClass("navLocalOk"); //siblings是循环遍历
+			$(this).addClass("navLocalOk");
+			$(".rightLocalList").eq(subscript_).css("display","block");
+
+		});
+		/*抽奖*/
+		(function($) {
+				var list = $('content').children,
+					len = list.length,
+					begin = $('begin'),
+					index = 0,
+					interval = null;
+
+				begin.onclick = function() {
+					if(this.running) return;
+					this.running = true;
+					this.remain =3000 + Math.random() * 5000;
+					interval = setInterval(function() {
+						if(begin.remain < 200) {
+							begin.running = false;
+							alert('您抽到: ' + list[index].getAttribute('value'));
+							clearInterval(interval);
+						} else {
+							list[index].className = "";
+							list[(index + 1) % len].className = "current";
+							index = ++index % len;
+							begin.remain -= 100;
+						}
+					}, 100);
+				};
+
+			})(function(id) {
+				return document.getElementById(id)
+			});
+		
+		$(document).ready(function(){
+			/*幸运用户个数大于 4 条才能滚动*/
+			if($("#luckyUser ul").children("li").length > 4){
+	        	$("#luckyUser").textSlider({line:1,speed:500,timer:3000});
+			}
+			/*中奖项目个数大于 4 条才能滚动*/
+			if($("#winningProject ul").children("li").length > 4){
+	        	$("#winningProject").textSlider({line:1,speed:500,timer:3000});
+			}
+			/*中奖电话个数大于 4 条才能滚动*/
+			if($("#winningPhone ul").children("li").length > 4){
+	        	$("#winningPhone").textSlider({line:1,speed:500,timer:3000});
+			}
+		});
+	</script>
+
+</html>

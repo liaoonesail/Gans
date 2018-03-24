@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>查看解决方案</title>
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/bass.css" />
+		<link rel="stylesheet" href="../css/header.css" />
+		<link rel="stylesheet" href="../css/personalcenter.css" />
+		<style>
+			.problemBox .mui-col-xs-12 {
+				padding: 4px 6px;
+			}
+			
+			.problemBox .mui-col-xs-12 p.pdetails_m {
+				border-bottom: 1px solid #cccccc;
+				margin-bottom: 0px;
+			}
+			
+			.problemBox .mui-col-xs-12 p {
+				margin-bottom: 4px;
+			}
+			
+			.problemBox .mui-col-xs-11 {
+				background: #cccccc;
+				font-size: 13px;
+				padding: 2px 6px;
+			}
+			
+			.problemBox .mui-col-xs-11 p {
+				font-size: 13px;
+				text-align: justify;
+			}
+			
+			.pdetails_mT h3 {
+				font-weight: normal;
+				font-size: 13px;
+				color: #999;
+				text-align: center;
+				position: relative;
+				padding-bottom: 6px;
+			}
+			
+			.pdetails_mT h3:before {
+				content: "";
+				width: 22%;
+				height: 1px;
+				background: #aaaaaa;
+				left: 1%;
+				top: 6px;
+				position: absolute;
+			}
+			
+			.pdetails_mT h3:after {
+				content: "";
+				width: 22%;
+				height: 1px;
+				background: #aaaaaa;
+				right: 1%;
+				top: 6px;
+				position: absolute;
+			}
+			.pdetails_mT p{
+				text-align: center;
+				margin-bottom: 2px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">查看解决方案</h1>
+			 <span class="mui-pull-right mui-action-back" style="color: #fff;font-size: 13px;line-height: 44px;">关闭</span>
+		</header>
+		<div class="mui-content">
+
+			<div class="mui-row problemBox">
+				<div class="mui-col-xs-12">
+					<p class="pdetails_m"><i>Q：</i><span id="problemsIdTitle"></span></p>
+					<div class="mui-row">
+						<div class="mui-col-xs-1">
+							<p>A：</p>
+						</div>
+						<div id="content_ppik" class="mui-col-xs-11">
+							 
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="mui-row">
+				<div class="mui-col-xs-12 pdetails_mT">
+					<h3>以上方案未解决您的问题？</h3>
+					<p id="kefu">请联系客服0931-8619721</p>
+				</div>
+			</div>
+		</div>
+		<div style="height: 55px;"></div>
+		<!--底部导航-->
+		<div class="bgcolor footer22">
+			<div class="footer144" onclick="javascript:window.location.href='../../index.html'">
+				<img class="mui-icon-home1" src="../img/smallImg/nav1.png" />
+				<p>首页</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='discountgo.html'">
+				<img class="mui-icon-email12" src="../img/smallImg/18.png" />
+				<p>善融</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='../../Local1.html'">
+				<img class="mui-icon-home1" src="../img/smallImg/19.png" />
+				<p>地方汇</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='../../special1.html'">
+				<img class="mui-icon-home1" src="../img/smallImg/20.png" />
+				<p>专场</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='personalcenter.html'">
+				<img class="mui-icon-gear1" src="../img/smallImg/nav4.png" />
+				<p>个人中心</p>
+			</div>
+		</div>
+		<!--底部导航-->
+	</body>
+	<script type="text/javascript" src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+	<script charset="UTF-8" type="text/javascript" src="../js/publicAddress.js" ></script>
+	<script type="text/javascript" src="../js/problems/problems.js"></script>
+	<script>
+		mui.init();
+		var thisURL = document.URL;
+		var getval = thisURL.split('?')[1];
+		var problemsId =""
+		if (getval != null ||getval != undefined) {
+			problemsId = getval.split("=")[1];
+			 //console.log(problemsId)
+		} else{
+			problemsId="";
+		}
+		//
+		/**
+ * 通过ID查询单个常见问题
+ * @param id
+ * @returns 单个常见问题的JSON对象的字符串
+ */
+ detailsproblems();
+ function detailsproblems(){
+	 $("#content_ppik").empty();
+	 $("#problemsIdTitle").empty();
+			var showProblemById_html  =showProblemById(problemsId);
+			// console.log(showProblemById_html);
+			 showProblemById_html = JSON.parse(showProblemById_html);
+			 $("#problemsIdTitle").html(showProblemById_html.title);
+			$("#content_ppik").append(showProblemById_html.content);
+		}
+		//客服电话
+			var datekefu = "18100944207";
+			$("#kefu").click(function() {
+				if(confirm("确定拨打电话吗")) {
+					window.location.href = 'tel:' + datekefu;
+					//console.log(window.location.href)
+				}
+			});
+			//关闭窗口
+function CloseWin() //这个不会提示是否关闭浏览器    
+{    
+	var userAgent = navigator.userAgent;
+	if (userAgent.indexOf("Firefox") != -1 || userAgent.indexOf("Chrome") !=-1) {
+	   window.location.href="about:blank";
+	}else if(userAgent.indexOf('Android') > -1 || userAgent.indexOf('Linux') > -1){
+	   window.opener=null;window.open('about:blank','_self','').close();
+	}else {
+	   window.opener = null;
+	   window.open("about:blank", "_self");
+	   window.close();
+	}
+}   
+	</script>
+
+</html>

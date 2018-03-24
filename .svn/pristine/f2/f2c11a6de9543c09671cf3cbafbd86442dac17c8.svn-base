@@ -1,0 +1,73 @@
+document.write("<script language=javascript src='../js/publicAddress.js'></script>");    
+/**
+ * 根据类别ID获取团购商品集合
+ * @param typeId
+ * @param response
+ * @return
+ * @throws IOException
+ */
+function getBytuanGouList(typeId,curpage){
+	var url = "tuangou/tuangouList.do";
+	var data = {
+		typeId:typeId,
+		curpage:curpage
+    };
+	async = false;
+	var result = ajaxSubmit(url, data, async);
+	//console.log("获取团购商品列表"+result);
+	return result;
+}
+/**
+ *根据团购ID获取团购详情  
+ *里面包含 goods_id
+ * @param id
+ * @param response
+ * @return
+ * @throws IOException
+ */
+function getBytuanGouId(tuanGouId){
+	var url = "tuangou/getTuangouId.do";
+	var data = {
+			id:tuanGouId
+    };
+	async = false;
+	var result = ajaxSubmit(url, data, async);
+	//console.log("根据团购ID获取团购详情 "+result);
+	return result;
+}
+/**
+ * 根据商品ID获取商品详情
+ * @param goodsId
+ * @param response
+ * @return
+ * @throws IOException
+ */
+function getGoodsByGoodsId(goodsId){
+	var url = "tuangou/getGoodsByGoodsID.do";
+	var data = {
+			goodsId:goodsId
+    };
+	async = false;
+	var result = ajaxSubmit(url, data, async);
+	//console.log("根据商品ID获取商品详情 "+result);
+	return result;
+}
+/**
+ * 获取类别集合
+ * @param response
+ * @return
+ * @throws IOException
+ */
+function typeList(){
+	var url = "tuangou/getTypeList.do";
+	var data = {};
+	async = false;
+	var result = ajaxSubmit(url, data, async);
+	//console.log("获取类别集合 "+result);
+	return result;
+}
+
+
+
+
+

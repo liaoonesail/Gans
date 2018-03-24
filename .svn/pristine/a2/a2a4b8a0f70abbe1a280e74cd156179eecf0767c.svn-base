@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<title>我的卡券订单</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/bass.css" />
+		<link rel="stylesheet" href="../css/header.css" />
+		<link rel="stylesheet" href="../css/zhouzhouhui.css" />
+		<link rel="stylesheet" href="../css/popup.css" />
+		<link rel="stylesheet" href="../css/myOrder.css" />
+		<style>
+			.topNvaUlLi .mui-segmented-control.mui-scroll-wrapper li {
+				display: inline-block;
+				padding: 0px 26px;
+				color: #000;
+				font-size: 14px;
+				height: 100%;
+				line-height: 33px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">我的卡券订单</h1>
+			 <span class="mui-pull-right mui-action-back"style="color: #fff;font-size: 13px;line-height: 44px;">关闭</span>
+		</header>
+		<div class="mui-content">
+			
+			<!--申请退款弹窗-->
+			<div class="tuikuanGoods_box_h">
+				<div class="tuikuanGoods_box_h_conts">
+					<img class="deliverGoods_box_coles" src="../img/popupImg/btncoles.png" />
+					<h3>申请退款</h3>
+					<p>尊敬的客户,你好!你的退款申请已提交，会有相关工作人员在3个工作日内联系您处理退款事宜！,请保持你的电话畅通!</p>
+					<div class="mui-row qux_mtg">
+						<div class="mui-col-xs-6">确认</div>
+						<div class="mui-col-xs-6 coles_2">取消</div>
+					</div>
+				</div>
+			</div>
+			<!--申请退款弹窗-->
+			
+			<!--删除订单弹窗-->
+			<div class="delGoods_box_h">
+				<div class="delGoods_box_h_conts">
+					<img class="deliverGoods_box_coles" src="../img/popupImg/btncoles.png" />
+					<h3>删除订单</h3>
+					<p>尊敬的客户,你好!你成功删除了订单!</p>
+					<div class="mui-row qux_mtg">
+						<div class="mui-col-xs-6">确认</div>
+						<div class="mui-col-xs-6 coles_2">取消</div>
+					</div>
+				</div>
+			</div>
+			<!--删除订单弹窗-->
+			
+			<!--顶部nav-->
+			<div class="topNva" style="background: #fff;">
+				<div class="mui-slider mui-fullscreen topNvaUlLi">
+					<div class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+						<div class="mui-scroll">
+							<ul id="ListNavService" class="clearfix">
+								<li>全部</li>
+								<li>已使用</li>
+								<li>未使用</li>
+								<li>已过期</li>
+							</ul>
+							<!--这里放置真实显示的DOM内容-->
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--顶部nav-->
+			<div style="height: 35px;"></div>
+			<div class="mui-row">
+				<!--全部-->
+				<div class="mui-col-xs-12 myOrderList" style="display: block;">
+
+					<div class="myOrderLista1">
+						<div class="myOrderLista1Title clearfix">
+							<p>订单号：1234567890122</p>
+							<p>已使用</p>
+						</div>
+						<div class="mui-row">
+							<div class="mui-col-xs-3">
+								<img src="../img/banner/r2.jpg" />
+							</div>
+							<div class="mui-col-xs-7">
+								<p>优酷会员1个月VIP卡 优酷土豆黄金会员一个月 自动充值天手机号</p>
+							</div>
+							<div class="mui-col-xs-2">
+								<p><span>¥299</span></p>
+								<p><span>x1</span></p>
+							</div>
+							<div class="mui-col-xs-12">
+								<p>共1件商品 合计：19:00（运费￥0.00）</p>
+							</div>
+						</div>
+						<div class="myOrderLista1Btns clearfix">
+							<button class="colorred zailaiorderBtns">再来一单</button>
+                            <button class="delBtns">删除订单</button>
+						</div>
+					</div>
+
+					<div class="myOrderLista1">
+						<div class="myOrderLista1Title clearfix">
+							<p>订单号：1234567890122</p>
+							<p>未使用</p>
+						</div>
+						<div class="mui-row">
+							<div class="mui-col-xs-3">
+								<img src="../img/banner/banner3.png" />
+							</div>
+							<div class="mui-col-xs-7">
+								<p>优酷会员1个月VIP卡 优酷土豆黄金会员一个月 自动充值天手机号</p>
+							</div>
+							<div class="mui-col-xs-2">
+								<p><span>¥299</span></p>
+								<p><span>x1</span></p>
+							</div>
+							<div class="mui-col-xs-12">
+								<p>共1件商品 合计：19:00（运费￥0.00）</p>
+							</div>
+						</div>
+						<div class="myOrderLista1Btns clearfix">
+							<button class="tuikuanBtns">申请退款</button>
+							<button class="delBtns">删除订单</button>
+						</div>
+					</div>
+					<div class="myOrderLista1">
+						<div class="myOrderLista1Title clearfix">
+							<p>订单号：1234567890122</p>
+							<p>已过期</p>
+						</div>
+						<div class="mui-row">
+							<div class="mui-col-xs-3">
+								<img src="../img/banner/gk.jpg" />
+							</div>
+							<div class="mui-col-xs-7">
+								<p>优酷会员1个月VIP卡 优酷土豆黄金会员一个月 自动充值天手机号</p>
+							</div>
+							<div class="mui-col-xs-2">
+								<p><span>¥299</span></p>
+								<p><span>x1</span></p>
+							</div>
+							<div class="mui-col-xs-12">
+								<p>共1件商品 合计：19:00（运费￥0.00）</p>
+							</div>
+						</div>
+						<div class="myOrderLista1Btns clearfix">
+                            <button class="delBtns">删除订单</button>
+						</div>
+					</div>
+
+				</div>
+				<!--已使用-->
+				<div class="mui-col-xs-12 myOrderList">
+					<div class="myOrderLista1">
+						<div class="myOrderLista1Title clearfix">
+							<p>订单号：1234567890122</p>
+							<p>已使用</p>
+						</div>
+						<div class="mui-row">
+							<div class="mui-col-xs-3">
+								<img src="../img/banner/banner2.jpg" />
+							</div>
+							<div class="mui-col-xs-7">
+								<p>优酷会员1个月VIP卡 优酷土豆黄金会员一个月 自动充值天手机号</p>
+							</div>
+							<div class="mui-col-xs-2">
+								<p><span>¥299</span></p>
+								<p><span>x1</span></p>
+							</div>
+							<div class="mui-col-xs-12">
+								<p>共1件商品 合计：19:00（运费￥0.00）</p>
+							</div>
+						</div>
+						<div class="myOrderLista1Btns clearfix">
+							<button class="colorred zailaiorderBtns">再来一单</button>
+                            <button class="delBtns">删除订单</button>
+						</div>
+					</div>
+				</div>
+				<!--未使用-->
+				<div class="mui-col-xs-12 myOrderList">
+					<div class="myOrderLista1">
+						<div class="myOrderLista1Title clearfix">
+							<p>订单号：1234567890122</p>
+							<p>未使用</p>
+						</div>
+						<div class="mui-row">
+							<div class="mui-col-xs-3">
+								<img src="../img/banner/banner.png" />
+							</div>
+							<div class="mui-col-xs-7">
+								<p>优酷会员1个月VIP卡 优酷土豆黄金会员一个月 自动充值天手机号</p>
+							</div>
+							<div class="mui-col-xs-2">
+								<p><span>¥299</span></p>
+								<p><span>x1</span></p>
+							</div>
+							<div class="mui-col-xs-12">
+								<p>共1件商品 合计：19:00（运费￥0.00）</p>
+							</div>
+						</div>
+						<div class="myOrderLista1Btns clearfix">
+							<button class="tuikuanBtns">申请退款</button>
+							<button class="delBtns">删除订单</button>
+						</div>
+					</div>
+				</div>
+				<!--已过期-->
+				<div class="mui-col-xs-12 myOrderList">
+					<div class="myOrderLista1">
+						<div class="myOrderLista1Title clearfix">
+							<p>订单号：1234567890122</p>
+							<p>已过期</p>
+						</div>
+						<div class="mui-row">
+							<div class="mui-col-xs-3">
+								<img src="../img/banner/500.jpg" />
+							</div>
+							<div class="mui-col-xs-7">
+								<p>优酷会员1个月VIP卡 优酷土豆黄金会员一个月 自动充值天手机号</p>
+							</div>
+							<div class="mui-col-xs-2">
+								<p><span>¥299</span></p>
+								<p><span>x1</span></p>
+							</div>
+							<div class="mui-col-xs-12">
+								<p>共1件商品 合计：19:00（运费￥0.00）</p>
+							</div>
+						</div>
+						<div class="myOrderLista1Btns clearfix">
+                              <button class="delBtns">删除订单</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div style="height: 55px;"></div>
+		<!--底部导航-->
+		<div class="bgcolor footer22">
+			<div class="footer144" onclick="javascript:window.location.href='../../index.html'">
+				<img class="mui-icon-home1" src="../img/smallImg/nav1.png" />
+				<p>首页</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='discountgo.html'">
+				<img class="mui-icon-email12" src="../img/smallImg/18.png" />
+				<p>善融</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='../../Local1.html'">
+				<img class="mui-icon-home1" src="../img/smallImg/19.png" />
+				<p>地方汇</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='../../special1.html'">
+				<img class="mui-icon-home1" src="../img/smallImg/20.png" />
+				<p>专场</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='personalcenter.html'">
+				<img class="mui-icon-gear1" src="../img/smallImg/nav4.png" />
+				<p>个人中心</p>
+			</div>
+		</div>
+		<!--底部导航-->
+		<script src="../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../js/jquery-1.10.2.js" ></script>
+		<script type="text/javascript">
+			mui.init();
+			//顶部导航
+			var ListNavService = document.getElementById("ListNavService")
+			var odiv = ListNavService.getElementsByTagName("li");
+			var newlist1 = document.getElementsByClassName("myOrderList");
+ 
+			odiv[0].className = 'ontopOk';
+			newlist1[0].style.display = "block";
+			for(var a = 0; a < odiv.length; a++) {
+				odiv[a].index = a;
+				odiv[a].onclick = function() {
+					for(var b = 0; b < newlist1.length; b++) {
+						odiv[b].className = '';
+						newlist1[b].style.display = 'none';
+					}
+					this.className = 'ontopOk';
+					newlist1[this.index].style.display = "block";
+
+				}
+			};
+			//申请退款弹窗tuikuanGoods_box_h
+			var tuikuanGoods_ =$(".tuikuanBtns");
+			for (var i = 0; i < tuikuanGoods_.length; i++) {
+			    (function(e){  //自执行函数实时把i传入e
+			        tuikuanGoods_[e].onclick=function(){  //  通过传入的e获取到哪个按钮发生了点击事件
+//			            alert(e) //弹出e（此处e为i实时对应值）
+                       $(".tuikuanGoods_box_h").css("transform","translateY(0px)"); 
+			        }
+			    })(i)    
+			};   //采用闭包和自执行函数获取i
+			//关闭申请退款弹窗
+			$(".deliverGoods_box_coles").click(function(){
+				$(".tuikuanGoods_box_h").css("transform","translateY(-1000px)"); 
+			});
+			$(".coles_2").click(function(){
+				$(".tuikuanGoods_box_h").css("transform","translateY(-1000px)"); 
+			});
+			//删除订单弹窗   
+			var delBtns_ =$(".delBtns");
+			for (var i = 0; i < delBtns_.length; i++) {
+			    (function(e){  //自执行函数实时把i传入e
+			        delBtns_[e].onclick=function(){  //  通过传入的e获取到哪个按钮发生了点击事件
+//			            alert(e) //弹出e（此处e为i实时对应值）
+                       $(".delGoods_box_h").css("transform","translateY(0px)"); 
+			        }
+			    })(i)    
+			};   //采用闭包和自执行函数获取i
+			//关闭删除订单弹窗
+			$(".deliverGoods_box_coles").click(function(){
+				$(".delGoods_box_h").css("transform","translateY(-1000px)"); 
+			});
+			$(".coles_2").click(function(){
+				$(".delGoods_box_h").css("transform","translateY(-1000px)");
+			});
+			//再来一单
+			$(".zailaiorderBtns").click(function(){
+				setTimeout(function(){
+					mui.openWindow({
+						url: 'details.html',
+						id: 'details',
+						showType: 'zoom-fade-out',
+						showTime: 200
+					});
+				},200);
+			});
+			//关闭窗口
+			function CloseWin() //这个不会提示是否关闭浏览器    
+			{    
+				var userAgent = navigator.userAgent;
+				if (userAgent.indexOf("Firefox") != -1 || userAgent.indexOf("Chrome") !=-1) {
+				   window.location.href="about:blank";
+				}else if(userAgent.indexOf('Android') > -1 || userAgent.indexOf('Linux') > -1){
+				   window.opener=null;window.open('about:blank','_self','').close();
+				}else {
+				   window.opener = null;
+				   window.open("about:blank", "_self");
+				   window.close();
+				}
+			}   
+		</script>
+
+	</body>
+
+</html>

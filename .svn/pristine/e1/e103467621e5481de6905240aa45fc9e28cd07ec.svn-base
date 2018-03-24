@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC 
+    "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanzhou.entity.GoodsComment" >
+
+
+	<insert id="add"  parameterType="com.lanzhou.entity.GoodsComment" >
+		insert into goods_comment(goods_id,user_id,grade,comment,comment_time) values(#{goods_id},#{user_id},#{grade},#{comment},#{comment_time})
+	</insert>
+	<delete id="del"  parameterType="int"  >
+		delete  from goods_comment where goods_id=#{goods_id} and user_id=#{user_id}
+	</delete>
+	
+	<update id="update" parameterType="com.lanzhou.entity.GoodsComment" >
+		update goods_comment 
+			set 
+			goods_id=#{goods_id},
+			user_id=#{user_id},
+			grade=#{grade},
+			comment=#{comment},
+			comment_time=#{comment_time}
+			where 
+				id=#{id}
+	</update>
+	<select  id="getById" parameterType="int"  resultType="com.lanzhou.entity.GoodsComment">
+		select * from goods_comment where id=#{id}
+	</select>
+	<select id="listBygoods_id" resultType="com.lanzhou.entity.GoodsComment">
+		select * from goods_comment where goods_id=#{goods_id}
+	</select>
+	<select id="listByuser" parameterType="map" resultType="com.lanzhou.entity.GoodsComment">
+		select * from goods_comment where goods_id=#{goods_id} and user_id=#{user_id}
+	</select>
+	
+</mapper>

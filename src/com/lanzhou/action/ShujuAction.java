@@ -1,0 +1,78 @@
+package com.lanzhou.action;
+
+import com.lanzhou.entity.Shuju;
+import com.lanzhou.service.UserService;
+import com.lanzhou.util.OrderNum;
+import net.sf.json.JSONArray;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+@Controller
+@RequestMapping("adminShuju")
+public class ShujuAction {
+    @Resource
+    private UserService service;
+    @RequestMapping("/getShuju")
+    public String getShuju(String startTime, String endTime, String days, HttpServletResponse response) throws IOException {
+        startTime=startTime==null?"":startTime;
+        endTime=endTime==null?"":endTime;
+        days=days==null?"":days;
+        int status=0;
+        if("".equals(startTime)&&"".equals(endTime)&&!"".equals(days)){
+            status=1;
+        }else if(!"".equals(startTime)||!"".equals(endTime)){
+            status=2;
+            if("".equals(startTime)){
+                startTime="2017-05-04";
+            }
+            if("".equals(endTime)){
+                endTime= OrderNum.getSystemDate();
+            }
+            if(!startTime.equals(endTime)){
+
+                boolean b = OrderNum.largerTime(startTime, endTime, "yyyy-MM-dd");
+                if(b){
+
+                }else{
+                    response.getWriter().print("时间格式不对");
+                    return null;
+                }
+            }
+        }
+
+        Map<String, Object> map=new HashMap<String, Object>();
+        map.put("startTime", startTime);
+        map.put("endTime", endTime);
+        map.put("days", days);
+        map.put("status", status);
+        List<Shuju> list=service.getShuju(map);
+         String address1="合计";
+         int areaOrder=0;
+         int areaOrder2=0;
+         int sr_amount=0;
+         int areaPerson=0;
+         int areaPerson2=0;
+        for (Shuju shuju:list
+             ) {
+            areaOrder+=shuju.getAreaOrder();
+            areaOrder2+=shuju.getAreaOrder2();
+            sr_amount+=shuju.getSr_amount();
+            areaPerson+=shuju.getAreaPerson();
+            areaPerson2+=shuju.getAreaPerson2();
+        }
+        list.add(new Shuju(address1,areaOrder,areaOrder2,sr_amount,areaPerson,areaPerson2));
+        JSONArray json=JSONArray.fromObject(list);
+        response.getWriter().print(json);
+        return null;
+    }
+
+}

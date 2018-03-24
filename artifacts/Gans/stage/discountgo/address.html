@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>收货地址管理</title>
+		<link charset="UTF-8" rel="stylesheet" href="../css/mui.min.css" />
+		<link charset="UTF-8" rel="stylesheet" href="../css/bass.css" />
+		<link charset="UTF-8" rel="stylesheet" href="../css/address.css" />
+		<style charset="UTF-8">
+			input[type='radio'].radio {
+				opacity: 0;
+				display: inline-block;
+				height: 20px;
+			}  
+			label.radio {
+				background: url(../img/smallImg/gou2.png) no-repeat;
+				background-size:16px 16px ;
+				padding-left: 25px;
+			}
+			
+			  input[type='radio'].radio:checked+.radio {
+				background: url(../img/smallImg/gou.png) no-repeat;
+				background-size:16px 16px ;
+				color: #ff5a06 !important;
+			}
+			.leftaddress label{
+				float: left;
+				height: 20px;
+				line-height: 20px;
+			}
+			 
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">收货地址管理</h1>
+			 <span class="mui-pull-right mui-action-back" style="color: #fff;font-size: 13px;line-height: 44px;">关闭</span>
+		</header>
+		<div class="mui-content">
+		 <!-- 加载提示 -->
+		    <div id="loadingicon" class="mui-text-center">
+				<span class="mui-spinner"></span>
+				<p style="margin-bottom: 0px;font-size: 12px;">正在加载中....</p>
+			</div>
+		    <!-- 加载提示 -->
+			<div id="shenzhi" class="mui-row">
+				<!--循环地址列表下面对应的input标签的ID是自增的label标签的for的属性也是自增的-->
+				 
+				<!--循环地址列表下面对应的input标签的ID是自增的label标签的for的属性也是自增的-->
+			</div>
+			<!-- <div style="height: 50px;"></div>
+			<div class="tianjiaaddress">添加新地址</div> -->
+			<div style="height: 100px;"></div>
+			<div class="tianjiaaddress-box">
+				<div class="tianjiaaddress">添加新地址</div>
+			</div>
+		</div>
+	</body>
+	<script charset="UTF-8" type="text/javascript" src="../js/mui.min.js"></script>
+	<script charset="UTF-8" type="text/javascript" src="../js/jquery-1.10.2.js" ></script>
+	<!-- 引入添加地址js -->
+	<script charset="UTF-8" type="text/javascript" src="../js/address/address2.js"></script>
+	
+	<script charset="UTF-8" type="text/javascript" >
+	 mui.init(); 
+	//让指定的DIV始终显示在屏幕正中间   
+     left_w=($(document).width()-$('#loadingicon').width())/2;  
+     top_w = $('html').scrollTop()+($(window).height()-$('#loadingicon').height())/2;  
+     $('#loadingicon').offset({top:top_w,left:left_w});  
+		var getAddressBycall = getAddressByUser();
+		//console.log(typeof getAddressBycall);
+	  // console.log("页面返回的addressList"+getAddressBycall);
+	    /* 添加地址列表 */
+	    $('#loadingicon').show();
+        $('#loadingicon').offset({top:top_w,left:left_w});  
+        setTimeout(function(){
+	        $('#loadingicon').hide();
+	        addList();
+    	},300);
+	   
+	    function  addList(){
+	     getAddressBycall = JSON.parse(getAddressBycall); 
+	        var getAddressBycall_html = "";
+		    var checked_ ="";
+		    var addressid_ = "";
+		  /*  $.each(getAddressBycall, function() {
+				alert();
+			}); */
+		    for(var i=0 ;i < getAddressBycall.length; i++){
+		      var updatacs = getAddressBycall[i].id + ",'" + getAddressBycall[i].user_name + "','" + getAddressBycall[i].phone + "','" + getAddressBycall[i].address + "','" + getAddressBycall[i].details + "'";
+		       if(getAddressBycall[i].status == 1){
+		       	  checked_ ="<input type='radio' onclick=\"updata("+updatacs+")\" name='sex' id='a"+i+"' checked='checked'  class='radio'><label for='a"+i+"' class='radio'>默认地址</label>";
+		       }else{	       
+		          checked_ ="<input onclick=\"updata("+ updatacs +")\" type='radio' name='sex' id='a"+i+"' class='radio'><label for='a"+i+"' class='radio'>默认地址</label>";
+		       }
+		       getAddressBycall_html +="<div id='"+getAddressBycall[i].id+"' class='mui-col-xs-12 addressList'>"
+										+"<h5>"+getAddressBycall[i].user_name+"&nbsp;"+getAddressBycall[i].phone+"</h5>"
+										+"<p>"+getAddressBycall[i].details+"</p>"
+										+"<div class='shenzhi clearfix'>"
+											+"<div class='leftaddress'>"
+												+checked_
+											+"</div>"
+											+"<div class='rightaddress'>"
+												+"<span onclick='deladdress("+getAddressBycall[i].id+")'>删除</span><img onclick='deladdress("+getAddressBycall[i].id+")' class='biaoji' src='../img/smallImg/scl.png' />"
+												+"<span class='bjjj' id='"+getAddressBycall[i].id+"'>编辑</span><img class='biaoji bjjj' id='"+getAddressBycall[i].id+"' src='../img/smallImg/biao.png' />"
+											+"</div>"
+										+"</div>"
+									+"</div>";
+		    }
+		    $("#shenzhi").append(getAddressBycall_html);
+		  //修改对应的地址
+		    var a_address = $(".bjjj");
+			for (var i = 0; i < a_address.length; i++) {
+			    (function(e){  //自执行函数实时把i传入e
+			        a_address[e].onclick=function(){  //  通过传入的e获取到哪个按钮发生了点击事件
+			           var address_id =$(this).attr("id");
+                        //alert(e) //弹出e（此处e为i实时对应值）
+                        setTimeout(function(){
+							mui.openWindow({
+								url: 'Modifyaddress.html?id='+address_id,
+								id: 'Modifyaddress',
+								showType: 'zoom-fade-out',
+								showTime: 200
+							});
+						},200);
+			        }
+			    })(i)    
+			}   //采用闭包和自执行函数获取i 
+	    }
+	    /* 设置默认地址 */
+	    function updata(id, realName, phone, area, address){
+	       
+	      var updateAddress_html = updateAddress(id, realName, phone, area, address);
+	      if(updateAddress_html == "ok"){
+	         alert("设置默认地址成功")
+	      }else{
+	         alert(updateAddress_html)
+	      }
+	    }
+ 		 //添加新地址
+          $(".tianjiaaddress").click(function(){
+        	setTimeout(function(){
+				mui.openWindow({
+					url: 'adddiz.html',
+					id: 'adddiz',
+					showType: 'zoom-fade-out',
+					showTime: 200
+				});
+			},200);
+        });
+        //删除收货地址
+        function deladdress(index){
+           var del_address =deleteAddress(index);
+           if(del_address == "ok"){
+	         alert("删除地址成功");
+	         $("#" + index + "").remove();
+	      }else{
+	         alert(del_address)
+	      }
+        }
+	</script>
+
+</html>

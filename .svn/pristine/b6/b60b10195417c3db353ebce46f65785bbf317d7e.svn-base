@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- <typeAliases>
+		<typeAlias alias="user" type="com.entity.User"/>
+	</typeAliases> -->
+	<mappers>
+		<mapper resource="com/lanzhou/entity/mapper/Address.xml" /> 
+		<mapper resource="com/lanzhou/entity/mapper/User_prize.xml" />
+		<mapper resource="com/lanzhou/entity/mapper/User.xml" />
+		<mapper resource="com/lanzhou/entity/mapper/Gift.xml" />
+		<mapper resource="com/lanzhou/entity/mapper/Prize.xml" />
+		<mapper resource="com/lanzhou/entity/mapper/Type_next_next.xml" />
+		<mapper resource="com/lanzhou/entity/mapper/Type_next.xml" />
+		<mapper resource="com/lanzhou/entity/mapper/Type.xml" />
+		<mapper resource="com/lanzhou/entity/mapper/Shop.xml" />
+		<mapper resource="com/lanzhou/entity/mapper/Fen_shop.xml" />
+		<mapper resource="com/lanzhou/entity/mapper/Mould.xml" />
+		<mapper resource="com/lanzhou/entity/mapper/Order.xml" />
+		<mapper resource="com/lanzhou/entity/mapper/Goods.xml" />
+		<mapper resource="com/lanzhou/entity/mapper/Area.xml" />
+		<mapper resource="com/lanzhou/entity/mapper/Activity.xml" />
+		<mapper resource="com/lanzhou/entity/mapper/Activity_details.xml" />
+		<mapper resource="com/lanzhou/entity/mapper/Area_picture.xml" />
+		<mapper resource="com/lanzhou/entity/mapper/Shop_picture.xml" />
+		<mapper resource="com/lanzhou/entity/mapper/Article.xml" />
+		<mapper resource="com/lanzhou/entity/mapper/Adminuser.xml" />
+		<mapper resource="com/lanzhou/entity/mapper/GoodsComment.xml" />
+		<mapper resource="com/lanzhou/entity/mapper/Log.xml" />
+		<mapper resource="com/lanzhou/entity/mapper/Advertisement.xml"/>
+		<mapper resource="com/lanzhou/entity/mapper/Page_parameter.xml" />
+		<mapper resource="com/lanzhou/entity/mapper/Problems.xml" />
+		<mapper resource="com/lanzhou/entity/mapper/Tuangou.xml" />
+		<mapper resource="com/lanzhou/entity/mapper/Miaosha.xml" />
+		<mapper resource="com/lanzhou/entity/mapper/Performance.xml" />
+		<mapper resource="com/lanzhou/entity/mapper/Longpay.xml" />
+		<mapper resource="com/lanzhou/entity/mapper/SchoolPrize.xml" />
+		<mapper resource="com/lanzhou/entity/mapper/UserSp.xml" />
+		<mapper resource="com/lanzhou/entity/mapper/Weiorder.xml" />
+		<mapper resource="com/lanzhou/entity/mapper/Inschool.xml" />
+		<mapper resource="com/lanzhou/entity/mapper/MiaoshaDay.xml" />
+		<mapper resource="com/lanzhou/entity/mapper/WeibgPicture.xml" />
+		<mapper resource="com/lanzhou/entity/mapper/TwelvePrize.xml" />
+		<mapper resource="com/lanzhou/entity/mapper/UserTweprize.xml" />
+		<mapper resource="com/lanzhou/entity/mapper/Logistics.xml" />
+		<mapper resource="com/lanzhou/entity/mapper/Ticket.xml" />
+		<mapper resource="com/lanzhou/entity/mapper/Whitephone.xml" />
+		<mapper resource="com/lanzhou/entity/mapper/Whitegoods.xml" />
+	</mappers>
+	
+</configuration>	

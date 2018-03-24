@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <link rel="stylesheet" href="css/frame.css">
+        <link rel="stylesheet" href="css/minPublicBenefit.css">
+        <link rel="stylesheet" href="css/common.css">
+        <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="kingediter/kindeditor-all-min.js"></script>
+        <script type="text/javascript" src="js/popUpWin.js"></script>
+        <script type="text/javascript" src="js/bg_picture.js"></script>
+        <title>汇聚甘肃后台管理系统--微公益-背景图片管理</title>
+    <script type="text/javascript" src="js/angular-1.0.1.min.js"></script>
+</head>
+    <body style="background-color: #f1f1f1;">
+        <div class="frameRall">
+            <!-- 头部通知搜索栏 -->
+            <div ng-app="">
+                <div ng-include="'head.htm'"></div>
+            </div>
+            <div class="headlineBig ml40 mb20 clearfix">
+                <h1 class="stair">微公益<span>背景图片</span></h1>
+                <h1 class="secondLevel">背景图片管理</h1>
+            </div>
+            <div class="mb20 ml40" >
+                <a href="javascript:;" class="butBox seckillAdd">添加背景图片</a>
+                <a href="" class="butBox mb30 preview">预览</a>
+            </div>
+            <!-- 点击添加新文章，弹出 -->
+			<div class="seckillAddBox grouponAddBox dragonAddBox seckillWin" style="width:700px;height: 400px;">
+				<i class="seckillClose"></i>
+				<form  id="fromAddPicture" action="" method="post">
+					<ul>
+						<input type="hidden" class="seckillUpInp id" id="id" name="id" value="" />
+                        <span class="commonFormName"><i class="colorRed">*</i>背景图片：</span>
+                        <textarea class="commonFormTarea" name="pic_address" style="width: 650px;height: 300px;"></textarea>
+						<li class="seckillUpBut">
+							<a id="add" href="javascript:;" class="butBox addPicture">添加</a>
+						</li>
+					</ul>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>

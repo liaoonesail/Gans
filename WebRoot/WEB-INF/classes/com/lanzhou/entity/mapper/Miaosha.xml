@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC 
+    "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanzhou.entity.Miaosha" >
+
+
+	<insert id="add"  parameterType="com.lanzhou.entity.Miaosha">
+		insert into miaosha(goods_id,start_time,end_time,real_price,label,amount) values(#{goods_id},#{start_time},#{end_time},#{real_price},#{label},#{amount})
+	</insert>
+	
+	<delete id="del"  parameterType="int"  >
+		delete  from miaosha where id=#{id}
+	</delete>
+	
+	<update id="update" parameterType="com.lanzhou.entity.Miaosha" >
+		update miaosha 
+			set 
+			goods_id=#{goods_id},
+			start_time=#{start_time},
+			end_time=#{end_time},
+			real_price=#{real_price},
+			label=#{label}
+			where 
+				id=#{id}
+	</update>
+	<select  id="getById" parameterType="int"  resultType="com.lanzhou.entity.Miaosha">
+		select * from miaosha where id=#{id}
+	</select>
+	<select id="count" parameterType="string" resultType="int">
+		select count(*) from miaosha
+	</select>
+	<select id="listpage" parameterType="map" resultType="com.lanzhou.entity.Miaosha">
+		select a.* from miaosha a,goods b where a.goods_id=b.id order by a.id desc,b.hot desc limit #{startRecord},#{pageSize}
+	</select>
+	<select id="list" parameterType="map" resultType="com.lanzhou.entity.Miaosha">
+		select a.* from miaosha a,goods b where a.goods_id=b.id and STR_TO_DATE(#{endTime},"%Y-%m-%d %H:%i:%s")>STR_TO_DATE(a.start_time,"%Y-%m-%d %H:%i:%s") and STR_TO_DATE(a.end_time,"%Y-%m-%d %H:%i:%s")>STR_TO_DATE(#{startTime},"%Y-%m-%d %H:%i:%s") order by b.price
+	</select>
+	<select id="getMiaoshaByGoodsId" parameterType="int" resultType="com.lanzhou.entity.Miaosha">
+		select * from miaosha where goods_id=#{goodsId}
+	</select>
+</mapper>

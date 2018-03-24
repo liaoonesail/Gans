@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>新人礼</title>
+		<link charset="UTF-8" rel="stylesheet" href="stage/css/mui.min.css" />
+		<link charset="UTF-8" rel="stylesheet" href="stage/css/bass.css" />
+		<link charset="UTF-8" rel="stylesheet" href="stage/css/rookie.css" />
+		<link charset="UTF-8" rel="stylesheet" href="stage/css/popup.css" />
+	</head>
+
+	<body>
+		<!--头部导航-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">新人礼</h1>
+		     <span class="mui-pull-right mui-action-back "style="color: #fff;font-size: 13px;line-height: 44px;">关闭</span>
+		</header>
+		<!--头部导航-->
+		<div class="rookieBox clearfix">
+			<!--新人领券弹窗-->
+			<div class="rookquanList_1">
+				<div class="rookquanList_1_conts">
+					<img class="coles_btns"  src="img/popupImg/btncoles.png"/>
+					<div class="rooKImg">
+						<img src="stage/img/popupImg/1.png" />
+					</div>
+					<p class="tianxie_Title">填写下面的内容你就可以领到心仪已久的券码</p>
+					<input class="phopeTel" type="text" value="请输入手机号" />
+					<input class="phopeTel2" type="text" value="请输入善融账号" />
+					<p class="smaill_font">* 您的善融账号已领过劵* 善融账号没有领过劵直接发劵</p>
+					<input class="phopeTel phopeTelBtns" type="button" value="提交"  style="text-align: center;text-indent: initial;"/>
+				</div>
+			</div>
+			<!--新人领券弹窗-->
+			<!--领券成功弹窗-->
+			<div class="rookquanList_2">
+				<div class="rookquanList_2_conts">
+					<img class="coles_btns"  src="stage/img/popupImg/btncoles.png"/>
+					<div class="rooKImg">
+						<img src="stage/img/popupImg/1.png" />
+					</div>
+					<p class="tianxie_Title">您已领到心仪已久的券码</p>
+					<div class="mui-row">
+						<div class="mui-col-xs-6 colorBlue1">
+							<div>2561871</div>
+							<p>电子券编码</p>
+						</div>
+						<div class="mui-col-xs-6 colorBlue2">
+							<div>KHY65O</div>
+							<p>验证码</p>
+							
+						</div>
+						<div class="mui-col-xs-12">
+							<p style="text-align: center;margin-bottom: 2px;">* 您可以前往<span id="tanzhuaBtns" style="color: red;">个人中心</span>我的劵码查看</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--领券成功弹窗-->
+			<!--车的图片-->
+		    <div class="shangImg">
+		    	<img src="stage/img/smallImg/che.png" />
+		    </div>
+		    <!--一元起图片-->
+		    <div class="shangImg1">
+		    	<img src="stage/img/smallImg/yi.png" />
+		    </div>
+		    <!--注册善融购按钮-->
+		    <img class="zhucerookieBts" src="stage/img/smallImg/zhuce.png" />
+		    <!--新人领券按钮-->
+		    <img class="xinrenrookieBts" src="stage/img/smallImg/xinren.png" />
+		</div>
+	</body>
+    <script charset="UTF-8" type="text/javascript" src="stage/js/mui.min.js" ></script>
+    <script charset="UTF-8" type="text/javascript" src="stage/js/jquery-1.10.2.js" ></script>
+    <script charset="UTF-8" type="text/javascript" src="stage/js/rookie_.js" ></script>
+    <script charset="UTF-8" type="text/javascript" >
+    	mui.init();
+    </script>
+</html>

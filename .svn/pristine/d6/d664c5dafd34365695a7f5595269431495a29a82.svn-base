@@ -1,0 +1,42 @@
+package com.lanzhou.entity;
+
+public class Area {
+	private int id;
+	private String name;//地区名
+	private int sort;//排序
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getSort() {
+		return sort;
+	}
+	public void setSort(int sort) {
+		this.sort = sort;
+	}
+	
+	public Area(int id, String name, int sort) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.sort = sort;
+	}
+	public Area(String name, int sort) {
+		super();
+		this.name = name;
+		this.sort = sort;
+	}
+	public Area() {
+		super();
+	}
+	
+
+}

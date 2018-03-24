@@ -1,0 +1,230 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>首页</title>
+		<link charset="UTF-8" rel="stylesheet" href="stage/css/mui.min.css" />
+		<link charset="UTF-8" rel="stylesheet" href="stage/css/swiper.css" />
+		<link charset="UTF-8" rel="stylesheet" href="stage/css/bass.css" />
+		<link charset="UTF-8" rel="stylesheet" href="stage/css/header.css" />
+		<link charset="UTF-8" rel="stylesheet" href="stage/css/popup.css" />
+		<link charset="UTF-8" rel="stylesheet" href="stage/css/notice.css" />
+		<style>
+			html,body{
+				height: 100%;
+				min-height: 510px;
+	            overflow-y: hidden;
+			}
+           .mui-content{
+            	height: 100%;
+            	overflow: hidden;
+            	background: url(stage/img/banner/ban.jpg) no-repeat;
+	            background-size:100% 100% ;	           
+            }
+		</style>
+	</head>
+
+	<body>
+		<!--导航部分-->
+		<header class="mui-bar  mui-bar-nav ">
+			<div class="mui-row">
+				<div class="mui-col-xs-2 headerLeft clearfix">
+					<span id="address_html">兰州</span><i style="font-size: 18px;color: #fff;" class="mui-icon mui-icon-arrowdown"></i>
+				</div>
+				<div class="mui-col-xs-8 headerConts">
+					<span class="mui-icon mui-icon-search"></span>
+					<input type="search" placeholder="搜索" />
+				</div>
+				<div class="mui-col-xs-2 headerRight clearfix">
+					<img id="aLisr" src="stage/img/smallImg/a.png" />
+					<img id="xinxi" src="stage/img/smallImg/b.png" />
+				</div>
+			</div>
+		</header>
+		<!--导航部分-->
+		<div class="mui-content">
+		   <div id="loading"></div>
+			<!--地区选择弹窗-->
+			<div class="address_addcheck">
+				<div class="address_addcheck_conts">
+					<div class="mui-scroll-wrapper">
+					    <div class="mui-scroll">
+					        <!--这里放置真实显示的DOM内容-->
+					       <ul id="address_ok">
+                            </ul>
+					    </div>
+					</div>
+					
+				</div>
+			</div>
+			<!--地区选择弹窗-->
+			<!--扫一扫 弹窗-->
+			<div id="Popup" class="Popup">
+				<img class="sao1" src="stage/img/smallImg/sao1.png" />
+				<img class="sao2" src="stage/img/smallImg/sao2.png" />
+			</div>
+			<!--扫一扫 弹窗-->
+			<!--轮播图部分-->
+			<div class="banner">
+				<div class="swiper-container">
+					<div class="swiper-wrapper">
+						<!--循环的部分-->
+						<div class="swiper-slide" style="background-image:url(stage/img/banner/banner.png)"></div>
+						<div class="swiper-slide" style="background-image:url(stage/img/banner/banner2.jpg)"></div>
+						<div class="swiper-slide" style="background-image:url(stage/img/banner/banner3.png)"></div>
+						<!--循环的部分-->
+					</div>
+					<div class="swiper-pagination swiper-pagination-white"></div>
+				</div>
+			</div>
+			<!--轮播图部分-->
+			<div class="indexConts">
+				<!--公告-->
+				<div class="noticeBox" style="padding-top: 0px;height: 62px;background: rgba(206,245,249,0.3);">
+					<div class="mui-row">
+						<div class="mui-col-xs-2 noticeBoxLeft">
+							<img src="stage/img/smallImg/hui.png" />
+						</div>
+						<div class="mui-col-xs-10 noticeBoxRight clearfix">
+							 
+							<div class="noticeBoxRightList">
+								<div  class="content-toutiao-div clearfix" style="display: block;">
+								    <div class="scrollList">
+									   <div class="sdmList">
+									   	    <!--循环的部分-->
+									   	    <p><span class="color1">【活动】</span>12017年12月5日龙支付线下1元体验活动12017年12月5日龙支付线下1元体验活动12017年12月5日龙支付线下1元体验活动12017年12月5日龙支付线下1元体验活动</p>
+											<p><span class="color2">【精选】</span>12017年12月5日龙支付线下1元体验活动12017年12月5日龙支付线下1元体验活动12017年12月5日龙支付线下1元体验活动12017年12月5日龙支付线下1元体验活动</p>
+											<p><span class="color3">【推荐】</span>12017年12月5日龙支付线下1元体验活动12017年12月5日龙支付线下1元体验活动12017年12月5日龙支付线下1元体验活动12017年12月5日龙支付线下1元体验活动12017年12月5日龙支付线下1元体验活动12017年12月5日龙支付线下1元体验活动</p>
+											<p><span class="color1">【活动】</span>12017年12月5日龙支付线下1元体验活动12017年12月5日龙支付线下1元体验活动12017年12月5日龙支付线下1元体验活动12017年12月5日龙支付线下1元体验活动</p>
+											<p><span class="color2">【精选】</span>12017年12月5日龙支付线下1元体验活动12017年12月5日龙支付线下1元体验活动12017年12月5日龙支付线下1元体验活动12017年12月5日龙支付线下1元体验活动12017年12月5日龙支付线下1元体验活动</p>
+											<p><span class="color3">【推荐】</span>12017年12月5日龙支付线下1元体验活动12017年12月5日龙支付线下1元体验活动12017年12月5日龙支付线下1元体验活动</p>
+											<p><span class="color1">【活动】</span>12017年12月5日龙支付线下1元体验活动12017年12月5日龙支付线下1元体验活动12017年12月5日龙支付线下1元体验活动12017年12月5日龙支付线下1元体验活动</p>
+											<p><span class="color2">【精选】</span>12017年12月5日龙支付线下1元体验活动12017年12月5日龙支付线下1元体验活动12017年12月5日龙支付线下1元体验活动12017年12月5日龙支付线下1元体验活动</p>
+											<p><span class="color3">【推荐】</span>12017年12月5日龙支付线下1元体验活动12017年12月5日龙支付线下1元体验活动12017年12月5日龙支付线下1元体验活动12017年12月5日龙支付线下1元体验活动</p>											  
+									        <!--循环的部分-->
+									   </div>
+								    </div>									 
+								</div>							 
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--公告-->
+				 
+				<!--组选卡-->
+				<div class="xuankaBox">
+					<div class="indexNews">
+						<img src="stage/img/smallImg/news.png" />
+						<p>地方汇</p>
+					</div>
+					<div class="indexNews1">
+						<img src="stage/img/smallImg/news2.png" />
+						<p>专场活动</p>
+					</div>
+					<div class="indexNews2">
+						<img src="stage/img/smallImg/news6.png" />
+						<p>周周惠</p>
+					</div>
+					<div class="indexNews3">
+						<img src="stage/img/smallImg/news4.png" />
+						<p>个人中心</p>
+					</div>
+					<div class="indexNews4">
+						<img src="stage/img/smallImg/news5.png" />
+						<p>9元观影</p>
+					</div>
+					<div class="indexNews5">
+						<img src="stage/img/smallImg/news3.png" />
+						<p>微公益</p>
+					</div>
+					<div class="indexNews6">
+						<img src="stage/img/smallImg/news7.png" />
+						<p>悦生活</p>
+					</div>
+				</div>
+				<!--组选卡-->
+			</div>
+		</div>
+		
+		<script charset="UTF-8" type="text/javascript" src="stage/js/mui.min.js"></script>
+		<script charset="UTF-8" type="text/javascript" src="stage/js/jquery-1.10.2.js"></script>
+		<script charset="UTF-8" type="text/javascript" src="stage/js/swiper.min.js"></script>
+		<!-- 引入地区js -->
+		<!-- <script charset="UTF-8" type="text/javascript" src="stage/js/publicAddress.js" ></script>
+		<script charset="UTF-8" type="text/javascript"" src="stage/js/area/area.js" ></script> -->
+		<script charset="UTF-8" type="text/javascript"" src="stage/js/publicJs/ajax.js" ></script>
+		<!-- <script charset="UTF-8" type="text/javascript"" src="stage/js/publicJs/publicAddress.js" ></script> -->
+		<!-- <script charset="UTF-8" type="text/javascript" src="stage/js/index_.js" ></script> -->
+		<script charset="UTF-8" type="text/javascript">
+		    mui.init();  
+		  //项目地址
+		    var pubAddress = "/Gans/";
+		    function  Ajax2(type,url,data){
+		    	var result="";
+		    	Ajax.ajax({
+		    		type: type,
+		    		url: url,
+		    		data: data,
+		    		dataType: "JSON",
+		    		success: functiondata
+		    	});
+		    	 function functiondata(data){
+				    	alert(3)
+				    	result = data
+				    	return result;
+				    }
+		    	 console.log(result)
+		    }
+		    /*function Ajax(type, url, async, cache, data, dataType) {
+		    	var result="";
+		    		$.ajax({
+		    				type: type, //数据提交方式 post get
+		    				url: pubAddress + url, //提交接口地址url
+		    				async: async,
+		    				   
+		    					* 1.当async: true 时，ajax请求是异步的。但是其中有个问题：方法中的ajax请求和其后面的操作是异步执行的，那么当该方法还未执行完，就可能已经执行了 ajax请求后面的操作，
+		    					数据是在ajax请求success后才赋值的，结果，输出时会为空。
+		    					* 2.当async:false时为同步，该方法中的Ajax请求将整个浏览器锁死，只有执行结束后，才可以执行其它操作。
+		    					
+		    				cache: cache, //true的话会读缓存，可能真的到服务器上。
+		    					//假如上次访问了a.html，第二次的时候得到的是上次访问的a.html的结果，而不是重新到服务器获取。
+		    					//false的话会在url后面加一个时间缀，让它跑到服务器获取结果。
+		    					//cache只有GET方式的时候有效。
+		    				data: data, //提交的数据
+		    				dataType: dataType, //服务器返回的数据类型 1."xml": 返回 XML 文档，可用 jQuery 处理
+		    					//2."html": 返回纯文本 HTML 信息；包含的 script 标签会在插入 dom 时执行。
+		    					//3."script": 返回纯文本 JavaScript 代码。不会自动缓存结果。除非设置了 "cache" 参数。注意：在远程请求时(不在同一个域下)，所有 POST 请求都将转为 GET 请求。（因为将使用 DOM 的 script标签来加载）
+		    					//4."json": 返回 JSON 数据 。
+		    					//5."jsonp": JSONP 格式。使用 JSONP 形式调用函数时，如 "myurl?callback=?" jQuery 将自动替换 ? 为正确的函数名，以执行回调函数。
+		    					//6."text": 返回纯文本字符串
+		    				success:function(data){
+		    					result =data;
+		    				}
+		    		});
+		    		return result;
+		    }*/
+		    /**
+		     * 获取单个商品
+		     * @param goodsId
+		     * @returns
+		     */
+		    
+		    function getGoodsById(){
+		    	alert(1)
+		    	var type ="get";
+		    	var url = "area/getArea.do";
+		    	var data = {
+		    	};
+		    	var result = Ajax2(type,url,data);//ajax
+		    	console.log(result)
+		    	return result;
+		    }
+		    
+		    var getGoodsById_ =getGoodsById();
+		</script>
+	</body>
+
+</html>

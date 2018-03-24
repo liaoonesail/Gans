@@ -1,0 +1,158 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <link rel="stylesheet" href="css/frame.css">
+        <link rel="stylesheet" href="css/minPublicBenefit.css">
+        <link rel="stylesheet" href="css/common.css">
+        <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+        <title>汇聚甘肃后台管理系统--商城管理-商品管理--区域图片管理</title>
+    <script type="text/javascript" src="js/angular-1.0.1.min.js"></script>
+    </head>
+    <body style="background-color: #f1f1f1;">
+        <div class="frameRall">
+            <!-- 头部通知搜索栏 -->
+            <div ng-app="">
+                <div ng-include="'head.htm'"></div>
+            </div>
+            <div class="headlineBig ml40 mb20 clearfix">
+                <h1 class="stair">
+                    商城管理
+                    <span>商品管理</span>
+                </h1>
+                <h1 class="secondLevel">
+                    区域图片管理
+                </h1>
+            </div>
+            <div class="mb20 ml40" >
+                <span>请选择区域：</span>
+                <select name="area_id"></select>
+                <span style="color:red;margin-left: 20px;">默认展示兰州的数据</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="addArea_picture.html" class="butBox seckillAdd mb30 addType">添加区域图片</a>
+            </div>
+            
+                <table class="infoTabShow przeInKind typeTabelList">
+                    <thead>
+                        <tr>
+                            <td>
+                                序号
+                            </td>
+                            <td>
+                               图片预览
+                            </td>
+                            <td>
+                               图片链接
+                            </td>
+                            <td>
+                            是否展示
+                            </td>
+                            <td style="width:160px">
+                                操作
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </body>
+    
+    <script type="text/javascript">
+        $(function(){
+        
+        /**展示数据列表(默认展示兰州的数据)**/
+            $(document).ready(function(){
+                
+                $.post("../adminarea/list.do",{},function(res){
+                    res = eval("("+res+")");
+                    var html = "";
+                    $(res).each(function(index,obj){
+                        html += "<option value='"+obj.id+"'>"+obj.name+"</option>";
+                    });
+                    $("select[name=area_id]").html(html);
+                });
+            
+                $.post("../adminarea_picture/listByarea_id.do",{"area_id":'6'},function(res){
+                    res = eval("("+res+")");
+                    var html = "";
+                    console.log(res);
+                    $(res).each(function(index,obj){
+                        html +="<tr id='area"+obj.id+"'>";
+                        html += "<td>"+(index+1)+"</td>";
+                        //console.log(obj.picture_address);
+                        html += "<td><img style='width:60px;hight:60px' src='"+obj.picture_address+"' alt='' /></td>";
+                        html += "<td>"+ obj.url +"</td>"
+                        if(obj.status == "1"){
+                            html += "<td>展示</td>";    
+                        }else{
+                            html += "<td>不展示</td>";  
+                        }
+                        html += "<td><a data-field='update' class='butBox ml10' data-value='"+obj.id+"'>更新</a><a data-field='delete' class='butBox ml10' data-value='"+obj.id+"'>删除</a></td>";
+                        html +="</tr>";
+                    });
+                    $("table.infoTabShow.przeInKind.typeTabelList tbody").html(html);
+                });
+            
+            });
+            
+            $(document).on("change","select[name=area_id]",function(){
+                var id = $(this).val();
+                $.post("../adminarea_picture/listByarea_id.do",{"area_id":id},function(res){
+                    res = eval("("+res+")");
+                    var html = "";
+                    console.log(res);
+                    $(res).each(function(index,obj){
+                        html +="<tr id='area"+obj.id+"'>";
+                        html += "<td>"+(index+1)+"</td>";
+                        html += "<td><img style='width:60px;hight:60px' src='"+obj.picture_address+"' /></td>";
+                        html += "<td>"+ obj.url +"</td>";
+                        if(obj.status == "1"){
+                            html += "<td>展示</td>";    
+                        }else{
+                            html += "<td>不展示</td>";  
+                        }
+                        html += "<td><a data-field='update' class='butBox ml10' data-value='"+obj.id+"'>更新</a><a data-field='delete' class='butBox ml10' data-value='"+obj.id+"'>删除</a></td>";
+                        html +="</tr>";
+                    });
+                    $("table.infoTabShow.przeInKind.typeTabelList tbody").html(html);
+                });
+            });
+            
+            
+            /**更新**/
+           $(document).on("click","a[data-field=update]",function(){
+                var id = $(this).attr("data-value");
+                window.location.href="addArea_picture.html?id="+id;            
+           });
+            
+            /**删除**/
+            $(document).on("click","a[data-field=delete]",function(){
+                var id = $(this).attr("data-value");
+                if(confirm("确认删除该数据吗？")){
+                    $.ajax({
+                        url:'../adminarea_picture/del.do',
+                        type:'post',
+                        data:{"id":id},
+                        success:function(res){
+                            if(res == "true"){
+                                alert("删除数据成功");
+                               $("#area"+id).remove();
+                            }
+                        },error:function(){alert("删除数据失败!");}
+                    });
+                }else{
+                    alert("删除已取消");
+                }
+            });
+            
+            
+        });
+    
+    </script>
+    
+</html>

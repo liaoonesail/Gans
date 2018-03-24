@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>新增地址</title>
+		<link charset="UTF-8" rel="stylesheet" href="../css/mui.min.css" />
+		<link charset="UTF-8" rel="stylesheet" href="../css/jquery-weui.min.css" />
+		<link charset="UTF-8" rel="stylesheet" href="../css/adddzi.css" />
+	</head>
+
+	<body>
+		<div class="lodinbox">
+			<!--头部导航-->
+			<header class="mui-bar mui-bar-nav loginheader">
+				<a class="mui-pull-left mui-action-back backstar">
+					<i class="mui-icon mui-icon-left-nav"></i>
+				</a>
+				<h1 class="mui-title">新增地址</h1>
+				 <span class="mui-pull-right mui-action-back"  style="color: #fff;font-size: 13px;line-height: 44px;">关闭</span>
+			</header>
+			<!--头部导航-->
+			<div style="height: 44px;"></div>
+			<!--收货地址内容开始-->
+			<div class="order_dizi">
+				<div class="order_xingming">
+					<label>收货人姓名：</label>
+					<input id="adderssName" type="text" class="text-clear-content" placeholder="请输入收货人姓名" />
+					<span class="clear-button"></span>
+				</div>
+				<div class="order_xingming">
+					<label>联系电话：</label>
+					<input id="Phone" type="tel" class="text-clear-content" placeholder="请输入联系电话" />
+					<span class="clear-button"></span>
+				</div>
+				<div class="order_xingming">
+					<label>收货地址：</label>
+					<input id="city-picker" type="text" readonly="" placeholder="请选择省市区县">
+					
+				</div>
+				<div class="order_xingming" style="border: 0;">
+					<label>详细地址：</label>
+					<input id="contactAddress" class="text-clear-content" type="text" placeholder="请输入详细地址" />
+					<span class="clear-button"></span>
+				</div>
+				  <p id="shuru_alert" style="text-align: center;font-size: 12px;margin-bottom: 2px;color: red;display: none;">* 二次输入密码不一致，请重新输入！</p> 
+				<div class="public-g-btn-box">
+					<button class="public-g-btn">确定</button>
+				</div>
+			</div>
+			<!--收货地址内容结束-->
+		</div>
+
+		<script charset="UTF-8" type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+		<script charset="UTF-8" type="text/javascript" src="../js/jquery-weui.min.js"></script>
+		<script charset="UTF-8" type="text/javascript" src="../js/city-picker.min.js"></script>
+		<script charset="UTF-8" type="text/javascript" src="../js/mui.min.js"></script>
+		<script charset="UTF-8" type="text/javascript">
+			mui.init();
+			var addressOdiqu = "";
+			$("#city-picker").cityPicker({
+				title: "选择省市区/县",
+				onChange: function(picker, values, displayValues) {
+					addressOdiqu = displayValues;
+					//console.log(displayValues);
+				}
+			});
+		</script>
+		<script charset="UTF-8" type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+		<!-- 引入添加地址js -->
+		<script charset="UTF-8" type="text/javascript" src="../js/address/address.js"></script>
+		<script charset="UTF-8" type="text/javascript">
+			var $j = jQuery.noConflict(); //自定义一个比较短快捷方式
+			/* var thisURL = document.URL;
+			var getval = thisURL.split('?')[1];
+			var order_index_id =""
+			if (getval != null ||getval != undefined) {
+				 order_index_id = getval.split("=")[1];
+				 console.log(order_index_id)
+			} else{
+				order_index_id="";
+			} */
+			//截取Url里面的参数   
+		    function GetRequest() {  
+		        var url = location.search; //获取url中"?"符后的字串  
+		        var theRequest = new Object();  
+		        if (url.indexOf("?") != -1) {  
+		            var str = url.substr(1);  
+		            //alert(str);  
+		            strs = str.split("&");  
+		            for (var i = 0; i < strs.length; i++) {  
+		                theRequest[strs[i].split("=")[0]] = decodeURI(strs[i].split("=")[1]);//获取中文参数转码<span style="font-family: Arial, Helvetica, sans-serif;">decodeURI</span>，（unescape只针对数字，中文乱码)  
+		            }  
+		        }  
+		        return theRequest;  
+		    }  
+		        //通过url取数  
+		          
+		        var request = new Object();  
+		        request = GetRequest();  
+		          
+		        var order_index_id = request['id'] ;  // 获取商品ID 
+		        var part = request['part'] ;  // 获取活动Id 
+		        var urL_ ="";
+		        if(part){
+		        	urL_ ='order.html?id='+order_index_id+'&part='+part
+		        }else{
+		        	urL_ ='order.html?id='+order_index_id
+		        }
+            //确定添加地址
+            $j(".public-g-btn").click(function(){
+            	/* 页面对应的内容
+            	#adderssName 请输入收货人姓名
+            	#Phone 联系电话
+            	addressOdiqu 收货地址
+            	#contactAddress 详细地址 */
+            	var adderssName =$j("#adderssName").val();//请输入收货人姓名
+        		var Phone = $j("#Phone").val();//联系电话
+        		if(addressOdiqu){
+        			var addressOdiqu2 = addressOdiqu.join("");//收货地址
+        		}else{
+        			alert("请选择收货地址")
+        		}
+        		
+        		var contactAddress = $j("#contactAddress").val();//详细地址
+            	/*   添加地址内容
+            	 @param realName 姓名
+            	 @param phone    电话
+            	 @param area     三级区域
+            	 @param address  详细地址
+            	 @returns */
+            	 
+              var address_html = addAddress(adderssName, Phone, addressOdiqu2, contactAddress);
+              
+        	  if(address_html == "ok"){
+        		  if(order_index_id == ""){
+        			 
+        			 setTimeout(function() {
+	      				mui.openWindow({
+	      					url: 'address.html',
+	      					id: 'address',
+	      					showType: 'zoom-fade-out',
+	      					showTime: 200
+	      				});
+	      			}, 500);
+        		  }else{
+        			  setTimeout(function() {
+        				mui.openWindow({
+        					url: urL_,
+        					id: 'order',
+        					showType: 'zoom-fade-out',
+        					showTime: 200
+        				}); 
+        			}, 500);
+        			 
+        		  }
+        		 
+        	  }
+            });
+            /*表单内容删除按钮*/
+            $j(".text-clear-content").focus(function() {
+            	$j(".clear-button").hide();
+            	$j(this).next(".clear-button").show();
+	            
+            });
+            $j(".clear-button").click(function() {
+            	$j(this).prev().val("");
+            	$j(this).prev().focus();
+	        });
+            $j(".text-clear-city").click(function() {
+            	$j(".clear-button").hide();
+            });
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link rel="stylesheet" href="css/frame.css">
+<link rel="stylesheet" href="css/minPublicBenefit.css">
+<link rel="stylesheet" href="css/common.css">
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="js/popUpWin.js"></script>
+<title>汇聚甘肃后台管理系统-商城管理-营销管理-各类专场</title>
+<script type="text/javascript" src="js/angular-1.0.1.min.js"></script>
+<script type="text/javascript" src="js/laydate.js"></script>
+<script type="text/javascript" src="js/performance.js"></script>
+
+
+</head>
+<body>
+	<div class="frameRall">
+		<!-- 头部通知搜索栏 -->
+		<div ng-app="">
+			<div ng-include="'head.htm'"></div>
+		</div>
+		<div class="headlineBig ml40 mb20 clearfix">
+			<h1 class="stair">
+				商城管理<span>工作平台</span>
+			</h1>
+			<h1 class="secondLevel">专场活动管理</h1>
+		</div>
+		<div class="prizeManage ml40 clearfix">
+			<div class="commodityClass orderFormOption"> 
+			 <!-- 专场类型(1,2,3,4,5,6)生活服务，海淘，9.9特卖，休闲娱乐，美食 ，虚拟卡卷-->
+				<a href="javascript:;" data-value="1" class="bgGreen" data-field='life' title="">生活服务
+				</a> <a href="javascript:;" data-value="2" data-field='haitao' title="">海淘管理
+				</a> <a href="javascript:;" data-value="3" data-field='sale'>9.9特卖
+				</a> <a href="javascript:;" data-value="4" data-field='xiuxian'>休闲娱乐
+				</a> <a href="javascript:;" data-value="5" data-field='cate'>美食</a>
+				</a> <a href="javascript:;" data-value="6" data-field='card'>虚拟卡卷</a>
+			</div>
+			<div class="commodityBox">
+				<div class="commodityButBox clearfix mt30 mb30">
+					<a href="javascript:;" class="butBox seckillAdd addGroupActivity">添加专场活动</a>
+				</div>
+				<!-- 添加团购活动-->
+				<div class="seckillAddBox grouponAddBox seckillWin"
+					style="height: 280px;">
+					<i class="seckillClose"></i>
+					<form action="" method="get" id="form">
+						<ul>
+							<input name="id" type="hidden" value="" />
+							<li><span><i class="colorRed">*</i>专场活动：</span> <select
+                                name="part" class="wi_300">
+                                    <option value="1">生活服务</option>
+                                    <option value="2">海淘</option>
+                                    <option value="3">9.9特卖</option>
+                                    <option value="4">休闲娱乐</option>
+                                    <option value="5">美食</option>
+                                    <option value="6">虚拟卡卷</option>
+                            </select>
+                            </li>
+							<li><span><i class="colorRed">*</i>选择类别：</span> <select name="type2">
+									<option value="">请选择二级分类</option>
+							</select> <select name="type3" class="ml10">
+									<option value="">请选择三级分类</option>
+							</select>
+							</li>
+							<li><span><i class="colorRed">*</i>活动商品：</span> <select
+								name="goods_id" class="wi_300">
+									<option value="0">请选择</option>
+							</select>
+							</li>
+							
+							<li><span><i class="colorRed"></i>商品标签：</span> <select
+								name="label" class="wi_300">
+									<!-- <option value="0">请选择</option>
+									<option value="1">秒杀</option>
+									<option value="2">团购</option>
+									<option value="3">龙支付</option>-->
+									<option value="4">专场活动</option>
+							</select>
+							</li>
+							<li><span><i class="colorRed">*</i>活动价格：</span>
+								<input type="text" class="seckillUpInp w40" min="1"
+								name="real_price" value="" /><label class="ml10">原价</label> <input type="text"
+                                class="seckillUpInp w40" name="price" value="" disabled="disabled" />
+							</li>
+							<li class="seckillUpBut"><a href="javascript:;"
+								class="butBox addActivity">提交</a></li>
+						</ul>
+					</form>
+				</div>
+				<table class="commodityTab orderFormTab">
+					<thead>
+						<tr class="salesManageTr">
+							<th>编号</th>
+							<th>商品名称</th>
+							<th>供应商名称</th>
+							<!-- <th>结束时间</th> -->
+							<th>活动价格</th>
+							<!-- <th>活动库存</th>
+							<th>状态</th> -->
+							<th class="tc">操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- <tr>
+							<td>1</td>
+							<td>Dior/迪奥小姐花漾淡香氛30ml50ml100ml 甜心香水女士</td>
+							<td>嘉峪关自由超市</td>
+							<td>2017-06-02 23:00:00</td>
+							<td>
+								<span class="costList">数量达到：1000</span>
+								<span class="costList">享受价格：50</span>
+							</td>
+							<td>150</td>
+							<td>已发布/已结束</td>
+							<td>
+								<span class="operationButBox">
+									<a href="javascript:;" class="butBox">查看</a>
+									<a href="javascript:;" class="butBox ml10">编辑</a>
+									<a href="javascript:;" class="butBox mt10">移除</a>
+								</span>
+							</td>
+						</tr> -->
+					</tbody>
+					<tfoot class="commFootTd">
+						<tr>
+							<td colspan="4" class="commFootFont textar">总计<span
+								class='count'>0</span>条数据&emsp;&emsp;分为<span class="pageCount">0</span>页&emsp;每页<span
+								class="pageSize">10</span>个</td>
+							<td colspan="3" class="commPageBut">
+								<div class="commPageBut2 fr pr30">
+									<a href="javascript:;" title="第一页" class="commPage1"></a> <a
+										href="javascript:;" title="上一页" class="commPage2"></a> <select
+										name="curpage" curpage="1">
+										<option value="">1</option>
+									</select> <a href="javascript:;" title="下一页" class="commPage3"></a> <a
+										href="javascript:;" title="尾页" class="commPage4"></a>
+								</div>
+							</td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

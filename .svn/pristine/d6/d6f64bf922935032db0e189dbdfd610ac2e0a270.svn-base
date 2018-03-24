@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>消息</title>
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/bass.css" />
+		<link rel="stylesheet" href="../css/header.css" />
+		<link rel="stylesheet" href="../css/personalcenter.css" />
+		<style>
+			.xinxiBox {
+				background: #fff !important;
+				border-bottom: 1px solid #dbdbdb;
+			}
+			.xinxiBox:nth-last-of-type(1){
+				border-bottom:none;
+			}
+			.xinxiBox .mui-col-xs-3 {
+				text-align: center;
+			}
+			
+			.xinxiBox .mui-col-xs-3 img {
+				display: block;
+				width: 60px;
+				height: 60px;
+				margin: 10px auto;
+			}
+			
+			.xinxiBox .mui-col-xs-9 p:nth-of-type(1) {
+				color: #232326;
+				font-size: 14px;
+				text-align: justify;
+				margin-bottom: 0px;
+				line-height: 35px;
+			}
+			
+			.xinxiBox .mui-col-xs-9 p:nth-of-type(2) {
+				color: #818181;
+				font-size: 13px;
+				text-align: justify;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				margin-bottom: 0px;
+			}
+			
+			.xinxiBox .mui-col-xs-9 p:nth-of-type(3) {
+				color: #818181;
+				float: right;
+				margin-right: 10px;
+				font-size: 13px;
+				text-align: justify;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				margin-bottom: 0px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">消息</h1>
+			 <span class="mui-pull-right mui-action-back" style="color: #fff;font-size: 13px;line-height: 44px;">关闭</span>
+		</header>
+		<div class="mui-content">
+			<!-- <div class="mui-row xinxiBox">
+				<div class="mui-col-xs-3">
+					<img src="../img/smallImg/xin1.jpg" />
+				</div>
+				<div class="mui-col-xs-9">
+					<p>善融优惠go消息</p>
+					<p>Zy有一条善融消息，请点击查看！</p>
+					<p>昨天18:10</p>
+				</div>
+			</div>
+			<div class="mui-row xinxiBox">
+				<div class="mui-col-xs-3">
+					<img src="../img/smallImg/xin2.jpg" />
+				</div>
+				<div class="mui-col-xs-9">
+					<p>系统消息</p>
+					<p>Zy发送了请求，请点击查看！</p>
+					<p>昨天15:10</p>
+				</div>
+			</div>
+			<div class="mui-row xinxiBox">
+				<div class="mui-col-xs-3">
+					<img src="../img/smallImg/xin3.png" />
+				</div>
+				<div class="mui-col-xs-9">
+					<p>龙支付消息</p>
+					<p>小龙有一条支付消息，请点击查看！</p>
+					<p>6月3日</p>
+				</div>
+			</div>
+			<div class="mui-row xinxiBox">
+				<div class="mui-col-xs-3">
+					<img src="../img/smallImg/xin4.jpg" />
+				</div>
+				<div class="mui-col-xs-9">
+					<p>卡卷消息</p>
+					<p>Zy获得了一张卡卷，请点击查看！</p>
+					<p>6月1日</p>
+				</div>
+			</div>
+			<div class="mui-row xinxiBox">
+				<div class="mui-col-xs-3">
+					<img src="../img/smallImg/xin5.png" />
+				</div>
+				<div class="mui-col-xs-9">
+					<p>二级行专区活动</p>
+					<p>定西支行6月份限时抢活动即将开始。</p>
+					<p>5月30日</p>
+				</div>
+			</div> -->
+		</div>
+		<div style="height: 55px;"></div>
+		<!--底部导航-->
+		<div class="bgcolor footer22">
+			<div class="footer144" onclick="javascript:window.location.href='../../index.html'">
+				<img class="mui-icon-home1" src="../img/smallImg/nav1.png" />
+				<p>首页</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='discountgo.html'">
+				<img class="mui-icon-email12" src="../img/smallImg/18.png" />
+				<p>善融</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='../../Local1.html'">
+				<img class="mui-icon-home1" src="../img/smallImg/19.png" />
+				<p>地方汇</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='../../special1.html'">
+				<img class="mui-icon-home1" src="../img/smallImg/20.png" />
+				<p>专场</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='personalcenter.html'">
+				<img class="mui-icon-gear1" src="../img/smallImg/nav4.png" />
+				<p>个人中心</p>
+			</div>
+		</div>
+		<!--底部导航-->
+	</body>
+	<script type="text/javascript" src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+	<script charset="UTF-8" type="text/javascript" src="../js/publicAddress.js" ></script>
+	<script type="text/javascript" src="../js/article/article.js"></script>
+	<script>
+		 //跳转对应的新闻公告详情 
+		$(function(){
+		$(".mui-content").html("");
+		var html="";
+		var getAllArticle_=getAllArticle();
+		getAllArticle_=JSON.parse(getAllArticle_);
+		$.each(getAllArticle_,function(i,val){
+		var type=val.type;
+		if(type==1){
+		type="活动";
+		}else if(type==2){
+		type="精选";
+		}else if(type==3){
+		type="推荐";
+		}else{
+		type="新闻";
+		}
+			html+="<div id='"+val.id+"' class='mui-row xinxiBox'>"
+				 +"<div class='mui-col-xs-3'>"
+				 +"<img src='../img/smallImg/xin5.png' />"
+				 +"</div>"
+				 +"<div class='mui-col-xs-9'>"
+				 +"<p>"+type+"</p>"
+				 +"<p>"+val.title+"</p>"
+				 +"<p>"+val.addTime+"</p>"
+				 +"</div>"
+				 +"</div>";
+    	})
+		$(".mui-content").html(html);
+		
+		var abc = $(".xinxiBox")
+			for (var i = 0; i < abc.length; i++) {
+			    (function(e){  //自执行函数实时把i传入e
+			        abc[e].onclick=function(){  //  通过传入的e获取到哪个按钮发生了点击事件
+//			            alert(e) //弹出e（此处e为i实时对应值）
+						//alert(e);
+						var NewsID =$(this).attr("id");
+						console.log(NewsID)
+                         setTimeout(function(){
+							mui.openWindow({
+								url: 'news_details.html?id='+NewsID,
+								id: 'news_details',
+								showType: 'zoom-fade-out',
+								showTime: 200
+							});
+						},200); 
+			        }
+			    })(i)    
+			};   //采用闭包和自执行函数获取i
+		 });
+         
+	</script>
+
+</html>

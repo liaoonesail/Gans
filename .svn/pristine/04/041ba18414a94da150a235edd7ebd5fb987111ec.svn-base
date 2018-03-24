@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>微公益首页</title>
+		<link charset="UTF-8"  rel="stylesheet" href="stage/css/mui.min.css" />
+		<link charset="UTF-8"  rel="stylesheet" href="stage/css/bass.css" />
+		<link charset="UTF-8"  rel="stylesheet" href="stage/css/tiny.css" />
+		<!--弹窗css-->
+		<link rel="stylesheet" href="stage/css/login_box.css" />
+		<link rel="stylesheet" href="stage/css/popup.css" />
+		<link rel="stylesheet" href="stage/css/personalcenter.css" />
+	</head>
+
+	<body>
+		 <header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">微公益首页</h1>
+			<span class="mui-pull-right mui-action-back" style="color: #fff;font-size: 13px;line-height: 44px;">关闭</span>
+		</header>
+		<div style="height: 44px;"></div>
+		<!--  我要捐款弹窗 -->
+		<div class="notLoggedIn-0">
+			<div class="notLoggedIn-0-List" style="margin: 25% auto;">
+				<h3>我要捐款</h3>
+				<label class="user-label-position">
+					<input id="juankuanphone" class="user_phopeTel1 text-clear-content" type="number" placeholder="请输入手机号"/>
+					<span class="clear-button"></span>
+				</label>
+				<label class="user-label-position">
+					<input id="juankuanprice" class="user_phopeTel1 text-clear-content" type="number" placeholder="请输入捐款金额"/>
+					<span class="clear-button"></span>
+				</label>
+				<p id="shuru_alert2" style="text-align: center;font-size: 12px;margin-bottom: 2px;color: red;display: none;"></p> 
+				<input  id="juankuanBtns" type="button" value="确定捐款" style="width: 80%;margin: 15px auto;display: block;height:40px;" />
+				<div class="maiojiaGoods_cancel deliverGoods_box_coles">关闭</div>
+			</div>
+		</div>
+		<!--  我要捐款弹窗 -->
+		<div class="tinyBox">
+			<!--我要捐款的按钮-->
+			<img class="btnsTiny" src="stage/img/smallImg/btns.png" />
+			<!--我要抽奖的按钮-->
+			<img class="btnsTiny688" src="stage/img/smallImg/btnsweigongyi_03.png" />
+		</div>
+		<script charset="UTF-8"  type="text/javascript" src="stage/js/jquery-1.10.2.js"></script>
+		<script charset="UTF-8"  type="text/javascript" src="stage/js/mui.min.js"></script>
+		<script charset="UTF-8"  type="text/javascript" src="stage/js/publicAddress.js" ></script>
+		<script charset="UTF-8"  type="text/javascript" src="stage/js/gongyi/gongyi.js" ></script>
+		<script type="text/javascript">
+			/*表单内容删除按钮*/
+		    $(".text-clear-content").focus(function() {
+		    	$(".clear-button").hide();
+		    	$(this).next(".clear-button").show();
+		        
+		    });
+		    $(".clear-button").click(function() {
+		    	$(this).prev().val("");
+		    	$(this).prev().focus();
+		    });
+		    $(".text-clear-code").click(function() {
+		    	$(".clear-button").hide();
+		    });
+		    $(".deliverGoods_box_coles").click(function() {
+				$(".notLoggedIn-0").css("transform", "translateY(-60000px)");
+			});
+			//btnsTiny我要捐款的按钮
+			$(".btnsTiny").click(function() {
+				$(".notLoggedIn-0").css("transform", "translateY(0px)");
+			});
+			//juankuanBtns确定捐款按钮
+			$("#juankuanBtns").click(function(){
+				var phoned = /^1[34578]\d{9}$/; //联系电话正则
+				if(phoned.test($("#juankuanphone").val()) == false) {
+					$("#shuru_alert2").css("display","block");
+					$("#shuru_alert2").html("手机号码格式不对");
+					return
+				}
+				/**
+				 * 提交抽奖检查
+				 * @param phone 电话号码
+				 * @param price 捐款金额
+				 * @returns 允许本次捐款返回 捐款订单ID(为全数字),否则返回对应错误信息(带中文数据)
+				 */
+				 var  phone =$("#juankuanphone").val();
+				 var  price =$("#juankuanprice").val();
+				 var  juankuan_ =juankuan(phone, price);
+				// juankuan_ = JSON.parse(juankuan_);
+				 console.log(juankuan_)
+				 if(!isNaN(juankuan_)){
+					 $("#shuru_alert2").css("display","block");
+					 $("#shuru_alert2").html(juankuan_);
+					 $(".notLoggedIn-0").css("transform", "translateY(-60000px)");
+					 $("#juankuanphone").val("");
+					 $("#juankuanprice").val("");
+				 }else{
+					 $("#shuru_alert2").css("display","block");
+					 $("#shuru_alert2").html(juankuan_);
+				 } 
+				
+			})
+			//btnsTiny我要抽奖的按钮
+			$(".btnsTiny688").click(function() {
+				setTimeout(function() {
+					mui.openWindow({
+						url: 'stage/discountgo/luck.html',
+						id: 'luck',
+						showType: 'zoom-fade-out',
+						showTime: 200
+					});
+				}, 200);
+			});
+		</script>
+	</body>
+
+</html>

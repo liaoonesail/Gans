@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC 
+    "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanzhou.entity.UserTweprize" >
+
+
+	<insert id="add"  parameterType="com.lanzhou.entity.UserTweprize" >
+		insert into user_tweprize(prizeLevel,userPhone,time,status) values(#{prizeLevel},#{userPhone},#{time},#{status})
+	</insert>
+	
+	<delete id="del"  parameterType="int"  >
+		delete  from user_tweprize where id=#{id}
+	</delete>
+	
+	<update id="update" parameterType="com.lanzhou.entity.UserTweprize" >
+		update user_tweprize 
+			set 
+			prizeLevel=#{prizeLevel},
+			userPhone=#{userPhone},
+			time=#{time},
+			status=#{status}
+			where 
+				id=#{id}
+	</update>
+	<select  id="getById" parameterType="int"  resultType="com.lanzhou.entity.UserTweprize">
+		select * from user_tweprize where id=#{id}
+	</select>
+	<select id="count" parameterType="string" resultType="int">
+		select count(*) from user_tweprize where userPhone like '%${value}%'
+	</select>
+	<select id="listpage" parameterType="map" resultType="com.lanzhou.entity.UserTweprize">
+		select * from user_tweprize where userPhone like '%${name}%' order by id desc limit #{startRecord},#{pageSize}
+	</select>
+	<select id="getPhone" parameterType="string" resultType="com.lanzhou.entity.UserTweprize">
+		select * from user_tweprize where userPhone=#{userPshone}
+	</select>
+	<select id="listByUserId" parameterType="int" resultType="com.lanzhou.entity.UserTweprize">
+		select * from user_tweprize a,user b where a.userPhone=b.phone and b.id=#{userId}
+	</select>
+</mapper>

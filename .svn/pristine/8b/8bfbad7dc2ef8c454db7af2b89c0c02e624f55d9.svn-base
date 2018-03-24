@@ -1,0 +1,64 @@
+package com.lanzhou.service;
+
+import java.util.HashMap;
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.lanzhou.dao.PerformanceDao;
+import com.lanzhou.entity.Performance;
+import com.lanzhou.entity.Type;
+
+@Service
+@Transactional
+public class PerformanceService {
+	@Resource
+	private PerformanceDao dao;
+	public void add(Performance performance) {
+		// TODO Auto-generated method stub
+		dao.add(performance);
+	}
+	public int count(Integer part) {
+		// TODO Auto-generated method stub
+		return dao.count(part);
+	}
+	public List<Performance> listpage(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return dao.listpage(map);
+	}
+	public Performance getid(Integer id) {
+		// TODO Auto-generated method stub
+		return dao.getid(id);
+	}
+	public void update(Performance performance) {
+		// TODO Auto-generated method stub
+		dao.update(performance);
+	}
+	public void del(Integer id) {
+		// TODO Auto-generated method stub
+		dao.del(id);
+	}
+	public List<Performance> list(Integer typeId, Integer part) {
+		// TODO Auto-generated method stub
+		return dao.list(typeId,part);
+	}
+	public Performance getByGoodsId(Integer goodsId, Integer part) {
+		// TODO Auto-generated method stub
+		return dao.getByGoodsId(goodsId,part);
+	}
+	public List<Type> getTypeList(String part) {
+		// TODO Auto-generated method stub
+		return dao.getTypeList(part);
+	}
+
+	public int perCount(HashMap<String, Object> map) {
+		return dao.perCount(map);
+	}
+
+	public List<Performance> perList(HashMap<String, Object> map) {
+		return dao.perList(map);
+	}
+}

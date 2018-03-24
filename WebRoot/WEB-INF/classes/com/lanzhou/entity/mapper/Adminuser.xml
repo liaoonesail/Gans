@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC 
+    "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanzhou.entity.Adminuser" >
+
+
+	<insert id="add"  parameterType="com.lanzhou.entity.Adminuser" >
+		insert into adminuser(username,password,real_name,phone,email,reg_time,login_time,superadmin) values(#{username},#{password},#{real_name},#{phone},#{email},#{reg_time},#{login_time},#{superadmin})
+	</insert>
+	<delete id="del"  parameterType="int"  >
+		delete  from adminuser where id=#{id}
+	</delete>
+	
+	<update id="update" parameterType="com.lanzhou.entity.Adminuser" >
+		update adminuser 
+			set 
+			username=#{username},
+			password=#{password},
+			real_name=#{real_name},
+			phone=#{phone},
+			email=#{email},
+			login_time=#{login_time},
+			superadmin=#{superadmin}
+			where 
+				id=#{id}
+	</update>
+	<select  id="getById" parameterType="int"  resultType="com.lanzhou.entity.Adminuser">
+		select * from adminuser where id=#{id}
+	</select>
+	<select  id="getByusername" parameterType="string"  resultType="com.lanzhou.entity.Adminuser">
+		select * from adminuser where username=#{username}
+	</select>
+	<select id="list" resultType="com.lanzhou.entity.Adminuser">
+		select * from adminuser
+	</select>
+	<select id="count" parameterType="string" resultType="int">
+		select count(*) from adminuser where username like '%${value}%'or phone like '%${value}%'
+	</select>
+	<select id="listpage" parameterType="map" resultType="com.lanzhou.entity.Adminuser">
+		select * from adminuser where 
+		username like '%${name}%' or phone like '%${name}%'
+		order by id desc limit #{startRecord},#{pageSize}
+	</select>
+</mapper>

@@ -1,0 +1,33 @@
+.topNva{
+	height: 35px;
+	position: fixed;
+	top: 44px;
+	z-index: 111111;
+	background:#e5e5e5 ;
+	max-width: 640px;
+}
+.topNvaUlLi{
+	position: relative;
+}
+
+.topNvaUlLi .mui-segmented-control.mui-scroll-wrapper li {
+    display:inline-block;
+    padding:0px 16px;
+    color: #000;
+    font-size: 14px;
+    height: 100%;
+    line-height: 33px;
+}
+.ontopOk{
+	background: #fff !important;
+	color: #09b6f2 !important;
+	border-bottom: 2px solid  #09b6f2;
+}
+.ontopOk p{
+	background: #fff !important;
+	color: #09b6f2 !important;
+}
+.recommendBoxzhou{
+	display: none;
+	background: #fff;
+}

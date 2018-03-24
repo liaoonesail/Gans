@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>入学季金榜题名</title>
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/bass.css" />
+		<link rel="stylesheet" href="../css/tiny.css" />
+		<link rel="stylesheet" href="../css/student.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">入学季金榜题名</h1>
+			<span class="mui-pull-right mui-action-back" style="color: #fff;font-size: 13px;line-height: 44px;">关闭</span>
+		</header>
+		<div style="height: 44px;"></div>
+		<div class="studentBox">
+			<img class="studenTtitleImg" src="../img/person/studentTitle.png" alt="" />
+			<!--活动规则-->
+			<div class="studentActive">
+				<p class="studentActiveTitle"><span class="studentMainTitle">/活/动/规/则/</span></p>
+				<span class="studentTitle">活动对象</span>
+				<p class="studentContent">
+					<span class="studentContentTitle">家长：</span>
+					<span class="studentContentInfo">签约建行手机银行（并绑定建行龙支付）并体验一笔转账汇款交易。</span>
+				</p>
+				<p class="studentContent">
+					<span class="studentContentTitle">学生：</span>
+					<span class="studentContentInfo">签约建行手机银行（并绑定建行龙支付）并使用移动手机号码。</span>
+				</p>
+				<span class="studentTitle">礼品活动</span>
+				<p class="studentContent">
+					<span class="studentContentTitle">家长礼包：</span>
+					<span class="studentContentInfo">赠送手机话费10元。</span>
+				</p>
+				<p class="studentContent">
+					<span class="studentContentTitle">学生礼包：</span>
+					<span class="studentContentInfo">赠送移动话费50元，移动流量包1G；获得1次“欢乐节日游”抽奖资格。</span>
+				</p>
+				<p class="studentActiveTitle"></p>
+			</div>
+			<div class="studentGiftBox">
+				<!--以下礼包图标PC浏览器显示会有兼容问题,可能显示空白或者错位，手机可以正常浏览-->
+				<!--学生礼包-->
+				<img src="../img/person/studentGift.svg" class="studentGiftRight giftBag0" width="130" height="90" ></img>
+				<!--家长礼包-->
+				<img src="../img/person/personGift.svg" class="giftBag1" width="130" height="90" ></img>
+			</div>
+			<div style="height:55px"></div>
+			<div class="studentBottom">
+				<img src="../img/person/studentL.svg" class="studentGiftFl" width="30" height="50" ></img>
+				<div class="studentGiftBottom">
+					<!--以下图标PC浏览器显示会有兼容问题,可能显示空白禁止删除，手机可以正常浏览-->
+					<!--礼包详情-->
+					<img src="../img/person/studentDetails.svg" class="studentGiftDetails" width="130" height="40" ></img>
+					<!--我要抽奖-->
+					<img onclick="javascript:window.location.href='Local2.html'"  src="../img/person/draw.svg" width="130" height="40" ></img>
+				</div>
+				<img src="../img/person/studentR.svg" class="studentGiftFr" width="30" height="50" ></img>
+			</div>
+			<!--输入手机号领取礼包弹窗-->
+			<div class="studentShade">
+				<div class="studentPhoneDialogs studentPhoneDialogsForm">
+					<i class="studentPhoneClose"></i>
+					<h5 class="studentPhoneTitle">请输入您手机银行签约手机号：</h5>
+					<input id="phoenList" type="text" name="" class="studentPhoneText" />
+					<span id="shuru_alert2" class="studentPhoneTips"></span>
+					<button type="submit" class="studentPhoneSubmit"></button>
+				</div>
+				<!--领取礼包成功弹窗-->
+				<div class="studentPhoneDialogs studentGiftOk" style="display: none;">
+					<i class="studentPhoneClose"></i>
+					<p class="studentGiftOkTips">＊您可以前往<a href="">个人中心</a>中奖奖品中查看</p>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+		<script type="text/javascript" src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/publicAddress.js" ></script>
+		<script>
+			mui.init();
+			/**
+			 * 前端异步调用 输入签约手机号 成功返回中奖信息 失败返回（失败有两种情况一种是手机号错误，另一种是此手机号已经领取）
+			 * @param phone
+			 * @param user_id
+			 * @param response
+			 * @return
+			 * @throws IOException
+			 */
+			 function getPrizephone(phone,label){
+				    var url = "userSp/getPrize.do";
+					var data = {
+							phone:phone,
+							label:label
+				    };
+					async = false;
+					var result = ajaxSubmit(url, data, async);
+					//console.log(result)
+					return result;
+			}
+			var label =null;
+			//点击礼包显示输入手机号弹窗学生礼包
+			$(".giftBag0").on('click',function(){			 
+				$(".studentShade").fadeIn(300);
+				label =1;
+			});
+			//点击礼包显示输入手机号弹窗家长礼包
+			$(".giftBag1").on('click',function(){ 
+				$(".studentShade").fadeIn(300);
+				label =2;
+				
+			});
+			//点击领取显示领取成功
+			$(".studentPhoneSubmit").on('click',function(){
+				var phone =$("#phoenList").val();
+				var phoned = /^1[34578]\d{9}$/; //联系电话正则
+				if(phoned.test($("#phoenList").val()) == false) {
+					$("#shuru_alert2").css("display","block");
+					$("#shuru_alert2").html("手机号码格式不对");
+					return
+				}
+				label =label;
+				var getPrizephone_ = getPrizephone(phone,label);
+				if(getPrizephone_ =="true"){
+					$(".studentPhoneDialogsForm").hide();
+					$(".studentGiftOk").show();
+					setTimeout(function(){
+						$(".studentGiftOk").hide();
+						setTimeout(function(){	
+							mui.openWindow({
+								url: 'personalcenter.html?',
+								id: 'personalcenter',
+								showType: 'zoom-fade-out',
+								showTime: 200
+							});
+						},200); 
+					},200)
+					
+				}else{
+					$("#shuru_alert2").html(getPrizephone_);
+				}
+				
+				
+			});
+			//点击关闭按钮隐藏输入手机号弹窗
+			$(".studentPhoneClose").on('click',function(){
+				$(".studentShade").hide();
+				$(".studentPhoneDialogsForm").show();
+				$(".studentGiftOk").hide();
+			});
+			//点击跳转到礼包详情
+			$(".studentGiftDetails").click(function() {
+				setTimeout(function() {
+					mui.openWindow({
+						url: 'studentGift.html',
+						id: 'student',
+						showType: 'zoom-fade-out',
+						showTime: 200
+					});
+				}, 200);
+			});
+		</script>
+	</body>
+
+</html>

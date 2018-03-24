@@ -1,0 +1,206 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<link rel="stylesheet" href="css/frame.css">
+	<link rel="stylesheet" href="css/minPublicBenefit.css">
+	<link rel="stylesheet" href="css/common.css">
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<title>汇聚甘肃后台管理系统-商城管理-商品管理-普通商品-发布商品-第四步活动类型</title>
+    <script type="text/javascript" src="js/angular-1.0.1.min.js"></script>
+</head>
+<body>
+	<div class="frameRall">
+		<!-- 头部通知搜索栏 -->
+		<div ng-app="">
+            <div ng-include="'head.htm'"></div>
+        </div>
+		<div class="headlineBig ml40 mb20 clearfix">
+			<h1 class="stair">商品管理<span>添加新商品</span></h1>
+		</div>
+		<!-- 活动类型 -->
+		<div class="prizeManage ml40 clearfix">
+			<div class="commodityBox">
+				<!-- 操作提示 -->
+				<div class="promptInfo">
+					<div class="clearfix">
+						<i class="promptInfoIco"></i>
+						<span class="promptInfoTit">操作提示</span>
+					</div>
+					<ul>
+						<li>标识"<span class="colorRed">*</span>"的选项为必填项，其余为选填项</li>
+						<li>请按提示栏信息进行商品添加</li>
+						<li>默认模式：不区分仓库货地区模式设置价格与库存；长裤模式：按仓库设置价格与库存；地区模式：按地区设置价格与库存</li>
+						<li>必须点击扫码入库按钮文本框出现光标再使用扫码枪扫码，扫码入库功能必须去店铺基本信息设置里面设置扫码appkey才可以使用</li>
+					</ul>
+				</div>
+				<div class="issueOneBox clearfix">
+					<div class="stepBox clearfix">
+						<i href="javascript:;">1</i>
+						<span></span>
+						<i href="javascript:;">2</i>
+						<span></span>
+						<i href="javascript:;">3</i>
+						<span></span>
+						<i href="javascript:;" class="stepBox1">4</i>
+						<span></span>
+						<i href="javascript:;">5</i>
+					</div>
+				</div>
+				<h1 class="typeCommTit">选择活动类型</h1>
+				<div class="commonForm activeForm">
+					<ul>
+						<li>
+							<!-- 选择不同活动类型，活动列表展示不同 -->
+							<span class="commonFormName">商品类目：</span>
+							<select name="" class="activTySel">
+								<option value="xsms">限时秒杀</option>
+								<option value="xstg">限时团购</option>
+							</select>
+						</li>
+						<li>
+							<span class="commonFormName mr10">活动列表：</span>
+							<!-- 限时秒杀 -->
+							<table class="infoTabShow activeTyTab" id="limit">
+								<tbody>
+									<tr>
+										<td>活动名称</td>
+										<td>活动开始时间</td>
+										<td>活动结束时间</td>
+										<td>活动状态</td>
+										<td>订单数</td>
+										<td>已售数量</td>
+										<td>操作</td>
+									</tr>
+								</tbody>
+								<tr>
+									<td>春季家电家具疯狂秒杀</td>
+									<td>2017-06-07:08:00:00</td>
+									<td>2017-06-07:23:00:00</td>
+									<td>未开始</td>
+									<td>10</td>
+									<td>20</td>
+									<td>
+										<a class="butBox" href="javascript:;">移除</a>
+										<a class="butBox activeBut" href="javascript:;">添加</a>
+									</td>
+								</tr>
+							</table>
+							<div class="limitSeckillWin limitWin">
+								<form action="" method="get" accept-charset="utf-8">
+									<ul>
+										<li>
+											<label>数量：</label>
+											<input type="text" name="" value="" />
+											<span>件</span>
+										</li>
+										<li>
+											<label>限购：</label>
+											<input type="text" name="" value="" />
+											<span>件</span>
+										</li>
+										<li>
+											<label>秒杀价格：</label>
+											<input type="text" name="" value="" />
+											<span>元</span>
+										</li>
+										<li class="tc">
+											<a class="butBox ml40" href="javascript:;">提交</a>
+										</li>
+									</ul>
+								</form>
+								<i></i>
+							</div>
+							<!-- 限时团购 -->
+							<table class="infoTabShow activeTyTab" id="Groupon">
+								<tbody>
+									<tr>
+										<td>序列</td>
+										<td>商品名称</td>
+										<td>供应商名称</td>
+										<td>活动结束时间</td>
+										<td>活动库存</td>
+										<td>每人限购</td>
+										<td>订单数</td>
+										<td>已售数量</td>
+										<td>团价格</td>
+										<td>操作</td>
+									</tr>
+								</tbody>
+								<tr>
+									<td>1</td>
+									<td>SIEMENS/西门子KA92NV66TI双开门双门对开门家用变频无霜垫冰箱</td>
+									<td>兰州超市</td>
+									<td>2017-06-07:23:00:00</td>
+									<td>100</td>
+									<td>20</td>
+									<td>20</td>
+									<td>20</td>
+									<td>20</td>
+									<td>
+										<a class="butBox mb10" href="javascript:;">移除</a>
+										<a class="butBox activeBut" href="javascript:;">添加</a>
+									</td>
+								</tr>
+							</table>
+							<div class="limitSeckillWin GrouponWin">
+								<form action="" method="get" accept-charset="utf-8">
+									<ul>
+										<li>
+											<label>数量：</label>
+											<input type="text" name="" value="" />
+											<span>件</span>
+										</li>
+										<li>
+											<label>限购：</label>
+											<input type="text" name="" value="" />
+											<span>件</span>
+										</li>
+										<li>
+											<label>团购价格：</label>
+											<input type="text" name="" value="" />
+											<span>元</span>
+										</li>
+										<li class="tc">
+											<a class="butBox ml40" href="javascript:;">提交</a>
+										</li>
+									</ul>
+								</form>
+								<i></i>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<a class="butBox accomplish" href="payment.html">发布商品</a>
+			</div>
+			
+		</div>
+	</div>
+	<script type="text/javascript">
+	$(function(){
+		/*活动类型*/
+		$(".activTySel>option").click(function() {
+			var Active = $(this).index();
+			$(".activeTyTab").hide();
+			$(".activeTyTab").eq(Active).show();
+			$(".limitSeckillWin").hide();
+		});
+		$(".activeBut").click(function() {
+			var AcTab = $(this).parents(".activeTyTab").attr("id");
+			$('.'+AcTab+'Win').toggle();
+			var ButTop = $(this).offset().top-120;
+			var ButLeft = $(this).offset().left-500;
+			$('.'+AcTab+'Win').css({
+				top: ButTop,
+				left: ButLeft
+			});
+			$('.'+AcTab+'Win i').click(function() {
+				$('.'+AcTab+'Win').hide();
+			});
+		});
+	});
+	</script>
+</body>
+</html>

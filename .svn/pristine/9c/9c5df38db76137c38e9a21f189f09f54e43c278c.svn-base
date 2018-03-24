@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC 
+    "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanzhou.entity.Whitegoods" >
+
+
+	<insert id="add"  parameterType="com.lanzhou.entity.Whitegoods" >
+		insert into whitegoods(goodsId) values(#{goodsId})
+	</insert>
+	
+	<delete id="del"  parameterType="int"  >
+		delete  from whitegoods where id=#{id}
+	</delete>
+	<delete id="delByGoodsId" parameterType="int">
+		delete from whitegoods where goodsId=#{goodsId}
+	</delete>
+	<delete id="delAll">
+		delete  from whitegoods
+	</delete>
+	<select  id="getById" parameterType="int"  resultType="com.lanzhou.entity.Whitegoods">
+		select * from whitegoods where id=#{id}
+	</select>
+	<select id="count" parameterType="string" resultType="int">
+		select count(*) from whitegoods order by id
+	</select>
+	<select id="listpage" parameterType="map" resultType="com.lanzhou.entity.Whitegoods">
+		select * from whitegoods order by id desc limit #{startRecord},#{pageSize}
+	</select>
+	<select id="getByGoodsId" parameterType="int" resultType="com.lanzhou.entity.Whitegoods">
+		select * from whitegoods where goodsId=#{goodsId}
+	</select>
+	
+</mapper>

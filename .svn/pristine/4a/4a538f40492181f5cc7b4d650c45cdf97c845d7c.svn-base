@@ -1,0 +1,71 @@
+.mui-content,body{
+	background: #fff;
+}
+.shop_name .mui-col-xs-12{
+	padding: 10px 6px;
+}
+.shop_name .mui-col-xs-12 h3{
+	margin-top: 0px;
+	font-size: 16px;
+	line-height: 45px;
+	text-align: justify;
+	color: #313030;
+	font-weight: normal;
+	border-bottom: 1px solid #bfbfbf;
+}
+.shop_name .mui-col-xs-12 p{
+	margin-bottom: 1px;
+	line-height: 45px;
+	color: #6c6c6c;
+	border-bottom: 1px solid #bfbfbf;
+	 overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.shop_name .mui-col-xs-12 p img{
+	width: 18px;
+    height: 20px;
+    vertical-align: middle;
+    margin-right: 4px;
+}
+/**/
+.huodongbox .mui-col-xs-12{
+	padding: 10px 6px;
+}
+.huodongbox .mui-col-xs-12 p.huodongtishi{
+	color: #fe4878;
+	margin-bottom: 0px;
+}
+.huodongbox .mui-col-xs-12 table{
+	display: block;
+	width: 100%;
+	border: none;
+	border-top: 1px solid #d9d9d9;
+	border-bottom: 1px solid #EBEAEA;
+	margin: 6px auto;
+}
+.huodongbox .mui-col-xs-12 table tr th{
+	border: none;
+	width: 30%;
+	font-weight: normal;
+	text-align: left;
+	text-indent: 20px;
+	font-size: 13px;
+	line-height: 35px;
+	background: #f5f5f5;
+	border-bottom: 1px solid #EBEAEA;
+}
+.huodongbox .mui-col-xs-12 table tr td{
+	border: none;
+	width: 65%;
+	text-align: left;
+	padding: 4px 4px;
+	font-size: 12px;
+	border-bottom: 1px solid #EBEAEA;
+}
+.huodongbox .mui-col-xs-12 table tr td ul{
+	padding-left: 18px;
+}
+.huodongbox .mui-col-xs-12 table tr td ul li{
+	list-style: disc;
+}

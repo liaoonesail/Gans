@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<link rel="stylesheet" href="css/frame.css">
+	<link rel="stylesheet" href="css/minPublicBenefit.css">
+	<link rel="stylesheet" href="css/common.css">
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="js/popUpWin.js"></script>
+    <script type="text/javascript" src="kingediter/kindeditor-all-min.js"></script>
+    <script type="text/javascript" src="js/advertisement.js"></script>
+    <script type="text/javascript" src="js/angular-1.0.1.min.js"></script>
+	<title>汇聚甘肃后台管理系统-平台管理-广告管理</title>
+</head>
+<body>
+	<div class="frameRall">
+		<!-- 头部通知搜索栏 -->
+		<div ng-app="">
+            <div ng-include="'head.htm'"></div>
+        </div>
+		<div class="headlineBig ml40 mb20 clearfix">
+			<h1 class="stair">平台管理<span>工作平台</span></h1>
+			<h1 class="secondLevel">广告管理</h1>
+		</div>
+		<div class="prizeManage ml40 clearfix">
+			<div class="commodityBox">
+				<div class="commodityButBox clearfix mt30 mb30">
+					<a class="butBox mr20 chooseCommAdd" href="javascript:;">添加广告</a>
+					<input class="commodityInput w200" id="AdvertisementName" name="" value="" placeholder="广告名称" type="text">
+					<a class="butBox ml10" href="javascript:page(1);">搜索</a>
+				</div>
+				<!-- 添加广告 -->
+				<div class="seckillAddBox grouponAddBox dragonAddBox chooseCommWin" style="height: 500px;">
+					<i class="seckillClose"></i>
+					<form id="fromAddAdvertisement" action="" method="get">
+						<ul>
+							<li style="display: none">
+								<span>id：</span>
+								<input type="text" class="seckillUpInp" id="id" name="id" value="" />
+							</li>
+							<li>
+								<span><i class="colorRed">*</i>广告名称：</span>
+								<input type="text" class="seckillUpInp" id="ad_name" name="ad_name"/>
+							</li>
+							<li class="selectList">
+								<span><i class="colorRed">*</i>广告位置：</span>
+								<!-- 选择供应商后，默认其发布的商品全部都支持龙支付活动 -->
+								<!-- <select id="ad_address" name="ad_address" class="w200">
+									<option value="A">首页轮播</option>
+									<option value="B">专场活动轮播</option>
+									<option value="C">专场活动首页</option>
+									<option value="D">周周惠</option>
+									<option value="E">商铺详情</option>
+									<option value="F">生活服务</option>
+									<option value="G">限时秒杀</option>
+									<option value="H">海淘</option>
+									<option value="I">虚拟卡券</option>
+									<option value="J">团购</option>
+									<option value="K">9.9特卖</option>
+									<option value="L">休闲娱乐</option>
+									<option value="M">美食</option>
+									<option value="N">地方汇广告</option>
+									<option value="O">首页广告</option>
+									<option value="P">专场活动广告</option>
+									<option value="Q">善融轮播</option>
+									<option value="R">善融广告</option>
+									<option value="S">龙支付广告</option>
+								</select> -->
+								<select name="one" style="border: solid 1px #D9D9D9;">
+									<option value="">请选择一级分类</option>
+								</select>
+								<select name="two" style="border: solid 1px #D9D9D9;">
+									<option value="">请选择二级分类</option>
+								</select>
+								<select name="three" class="ml10" style="border: solid 1px #D9D9D9;">
+									<option value="">请选择三级分类</option>
+								</select>
+							</li>
+							<li>
+								<span><i class="colorRed">*</i>广告链接：</span>
+								<input type="text" class="seckillUpInp" id="ad_url" name="ad_url"/>
+							</li>
+							<span class="ver-center" style="vertical-align:top;"><i class="colorRed">*</i>广告图片：</span>
+							<textarea name="ad_path" class="contentText2" style="width:600px;height:250px;"></textarea>
+							
+							<li class="seckillUpBut">
+								<a href="javascript:;" class="butBox addAdvertisement">添加</a>
+							</li>
+						</ul>
+					</form>
+				</div>
+				
+				<!-- 需要把现有的所有图片，用后台进行管理 -->
+				<table class="commodityTab orderFormTab">
+					<thead>
+						<tr class="salesManageTr">
+							<th>编号</th>
+							<th>广告名称</th>
+							<th>广告位置</th>
+							<th>预览</th>
+							<th class="tc">操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- <tr>
+							<td>1</td>
+							<td>平和堂</td>
+							<td>专场活动图片a1</td>
+							<td class="advertiseImg"><img src="img/commonFormImg.png" alt=""></td>
+							<td>
+								<span class="operationButBox">
+									<a href="javascript:;" class="butBox seckillAdd">编辑</a>
+									<a href="javascript:;" class="butBox">删除</a>
+								</span>
+							</td>
+						</tr> -->
+					</tbody>
+					<tfoot class="commFootTd">
+						<tr>
+							<td colspan="3" class="commFootFont textar">总计<span id="advertisement_num">0</span>条数据&emsp;&emsp;分为<span id="pageCount">0</span>页&emsp;每页<span id="pageSize">10</span>个</td>
+							<td class="commPageBut" colspan="2">
+								<div class="commPageBut2 fr pr30">
+									<a href="javascript:;" title="第一页" class="commPage1" onclick="firstpage()"></a>
+									<a href="javascript:;" title="上一页" class="commPage2" onclick="prevpage()"></a>
+									<select id="curpage" name="">
+										<option value="">0</option>
+									</select>
+									<a href="javascript:;" title="下一页" class="commPage3" onclick="nextpage()"></a>
+									<a href="javascript:;" title="尾页" class="commPage4" onclick="lastpage()"></a>
+								</div>
+							</td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

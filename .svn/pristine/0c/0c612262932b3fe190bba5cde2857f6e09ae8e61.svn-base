@@ -1,0 +1,505 @@
+package com.lanzhou.controller;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.lanzhou.entity.Address;
+import com.lanzhou.entity.Goods;
+import com.lanzhou.entity.GoodsComment;
+import com.lanzhou.entity.Logistics;
+import com.lanzhou.entity.Miaosha;
+import com.lanzhou.entity.Order;
+import com.lanzhou.entity.Performance;
+import com.lanzhou.entity.User;
+import com.lanzhou.entity.Whitegoods;
+import com.lanzhou.entity.Whitephone;
+import com.lanzhou.service.Activity_detailsService;
+import com.lanzhou.service.AddressService;
+import com.lanzhou.service.GoodsCommentService;
+import com.lanzhou.service.GoodsService;
+import com.lanzhou.service.LogisticsService;
+import com.lanzhou.service.LongpayService;
+import com.lanzhou.service.MiaoshaService;
+import com.lanzhou.service.OrderService;
+import com.lanzhou.service.PerformanceService;
+import com.lanzhou.service.TuangouService;
+import com.lanzhou.service.WhitegoodsService;
+import com.lanzhou.service.WhitephoneService;
+import com.lanzhou.util.OrderNum;
+
+@Controller
+@RequestMapping("/order")
+public class OrderController {
+	@Resource
+	private Activity_detailsService zhouService;
+	@Resource
+	private MiaoshaService miaoService;
+	@Resource
+	private TuangouService tuanService;
+	@Resource
+	private PerformanceService perService;
+	@Resource
+	private LongpayService longpayService;
+	@Resource
+	private LogisticsService logisticsService;
+	@Resource
+	private WhitegoodsService whitegoodsService;
+	@Resource
+	private WhitephoneService whitephoneService;
+
+	private OrderService orderService;
+	private GoodsService goodsService;
+	private AddressService addressService;
+	private GoodsCommentService goodsCommentService;
+
+	public OrderService getOrderService() {
+		return orderService;
+	}
+	@Resource
+	public void setOrderService(OrderService orderService) {
+		this.orderService = orderService;
+	}
+	
+	public GoodsService getGoodsService() {
+		return goodsService;
+	}
+	@Resource
+	public void setGoodsService(GoodsService goodsService) {
+		this.goodsService = goodsService;
+	}
+	
+	public AddressService getAddressService() {
+		return addressService;
+	}
+	@Resource
+	public void setAddressService(AddressService addressService) {
+		this.addressService = addressService;
+	}
+	
+	public GoodsCommentService getGoodsCommentService() {
+		return goodsCommentService;
+	}
+	@Resource
+	public void setGoodsCommentService(GoodsCommentService goodsCommentService) {
+		this.goodsCommentService = goodsCommentService;
+	}
+	
+	/**
+	 * 创建订单
+	 * @param goodsId
+	 * @param type 1,2,3,4,5,6#part(普通，周周惠，团购，秒杀，龙支付,其他专场--part(1,2,3,4,5,6)(代表生活服务、海淘、9.9特卖、休闲娱乐、美食、虚拟卡卷))
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws IOException
+	 */
+	@RequestMapping("/createOrder")
+	public String createOrder(Integer goodsId, String type, HttpServletRequest request, HttpServletResponse response) throws IOException{
+		HttpSession session = request.getSession();
+		User user = (User)session.getAttribute("user");
+		if(user == null){
+			return null;
+		}
+		List<Whitegoods> listWhitegoods=whitegoodsService.getByGoodsId(goodsId);
+		List<Integer> list= new ArrayList<>();
+		List<Integer> list1= new ArrayList<>();
+		if(listWhitegoods.size()>=1){
+			for (Whitegoods whitegoods:listWhitegoods) {
+				list.add(whitegoods.getNameId());
+			}
+			List<Whitephone> listWhitephone=whitephoneService.getByPhone(user.getPhone());
+			if(listWhitephone.size()>=1){
+				for (Whitephone whitephone:listWhitephone) {
+					list1.add(whitephone.getNameId());
+				}
+				int x=0;
+				for (int a:list) {
+					for (int b:list1) {
+						if(a==b){
+							x++;
+						}
+					}
+				}
+				if(x==0){
+					response.getWriter().print("很抱歉，您未获取参与此活动资格，详情请咨询95533 !");
+					return null;
+				}
+			}else{
+				response.getWriter().print("很抱歉，您未获取参与此活动资格，详情请咨询95533 !");
+				return null;
+			}
+		}
+		Goods goods = goodsService.getid(goodsId);
+		if(goods == null){
+		}else{
+			Address address = addressService.getuser_id(user.getId());
+			Order order = new Order();
+			if(address != null){
+				order.setAddress_id(address.getId());
+				order.setAddress(address.getAddress());
+				order.setPhone(address.getPhone());
+				order.setDetails(address.getDetails());
+				order.setUser_name(address.getUser_name());
+			}else{
+				response.getWriter().print("收货地址不能为空");
+				return null;
+			}
+			order.setOrder_num(OrderNum.getOrderNum());
+			order.setOrder_time(OrderNum.getregTime());
+			order.setAmount(1);
+			order.setStatus(0);
+			double ordertotle=0;
+			int part=0;
+			if("1".equals(type)){
+			ordertotle =goods.getPrice();
+			}else if("2".equals(type)){
+			ordertotle = zhouService.getgoods_id(goods.getId()).getReal_price();
+			}else if("3".equals(type)){
+			int amount=tuanService.getByGoodsId(goods.getId()).getAmount();
+			ordertotle = tuanService.getByGoodsId(goods.getId()).getReal_price()*amount;
+			order.setAmount(amount);
+			}else if("4".equals(type)){
+				String nowTime = OrderNum.getregTime();
+				Miaosha miaosha = miaoService.getMiaoshaByGoodsId(goods.getId());
+				boolean b = OrderNum.largerTime( nowTime, miaosha.getEnd_time(),"yyyy-MM-dd HH:mm:ss");
+				if(b){
+					ordertotle = miaosha.getReal_price();
+				}else{
+					ordertotle = goods.getPrice();
+				}
+			}else if("5".equals(type)){
+				ordertotle =longpayService.getByGoodsId(goods.getId()).getReal_price();
+			}else{
+				String[] split = type.split("#");
+				part=Integer.parseInt(split[1]);
+				ordertotle = perService.getByGoodsId(goodsId, part).getReal_price();
+			}
+			order.setTotal(ordertotle+goods.getFreight());
+			order.setUser_id(user.getId());
+			order.setGoods_id(goods.getId());
+			order.setType(type);
+			orderService.add(order);
+			response.getWriter().print(order.getId());
+		}
+		return null;
+	}
+	
+	/**
+	 * 根据ID获取单个订单
+	 * @param id
+	 * @param response
+	 * @return
+	 * @throws IOException
+	 */
+	@RequestMapping("/getOrderById")
+	public String getOrderById(Integer id, HttpServletRequest request, HttpServletResponse response) throws IOException{
+		HttpSession session = request.getSession();
+		User user = (User)session.getAttribute("user");
+		if(user == null){
+			response.getWriter().print("notLogin");
+			return null;
+		}
+		Order order = orderService.getid(id);
+		if(order.getAddress_id() == 0){
+			Address address = addressService.getuser_id(user.getId());
+			if(address != null){
+				order.setAddress_id(address.getId());
+				orderService.update(order);
+			}
+		}
+		JSONObject json = JSONObject.fromObject(order);
+		response.getWriter().print(json);
+		return null;
+	}
+	
+	/**
+	 * 获取各个状态的订单数量
+	 * @param status
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws IOException
+	 */
+	@RequestMapping("/getOrderByUserAndStatusNum")
+	public String getOrderByUserAndStatusNum(int status, HttpServletRequest request, HttpServletResponse response) throws IOException{
+		HttpSession session = request.getSession();
+		User user = (User)session.getAttribute("user");
+		if(user == null){
+			response.getWriter().print("notLogin");
+		}else{
+			int flag = 0;
+			List<Order> orderList = orderService.list(user.getId(), status);
+			if(orderList != null){
+				flag = orderList.size();
+			}
+			response.getWriter().print(flag);
+		}
+		return null;
+	}
+	
+	/**
+	 * 获取各个状态的订单列表
+	 * @param status
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws IOException
+	 */
+	@RequestMapping("/getOrderByUserAndStatus")
+	public String getOrderByUserAndStatus(int status, HttpServletRequest request, HttpServletResponse response) throws IOException{
+		HttpSession session = request.getSession();
+		User user = (User)session.getAttribute("user");
+		if(user == null){
+			response.getWriter().print("notLogin");
+		}else{
+			List<Order> orderList = orderService.list(user.getId(), status);
+			for (Order order : orderList) {
+				Logistics logistics=logisticsService.getByOrderId(order.getId());
+				order.setLogistics(logistics);
+			}
+			if(status == 5){
+				List<Order> orderList2 = new ArrayList<Order>();
+				for(Order order : orderList){
+					//获取该商品该用户评价列表
+					List<GoodsComment> commentList = goodsCommentService.listByuser(order.getGoods_id(), user.getId());
+					//判断是否还没有评价过
+					if(commentList == null || commentList.size() == 0){
+						orderList2.add(order);
+					}
+				}
+				JSONArray json = JSONArray.fromObject(orderList2);
+				response.getWriter().print(json);
+			}else{
+				JSONArray json = JSONArray.fromObject(orderList);
+				response.getWriter().print(json);
+			}
+		}
+		return null;
+	}
+	
+	/**
+	 * 删除订单
+	 * @param orderId
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws IOException
+	 */
+	@RequestMapping("/deleteOrder")
+	public String deleteOrder(int orderId, HttpServletRequest request, HttpServletResponse response) throws IOException{
+		HttpSession session = request.getSession();
+		User user = (User)session.getAttribute("user");
+		if(user == null){
+			response.getWriter().print("notLogin");
+		}else{
+			Order order = orderService.getid(orderId);
+			if(order != null){
+				if(order.getUser_id() != user.getId()){
+					response.getWriter().print("非法操作");
+				}else{
+					orderService.del(orderId);
+					response.getWriter().print("ok");
+				}
+			}
+		}
+		return null;
+	}
+	
+	/**
+	 * 修改订单成退款
+	 * @param orderId
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws IOException
+	 */
+	@RequestMapping("/tuikuan")
+	public String tuikuan(int orderId, HttpServletRequest request, HttpServletResponse response) throws IOException{
+		HttpSession session = request.getSession();
+		User user = (User)session.getAttribute("user");
+		if(user == null){
+			response.getWriter().print("notLogin");
+		}else{
+			Order order = orderService.getid(orderId);
+			if(order != null && order.getStatus() ==1){
+				if(order.getUser_id() != user.getId()){
+					response.getWriter().print("非法操作");
+				}else{
+					order.setStatus(2);
+					orderService.update(order);
+					response.getWriter().print("ok");
+				}
+			}
+		}
+		return null;
+	}
+	
+	/**
+	 * 修改订单里的商品数量和总金额
+	 * @param orderId
+	 * @param num
+	 * @param type 1,2,3,4,5,6#part(普通，周周惠，团购，秒杀，龙支付,其他专场--part(1,2,3,4,5)(代表生活服务、海淘、9.9特卖、休闲娱乐、美食))
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws IOException
+	 */
+	@RequestMapping("/updateOrderNum")
+	public String updateOrderNum(String type,Integer orderId, Integer num, HttpServletRequest request, HttpServletResponse response) throws IOException{
+		double ordertotle=0;
+		HttpSession session = request.getSession();
+		User user = (User)session.getAttribute("user");
+		if(user == null){
+			response.getWriter().print("notLogin");
+			return null;
+		}
+		Order order = orderService.getid(orderId);
+		if(order == null){
+			response.getWriter().print("orderId is error");
+			return null;
+		}else{
+			//修改的订单状态不是登陆用户本人的，视为非法操作
+			if(order.getUser_id() != user.getId()){
+				response.getWriter().print("orderId is error");
+				return null;
+			}else{
+				Goods goods = goodsService.getid(order.getGoods_id());
+				order.setAmount(num);
+			
+				int part=0;
+				if("1".equals(type)){
+				ordertotle =goods.getPrice();
+				}else if("2".equals(type)){
+				ordertotle = zhouService.getgoods_id(goods.getId()).getReal_price();
+				}else if("3".equals(type)){
+				ordertotle = tuanService.getByGoodsId(goods.getId()).getReal_price();
+				}else if("4".equals(type)){
+					String nowTime = OrderNum.getregTime();
+					Miaosha miaosha = miaoService.getMiaoshaByGoodsId(goods.getId());
+					boolean b = OrderNum.largerTime( nowTime, miaosha.getEnd_time(),"yyyy-MM-dd HH:mm:ss");
+					if(b){
+						ordertotle = miaosha.getReal_price();
+					}else{
+						ordertotle = goods.getPrice();
+					}
+				}else if("5".equals(type)){
+					ordertotle =longpayService.getByGoodsId(goods.getId()).getReal_price();
+				}else{
+					String[] split = type.split("#");
+					part=Integer.parseInt(split[1]);
+					ordertotle = perService.getByGoodsId(goods.getId(), part).getReal_price();
+				}
+				
+				//如果订单中有地址信息为空的再次修改
+				if(order.getUser_name()==null){
+					Address address = addressService.getuser_id(user.getId());
+					if(address != null){
+							order.setAddress_id(address.getId());
+							order.setAddress(address.getAddress());
+							order.setPhone(address.getPhone());
+							order.setDetails(address.getDetails());
+							order.setUser_name(address.getUser_name());
+					}else{
+						order.setAddress_id(0);
+						order.setTotal(ordertotle * num + goods.getFreight());
+						orderService.update(order);
+						response.getWriter().print("收货地址不存在");
+						return null;
+					}
+				}
+				
+				
+				
+				order.setTotal(ordertotle * num + goods.getFreight());
+				orderService.update(order);
+				response.getWriter().print("ok");
+			}
+		}
+		return null;
+	}
+	
+	/**
+	 * 修改订单状态，只正对修改已收货和关闭状态
+	 * @param orderId
+	 * @param status
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws IOException
+	 */
+	@RequestMapping("/updateOrderStatus")
+	public String updateOrderStatus(int orderId, int status, HttpServletRequest request, HttpServletResponse response) throws IOException{
+		System.out.println("11111111111111");
+		HttpSession session = request.getSession();
+		User user = (User)session.getAttribute("user");
+		if(user == null){
+			response.getWriter().print("notLogin");
+			return null;
+		}
+		System.out.println("22222222222222222");
+		Order order = orderService.getid(orderId);
+		if(order == null){
+			response.getWriter().print("orderId is error");
+			System.out.println("3333333333333333");
+		}else{
+			//修改的订单状态不是登陆用户本人的，视为非法操作
+			if(order.getUser_id() != user.getId()){
+				System.out.println("44444444444444444");
+				response.getWriter().print("orderId is not yourself");
+			}else{
+				if(status == 4 || status == 5){
+					System.out.println("55555555555555");
+					order.setStatus(status);
+					orderService.updatestatus(orderId, status);
+					response.getWriter().print("ok");
+				}else{
+					System.out.println("6666666666666666666");
+					response.getWriter().print("status is out checked");
+				}
+			}
+		}
+		return null;
+	}
+	/**
+	 * 用户购买商品限制
+	 * @param amount 当前下单商品数量
+	 * @param goodsId
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws IOException
+	 */
+	@RequestMapping("/limitPay")
+	public String limitPay(Integer userId,Integer amount,Integer goodsId,Integer orderId,HttpServletRequest request, HttpServletResponse response) throws IOException{
+		/*HttpSession session = request.getSession();
+		User user=(User) session.getAttribute("user");
+		if(user == null){
+			response.getWriter().print("notLogin");
+			return null;
+		}*/
+		Goods goods=goodsService.getid(goodsId);
+		int limitNum=goods.getLimit_num();
+		String userPayNum=orderService.userPayNum(goodsId,userId,orderId);
+		if(userPayNum==null){
+			userPayNum="0";
+		}
+		if(limitNum>=(amount+Integer.parseInt(userPayNum))){
+			response.getWriter().print(true);
+		}else{
+			response.getWriter().print(false);
+		}
+		return null;
+	}
+}

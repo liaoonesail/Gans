@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<link rel="stylesheet" href="css/frame.css">
+	<link rel="stylesheet" href="css/minPublicBenefit.css">
+	<link rel="stylesheet" href="css/common.css">
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<title>汇聚甘肃后台管理系统-商城管理-商品管理-普通商品-发布商品-第五步商务支付</title>
+    <script type="text/javascript" src="js/angular-1.0.1.min.js"></script>
+</head>
+<body>
+	<div class="frameRall">
+		<!-- 头部通知搜索栏 -->
+		<div ng-app="">
+            <div ng-include="'head.htm'"></div>
+        </div>
+		<div class="headlineBig ml40 mb20 clearfix">
+			<h1 class="stair">商品管理<span>添加新商品</span></h1>
+		</div>
+		<div class="prizeManage ml40 clearfix">
+			<div class="commodityBox">
+				<!-- 操作提示 -->
+				<div class="promptInfo">
+					<div class="clearfix">
+						<i class="promptInfoIco"></i>
+						<span class="promptInfoTit">操作提示</span>
+					</div>
+					<ul>
+						<li>标识"<span class="colorRed">*</span>"的选项为必填项，其余为选填项</li>
+						<li>请按提示栏信息进行商品添加</li>
+						<li>默认模式：不区分仓库货地区模式设置价格与库存；长裤模式：按仓库设置价格与库存；地区模式：按地区设置价格与库存</li>
+						<li>必须点击扫码入库按钮文本框出现光标再使用扫码枪扫码，扫码入库功能必须去店铺基本信息设置里面设置扫码appkey才可以使用</li>
+					</ul>
+				</div>
+				<div class="issueOneBox clearfix">
+					<div class="stepBox clearfix">
+						<i href="javascript:;">1</i>
+						<span></span>
+						<i href="javascript:;">2</i>
+						<span></span>
+						<i href="javascript:;">3</i>
+						<span></span>
+						<i href="javascript:;">4</i>
+						<span></span>
+						<i href="javascript:;" class="stepBox1">5</i>
+					</div>
+				</div>
+				<h1 class="typeCommTit">跳转商务支付</h1>
+				<div class="commonForm mb20 clearfix">
+					<ul>
+						<li>
+							<span class="commonFormName">商品HTTP地址：</span>
+							<select name="" class="paymentSel">
+								<option value="">http://shop.ccb.com/products/pd_0001998993.jhtml</option>
+								<option value="">http://buy.ccb.com/products/pd_0001990566.jhtml</option>
+							</select>
+						</li>
+						<li>
+							<span class="commonFormName mr10">商品预览：</span>
+							<div class="paymentCom">
+								<!-- 希望此处有一个获取的动作，能预览获取到的商品页信息。 -->
+								<iframe src="https://detail.tmall.hk/hk/item.htm?id=544596843761&ali_trackid=2:mm_58969680_16160758_60712448:1498889063_2k6_568534727&spm=a21bo.7925826.192013.3.4535162fhp4Doi" width="1000px" height="600px"></iframe>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<!-- <a class="butBox accomplish" href="javascript:;">提交</a> -->
+			</div>
+		</div>
+	</div>
+</body>
+</html>

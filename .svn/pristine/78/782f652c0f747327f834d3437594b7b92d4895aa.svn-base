@@ -1,0 +1,950 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <link rel="stylesheet" href="css/frame.css">
+        <link rel="stylesheet" href="css/minPublicBenefit.css">
+        <link rel="stylesheet" href="css/common.css">
+        <!-- 商品类目 -->
+        <link rel="stylesheet" href="css/threeMenu.css">
+        <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="js/popUpWin.js"></script>
+        <title>汇聚甘肃后台管理系统-商城管理-商品管理-普通商品-发布商品-第一步添加商品</title>
+    <script type="text/javascript" src="js/angular-1.0.1.min.js"></script>
+    </head>
+    <body>
+        <div class="frameRall">
+            <!-- 头部通知搜索栏 -->
+            <div ng-app="">
+	            <div ng-include="'head.htm'"></div>
+	        </div>
+            <div class="headlineBig ml40 mb20 clearfix">
+                <h1 class="stair">
+                    商品管理
+                    <span>添加新商品</span>
+                </h1>
+            </div>
+            <!-- 发布商品 -->
+            <div class="prizeManage ml40 clearfix">
+                <div class="commodityBox">
+                    <!-- 操作提示 -->
+                    <div class="promptInfo">
+                        <div class="clearfix">
+                            <i class="promptInfoIco"></i>
+                            <span class="promptInfoTit">操作提示</span>
+                        </div>
+                        <ul>
+                            <li>
+                                标识"
+                                <span class="colorRed">*</span>"的选项为必填项，其余为选填项
+                            </li>
+                            <li>
+                                请按提示栏信息进行商品添加
+                            </li>
+                            <li>
+                                默认模式：不区分仓库货地区模式设置价格与库存；长裤模式：按仓库设置价格与库存；地区模式：按地区设置价格与库存
+                            </li>
+                            <li>
+                                必须点击扫码入库按钮文本框出现光标再使用扫码枪扫码，扫码入库功能必须去店铺基本信息设置里面设置扫码appkey才可以使用
+                            </li>
+                        </ul>
+                    </div>
+                  <!--   <div class="issueOneBox clearfix">
+                        <div class="stepBox clearfix">
+                            <i href="javascript:;" class="stepBox1">1</i>
+                            <span></span>
+                            <i href="javascript:;">2</i>
+                            <span></span>
+                            <i href="javascript:;">3</i>
+                            <span></span>
+                            <i href="javascript:;">4</i>
+                            <span></span>
+                            <i href="javascript:;">5</i>
+                        </div>
+                    </div> -->
+                    <!-- 第一步 选择商品类型 -->
+                    <div class="merchandiseFill" style="display: block;">
+                        <h1 class="typeCommTit">
+                            选择商品类型
+                        </h1>
+                        <div class="issueChoose clearfix">
+                            <a href="javascript:;" class="ChooseComm1"> <i></i> <span>实物商品</span>
+                            </a>
+                            <a href="javascript:;" class="ChooseComm2"> <i></i> <span>虚拟商品</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- 第二步 选择商品类目-->
+                    <div class="merchandiseFill" style="display: none;">
+                        <h1 class="typeCommTit">
+                            选择商品类目
+                        </h1>
+                        <div class="typeCommList">
+                            <div class="select-res">
+                                <!-- <span>请选择您主营的品类名称</span> -->
+                                <h1 class="select-info"></h1>
+                            </div>
+                            <div class="select-box">
+                                <div class="wrap">
+                                    <ul class="first">
+          <!--                         <li val="1">
+                                            户外玩具
+                                        </li>
+                                        <li val="2">
+                                            室内玩具
+                                        </li>
+                                        <li val="3">
+                                            教材/教具
+                                        </li>
+                                        <li val="256">
+                                            家具用品
+                                        </li>
+                                        <li val="308">
+                                            环创装饰
+                                        </li>
+                                        <li val="470">
+                                            幼儿用品
+                                        </li>
+                                        <li val="530">
+                                            管理咨询
+                                        </li>   -->
+                                    </ul>
+                                    <ul class="second"></ul>
+                                    <ul class="third"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="typeCommStp clearfix">
+                            <a class="butBox commstp1but merchandStep1 step1"
+                                href="javascript:;">上一步&emsp;选择商品类型</a>
+                            <a class="butBox commstp2but merchandStep2 stepok2"
+                                href="javascript:;">下一步&emsp;填写通用信息</a>
+                        </div>
+                    </div>
+                    <!-- 第三步 填写商品信息-->
+                    <div class="merchandiseFill" style="display: none;">
+                        <h1 class="typeCommTit">
+                            填写商品信息
+                        </h1>
+                        <div class="commonForm">
+                            <form action="../admingoods/add.do" id="addGoods" method="post">
+                                <!-- goods_type -->
+                                <input type="hidden" name="goods_type">
+                                <!-- 上上上级类别id -->
+                                <input type="hidden" name="type_id">
+                                <!-- 上上级类别ID -->
+                                <input type="hidden" name="type_next_id">
+                                <!-- 商品类别ID -->
+                                <input type="hidden" name="type_next_next_id">
+                                <!-- 标签（秒杀、团购、减满、龙支付） -->
+                                <!-- <input type="hidden" name="lable"> -->
+                                <ul>
+                                    <li id="hidetype">
+                                        <span class="commonFormName">商品类目：</span>
+                                        <i class="colorRed font_16 ml10">can't update</i>
+                                    </li>
+                                    <!-- <li>
+                                        <span class="commonFormName">商品货号：</span>
+                                        <input type="text" class="commonFormText" name="goods_num"
+                                            value="">
+                                        <span class="colorRed font_16">必填*</span>
+                                    </li> -->
+                                    <li>
+                                        <span class="commonFormName">商品名称：</span>
+                                        <input type="text" class="commonFormText" name="goods_name"
+                                            value="">
+                                        <span class="colorRed font_16">必填*</span>
+                                    </li>
+                                    <li>
+                                        <span class="commonFormName">推荐理由：</span>
+                                        <textarea class="commonFormTarea" name="goods_describe"></textarea>
+                                    </li>
+                                    <li>
+                                        <span class="commonFormName">市场价：</span>
+                                        <input type="text" class="commonFormText" name="cost_price"
+                                            value="">
+                                        <span>&nbsp;&nbsp;&nbsp;&nbsp;示例：商品55元,输入<i class="colorRed font_16">55.00</i>&nbsp;&nbsp;&nbsp;(单位:元)</span>
+                                    </li>
+                                    <li>
+                                        <span class="commonFormName">实售价：</span>
+                                        <input type="text" class="commonFormText" name="price"
+                                            value="">
+                                        <span>&nbsp;&nbsp;&nbsp;&nbsp;同上。</span>
+                                    </li>
+                                    <li>
+                                    	<span class="commonFormName">所属地区：</span>
+                                        <select class="commonFormSe" name="area_id" id="area" onchange="getShopByAreaId(this.value);">
+                                        	<!-- <option value="0">请选择</option> -->
+                                        </select>
+                                        <span class="commonFormGys">所属供应商：</span>
+                                        <select class="commonFormSe" name="shop_id" id="shop">
+                                        	<option value="0">请选择所属供应商</option>
+                                        </select>
+                                        <!-- <span>（如无所需供应商名称，请到<i class="colorRed font_16">“商城管理-供应商管理-新增”</i>即可）</span> -->
+                                    </li>
+                                    <!-- <li class="area">
+                                        <span class="commonFormName">选择活动地区：</span>
+                                        <select name="area_id"></select>
+                                    </li> -->
+                                    <li>
+                                        <span class="commonFormName">商品库存：</span>
+                                        <input type="number" class="commonFormText" name="amount"
+                                            value="">
+                                        <span>&nbsp;&nbsp;&nbsp;&nbsp;只能是数字整形</span>
+                                    </li>
+                                    <li>
+                                    	<span class="commonFormName">限购数量：</span>
+                                        <input type="number" class="commonFormText" name="limit_num"
+                                            value="">
+                                        <span>&nbsp;&nbsp;&nbsp;&nbsp;只能是数字整形</span>
+                                    </li>
+                                     <li>
+                                    	<span class="commonFormName">热度排序：</span>
+                                        <input type="number" class="commonFormText" name="hot"
+                                            value="0">
+                                        <span>&nbsp;&nbsp;&nbsp;&nbsp;只能是数字整形</span>
+                                    </li>
+                                    <li>
+                                        <span class="commonFormName">善融支付：</span>
+                                        <input type="text" class="commonFormText" name="pay_url"
+                                            value="">
+                                        <span></span>
+                                    </li>
+                                    <li>
+                                        <span class="commonFormName">商品运费：</span>
+                                        <input type="text" class="commonFormText" name="freight"
+                                            value="">
+                                        <span>&nbsp;&nbsp;&nbsp;&nbsp;double类型数字</span>
+                                    </li>
+                                    <li class="commonBrand">
+                                        <span class="commonFormName">商品品牌：</span>
+                                        <input type="text" class="commonFormText FormBrand"
+                                            id="brandText" name="goods_brand" value="">
+                                        <!-- 品牌弹窗 -->
+                                        <div class="commonBrandWin" id="brandWin">
+                                            <div class="commonBrandBox">
+                                                <div class="commonBrandName">
+                                                    <span class="BrandNameFocus">全部品牌</span>
+                                                    <span>A</span>
+                                                    <span>B</span>
+                                                    <span>C</span>
+                                                    <span>D</span>
+                                                    <span>E</span>
+                                                    <span>F</span>
+                                                    <span>G</span>
+                                                    <span>H</span>
+                                                    <span>I</span>
+                                                    <span>J</span>
+                                                    <span>K</span>
+                                                    <span>L</span>
+                                                    <span>M</span>
+                                                    <span>N</span>
+                                                    <span>O</span>
+                                                    <span>P</span>
+                                                    <span>Q</span>
+                                                    <span>R</span>
+                                                    <span>S</span>
+                                                    <span>T</span>
+                                                    <span>U</span>
+                                                    <span>V</span>
+                                                    <span>W</span>
+                                                    <span>X</span>
+                                                    <span>Y</span>
+                                                    <span>Z</span>
+                                                    <span>其他</span>
+                                                </div>
+                                                <div class="commonBrandSearch clearfix">
+                                                    <input type="text" name="" value="" placeholder="品牌名称关键字查找">
+                                                    <a href="javascript:;" title=""></a>
+                                                </div>
+                                                <div class="commonBrandList">
+                                                    <span> <i>A</i> <b>爱婴美</b> </span>
+                                                    <span> <i>B</i> <b>贝印</b> </span>
+                                                    <span> <i>C</i> <b>陈麻花</b> </span>
+                                                    <span> <i>D</i> <b>地素</b> </span>
+                                                    <span> <i>E</i> <b>鳄鱼牌</b> </span>
+                                                    <span> <i>F</i> <b>饭扫光</b> </span>
+                                                    <span> <i>G</i> <b>钙尔奇</b> </span>
+                                                    <span> <i>H</i> <b>海天</b> </span>
+                                                    <span> <i>I</i> <b>iphone</b> </span>
+                                                    <span> <i>J</i> <b>健宝</b> </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="commonFormName">商品图片：</span>
+                                        <textarea class="commonFormTarea" name="picture_address" style="width: 700px;height: 250px;"></textarea>
+                                        <span class="colorRed font_16">必须上传商品图片</span>
+                                    </li>
+                                    <li>
+                                        <span class="commonFormName">选择活动：</span>
+                                        <select  class="form-select" id="option" name="activity_id"></select>
+                                    </li>
+                                    <li class="activity" style="display:none;">
+                                    <span class="commonFormName"></span>
+                                            活动开始时间：<input name="start_time" id="startDate" value=""/>
+                                            活动结束时间：<input name="end_time" id="endDate" value=""/>
+                                            活动价格：<input name="real_price" value=""/>
+                                    </li>
+                                    
+                                    <li>
+                                        <span class="commonFormName">商品详情：</span>
+                                        <textarea class="commonFormTarea" name="goods_details" style="width: 700px;height: 250px;"></textarea>
+                                        <!-- 这里的textarea要替换成一个文本编辑器 -->
+                                    </li>
+                                    <li class="shangjia">
+                                        <span class="commonFormName">是否上架：</span>
+                                        <input type="radio" name="shangjia" value="1" />
+                                        <label>
+                                            是
+                                        </label>
+                                        <input type="radio" name="shangjia" checked="checked" value="0" />
+                                        <label>
+                                            否
+                                        </label>
+                                        <span>（选“是”前台会直接显示，客户能直接购买下单，建议选否，预览后再批量上架。默认为“否”）</span>
+                                    </li>
+                                    <li class="tuijian">
+                                        <span class="commonFormName">是否推荐：</span>
+                                        <input type="radio" name="tuijian" value="1" />
+                                        <label>
+                                            是
+                                        </label>
+                                        <input type="radio" name="tuijian" checked="checked" value="0" />
+                                        <label>
+                                            否
+                                        </label>
+                                    </li>
+                                  
+                                </ul>
+                                <div class="typeCommStp clearfix">
+                                    <a class="butBox commstp1but merchandStep1" href="javascript:;">上一步&emsp;选择商品类目</a>
+                                    <a class="butBox accomplish publishShop" href="javascript:;">发布商品</a>
+                                  <!--  <a class="butBox commstp2but merchandStep2 setpok3"
+                                        href="javascript:;">下一步&emsp;选择活动类型</a> --> 
+                                </div>
+                                <input type="submit" id="addGoodsSubmit" style="display:none;">
+                            
+                        </div>
+                    </div>
+                    <!-- 第四步 -->
+                    <div class="merchandiseFill" style="display: none;">
+                        <h1 class="typeCommTit">
+                            选择活动类型
+                        </h1>
+                        <div class="commonForm activeForm">
+                            <ul>
+                                <li>
+                                    <!-- 选择不同活动类型，活动列表展示不同 -->
+                                    <span class="commonFormName">商品类目：</span>
+                                    <!-- 标签（秒杀、团购、减满、龙支付）
+                                    <select name="lable" class="activTySel">
+                                        <option value="1">
+                                            限时秒杀
+                                        </option>
+                                        <option value="2">
+                                            限时团购
+                                        </option>
+                                        <option value="3">
+                                            满减
+                                        </option>
+                                        <option value="4">
+                                            龙支付
+                                        </option>
+                                    </select> -->
+                                </li>
+                                </form>
+                                <li>
+                                    <span class="commonFormName mr10">活动列表：</span>
+                                    <!-- 限时秒杀 -->
+                                    <table class="infoTabShow activeTyTab" id="limit">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    活动名称
+                                                </td>
+                                                <td>
+                                                    活动开始时间
+                                                </td>
+                                                <td>
+                                                    活动结束时间
+                                                </td>
+                                                <td>
+                                                    活动状态
+                                                </td>
+                                                <td>
+                                                    订单数
+                                                </td>
+                                                <td>
+                                                    已售数量
+                                                </td>
+                                                <td>
+                                                    操作
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        <tr>
+                                            <td>
+                                                春季家电家具疯狂秒杀
+                                            </td>
+                                            <td>
+                                                2017-06-07:08:00:00
+                                            </td>
+                                            <td>
+                                                2017-06-07:23:00:00
+                                            </td>
+                                            <td>
+                                                未开始
+                                            </td>
+                                            <td>
+                                                10
+                                            </td>
+                                            <td>
+                                                20
+                                            </td>
+                                            <td>
+                                                <a class="butBox" href="javascript:;">移除</a>
+                                                <a class="butBox activeBut" href="javascript:;">添加</a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <div class="limitSeckillWin limitWin">
+                                        <form action="" method="get" accept-charset="utf-8">
+                                            <ul>
+                                                <li>
+                                                    <label>
+                                                        数量：
+                                                    </label>
+                                                    <input type="text" name="" value="" />
+                                                    <span>件</span>
+                                                </li>
+                                                <li>
+                                                    <label>
+                                                        限购：
+                                                    </label>
+                                                    <input type="text" name="" value="" />
+                                                    <span>件</span>
+                                                </li>
+                                                <li>
+                                                    <label>
+                                                        秒杀价格：
+                                                    </label>
+                                                    <input type="text" name="" value="" />
+                                                    <span>元</span>
+                                                </li>
+                                                <li class="tc">
+                                                    <a class="butBox ml40" href="javascript:;">提交</a>
+                                                </li>
+                                            </ul>
+                                        </form>
+                                        <i></i>
+                                    </div>
+                                    <!-- 限时团购 -->
+                                    <table class="infoTabShow activeTyTab" id="Groupon">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    序列
+                                                </td>
+                                                <td>
+                                                    商品名称
+                                                </td>
+                                                <td>
+                                                    供应商名称
+                                                </td>
+                                                <td>
+                                                    活动结束时间
+                                                </td>
+                                                <td>
+                                                    活动库存
+                                                </td>
+                                                <td>
+                                                    每人限购
+                                                </td>
+                                                <td>
+                                                    订单数
+                                                </td>
+                                                <td>
+                                                    已售数量
+                                                </td>
+                                                <td>
+                                                    团价格
+                                                </td>
+                                                <td>
+                                                    操作
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        <tr>
+                                            <td>
+                                                1
+                                            </td>
+                                            <td>
+                                                SIEMENS/西门子KA92NV66TI双开门双门对开门家用变频无霜垫冰箱
+                                            </td>
+                                            <td>
+                                                兰州超市
+                                            </td>
+                                            <td>
+                                                2017-06-07:23:00:00
+                                            </td>
+                                            <td>
+                                                100
+                                            </td>
+                                            <td>
+                                                20
+                                            </td>
+                                            <td>
+                                                20
+                                            </td>
+                                            <td>
+                                                20
+                                            </td>
+                                            <td>
+                                                20
+                                            </td>
+                                            <td>
+                                                <a class="butBox mb10" href="javascript:;">移除</a>
+                                                <a class="butBox activeBut" href="javascript:;">添加</a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <div class="limitSeckillWin GrouponWin">
+                                        <form action="" method="get" accept-charset="utf-8">
+                                            <ul>
+                                                <li>
+                                                    <label>
+                                                        数量：
+                                                    </label>
+                                                    <input type="text" name="" value="" />
+                                                    <span>件</span>
+                                                </li>
+                                                <li>
+                                                    <label>
+                                                        限购：
+                                                    </label>
+                                                    <input type="text" name="" value="" />
+                                                    <span>件</span>
+                                                </li>
+                                                <li>
+                                                    <label>
+                                                        团购价格：
+                                                    </label>
+                                                    <input type="text" name="" value="" />
+                                                    <span>元</span>
+                                                </li>
+                                                <li class="tc">
+                                                    <a class="butBox ml40" href="javascript:;">提交</a>
+                                                </li>
+                                            </ul>
+                                        </form>
+                                        <i></i>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- <a class="butBox accomplish merchandStep2 publishShop" href="javascript:;">发布商品</a> -->
+
+
+                    </div>
+                    <!-- 第五步 -->
+                    <div class="merchandiseFill" style="display: none;">
+                        <h1 class="typeCommTit">
+                            跳转商务支付
+                        </h1>
+                        <div class="commonForm mb20 clearfix">
+                            <ul>
+                                <li>
+                                    <span class="commonFormName">商品HTTP地址：</span>
+                                    <select name="" class="paymentSel">
+                                        <option value="">
+                                            http://shop.ccb.com/products/pd_0001998993.jhtml
+                                        </option>
+                                        <option value="">
+                                            http://buy.ccb.com/products/pd_0001990566.jhtml
+                                        </option>
+                                    </select>
+                                </li>
+                                <li>
+                                    <span class="commonFormName mr10">商品预览：</span>
+                                    <div class="paymentCom">
+                                        <!-- 希望此处有一个获取的动作，能预览获取到的商品页信息。 -->
+                                        <iframe
+                                            src="https://detail.tmall.hk/hk/item.htm?id=544596843761&ali_trackid=2:mm_58969680_16160758_60712448:1498889063_2k6_568534727&spm=a21bo.7925826.192013.3.4535162fhp4Doi"
+                                            width="1000px" height="600px"></iframe>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 编辑器 -->
+        <script src="kingediter/kindeditor-all-min.js"></script>
+        <script>
+            var goods_details;
+                 KindEditor.ready(function(K) {
+                     goods_details = K.create('textarea[name="goods_details"]', {
+                         resizeType : 1,
+                         allowPreviewEmoticons : false,
+                         items : [
+                         'source','undo','redo','|','formatblock','fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline','strikethrough','removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist','insertunorderedlist','insertorderedlist','insertunorderedlist', '|', 'emoticons', 'image', 'link','table','hr','preview'],
+                         });
+                    });
+            var picture_address;
+                 KindEditor.ready(function(K) {
+                     picture_address = K.create('textarea[name="picture_address"]', {
+                         resizeType : 1,
+                         allowPreviewEmoticons : false,
+                         items : [
+                        'source','image','preview'],
+                         });
+                    });
+            
+            /*第二步的下一步*/
+            $(document).on("click",".stepok2",function(){
+                //检查是否选择了商品类型
+                var type_id = $("input[name=type_id]").val();//上上上级类别（int）
+			    var type_next_id = $("input[name=type_next_id]").val();//上上级类别（int）
+			    var type_next_next_id = $("input[name=type_next_next_id]").val();//类别（int）
+			    
+			    if(type_id == ""){
+			        alert("请选择一级类别");
+			        return false;
+			     }
+			     if(type_next_id == ""){
+			        alert("请选择二级类别");
+			        return false;
+			     }
+			     if(type_next_next_id == ""){
+			        alert("请选择三级类别");
+			        return false;
+			     }
+                
+                $(this).parents(".merchandiseFill").hide();
+                $(this).parents(".merchandiseFill").next(".merchandiseFill").show();
+            });
+            
+            /*第三步的下一步*/ 
+            $(document).on("click",".publishShop",function(){
+                /* var goods_num = $("input[name=goods_num]").val();//商品编号 */
+                var goods_name = $("input[name=goods_name]").val();//商品名称
+                var cost_price = $("input[name=cost_price]").val();//市场价（double）
+                var price = $("input[name=price]").val();//实售价（double）
+                var freight = $("input[name=freight]").val();//运费（double）
+                var picture = picture_address.html();//图片地址
+                /* if(goods_num == ""){
+                   alert("商品编号不能为空！");
+                   return false;
+                } */
+                if(goods_name == ""){
+                   alert("商品名称不能为空！");
+                   return false;
+                }
+                if(cost_price == ""){
+                   alert("市场价不能为空！");
+                   return false;
+                }
+                if(price == ""){
+                   alert("实售价不能为空！");
+                   return false;
+                }
+                if(freight == ""){
+                   alert("运费不能为空！");
+                   return false;
+                }
+                if(!cost_price.match(/^\d+(\.\d+)?$/)){
+                   alert("请正确输入市场价,Double类型 例:19.9,19.0");
+                   return false;
+                }
+                if(!price.match(/^\d+(\.\d+)?$/)){
+                   alert("请正确输入实售价,Double类型 例:19.9,19.0");
+                   return false;
+                }
+                if(!freight.match(/^\d+(\.\d+)?$/)){
+                   alert("请正确输入运费 Double类型 例:19.9,19.0");
+                   return false;
+                }
+                if(picture == ""){
+                   alert("请上传商品图片！");
+                   return false;
+                }
+                
+                $("#addGoodsSubmit").click();
+                /*
+                $(this).parents(".merchandiseFill").hide();
+                $(this).parents(".merchandiseFill").next(".merchandiseFill").show();*/
+            });
+                    
+            var dataJson= {};
+            $.ajax({
+
+                /* 商品一级分类 */
+                url: '/Gans/leibie/getAllType.do',
+                type: 'post',
+                data: {},
+                async: false,
+                success: function(res) {
+                    var firstHtml = "";                 
+                    res = JSON.parse(res);
+                    dataJson.option=res;
+                     for(var i = 0; i<res.length; i++){
+                        firstHtml +="<li val='" + res[i].id + "'>" + res[i].name + "</li>";
+                        /* 商品二级分类  */
+                        $.ajax({
+                                url: '/Gans/leibie/getType2ByType.do',
+                                type: 'post',
+                                data: {
+                                    superId: res[i].id
+                                },
+                                async: false,
+                                success: function(data2){                                   
+                                    data2 = JSON.parse(data2)
+                                    res[i].child = data2;
+                                    for(var j = 0; j<data2.length; j++){
+                                        console.log(data2[j].id)
+                                        /* 商品三级分类  */
+                                          $.ajax({
+                                            url: '/Gans/leibie/getType3ByType2.do',
+                                            type: 'post',
+                                            data: {superId: data2[j].id},
+                                            async: false,
+                                            success: function(data3) {
+                                                data3 = JSON.parse(data3)
+                                                data2[j].child = data3;
+                                                console.log(data3)
+                                            }
+                                        });  
+                                       
+                                    }
+                                    
+                                    
+                                }
+                            })
+                        } 
+
+   
+                    $(".first").append(firstHtml);
+                    console.log(JSON.stringify(dataJson))
+                 }
+                });
+           
+        </script>
+        <!--商品类目 -->
+        <script type="text/javascript" src="js/threeMenu.js"></script><!--
+                    添加商品js 
+        --><script type="text/javascript" src="js/addCommodity.js"></script>
+        <script type="text/javascript" src="js/laydate.js"></script>
+
+        <script type="text/javascript">
+    $(function(){
+        /**文档加载函数**/
+        $(document).ready(function(){
+            /**商品的更新**/
+            var url = document.URL;
+            var index = url.indexOf("=");
+            if(index != "-1"){
+            	$(".merchandiseFill").hide();
+                 $(".merchandiseFill").next(".merchandiseFill").hide();
+                 $(".merchandiseFill").next(".merchandiseFill").next(".merchandiseFill").show();
+                 $(".merchandiseFill").next(".merchandiseFill").next(".merchandiseFill").next(".merchandiseFill").hide();
+                var id = url.substring(index+1,url.length);
+                $.ajax({
+                        url:'../admingoods/getid.do',
+                        type:'post',
+                        data:{"id":id},
+                        success:function(res){
+                            res = eval("("+res+")");
+                            //console.log(res);
+                            /* $("input[name=goods_num]").val(res.goods_num); */
+                            $("input[name=goods_name]").val(res.goods_name);
+                            $("textarea[name=goods_describe]").val(res.goods_describe);
+                            $("input[name=cost_price]").val(res.cost_price);
+                            $("input[name=price]").val(res.price);
+                            $("input[name=freight]").val(res.freight);
+                            $("input[name=pay_url]").val(res.pay_url);
+                            $($("select[name=area_id]").find("option")).each(function(index,obj){
+                                if($(obj).val() == res.area_id){
+                                    $(obj).attr("selected",true);
+                                    getShopByAreaId(res.area_id);
+                                }
+                            });
+                           
+                            $($("select[name=shop_id]").find("option")).each(function(index,obj){
+                                if($(obj).val() == res.shop_id){
+                                //console.log(obj);
+                                    $(obj).attr("selected",true);
+                                }
+                            });
+                            $("input[name=amount]").val(res.amount);
+                            $("input[name=limit_num]").val(res.limit_num);
+                            $("input[name=hot]").val(res.hot);
+                            $("input[name=goods_brand]").val(res.goods_brand);
+                            picture_address.html("");
+                            picture_address.html("<img src='"+res.picture_address+"' alt=''/>");
+                            $($("select[name=activity_id]").find("option")).each(function(index,obj){
+                               if($(obj).val() == res.activity_id){
+                                   $(obj).attr("selected",true);
+                               }
+                            });
+                            goods_details.html("");
+                           goods_details.html(res.goods_details);
+                            $($("li.shangjia").find("input")).each(function(index,obj){
+                           // console.log(obj);
+                                if($(obj).val() == res.shangjia){
+                                    $(obj).attr("checked",true);
+                                }
+                            });
+                            $($("li.tuijian").find("input")).each(function(index,obj){
+                                if($(obj).val() == res.tuijian){
+                                    $(obj).attr("checked",true);
+                                }
+                            });
+                            $(".activity").show();
+                            $.ajax({
+                                url:'../adminactivity_details/getid.do',
+                                type:'post',
+                                data:{"id":res.activity_id},
+                                success:function(res){
+                                    res = eval("("+res+")");
+                                    $("input[name=start_time]").val(res.start_time);
+                                    $("input[name=end_time]").val(res.end_time);
+                                    $("input[name=real_price]").val(res.real_price);
+                                },error:function(){console.log("活动详情获取失败！");}
+                            });
+                            $("#addGoodsSubmit").before("<input name='id' type='hidden' value='"+res.id+"'/>");
+                            $("#addGoods").attr("action","../admingoods/update.do");
+                        },error:function(){alert("异步获取商品失败！");}
+                    });
+            }
+            
+           
+            
+        });
+    
+       /*  $.post(
+                "../adminshop/list.do",
+                {},
+                function(data){
+                var option="";
+                   $.each(data,function(){
+                    var item = this;
+                       option+="<option value='"+item.id+"'>"+item.shop_name+"</option>";
+                    }); 
+                $("#shop").append(option);
+                },
+                "json"
+                ); */
+            $.post(
+                "../adminactivity/list.do",
+                {},
+                function(data){
+                var option="";
+                $("#option").append("<option value='0'>请选择活动名称</option>");
+                   $.each(data,function(){
+                    var item = this;
+                       option+="<option value='"+item.id+"'>"+item.activity_name+"</option>";
+                    }); 
+                $("#option").append(option);
+                },
+                "json"
+                );
+            $.post(
+                "../adminarea/list.do",
+                {},
+                function(data){
+                var option="";
+                $("select[name=area_id]").append("<option value='0'>请选择所属地区</option>");
+                   $.each(data,function(){
+                    var item = this;
+                       option+="<option value='"+item.id+"'>"+item.name+"</option>";
+                    }); 
+                $("select[name=area_id]").append(option);
+                
+                },
+                "json"
+                );
+        $(".issueChoose a").click(function() {
+            $(".merchandiseFill").eq(0).hide();
+            $(".merchandiseFill").eq(1).show();
+        });
+        $(".merchandStep1").click(function() {
+            $(this).parents(".merchandiseFill").hide();
+            $(this).parents(".merchandiseFill").prev(".merchandiseFill").show();
+        });
+        $(".merchandStep2").click(function() {
+            /*$(this).parents(".merchandiseFill").hide();
+            $(this).parents(".merchandiseFill").next(".merchandiseFill").show();*/
+        });
+        
+         /**laydate.js**/
+    var start = {
+         elem:"#startDate",
+         format: 'YYYY-MM-DD',
+         min: '2017-01-01 00:00:00', //最小日期
+         //max: laydate.now(),
+         istime: false, //是否开启时间选择
+            isclear: true, //是否显示清空
+            istoday: true, //是否显示今天
+            issure: true, //是否显示确认
+            festival: true //是否显示节日
+    };
+    var end = {
+         elem:"#endDate",
+         format: 'YYYY-MM-DD',
+         min: '2017-01-01 00:00:00', //最小日期
+         //max: laydate.now(),
+         istime: false, //是否开启时间选择
+         isclear: true, //是否显示清空
+         istoday: true, //是否显示今天
+         issure: true, //是否显示确认
+         festival: true //是否显示节日
+    };
+    laydate(start);
+    laydate(end);
+        
+    });
+    
+    /**
+     * ajax方法
+     */
+    function ajaxSubmit(url,data,asycn){
+    	var result = "";
+    	async = asycn==true?true:false;
+    	$.ajax({
+    		type : "POST",
+    		url : url,
+    		data:data,
+    		async:async,
+    		dataType:'json',
+    		success : function(data) {
+    			result = data;
+    		}
+    	});
+    	return result;
+    }
+    
+    /**
+	 * 根据地区id获取供应商
+	 * @param areaId 地区id
+	 * @returns 无返回
+	 */
+	function getShopByAreaId(areaId){
+		$("select[name=shop_id]").html("");
+		var good = ajaxSubmit("../adminshop/getByareaId.do",{"areaId":areaId},false);
+		var html = "";
+		$(good).each(function(index,obj){
+			//根据供应商id获取供应商名称
+			/* var result = ajaxSubmit("../adminshop/getid.do",{"id":obj.shop_id},false); */
+			html += "<option value='"+obj.id+"'>"+obj.shop_name+"</option>";
+		});
+		$("select[name=shop_id]").html(html);
+	}
+    //function stopss(){return false;}document.oncontextmenu=stopss;
+</script>
+</body>
+</html>

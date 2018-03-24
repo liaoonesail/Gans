@@ -1,0 +1,84 @@
+.headerUlLi{
+	height: 44px;
+	position: relative;
+}
+.headerUlLi .mui-segmented-control.mui-scroll-wrapper .mui-control-item {
+    display: inline-block;
+    width: auto;
+    padding: 0 1px;
+    border: 0;
+    color: #fff;
+    font-size: 13px;
+    line-height: 30px;
+}
+/**/
+.discoNav22{
+	margin: 14px 0px 6px 0px;
+	height: auto;
+}
+.discoNav22 .discoNavLi{
+	width: 60px;
+	height: 60px;
+	border-radius: 60px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+.discoNav22 .discoNavLiImg1{
+	display: block;
+    width: 32px;
+    height: 27px;
+    margin: 18px auto;
+}
+.discoNav22 .discoNavLiImg2{
+	display: block;
+    width: 42px;
+    height: 37px;
+    margin: 10px auto;
+}
+.discoNav22 .discoNavLiImg3{
+	display: block;
+    width: 42px;
+    height: 40px;
+    margin: 10px auto;
+}
+.discoNav22 .discoNavLiImg4{
+	display: block;
+    width: 49px;
+    height: 43px;
+    margin: 9px auto;
+}
+.discoNav22 .mui-col-xs-3{
+	margin: 4px 0px 0px 0px;
+}
+.discoNav22 .mui-col-xs-3:nth-of-type(1) .discoNavLi{
+	background: #ff9501;
+}
+.discoNav22 .mui-col-xs-3:nth-of-type(2) .discoNavLi{
+	background: #f26665;
+}
+.discoNav22 .mui-col-xs-3:nth-of-type(3) .discoNavLi{
+	background: #1bce8d;
+}
+.discoNav22 .mui-col-xs-3:nth-of-type(4) .discoNavLi{
+	background: #ff784b;
+}
+.discoNav22 .mui-col-xs-3:nth-of-type(5) .discoNavLi{
+	background: #7169e3;
+}
+.discoNav22 .mui-col-xs-3:nth-of-type(6) .discoNavLi{
+	background: #f86a69;
+}
+.discoNav22 .mui-col-xs-3:nth-of-type(7) .discoNavLi{
+	background: #7068e2;
+}
+.discoNav22 .mui-col-xs-3:nth-of-type(8) .discoNavLi{
+	background: #ff9600;
+}
+.discoNav22 .mui-col-xs-3 p{
+	text-align: center;
+	margin-bottom: 0px;
+	height: 20px;
+	line-height: 20px;
+	color: #000;
+	font-size: 14px;
+}

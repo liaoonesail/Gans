@@ -1,0 +1,625 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<link rel="stylesheet" href="css/frame.css">
+		<link rel="stylesheet" href="css/minPublicBenefit.css">
+		<link rel="stylesheet" href="css/common.css">
+		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="js/popUpWin.js"></script>
+		<title>汇聚甘肃后台管理系统-商城管理-商品管理-普通商品</title>
+    <script type="text/javascript" src="js/angular-1.0.1.min.js"></script>
+	</head>
+	<body>
+		<div class="frameRall">
+			<!-- 头部通知搜索栏 -->
+			<div ng-app="">
+            <div ng-include="'head.htm'"></div>
+        </div>
+			<div class="headlineBig ml40 mb20 clearfix">
+				<h1 class="stair">
+					商城管理
+					<span>工作平台</span>
+				</h1>
+				<h1 class="secondLevel">
+					普通商品
+				</h1>
+			</div>
+			<div class="prizeManage ml40 clearfix">
+				<div class="commodityClass orderFormOption">
+					<a href="javascript:;" data-field='all' type='1' shangjia='1' class="bgGreen" title="">普通商品（ <span class="countNum">0</span> ）</a>
+					<a href="javascript:;" data-field='xuni' type='2' shangjia='1' title="">虚拟商品（ <span class="xuniNum">0</span>）</a>
+					<a href="javascript:;" data-field='xia' type='1' shangjia='0' title="">下架商品（<span class="xiajiaNum">0</span>）</a>
+					<a href="javascript:;" data-field='xunixiajia' type='2' shangjia='0' title="">虚拟下架商品（<span class="xunixiajiaNum">0</span>）</a>
+					<!--  <a href="javascript:;" title="">回收站（222）</a> -->
+				</div>
+				<!-- 普通商品 -->
+				<div class="commodityBox">
+					<!-- 操作提示 -->
+					<div class="promptInfo">
+						<div class="clearfix">
+							<i class="promptInfoIco"></i>
+							<span class="promptInfoTit">操作提示</span>
+						</div>
+						<ul>
+							<li>
+								该页面展示了商城所有的商品信息，可以对商品进行编辑修改操作。
+							</li>
+							<li>
+								可以输入商品名称关键字进行搜索，侧边栏进行高级搜索。
+							</li>
+						</ul>
+					</div>
+					<div class="commodityButBox clearfix mt30 mb30">
+						<a href="addCommodity.html" class="butBox">发布商品</a>
+						<!-- <a href="javascript:;" class="butBox ml10">商品运费模板</a>
+                    <a href="javascript:;" class="butBox ml10">批量修改活动说明</a>
+                    <a href="javascript:;" class="butBox ml10">批量上架</a>
+                    <a href="javascript:;" class="butBox ml10">批量下架</a> -->
+						<input type="text" class="commodityInput ml50" name="" value=""
+							placeholder="商品名称/供应商名称" id="name" />
+						<a href="javascript:;" class="butBox ml10 searchGoods">搜索</a>
+					</div>
+					<table class="commodityTab">
+						<thead>
+							<tr>
+								<th></th>
+								<th>
+									商品编号
+								</th>
+								<th>
+									商品名称
+								</th>
+								<th>
+									供应商名称
+								</th>
+								<th>
+									市价/售价/运费
+								</th>
+								<th>
+									库存
+								</th>
+								<!-- <th>
+									促销标签
+								</th>
+								<th>
+									排序
+								</th> -->
+								<th class="tc">
+									操作
+								</th>
+							</tr>
+						</thead>
+						<tbody id="body">
+							<!-- <tr>
+                            <td class="commTaCheck"><input type="checkbox" name="" value=""></td>
+                            <td>201706051234</td>
+                            <td><img src="img/Shopbop1.jpg" class="commImg1" alt=""><span class="fl ml10">正品直邮Made</span></td>
+                            <td>嘉峪关自由超市</td>
+                            <td><span class="costList">市场价：10.0元</span><span class="costList">销售价：10.0元</span><span class="costList">运费模板：按地区运费</span></td>
+                            <td>100</td>
+                            <td><span class="salesLabel">秒杀：<input type="checkbox" class="" value="" /></span>
+                            <span class="salesLabel">团购：<input type="checkbox" class="" value="" /></span>
+                            <span class="salesLabel">满减：<input type="checkbox" class="" value="" /></span>
+                            <span class="salesLabel">龙支付：<input type="checkbox" class="" value="" /></span></td>
+                            <td>1</td>
+                            <td class="p0"><span class="operationButBox"><a href="javascript:;" class="butBox">预览</a><a href="javascript:;" class="butBox ml10">日志</a></span>
+                            <span class="operationButBox mt10 mb10"><a href="javascript:;" class="butBox">编辑</a><a href="javascript:;" class="butBox ml10">删除</a>
+                            </span><span class="operationButBox"><a href="javascript:;" class="butBox">下架</a><a href="javascript:;" class="butBox ml10">上架</a></span></td>
+                        </tr> -->
+						</tbody>
+						<tfoot class="commFootTd">
+							<!-- <tr>
+								<td colspan="3">
+									<!--<span class="pl10"><input type="checkbox" name="" value="" /></span>
+                                <span class="pl5">全选</span>
+                                 <span>
+                                    <select name="" class="seckSel ml10">
+                                    <option value="">秒杀</option>
+                                    </select>
+                                </span> -->
+								</td>
+								<td colspan="3" class="commFootFont">
+									总计
+									<span id="goods_num">0</span>个商品&emsp;&emsp;分为
+									<span id="pageCount">0</span>页&emsp;每页
+									<span id="pageSize">10</span>个
+								</td>
+								<td colspan="3" class="commPageBut">
+									<div class="commPageBut2 pr15 fr" id="curpage">
+										<a href="javascript:;" title="第一页" class="commPage1"></a>
+										<a href="javascript:;" title="上一页" class="commPage2"></a>
+										<a><input onkeypress="getKey();" name="curpage" curpage="1" value="1"  style="width:25px;border: solid 1px;"/></a>
+										<a href="javascript:;" title="下一页" class="commPage3"></a>
+										<a href="javascript:;" title="尾页" class="commPage4"></a>
+									</div>
+								</td>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+	function daohang(){
+		$.ajax({
+        	url:'../admingoods/goodsCount.do',
+        	type:'post',
+        	dataType:'json',
+        	success:function(result){
+        		$(".countNum").html(result[0]);
+        		$(".xuniNum").html(result[1]);
+        		$(".xiajiaNum").html(result[2]);
+        		$(".xunixiajiaNum").html(result[3]);
+        	}
+        });
+	}
+		    
+		    $(document).ready(function(){
+		        /**获取商品列表**/
+		        var name=$("#name").val();
+		        var curpage=$("input[name=curpage]").attr("curpage");
+                var goods_type = "";
+                var shangjia = "";
+                $("div.commodityClass.orderFormOption a").each(function(index,obj){
+                    if($(obj).hasClass("bgGreen")){
+                        goods_type = $(obj).attr("type");
+                        shangjia = $(obj).attr("shangjia");
+                    }
+                });
+                $.ajax({
+                	url:'../admingoods/goodsCount.do',
+                	type:'post',
+                	dataType:'json',
+                	success:function(result){
+                		$(".countNum").html(result[0]);
+                		$(".xuniNum").html(result[1]);
+                		$(".xiajiaNum").html(result[2]);
+                		$(".xunixiajiaNum").html(result[3]);
+                	}
+                });
+                
+                getGoodsList(goods_type,shangjia,name,curpage);
+                
+		    });
+            
+            /**点击分页(第一页)**/
+            $(".commPage1").click(function(){
+                var name=$("#name").val();
+                var curpage=$("input[name=curpage]").attr("curpage");
+                curpage = Number(curpage);
+                //getGoodsList(name,1);
+                var goods_type = "";
+                var shangjia = "";
+                $("div.commodityClass.orderFormOption a").each(function(index,obj){
+                    if($(obj).hasClass("bgGreen")){
+                        goods_type = $(obj).attr("type");
+                        shangjia = $(obj).attr("shangjia");
+                    }
+                });
+                getGoodsList(goods_type,shangjia,name,1);
+                return false;
+            });
+            /**点击分页(上一页)**/
+            $(".commPage2").click(function(){
+                var name=$("#name").val();
+                var curpage=$("input[name=curpage]").attr("curpage");
+                var pageCount = $("#pageCount").html().trim();
+                pageCount = Number(pageCount);
+                curpage = Number(curpage);
+                curpage -= 1;
+                if(curpage < 1){
+                    alert("当前是第一页");
+                    return false;
+                }
+                var goods_type = "";
+                var shangjia = "";
+                $("div.commodityClass.orderFormOption a").each(function(index,obj){
+                    if($(obj).hasClass("bgGreen")){
+                        goods_type = $(obj).attr("type");
+                        shangjia = $(obj).attr("shangjia");
+                    }
+                });
+                getGoodsList(goods_type,shangjia,name,curpage);
+                return false;
+            });
+            /**点击分页(下一页)**/
+            $(".commPage3").click(function(){
+                var name=$("#name").val();
+                var pageCount = $("#pageCount").html().trim();
+                var curpage=$("input[name=curpage]").attr("curpage");
+                curpage = Number(curpage);
+                pageCount = Number(pageCount);
+                curpage += 1;
+                if(curpage > pageCount){
+                    alert("当前是最后一页");
+                    return false;
+                }
+                var goods_type = "";
+                var shangjia = "";
+                $("div.commodityClass.orderFormOption a").each(function(index,obj){
+                    if($(obj).hasClass("bgGreen")){
+                        goods_type = $(obj).attr("type");
+                        shangjia = $(obj).attr("shangjia");
+                    }
+                });
+                getGoodsList(goods_type,shangjia,name,curpage);
+                return false;
+            });
+            
+            /**点击分页(最后一页)**/
+            $(".commPage4").click(function(){
+                var name=$("#name").val();
+                var page = $("#pageCount").html().trim();
+                var goods_type = "";
+                var shangjia = "";
+                $("div.commodityClass.orderFormOption a").each(function(index,obj){
+                    if($(obj).hasClass("bgGreen")){
+                        goods_type = $(obj).attr("type");
+                        shangjia = $(obj).attr("shangjia");
+                    }
+                });
+                getGoodsList(goods_type,shangjia,name,page);
+                return false;
+            });
+            
+            /**搜索商品**/
+            $(document).on("click",".searchGoods",function(){
+                var name=$("#name").val();
+                var page = $("#pageCount").html().trim();
+                var goods_type = "";
+                var shangjia = "";
+                $("div.commodityClass.orderFormOption a").each(function(index,obj){
+                    if($(obj).hasClass("bgGreen")){
+                        goods_type = $(obj).attr("type");
+                        shangjia = $(obj).attr("shangjia");
+                    }
+                });
+                getGoodsList(goods_type,shangjia,name,1);
+            });
+            
+            /**商品的更新 跳转到添加页面进行更新**/
+            $(document).on("click","a[data-field=update]",function(){
+                var id = $(this).attr("data-id");
+                window.location.href="addCommodity.html?id="+id;
+            });
+            
+            /**点击普通商品（全部商品）**/
+            $("a[data-field=all]").click(function(){
+                var name=$("#name").val();
+                getGoodsList(1,1,name,1);
+            });
+            /**点击虚拟商品**/
+            $("a[data-field=xuni]").click(function(){
+                var name=$("#name").val();
+                getGoodsList(2,1,name,1);
+            });
+            /**点击下架商品（实物）**/
+            $("a[data-field=xia]").click(function(){
+                var name=$("#name").val();
+                getGoodsList(1,0,name,1);
+            });
+            /**点击虚拟下架商品（虚拟）**/
+            $("a[data-field=xunixiajia]").click(function(){
+                var name=$("#name").val();
+                getGoodsList(2,0,name,1);
+            });
+            
+            /**商品的删除**/
+            $(document).on("click","a[data-field=delete]",function(){
+                    var id = $(this).attr("data-id");
+                    deleteGoods(id);
+            });
+            
+            /**商品的下架'../admingoods/updateshangjia.do'**/
+            $(document).on("click","a[data-field=xiajia]",function(){
+                var id = $(this).attr("data-id");
+                var status = getGoodsStatus();
+                var url = "../admingoods/updateshangjia.do";
+                var msg = "商品下架成功！";
+                var shangjia = "0";
+                var options = "下架";
+                updateGoodsStatus(id,status,shangjia,msg,url,options);
+            });
+            /**商品的上架'../admingoods/updateshangjia.do'**/
+            $(document).on("click","a[data-field=shangjia]",function(){
+                var id = $(this).attr("data-id");
+                var status = getGoodsStatus();
+                var url = "../admingoods/updateshangjia.do";
+                var msg = "商品上架成功！";
+                var shangjia = "1";
+                var options = "上架";
+                updateGoodsStatus(id,status,shangjia,msg,url,options);
+            });
+            
+            /*更新商品状态*/
+            function updateGoodsStatus(id,status,shangjia,msg,url,options){
+	            if(status == shangjia){
+                    if(shangjia == "0"){
+                        alert("该商品已下架");
+                        return false;
+                    }else if(shangjia == "1"){
+                        alert("该商品已上架");
+                        return false;
+                    }
+                    return false;
+                }
+                if(confirm("您确定"+options+"该商品吗？")){
+                    $.ajax({
+                        url:url,
+                        type:'post',
+                        data:{"id":id,"shangjia":shangjia},
+                        success:function(res){
+                            if(res == "true"){
+                                alert(msg);
+                                /* window.location.reload(); */
+                                $("#goods"+id).remove();
+                                daohang();
+                            }
+                        }
+                    });
+                }else{
+                    alert("操作已取消");
+                }
+            }
+            
+            /**商品的上架**/
+            
+            /*获取商品上架下架状态*/
+            function getGoodsStatus(){
+                var status = 0;
+                $("div.commodityClass.orderFormOption a").each(function(index,obj){
+                    if($(obj).hasClass("bgGreen")){
+                        status = $(obj).attr("shangjia");
+                    }
+                });
+                return status;
+            }
+            
+            
+            /**异步删除商品**/
+            function deleteGoods(id){
+                if(confirm("确认删除该商品吗？")){
+                    $.ajax({
+                        url:'../admingoods/del.do',
+                        type:'post',
+                        data:{"id":id},
+                        success:function(res){
+                            if(res == "true"){
+                            	alert("删除商品成功！");
+								/* window.location.reload(); */
+                            	$("#goods"+id).remove();
+                            }else{
+							   	window.parent.opener = null;
+				               	window.parent.open("index.html", "_self");
+				               	window.parent.close();
+				               	window.parent.location.reload();
+							}
+                        },error:function(){alert("删除失败");}
+                    });
+                }else{
+                    alert("删除操作已取消");
+                }
+            
+            }
+            
+            /**获取商品列表**/
+            function getGoodsList(goods_type,shangjia,name,curpage){
+                $.ajax({
+	           url:'../admingoods/listpage.do',
+	           type:'post',
+	           //async:false,
+	           data:{"goods_type":goods_type,"shangjia":shangjia,"name":name,"curpage":curpage},
+	           success:function(data){
+	                data=eval("("+data+")");
+                    var html="";
+	                $("table.commodityTab tbody").html("");
+	                $(data).each(function(index,obj){
+	                $("#goods_num").html(obj.count);
+	                $("#pageCount").html(obj.page.pageCount);
+	                $("#pageSize").html(obj.page.pageSize);
+	                /* if(obj.goods_type=="1" || obj.shangjia == "1"){
+	                	$(".countNum").html(obj.count);
+	                }
+	                if(obj.goods_type=="2" || obj.shangjia == "1"){
+	                	$(".xuniNum").html(obj.count);
+	                }
+	                if(obj.goods_type=="1" || obj.shangjia == "0"){
+	                	$(".xiajiaNum").html(obj.count);
+	                }
+	                if(obj.goods_type=="2" || obj.shangjia == "0"){
+	                	$(".xunixiajiaNum").html(obj.count);
+	                } */
+	                
+	                $("input[name=curpage]").attr("curpage",obj.page.currentPage);
+	                $("input[name=curpage]").val(obj.page.currentPage);
+
+	                
+	                var shopName = "";
+	                $(obj.list).each(function(i,object){
+	                   
+	                   $.ajax({
+	                       url:'../adminshop/getid.do',
+	                       type:'post',
+	                       async:false,
+	                       data:{"id":object.shop_id},
+	                       success:function(res){
+	                           res = eval("("+res+")");
+	                           if(res != null){
+	                               shopName = res.shop_name;
+	                           }
+	                       }
+	                   });
+	                   //console.log("供应商："+object.id);
+	                
+	                     html+="<tr data-id='"+object.id+"' id='goods"+object.id+"'>"+
+	                    "<td class='commTaCheck'>"+(i+1)+"</td>"+
+	                    "<td>"+object.goods_num+"</td>"+
+	                    "<td><img src="+object.picture_address+" class='commImg1' alt=''><span class='fl ml10'>"+object.goods_name+"</span></td>"+
+	                    "<td>"+shopName+"</td>"+
+	                    "<td><span class='costList'>原价："+object.cost_price+"元</span><span class='costList'>销售价："+object.price+"元</span><span class='costList'>运费："+object.freight+"元</span></td>"+
+	                    //"<td colspan='3' class='commFootFont'>总计<span>"+obj.count+"</span>个商品&emsp;&emsp;分为<span>"+obj.page.pageCount+"</span>页&emsp;每页<span>"+obj.pageSize+"</span>个</td>"+
+	                    "<td>"+object.amount+"</td>";
+	                    
+	                  /*  if(object.lable == "0"){
+                            html += "<td><span class='salesLabel'>秒杀：<input type='checkbox' class='' value='1' /></span>"+
+                        "<span class='salesLabel'>团购：<input type='checkbox' class='' value='2' /></span>"+
+                        "<span class='salesLabel'>满减：<input type='checkbox' class='' value='3' /></span>"+
+                        "<span class='salesLabel'>龙支付：<input type='checkbox' class='' value='4' /></span>";
+                        }
+	                    if(object.lable == "1"){
+	                        html += "<td><span class='salesLabel'>秒杀：<input type='checkbox' class='' checked='checked' value='1' /></span>"+
+	                    "<span class='salesLabel'>团购：<input type='checkbox' class='' value='2' /></span>"+
+	                    "<span class='salesLabel'>满减：<input type='checkbox' class='' value='3' /></span>"+
+	                    "<span class='salesLabel'>龙支付：<input type='checkbox' class='' value='4' /></span>";
+	                    }
+	                    if(object.lable == "2"){
+	                        html += "<td><span class='salesLabel'>秒杀：<input type='checkbox' class='' value='1' /></span>"+
+	                    "<span class='salesLabel'>团购：<input type='checkbox' class='' checked='checked' value='2' /></span>"+
+	                    "<span class='salesLabel'>满减：<input type='checkbox' class='' value='3' /></span>"+
+	                    "<span class='salesLabel'>龙支付：<input type='checkbox' class='' value='4' /></span>";
+	                    }
+	                    if(object.lable == "3"){
+	                        html += "<td><span class='salesLabel'>秒杀：<input type='checkbox' class='' value='1' /></span>"+
+	                    "<span class='salesLabel'>团购：<input type='checkbox' class='' value='2' /></span>"+
+	                    "<span class='salesLabel'>满减：<input type='checkbox' class='' checked='checked' value='3' /></span>"+
+	                    "<span class='salesLabel'>龙支付：<input type='checkbox' class='' value='4' /></span>";
+	                    }
+	                    if(object.lable == "4"){
+	                        html += "<td><span class='salesLabel'>秒杀：<input type='checkbox' class='' value='1' /></span>"+
+	                    "<span class='salesLabel'>团购：<input type='checkbox' class='' value='2' /></span>"+
+	                    "<span class='salesLabel'>满减：<input type='checkbox' class='' value='3' /></span>"+
+	                    "<span class='salesLabel'>龙支付：<input type='checkbox' class='' checked='checked' value='4' /></span>";
+	                    }
+	                    */
+	                    if(object.tuijian==1){
+	                      html += ""+
+                        "<td class='p0'>"+
+                        "<span class='operationButBox'><section class='model-1'><div class='checkbox'><input type='checkbox' checked='checked' id='tuijian"+object.id+"' onclick='tuijian("+object.id+")' myAttr='1'/><label>推荐</label></div></section></span><span class='operationButBox mt10 mb10'><a href='javascript:;' data-field='update' data-id='"+object.id+"'  class='butBox'>编辑</a><a href='javascript:;' data-field='delete' data-id='"+object.id+"' class='butBox ml10'>删除</a>"+
+                        "</span><span class='operationButBox'><a href='javascript:;' data-field='xiajia' data-id='"+object.id+"' class='butBox'>下架</a><a href='javascript:;' data-field='shangjia' data-id='"+object.id+"' class='butBox ml10'>上架</a></span></td></tr>";
+	                    }else{
+	                      html += ""+
+                        "<td class='p0'>"+
+                        "<span class='operationButBox'><section class='model-1'><div class='checkbox'><input type='checkbox' id='tuijian"+object.id+"' onclick='tuijian("+object.id+")' myAttr='0'/><label>推荐</label></div></section></span><span class='operationButBox mt10 mb10'><a href='javascript:;' data-field='update' data-id='"+object.id+"'  class='butBox'>编辑</a><a href='javascript:;' data-field='delete' data-id='"+object.id+"' class='butBox ml10'>删除</a>"+
+                        "</span><span class='operationButBox'><a href='javascript:;' data-field='xiajia' data-id='"+object.id+"' class='butBox'>下架</a><a href='javascript:;' data-field='shangjia' data-id='"+object.id+"' class='butBox ml10'>上架</a></span></td></tr>";
+	                    }
+	                 })
+	              })
+	              $("table.commodityTab tbody").html(html);
+	                }
+	            });
+            }
+            
+            function getKey(){
+            	if(event.keyCode==13){
+            		var name=$("#name").val();
+            		var curpage=$("input[name=curpage]").val();
+            		 var goods_type = "";
+                     var shangjia = "";
+            		 $("div.commodityClass.orderFormOption a").each(function(index,obj){
+                         if($(obj).hasClass("bgGreen")){
+                             goods_type = $(obj).attr("type");
+                             shangjia = $(obj).attr("shangjia");
+                         }
+                     });
+                    getGoodsList(goods_type,shangjia,name,curpage);
+            	}
+            }
+</script>
+<script type="text/javascript">
+function tuijian(id){
+var type=$("#tuijian"+id+"").attr("myattr");
+if(type==1){
+//改变推荐状态为0
+type=0;
+}else{
+//改变推荐状态1
+type=1;
+}
+$.post(
+"../admingoods/updateTuijian.do",
+{"goodsId":id,"tuijian":type},
+function(data){
+$("#tuijian"+id+"").attr("myattr",type);
+},
+"json"
+);
+}
+//$(".model-1 .checkbox input")
+</script>
+<style>
+.checkbox {
+  position: relative;
+  display: inline-block;
+}
+.checkbox:after, .checkbox:before {
+  font-family: FontAwesome;
+  -webkit-font-feature-settings: normal;
+     -moz-font-feature-settings: normal;
+          font-feature-settings: normal;
+  -webkit-font-kerning: auto;
+     -moz-font-kerning: auto;
+          font-kerning: auto;
+  -webkit-font-language-override: normal;
+     -moz-font-language-override: normal;
+          font-language-override: normal;
+  font-stretch: normal;
+  font-style: normal;
+  font-synthesis: weight style;
+  font-variant: normal;
+  font-weight: normal;
+  text-rendering: auto;
+}
+.checkbox label {
+    width: 75px;
+    height: 25px;
+    background: #ccc;
+    position: relative;
+    display: inline-block;
+    border-radius: 46px;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+}
+.checkbox label:after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    left: 0;
+    top: 0px;
+    z-index: 2;
+    background: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+}
+.checkbox input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    opacity: 0;
+    cursor: pointer;
+}
+.checkbox input:hover + label:after {
+  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.2), 0 3px 8px 0 rgba(0, 0, 0, 0.15);
+}
+.checkbox input:checked + label:after {
+  left: 50px;
+}
+ 
+.model-1 .checkbox input:checked + label {
+  background: #41F589;
+}
+.model-1 .checkbox input:checked + label:after {
+  background: #EAF9F0;
+}  
+                
+</style>
+</html>

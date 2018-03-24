@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC 
+    "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanzhou.entity.Log" >
+
+
+	<insert id="add"  parameterType="com.lanzhou.entity.Log" >
+		insert into log(adminuser_id,logintime,operation,way) values(#{adminuser_id},#{logintime},#{operation},#{way})
+	</insert>
+	<delete id="del"  parameterType="int">
+		delete  from log where id=#{id}
+	</delete>
+	<select id="count" parameterType="string" resultType="int">
+		select count(*) from log a,adminuser b where a.adminuser_id=b.id and (b.username like '%${value}%'or b.phone like '%${value}%' or b.real_name like '%${value}%')
+	</select>
+	<select id="listpage" parameterType="map" resultType="com.lanzhou.entity.Log">
+	select a.* from log a,adminuser b where a.adminuser_id=b.id and (b.username like '%${name}%'or b.phone like '%${name}%' or b.real_name like '%${name}%')
+		order by id desc limit #{startRecord},#{pageSize}
+	</select>
+</mapper>

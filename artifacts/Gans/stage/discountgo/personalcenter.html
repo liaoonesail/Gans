@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>个人中心</title>
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/bass.css" />
+		<link rel="stylesheet" href="../css/header.css" />
+		<!--弹窗css-->
+		<link rel="stylesheet" href="../css/login_box.css" />
+		<link rel="stylesheet" href="../css/popup.css" />
+		<!--个人中心css-->
+		<link rel="stylesheet" href="../css/personalcenter.css" />
+		               
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">个人中心</h1>
+		     <span class="mui-pull-right mui-action-back" style="color: #fff;font-size: 13px;line-height: 44px;">关闭</span>
+		</header>
+		<div class="mui-content">
+		 
+			<!--未登录的弹窗  -->
+			<div class="notLoggedIn-0">
+				<div class="notLoggedIn-0-List">
+					<h3>会员登录</h3>
+					   <label class="user-label-position">
+							<input id="user_phop_1" class="user_phopeTel1 text-clear-content" type="text" placeholder="请输入手机银行签约手机号" />
+							<span class="clear-button"></span>
+						</label>
+						<label class="user-label-position">
+							<input id="user_password1_1" class="user_password1 text-clear-content" type="password" placeholder="请输入密码" />
+							<span class="clear-button"></span>
+						</label>
+						<p class="wangjipassWordr_m" style="text-align: right;padding-right: 30px;">忘记密码</p>
+						<p id="shuru_alert2" style="text-align: center;font-size: 12px;margin-bottom: 2px;color: red;display: none;"></p> 
+						<input id="submit_ok"  type="button" value="登录" style="width: 80%;margin: 0 auto;display: block;" />
+						<p class="rengzuce_btns" style="margin: 4px 0px;text-align: center;"><span style="color: #666;">还没有账号？</span><span style="color: #666;">立即注册</span></p>
+				        <div class="maiojiaGoods_cancel deliverGoods_box_coles">关闭</div>
+				</div>
+			</div>
+			<!--未登录的弹窗-->
+			<!--登录之后的提示框-->
+			<div class="notLoggedIn-1">
+				<div class="notLoggedIn-1-List">
+					
+					<h3>登录成功！</h3>
+					<p><span id="time">3</span>秒后返回当前界面</p>
+					<div class="maiojiaGoods_cancel deliverGoods_box_coles">关闭</div>
+				</div>
+			</div>
+			<!--登录之后的提示框-->
+			<!--忘记密码弹窗-->
+			<div class="not_passWordBox">
+				<div class="not_passWordBox_0">
+					 
+					<h3>忘记密码！</h3>
+					<label  class="user-label-position">
+						<input  id="xiougai_phone" class="user_phopeTel1 text-clear-content" type="text" placeholder="请输入手机银行签约手机号" />
+					    <span class="clear-button"></span>
+					</label>
+					<div class="clearfix">
+						<input id="xiougai_yzm" class="yzm_box" type="text" placeholder="验证码" />
+						<div class="yzm_box22">获取验证码</div>
+						<!--120s后重新发送-->
+					</div>
+					<label  class="user-label-position">
+						<input id="xiougai_password" class="user_phopeTel1 text-clear-content" type="password" value="" placeholder="请输入新密码" style="text-align: left;"/>
+					    <span class="clear-button"></span>
+					</label>
+					<label  class="user-label-position">
+						<input id="xiougai_password2" class="user_password1 text-clear-content" type="password" value=""placeholder="请再次输入密码" style="text-align: left;"/>
+					    <span class="clear-button"></span>
+					</label>
+					<p id="tishiconts2_" style="text-align: center;font-size: 12px;margin-bottom: 2px;color: red;display: none"></p>
+					<input class="wangjipass_ok" type="button" value="确认修改" style="width: 80%;margin: 0 auto;display: block;" />
+					<p class="rengzuce_btns" style="margin: 4px 0px;text-align: center;"><span style="color: #666;">还没有账号？</span><span style="color: #666;">立即注册</span></p>
+				    <div class="maiojiaGoods_cancel deliverGoods_box_coles">关闭</div>
+				</div>
+			</div>
+			<!--忘记密码弹窗-->
+			<!--修改密码之后的提示框-->
+			<div class="notLoggedIn-2">
+				<div class="notLoggedIn-2-List">
+					 
+					<h3>修改密码！</h3>
+					<p><span id="time2">3</span>秒后返回当前界面</p>
+					<div class="maiojiaGoods_cancel deliverGoods_box_coles">关闭</div>
+				</div>
+			</div>
+			<!--修改密码之后的提示框-->
+			<!--会员注册弹窗-->
+			<div class="ILoveYou_money">
+				
+				<div class="ILoveYou_money_conts">					
+					
+					<h3>会员注册！</h3>
+					<label class="user-label-position">
+						<input id="phone_" class="user_phopeTel1 text-clear-content" type="text" placeholder="请输入手机银行签约手机号"style="text-align: left;" />
+					    <span class="clear-button"></span>
+					</label>
+					
+					<div class="clearfix">
+						<input id="yzm_" class="yzm_box" type="text" placeholder="验证码" />
+						<div class="yzm_boxMj">获取验证码</div>
+						<!--120s后重新发送-->
+					</div>
+					<label class="user-label-position">
+						<input id="userPassword_" class="user_phopeTel1 text-clear-content" type="password" value="" placeholder="6~16个字符，区分大小写" style="text-align: left;" />
+					    <span class="clear-button"></span>
+					</label>
+					<label class="user-label-position">
+						<input id="userPassword2_" class="user_phopeTel1 text-clear-content" type="password" value="" placeholder="再次确认密码" style="text-align: left;" />
+					    <span class="clear-button"></span>
+					</label>
+					<p id="tishiconts_" style="text-align: center;font-size: 12px;margin-bottom: 2px;color: red;display: none;padding: 0px 28px"></p>
+					<input class="zuce_ok" type="button" value="立即注册" style="width: 80%;margin: 10px auto;display: block;" />
+					<div class="maiojiaGoods_cancel deliverGoods_box_coles">关闭</div>
+				</div>
+			</div>
+			<!--会员注册弹窗-->
+			
+			<!--会员注册之后的提示框-->
+			<div class="notLoggedIn-3">
+				<div class="notLoggedIn-3-List">
+					
+					<h3>注册会员成功！</h3>
+					<p><span id="time3">3</span>秒后返回当前界面</p>
+					<div class="maiojiaGoods_cancel deliverGoods_box_coles">关闭</div>
+				</div>
+			</div>
+			<!--会员注册之后的提示框-->
+			
+			<!--上传头像弹窗-->
+			<div class="touxiang_Img">
+				<div class="touxiang_Img_cont">
+					<input id="upload" runat="server" type="file" accept="image/*" capture="camera"  style="display: none" />
+					<p id="pic" class="paizaoBtns_">拍照</p>
+					<input id="upload2" type="file" name="file" accept="image/*" style="display: none" />
+					<p id="pic2" class="xangceBtns_">从手机相册选择</p>
+					<p class="colesBtns_">取消</p>
+				</div>
+			</div>
+			<!--上传头像弹窗-->
+		    <!--地方汇搜索-->
+			<div class="mui-row">
+				<div class="mui-col-xs-12 Localsearch clearfix">
+					<span id="searchCode" class="mui-icon mui-icon-search" style="margin-left: 6px;"></span>
+					<input id="searchName" type="search" class="text-clear-content" placeholder="搜索" />
+					<div class="clear-button22"></div>
+				</div>
+			</div>
+			<!--地方汇搜索-->
+			<div class="mui-row">
+				<!--登录之前的状态-->
+				<div class="mui-col-xs-12 personalcenterBox1 clearfix">
+					<div class="imgborderP">
+						<img src="../img/smallImg/abc.png" />
+					</div>
+					<div id="denglu_btn_pppoidf" class="personalcenterright">
+						<p style="font-size:10px">亲，你还没有登录，请先登录</p>
+					</div>
+				</div>
+				<!--登录之后的状态-->
+				<div class="mui-col-xs-12 personalcenterBox clearfix" style="display: none;">
+					<div class="imgborderP">
+						<img id="head_picture" src="../img/banner/ren.jpg" />
+					</div>
+					<div id="xiougaimala" class="personalcenterright">
+						<p><span id="userName_ok">吟唱的幸福</span><img  src="../img/person/11.png"/></p>
+					</div>
+				</div>
+			</div>
+			<!--我的订单-->
+			<div class="mui-row">
+				<div class="mui-col-xs-12 myOrderpou">
+					<div class="myOrderLY clearfix">
+						<h5>我的订单</h5>
+						<!--<div class="orderAllNav">查看全部>></div>-->
+					</div>
+					<div class="mui-row myOrderLYJh">
+						<div class="mui-col-xs-4 orderAllNav1"><img src="../img/person/2.png"/>待付款</div>
+						<div class="mui-col-xs-4 orderAllNav2"><img src="../img/person/1.png"/>待发货</div>
+						<div class="mui-col-xs-4 orderAllNav3"><img src="../img/person/3.png"/>待收货</div>
+					</div>
+				</div>
+			</div>
+			<!--我的订单-->
+			<!--我的券码-->
+			<div class="mui-row ">
+				<div class="mui-col-xs-12">
+					<div class="myOrderLY clearfix" style="margin-top: 0px;">
+						<h5>我的券码</h5>
+						<!--<div>查看全部>></div>-->
+					</div>
+					<div class="mui-row myOrderLYJh">
+						<div class="mui-col-xs-4 quanOrderNav1"><img src="../img/person/4.png"/>已使用</div>
+						<div class="mui-col-xs-4 quanOrderNav2"><img src="../img/person/5.png"/>未使用</div>
+						<div class="mui-col-xs-4 quanOrderNav3"><img src="../img/person/6.png"/>已过期</div>
+					</div>
+				</div>
+			</div>
+			<!--我的券码-->
+			<!--我的公益-->
+			<div class="mui-row">
+				<div class="mui-col-xs-12">
+					<div class="myOrderLY clearfix" style="margin-top: 0px;">
+						<h5>我的公益</h5>
+						<!--<div>查看全部>></div>-->
+					</div>
+					<div class="mui-row myOrderLYJh">
+						<div class="mui-col-xs-4 contribution1"><img src="../img/person/7.png"/>我的捐款</div>
+						<div class="mui-col-xs-4 contribution3" ><a href="../../HPtiny.html"><img src="../img/person/7.png"/>我要抽奖</a></div>
+						<div class="mui-col-xs-4 contribution2"><img src="../img/person/8.png"/>中奖奖品</div>
+						<!--<div class="mui-col-xs-4"><img src="../img/smallImg/scl.png"/>已过期</div>-->
+					</div>
+				</div>
+			</div>
+			<!--我的公益-->
+			<!--收货地址-->
+			<div class="mui-row">
+				<div class="mui-col-xs-12">
+					<div id="myOrderLY" class="myOrderLY clearfix" style="margin-top: 1px;">
+						<h5><img src="../img/person/9.png"/>收货地址</h5>
+						<div><i class="mui-icon mui-icon-arrowright"></i></div>
+					</div>
+				</div>
+			</div>
+			<!--收货地址-->
+			<!--常见问题-->
+			<div class="mui-row">
+				<div class="mui-col-xs-12 problemBtn">
+					<div class="myOrderLY clearfix" style="margin-top: -4px;">
+						<h5><img src="../img/person/10.png"/>常见问题</h5>
+						<div><i class="mui-icon mui-icon-arrowright"></i></div>
+					</div>
+				</div>
+			</div>
+			<!--常见问题-->
+			<!--退出登录 id="closeBtns_login"-->
+			<div class="mui-row">
+				<div  class="mui-col-xs-12 myOrderpou1 weidenglu_box">
+					<button id="closeBtns_login_html"></button>
+				</div>
+			</div>
+			<!--退出登录-->
+			<h5 align="center"> 惠聚甘肃客服电话：18100944207</h5>
+		</div>
+		<div style="height: 55px;"></div>
+		<!--底部导航-->
+		<div class="bgcolor footer22">
+			<div class="footer144" onclick="javascript:window.location.href='../../index.html'">
+				<img class="mui-icon-home1" src="../img/smallImg/nav1.png" />
+			    <p>首页</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='discountgo.html'">
+				<img class="mui-icon-email12" src="../img/smallImg/18.png" />
+			    <p>善融</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='../../Local1.html'">
+				<img class="mui-icon-home1" src="../img/smallImg/19.png" />
+			    <p>地方汇</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='../../special1.html'">
+				<img class="mui-icon-home1" src="../img/smallImg/20.png" />
+			    <p>专场</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='personalcenter.html'">
+				<img class="mui-icon-gear1" src="../img/smallImg/nav4.png" />
+			    <p>个人中心</p>
+			</div>	
+		</div>
+		<!--底部导航-->
+	</body>
+    <script type="text/javascript" src="../js/mui.min.js" ></script>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js" ></script>
+    <script type="text/javascript" src="../js/userjs/user.js"></script>
+    <script type="text/javascript" src="../js/person_.js" ></script>
+    <script type="text/javascript" src="../js/search/search.js" ></script>	
+    <script>
+    	mui.init();
+    </script>
+</html>

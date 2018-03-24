@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>details</title>
+		<link charset="UTF-8" rel="stylesheet" href="../css/mui.min.css" />
+		<link charset="UTF-8" rel="stylesheet" href="../css/swiper.css" />
+		<!--弹窗css-->
+		<link charset="UTF-8" rel="stylesheet" href="../css/login_box.css" />
+		<link charset="UTF-8" rel="stylesheet" href="../css/details.css" />
+		<style>
+		.maiojiaGoods_cancel {
+			    width: 100%;
+			    padding: 10px 0 !important;
+			    text-align: center !important;
+			    color: #666;
+			    font-size: 14px !important;
+			    border-top: 1px solid #ddd;
+		}
+		</style>
+	</head>
+
+	<body>
+		<div class="lodinbox">
+			<!--头部导航-->
+			<header class="mui-bar mui-bar-nav loginheader">
+				<a class="mui-pull-left mui-action-back backstar">
+					<i class="mui-icon mui-icon-left-nav mui-action-back"></i>
+					 
+				</a>
+				<h1 class="mui-title">商品详情</h1>
+                 <span class="mui-pull-right mui-action-back"   style="color: #fff;font-size: 13px;line-height: 44px;">关闭</span>
+			</header>
+			<!--头部导航-->
+			<div style="height: 44px;"></div>
+			
+			<!--未登录的弹窗  -->
+			<div class="notLoggedIn-0">
+				<div class="notLoggedIn-0-List">
+					<h3>会员登录</h3>
+					   <label class="user-label-position">
+							<input id="user_phop_1" class="user_phopeTel1 text-clear-content" type="text" placeholder="请输入手机银行签约手机号" />
+							<span class="clear-button"></span>
+						</label>
+						<label class="user-label-position">
+							<input id="user_password1_1" class="user_password1 text-clear-content" type="password" placeholder="请输入密码" />
+							<span class="clear-button"></span>
+						</label>
+						<p class="wangjipassWordr_m" style="text-align: right;padding-right: 30px;">忘记密码</p>
+						<p id="shuru_alert2" style="text-align: center;font-size: 12px;margin-bottom: 2px;color: red;display: none;"></p> 
+						<input id="submit_ok"  type="button" value="登录" style="width: 80%;margin: 0 auto;display: block;" />
+						<p class="rengzuce_btns" style="margin: 4px 0px;text-align: center;"><span style="color: #666;">还没有账号？</span><span style="color: #666;">立即注册</span></p>
+				        <div class="maiojiaGoods_cancel deliverGoods_box_coles">关闭</div>
+				</div>
+			</div>
+			<!--未登录的弹窗-->
+			<!--登录之后的提示框-->
+			<div class="notLoggedIn-1">
+				<div class="notLoggedIn-1-List">
+					
+					<h3>登录成功！</h3>
+					<p><span id="time">3</span>秒后返回当前界面</p>
+					<div class="maiojiaGoods_cancel deliverGoods_box_coles">关闭</div>
+				</div>
+			</div>
+			<!--登录之后的提示框-->
+			<!--忘记密码弹窗-->
+			<div class="not_passWordBox">
+				<div class="not_passWordBox_0">
+					 
+					<h3>忘记密码！</h3>
+					<label  class="user-label-position">
+						<input  id="xiougai_phone" class="user_phopeTel1 text-clear-content" type="text" placeholder="请输入手机银行签约手机号" />
+					    <span class="clear-button"></span>
+					</label>
+					<div class="clearfix">
+						<input id="xiougai_yzm" class="yzm_box" type="text" placeholder="验证码" />
+						<div class="yzm_box22">获取验证码</div>
+						<!--120s后重新发送-->
+					</div>
+					<label  class="user-label-position">
+						<input id="xiougai_password" class="user_phopeTel1 text-clear-content" type="password" value="" placeholder="请输入新密码" style="text-align: left;"/>
+					    <span class="clear-button"></span>
+					</label>
+					<label  class="user-label-position">
+						<input id="xiougai_password2" class="user_password1 text-clear-content" type="password" value=""placeholder="请再次输入密码" style="text-align: left;"/>
+					    <span class="clear-button"></span>
+					</label>
+					<p id="tishiconts2_" style="text-align: center;font-size: 12px;margin-bottom: 2px;color: red;display: none"></p>
+					<input class="wangjipass_ok" type="button" value="确认修改" style="width: 80%;margin: 0 auto;display: block;" />
+					<p class="rengzuce_btns" style="margin: 4px 0px;text-align: center;"><span style="color: #666;">还没有账号？</span><span style="color:#666;">立即注册</span></p>
+				    <div class="maiojiaGoods_cancel deliverGoods_box_coles">关闭</div>
+				
+				
+				
+			 
+					
+				</div>
+			</div>
+			<!--忘记密码弹窗-->
+			<!--修改密码之后的提示框-->
+			<div class="notLoggedIn-2">
+				<div class="notLoggedIn-2-List">
+					 
+					<h3>修改密码！</h3>
+					<p><span id="time2">3</span>秒后返回当前界面</p>
+					<div class="maiojiaGoods_cancel deliverGoods_box_coles">关闭</div>
+				</div>
+			</div>
+			<!--修改密码之后的提示框-->
+			<!--会员注册弹窗-->
+			<div class="ILoveYou_money">
+				
+				<div class="ILoveYou_money_conts">					
+					
+					<h3>会员注册！</h3>
+					<label class="user-label-position">
+						<input id="phone_" class="user_phopeTel1 text-clear-content" type="text" placeholder="请输入手机银行签约手机号"style="text-align: left;" />
+					    <span class="clear-button"></span>
+					</label>
+					
+					<div class="clearfix">
+						<input id="yzm_" class="yzm_box" type="text" placeholder="验证码" />
+						<div class="yzm_boxMj">获取验证码</div>
+						<!--120s后重新发送-->
+					</div>
+					<label class="user-label-position">
+						<input id="userPassword_" class="user_phopeTel1 text-clear-content" type="password" value="" placeholder="6~16个字符，区分大小写" style="text-align: left;" />
+					    <span class="clear-button"></span>
+					</label>
+					<label class="user-label-position">
+						<input id="userPassword2_" class="user_phopeTel1 text-clear-content" type="password" value="" placeholder="再次确认密码" style="text-align: left;" />
+					    <span class="clear-button"></span>
+					</label>
+					<p id="tishiconts_" style="text-align: center;font-size: 12px;margin-bottom: 2px;color: red;display: none;padding: 0px 28px"></p>
+					<input class="zuce_ok" type="button" value="立即注册" style="width: 80%;margin: 10px auto;display: block;" />
+					<div class="maiojiaGoods_cancel deliverGoods_box_coles">关闭</div>
+				</div>
+			</div>
+			<!--会员注册弹窗-->
+			
+			<!--会员注册之后的提示框-->
+			<div class="notLoggedIn-3">
+				<div class="notLoggedIn-3-List">
+					
+					<h3>注册会员成功！</h3>
+					<p><span id="time3">3</span>秒后返回当前界面</p>
+					<div class="maiojiaGoods_cancel deliverGoods_box_coles">关闭</div>
+				</div>
+			</div>
+			<!--会员注册之后的提示框-->
+			<!-- 加载提示 -->
+		    <div id="loadingicon" class="mui-text-center">
+				<span class="mui-spinner"></span>
+				<p style="margin-bottom: 0px;font-size: 12px;">正在加载中....</p>
+			</div>
+		    <!-- 加载提示 -->	
+			<!--商品详情轮播-->
+			<div  id="pridCop" class="swiper-container">
+				<div id="details_Img" class="swiper-wrapper">
+					 
+				</div>
+				<!-- Add Pagination -->
+				<!--  <div class="swiper-pagination"></div>-->
+			</div>
+			<!--商品详情轮播-->
+			<!--商品描述-->
+			<div class="describe">
+				<p id="goods_name_" class="goodsp"></p>
+				<p id="goods_details_conts_" class="jifen" style="height:auto;"></span>
+				<p id="youxiaoqiList"  style="color:#000"></p>
+				</p>
+				<div class="Price clearfix">
+					<span><i id="price_goods" style="font-style: normal;"></i><del style="font-size: 12px;color: #999; margin-left: 3px;" id="delPirc"></del></span>
+					<!-- 秒杀1 -->
+					<img class="zhuangtai_1" src="../img/smallImg/a4.png" style="display: none;"/>
+					<!-- 团购 2 -->
+					<img class="zhuangtai_2" src="../img/smallImg/a3.png" style="display: none;"/>
+					<!-- 周周惠3 -->
+					<img class="zhuangtai_3"  src="" alt="周周惠" style="display: none;font-size: 12px;line-height: 20px; color:#09b6f2;text-align: center;"/>
+					<!-- 龙支付 4 -->
+					<img class="zhuangtai_4" src="../img/smallImg/a2.png" style="display: none;"/>
+					<dd >库存<em id="amoutNum"> </em>件</dd>
+				</div>
+			</div>
+			<!--商品描述-->
+			<!--购买须知-->
+			<div class="mui-row">
+				<div id="describekkk_122" class="mui-col-xs-12 describekkk">
+					 
+				</div>
+			</div>
+			<!--购买须知-->
+			<!--商品评论-->
+			<div class="mui-row pinglun_box_list">
+				<div id="user_pinglun_List" class="mui-col-xs-12 clearfix">
+					<p>用户评价</p>
+				</div>
+				<div id="pinlun_html_5"></div>
+				<!-- <div class="mui-col-xs-12">
+					<div class="mui-content-padded" style="margin: 11px 10px;">
+						<div class="icons mui-inline" style="margin-left: 6px;">
+							<i data-index="1" class="mui-icon mui-icon-star-filled" style="color: #ffcc00;font-size: 22px;"></i>
+							<i data-index="2" class="mui-icon mui-icon-star-filled" style="color: #ffcc00;font-size: 22px;"></i>
+							<i data-index="3" class="mui-icon mui-icon-star-filled" style="color: #ffcc00;font-size: 22px;"></i>
+							<i data-index="4" class="mui-icon mui-icon-star-filled" style="color: #ffcc00;font-size: 22px;"></i>
+							<i data-index="5" class="mui-icon mui-icon-star-filled" style="color: #ffcc00;font-size: 22px;"></i>
+						</div>
+						<p class="mui-pull-right"><img style="border-radius: 50%; vertical-align: middle;" src="../img/banner/ren.jpg" width="20" height="20"/>18875138620</p>
+					</div>
+					<p>6已经出很久了，之前一直担心是返修机器，收到后经检查发现是自己想多了！手机全新，一切正常！完美！</p>
+					<p>2017-07-14</p>				
+				</div> -->
+			</div>
+			<!--商品评论-->	
+			
+			<div style="height: 46px;"></div>
+			<!--底部购物车-->
+			<div class="ShoppingCart clearfix">
+				<div class="focus-info clearfix">
+					<div id="kefu" class="shouYouare">
+						<img src="../img/smallImg/xinxi.png" />
+						<p>联系</p>
+					</div>
+					<div class="shouYouare" onclick="javascript:window.location.href='shopList.html'">
+						<img src="../img/smallImg/HOME.png" />
+						<p>店铺</p>
+					</div>
+
+				</div>
+				<div class="yellow-color" style="display: none">善融支付</div>
+				<div class="red-color" style="display: none">手机支付</div>
+			</div>
+			<!--底部购物车-->
+			<!-- 手机端返回头部 star-->
+			<div id="scrolltoss" class="dmhg">
+				<img src="../img/top.png" />
+			</div>
+			<!--手机端返回头部 end-->
+		</div>
+		<script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+		<script type="text/javascript" src="../js/top.js"></script>
+		<script type="text/javascript" src="../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../js/mui.min.js"></script>
+		<!-- 用户登录注册js -->
+		<script type="text/javascript" src="../js/userjs/user.js"></script>
+		<!-- 商品详情js -->
+		<script type="text/javascript" src="../js/goods/goods.js"></script>
+		<script type="text/javascript" src="../js/shop/shop.js"></script>	
+		<script type="text/javascript" src="../js/comment/comment.js"></script>	
+		<script type="text/javascript" src="../js/order/order.js"></script>	
+		<script type="text/javascript" src="../js/address/address2.js"></script>
+		<script type="text/javascript" src="../js/userjs/user.js"></script>	
+		<script type="text/javascript" src="../js/activity/activity.js" ></script>	
+		<script type="text/javascript" src="../js/details_.js"></script>
+		
+		<script>
+			mui.init();
+			//判断是IOS还是android
+	    var  datatype="";		
+		if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {  //判断iPhone|iPad|iPod|iOS
+		    datatype ="ios";
+		} else if (/(Android)/i.test(navigator.userAgent)) {   //判断Android
+		    datatype ="android";
+		} else {  //pc
+			datatype ="";
+		};
+
+		$.ajax({
+	        type: "POST",
+	        url: "/Gans/showUserSystem.do",
+	        data:{zd:datatype},
+	        cache:false,  
+			dataType:'html',
+			async:false,
+	        success: function(data){
+	        	console.log(data)
+	        }
+	    });
+		</script>
+	</body>
+
+</html>

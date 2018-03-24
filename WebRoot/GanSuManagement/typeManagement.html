@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<link rel="stylesheet" href="css/frame.css">
+		<link rel="stylesheet" href="css/minPublicBenefit.css">
+		<link rel="stylesheet" href="css/common.css">
+		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="js/popUpWin.js"></script>
+		<!-- 奖品管理js -->
+		<script type="text/javascript" src="js/type.js"></script>
+		<title>汇聚甘肃后台管理系统--商城管理-商品管理--类别管理</title>
+    <script type="text/javascript" src="js/angular-1.0.1.min.js"></script>
+	</head>
+	<body style="background-color: #f1f1f1;">
+		<div class="frameRall">
+			<!-- 头部通知搜索栏 -->
+			<div ng-app="">
+            <div ng-include="'head.htm'"></div>
+        </div>
+			<div class="headlineBig ml40 mb20 clearfix">
+				<h1 class="stair">
+					商城管理
+					<span>商品管理</span>
+				</h1>
+				<h1 class="secondLevel">
+					类别管理
+				</h1>
+			</div>
+			<div class="prizeManage ml40 clearfix">
+				<a href="javascript:;" class="butBox seckillAdd mb30 addType">添加类别</a>
+				<select name="type" class="mb30" style="margin-left: 30px;">
+					<option value="1">
+						一级类别
+					</option>
+					<option value="2">
+						二级类别
+					</option>
+					<option value="3">
+						三级类别
+					</option>
+				</select>
+				&nbsp;&nbsp;&nbsp;&nbsp;当前位置：<span class="location" style="color:red;">一级类别</span><span class="location2" style="color:red;"></span>
+				<div style=" width:auto;height: 30px;display: none;float:;margin-right: 120px;" class="mb30 upSelect">
+				            请选择上级类别&nbsp;&nbsp;
+				    <select name="firstList" class="mb30">
+				        <option value="0">请选择一级类别</option>
+				    </select>
+				    &nbsp;&nbsp;
+				    <select name="secondList" class="mb30 secondList" style="display:none;">
+				        <option value="0">请选择二级类别</option>
+				    </select>
+				</div>
+				<!-- 点击添加奖项，弹出 -->
+				<div class="seckillAddBox grouponAddBox prizeManAddBox seckillWin"
+					style="height: 120px;">
+					<i class="seckillClose"></i>
+					<form action="/GanShu/adminprize/add.do" id="addPrize"
+						method="post">
+						<ul>
+							<li class="typeLevel">
+								<span><i class="colorRed">*</i>类别等级：</span>
+								<input type="radio" name="type" value="1" checked="checked"/><label>一级类别</label>
+								<input type="radio" name="type" value="2"/><label>二级类别</label>
+								<input type="radio" name="type" value="3"/><label>三级类别</label>
+							</li>
+							<li class="upLevel" style="display:none;">
+							     <span><i class="colorRed">*</i>上级类别：</span>
+							     <select name="firstLevel"><option value="0">请选择一级类别</option></select><select name="secondLevel"></select>
+							</li>
+							<li>
+								<span><i class="colorRed">*</i>类别名称：</span>
+								<input type="text" class="seckillUpInp w120"
+									placeholder="请输入奖品名称" name="name" value="" />
+							</li>
+							<li>
+								<a href="javascript:;" class="butBox submitAddType">提交</a>
+							</li>
+
+						</ul>
+					</form>
+				</div>
+				<table class="infoTabShow przeInKind typeTabelList">
+					<thead>
+						<tr>
+							<td>
+								序号
+							</td>
+							<td>
+								类别名称
+							</td>
+							<td width="380">
+								操作
+							</td>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+
+			</div>
+		</div>
+	</body>
+	
+
+</html>

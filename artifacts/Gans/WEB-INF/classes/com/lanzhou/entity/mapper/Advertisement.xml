@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+    "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanzhou.entity.Advertisement" >
+	<insert id="add" parameterType="com.lanzhou.entity.Advertisement">
+		insert into advertisement(ad_name,ad_address,ad_path,ad_url) values(#{ad_name},#{ad_address},#{ad_path},#{ad_url})
+	</insert>
+	
+	<delete id="del" parameterType="int">
+		delete from advertisement where id = #{id}
+	</delete>
+	
+	<update id="update" parameterType="com.lanzhou.entity.Advertisement">
+		update advertisement 
+			set
+			ad_name = #{ad_name},
+			ad_path = #{ad_path},
+			ad_url = #{ad_url}
+			where
+				id = #{id}
+	</update>
+	
+	<select id="getById" parameterType="int" resultType="com.lanzhou.entity.Advertisement">
+		select * from advertisement where id = #{id}
+	</select>
+	
+	<select id="getByPath" parameterType="string" resultType="com.lanzhou.entity.Advertisement">
+		select * from advertisement where ad_path = #{ad_path} 
+	</select>
+	
+	<select id="list" parameterType="string" resultType="com.lanzhou.entity.Advertisement" >
+		select * from advertisement where ad_address=#{ad_address}
+	</select>
+	
+	<select id="count" parameterType="string" resultType="int">
+		select count(*) from advertisement where ad_address like '%${value}%'
+	</select>
+	
+	<select id="listpage" parameterType="map" resultType="com.lanzhou.entity.Advertisement">
+		select * from advertisement where
+		ad_address like '%${name}%' order by id desc limit #{startRecord},#{pageSize}
+	</select>
+	<select id="lbList" parameterType="string" resultType="com.lanzhou.entity.Advertisement">
+		select * from advertisement where ad_address like '%${value}%'
+	</select>
+	<select id="getOne" parameterType="string" resultType="com.lanzhou.entity.Advertisement">
+		select * from advertisement where ad_address=#{location}
+	</select>
+</mapper>

@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<link rel="stylesheet" href="css/frame.css">
+	<link rel="stylesheet" href="css/minPublicBenefit.css">
+	<link rel="stylesheet" href="css/common.css">
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="js/log.js"></script>
+	<title>汇聚甘肃后台管理系统-平台管理-系统管理-管理员日志</title>
+    <script type="text/javascript" src="js/angular-1.0.1.min.js"></script>
+</head>
+<body>
+	<div class="frameRall">
+		<!-- 头部通知搜索栏 -->
+		<div ng-app="">
+            <div ng-include="'head.htm'"></div>
+        </div>
+		<div class="headlineBig ml40 mb20 clearfix">
+			<h1 class="stair">平台管理<span>工作平台</span></h1>
+			<h1 class="secondLevel">管理员日志</span></h1>
+		</div>
+		<div class="prizeManage ml40 clearfix">
+			<div class="commodityBox mt50">
+			    <div class="commodityButBox clearfix mt30 mb30">
+                    <!-- <a href="javascript:;" class="butBox">导出订单</a> -->
+                    <input type="text" class="commodityInput wi_300 ml30" id="LogName" name="name" value="" placeholder="用户名/真实姓名/电话号码" />
+                    <a href="javascript:page(1);" class="butBox ml10 searchOrder">搜索</a>
+                </div>
+				<table class="commodityTab orderFormTab">
+					<thead>
+						<tr class="salesManageTr">
+							<th>编号</th>
+							<th>操作者</th>
+							<th>操作日期</th>
+							<th>操作模块</th>
+							<th>操作记录</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- <tr>
+							<td>嘉峪关自由超市</td>
+							<td>admin</td>
+							<td>2017-06-02 17:15:11</td>
+							<td>编辑商品: 申士（SNSIR）SN系 家庭影院套装 5.1组合功放音响 回音壁挂电视音箱 铝合金黑色</td>
+						</tr> -->
+					</tbody>
+					<tfoot class="commFootTd">
+						<tr>
+							<td colspan="3" class="commFootFont textar">总计<span id="log_num">0</span>条数据&emsp;&emsp;分为<span id="pageCount">0</span>页&emsp;每页<span id="pageSize">10</span>个</td>
+							<td colspan="2" class="commPageBut">
+								<div class="commPageBut2 fr pr30">
+									<a href="javascript:;" title="第一页" class="commPage1" onclick="firstpage()"></a>
+									<a href="javascript:;" title="上一页" class="commPage2" onclick="prevpage()"></a>
+									<select id="curpage" name="">
+										<option value="">1</option>
+									</select>
+									<a href="javascript:;" title="下一页" class="commPage3" onclick="nextpage()"></a>
+									<a href="javascript:;" title="尾页" class="commPage4" onclick="lastpage()"></a>
+								</div>
+							</td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

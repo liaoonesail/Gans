@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<link rel="stylesheet" href="css/frame.css">
+	<link rel="stylesheet" href="css/minPublicBenefit.css">
+	<link rel="stylesheet" href="css/common.css">
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="js/popUpWin.js"></script>
+    <script type="text/javascript" src="js/user.js"></script>
+    <!-- 导出excel -->
+    <script type="text/javascript" src="js/deriveExcl.js"></script>
+	<title>汇聚甘肃后台管理系统-平台管理-会员管理</title>
+    <script type="text/javascript" src="js/angular-1.0.1.min.js"></script>
+</head>
+<body>
+	<div class="frameRall">
+		<!-- 头部通知搜索栏 -->
+		<div ng-app="">
+            <div ng-include="'head.htm'"></div>
+        </div>
+		<div class="headlineBig ml40 mb20 clearfix">
+			<h1 class="stair">平台管理<span>工作平台</span></h1>
+			<h1 class="secondLevel">会员管理</h1>
+		</div>
+		<div class="prizeManage ml40 clearfix">
+			<div class="commodityBox">
+				<div class="commodityButBox clearfix mt30 mb30">
+					<!-- <a href="javascript:;" class="butBox seckillAdd">添加新会员</a> -->
+					<a href="javascript:(0);" class="butBox ml10"  onclick="javascript:method1('winingTable')">导出会员列表</a>
+					<input type="text" class="commodityInput ml30" id="username" value="" placeholder="会员名称" />
+					<a href="javascript:page(1);" class="butBox ml10">搜索</a>
+				</div>
+				<!-- 添加新会员 -->
+				<div class="seckillAddBox grouponAddBox prizeManAddBox seckillWin">
+					<i class="seckillClose"></i>
+					<form action="" method="get">
+						<ul>
+							<li>
+								<span><i class="colorRed">*</i>奖项：</span>
+								<select name="" class="w200">
+									<option value="">特等奖</option>
+									<option value="">一等奖</option>
+								</select>
+							</li>
+							<li>
+								<span><i class="colorRed">*</i>奖品：</span>
+								<input type="text" class="seckillUpInp w120" placeholder="请输入奖品名称" name="" value="" />
+							</li>
+							<li>
+								<span><i class="colorRed">*</i>中奖概率：</span>
+								<input type="text" class="seckillUpInp w120" placeholder="请输入中奖概率" name="" value="" />
+							</li>
+							<li>
+								<span><i class="colorRed">*</i>奖品数：</span>
+								<input type="text" class="seckillUpInp w120" placeholder="请输入奖品数量" name="" value="" />
+							</li>
+							<li class="seckillUpBut"><a href="javascript:;" class="butBox">提交</a></li>
+						</ul>
+					</form>
+				</div>
+				<table class="commodityTab orderFormTab" id="winingTable">
+					<thead>
+						<tr class="salesManageTr">
+							<th>编号</th>
+							<th>会员名称</th>
+							<th>手机号</th>
+							<th>身份证后6位</th>
+							<th>收货人信息</th>
+							<th class="tc">操作</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+					<tfoot class="commFootTd">
+						<tr>
+							<td colspan="5" class="commFootFont textar">总计<span id="user_num">0</span>条数据&emsp;&emsp;分为<span id="pageCount">0</span>页&emsp;每页<span id="pageSize">10</span>个</td>
+							<td colspan="2" class="commPageBut">
+								<div class="commPageBut2 fr pr30">
+									<a href="javascript:;" title="第一页" class="commPage1" onclick="firstpage()"></a>
+									<a href="javascript:;" title="上一页" class="commPage2" onclick="prevpage()"></a>
+									<select name="">
+										<option id="curpage" value=""></option>
+									</select>
+									<a href="javascript:;" title="下一页" class="commPage3" onclick="nextpage()"></a>
+									<a href="javascript:;" title="尾页" class="commPage4" onclick="lastpage()"></a>
+								</div>
+							</td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

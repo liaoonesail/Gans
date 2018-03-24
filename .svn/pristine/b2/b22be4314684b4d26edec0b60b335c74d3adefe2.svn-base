@@ -1,0 +1,135 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<link rel="stylesheet" href="css/frame.css">
+	<link rel="stylesheet" href="css/minPublicBenefit.css">
+	<link rel="stylesheet" href="css/common.css">
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<title>汇聚甘肃后台管理系统-商城管理-商品管理-虚拟商品</title>
+    <script type="text/javascript" src="js/angular-1.0.1.min.js"></script>
+</head>
+<body>
+	<div class="frameRall">
+		<!-- 头部通知搜索栏 -->
+		<div ng-app="">
+            <div ng-include="'head.htm'"></div>
+        </div>
+		<div class="headlineBig ml40 mb20 clearfix">
+			<h1 class="stair">商城管理<span>工作平台</span></h1>
+			<h1 class="secondLevel">虚拟商品</h1>
+		</div>
+		<div class="prizeManage ml40 clearfix">
+			<div class="commodityClass">
+				<a href="commodityManagement.html" title="">普通商品（222）</a>
+				<a href="virtualManagement.html" class="bgGreen" title="">虚拟商品（222）</a>
+				<a href="revocationManagement.html" title="">下架商品（222）</a>
+				<a href="recycleManagement.html" title="">回收站（222）</a>
+			</div>
+			<div class="commodityBox">
+				<!-- 操作提示 -->
+				<div class="promptInfo">
+					<div class="clearfix">
+						<i class="promptInfoIco"></i>
+						<span class="promptInfoTit">操作提示</span>
+					</div>
+					<ul>
+						<li>该页面展示了商城所有的商品信息，可以对商品进行编辑修改操作。</li>
+						<li>可以输入商品名称关键字进行搜索，侧边栏进行高级搜索。</li>
+					</ul>
+				</div>
+				<div class="commodityButBox clearfix mt30 mb30">
+					<a href="javascript:;" class="butBox">发布商品</a>
+					<a href="javascript:;" class="butBox ml10">商品运费模板</a>
+					<a href="javascript:;" class="butBox ml10">批量修改活动说明</a>
+					<a href="javascript:;" class="butBox ml10">批量上下架</a>
+					<input type="text" class="commodityInput ml50" name="" value="" placeholder="商品名称/供应商名称" />
+					<a href="javascript:;" class="butBox ml10">搜索</a>
+				</div>
+				<table class="commodityTab">
+					<thead>
+						<tr>
+							<th class="tl pl10"><input type="checkbox" name="" value=""></th>
+							<th>商品编号</th>
+							<th>商品名称</th>
+							<th>供应商名称</th>
+							<th>市价/售价/运费</th>
+							<th>库存</th>
+							<th>促销标签</th>
+							<th>排序</th>
+							<th class="tc">操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="commTaCheck"><input type="checkbox" name="" value=""></td>
+							<td>201706051234</td>
+							<td><img src="img/Shopbop1.jpg" class="commImg1" alt=""><span class="fl ml10">正品直邮Made</span></td>
+							<td>嘉峪关自由超市</td>
+							<td>
+								<span class="costList">市场价：10.0元</span>
+								<span class="costList">销售价：10.0元</span>
+								<span class="costList">运费模板：按地区运费</span>
+							</td>
+							<td>100</td>
+							<td>
+								<span class="salesLabel">秒杀：
+									<input type="checkbox" class="" value="" />
+								</span>
+								<span class="salesLabel">团购：
+									<input type="checkbox" class="" value="" /></span>
+								<span class="salesLabel">满减：
+									<input type="checkbox" class="" value="" /></span>
+								<span class="salesLabel">龙支付：
+									<input type="checkbox" class="" value="" /></span>
+							</td>
+							<td>1</td>
+							<td class="p0">
+								<span class="operationButBox">
+									<a href="javascript:;" class="butBox">预览</a>
+									<a href="javascript:;" class="butBox ml10">日志</a>
+								</span>
+								<span class="operationButBox mt10 mb10">
+									<a href="javascript:;" class="butBox">编辑</a>
+									<a href="javascript:;" class="butBox ml10">删除</a>
+								</span>
+								<span class="operationButBox">
+									<a href="javascript:;" class="butBox">下架</a>
+									<a href="javascript:;" class="butBox ml10">导入</a>
+								</span>
+							</td>
+						</tr>
+					</tbody>
+					<tfoot class="commFootTd">
+						<tr>
+							<td colspan="3">
+								<span class="pl10"><input type="checkbox" name="" value="" /></span>
+								<span class="pl5">全选</span>
+								<span>
+									<select name="" class="seckSel ml10">
+									<option value="">秒杀</option>
+									</select>
+								</span>
+							</td>
+							<td colspan="3" class="commFootFont">总计<span>23351</span>个商品&emsp;&emsp;分为<span>280</span>页&emsp;每页<span>10</span>个</td>
+							<td colspan="3" class="commPageBut">
+								<div class="commPageBut2 pr15 fr">
+									<a href="javascript:;" title="第一页" class="commPage1"></a>
+									<a href="javascript:;" title="上一页" class="commPage2"></a>
+									<select name="">
+										<option value="">1</option>
+									</select>
+									<a href="javascript:;" title="下一页" class="commPage3"></a>
+									<a href="javascript:;" title="尾页" class="commPage4"></a>
+								</div>
+							</td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

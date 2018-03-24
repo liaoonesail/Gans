@@ -1,0 +1,228 @@
+body,.mui-content{
+	background: #F2F2F2;
+}
+.topNva{
+	height: 48px;
+	position: fixed;
+	top: 44px;
+	z-index: 111111;
+	background:#ffffff ;
+	max-width: 640px;
+}
+.topNvaUlLi{
+	width: 82%;
+	margin-left: 60px;
+	height:48px;
+	position: relative;
+}
+.Shape1{
+	position: absolute;
+    width: 33px;
+    height: 33px;
+    left: 23px;
+    top: 9px;
+}
+.topNvaUlLi .mui-segmented-control.mui-scroll-wrapper li {
+    display: inline-block;
+    padding: 0 16px;
+    color: #000;
+    font-size: 14px;
+    text-align: center;
+}
+.topNvaUlLi .mui-segmented-control.mui-scroll-wrapper li span:nth-of-type(1){
+	font-weight: bold;
+	line-height: 19px;
+}
+.ontopOk{
+	color: #ff0000 !important;
+/* 	border-bottom: 2px solid  #02a1fc; */
+}
+.ontopOk p{
+	color: #ff0000 !important;
+}
+/**/
+.seckillLmg{
+	background: #fff;
+	margin-top: 47px;
+	padding: 4px 2px;
+}
+.seckillLmg .mui-col-xs-4{
+	height: 120px;
+	overflow: hidden;
+}
+.seckillLmg .mui-col-xs-4 img{
+	display: block;
+	width: 96%;
+	height: 100%;
+	margin: 0 auto;
+}
+.seckillLmg .mui-col-xs-4:nth-of-type(1){
+	border-right: 1px solid #F2F2F2;
+}
+.seckillLmg .mui-col-xs-4:nth-of-type(2){
+	border-right: 1px solid #F2F2F2;
+}
+/**/
+.seckiliJshubox{
+	background: #fff;
+	margin: 4px 0px 0px 0px;
+	border-bottom: 1px solid #F2F2F2;
+}
+.seckiliJshu{
+	padding: 4px 10px;
+	height: 35px;
+	border-left: 2px solid #ff0000;
+}
+.seckiliJshu h5{
+	color: #ff0000;
+	font-size: 14px;
+	float: left;
+}
+.seckiliJshu p{
+	margin-bottom: 0px;
+	float: right;
+	color: #000;
+}
+.cladssImg {
+	background: #fff;
+	border-bottom: 1px solid #F2F2F2;
+}
+.cladssImg .mui-col-xs-3{
+	height: 120px;
+}
+.cladssImg .mui-col-xs-4 img{
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.cladssImg .mui-col-xs-8 p:nth-of-type(1){
+	color: #000000;
+	margin-bottom: 0px;
+	 display: -webkit-box;
+    overflow: hidden;
+    white-space: normal !important;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.cladssImg .mui-col-xs-8 p:nth-of-type(2){
+	color: #ff0000;
+	margin-bottom: 0px;
+	 display: -webkit-box;
+    overflow: hidden;
+    white-space: normal !important;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+.cladssImg .mui-col-xs-8 p:nth-of-type(3){
+	color: #ff0000;
+	margin-bottom: 0px;
+	 display: -webkit-box;
+    overflow: hidden;
+    white-space: normal !important;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    font-size: 18px;
+}
+.cladssImg .mui-col-xs-8 p:nth-of-type(3) del{
+	color: #848689;
+	margin-left: 4px;
+	font-size: 14px;
+}
+.cladssImg .mui-col-xs-8 p:nth-of-type(3) b{
+	float: right;
+	font-weight: normal;
+	font-size: 14px;
+	margin-right: 10px;
+	color: #ff0000;
+	 display: -webkit-box;
+    overflow: hidden;
+    white-space: normal !important;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+.wohISThis{
+	position: relative;
+	margin: 2px 0px;
+	padding:0px 3px;
+	height: 20px;
+}
+.wohISThisLeft{
+	float: left;
+	width: 100%;
+	position: relative;
+}
+.wohISThisRight{
+	float: right;
+	width: 39%;
+	height: 35px;
+}
+.wohISThisRight button{
+	border: none;
+	width: 80px;
+	/* background: #09b6f2; */
+	color: #09b6f2;
+	font-size: 14px;
+	height: 30px;
+	border-radius: 12px;
+	text-align: center;
+	padding: 2px 12px;
+	border: 1px solid  #09b6f2;
+}
+.qiandaoL{
+	position: absolute;
+	height: 18px;
+	width: 100%;
+	border-radius: 20px;
+	/* background: #e9a5a5; */
+	border: 1px solid #09b6f2;
+	top: 0px;
+	left:0px
+}
+.qiandaoL .lanlan{
+	position: absolute;
+	height: 16px;
+	width: 0%;
+	border-radius: 20px;
+	background: #09b6f2;
+	top: 0px;
+	color: #fff;
+	text-align: center;
+	font-size: 13px;
+	line-height: 18px;
+}
+.rightLocalList{
+	display: none;
+}
+.wohISThisRight button:active{
+	color: #fff !important; 
+	background: #09b6f2 !important;
+}
+.seckillLmg{
+	background: #fff;
+	margin-top: 47px;
+	padding: 4px 2px;
+}
+.seckillLmg .mui-col-xs-4{
+	height: 120px;
+	overflow: hidden;
+}
+.seckillLmg .mui-col-xs-4 img{
+	display: block;
+	width: 96%;
+	height: 100%;
+	margin: 0 auto;
+}
+.seckillLmg .mui-col-xs-4:nth-of-type(1){
+	border-right: 1px solid #F2F2F2;
+}
+.seckillLmg .mui-col-xs-4:nth-of-type(2){
+	border-right: 1px solid #F2F2F2;
+}

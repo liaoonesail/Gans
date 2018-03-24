@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>修改个人设置</title>
+		<link href="../css/layout.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/bass.css" />
+		<link rel="stylesheet" href="../css/header.css" />
+		<link rel="stylesheet" href="../css/personalcenter.css" />
+		<script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+		<script src="../js/mobiscroll_002.js" type="text/javascript"></script>
+		<script src="../js/mobiscroll_004.js" type="text/javascript"></script>
+		<link href="../css/mobiscroll_002.css" rel="stylesheet" type="text/css">
+		<link href="../css/mobiscroll.css" rel="stylesheet" type="text/css">
+		<script src="../js/mobiscroll.js" type="text/javascript"></script>
+		<script src="../js/mobiscroll_003.js" type="text/javascript"></script>
+		<script src="../js/mobiscroll_005.js" type="text/javascript"></script>
+		<link href="../css/mobiscroll_003.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="../css/popup.css" />
+		<link href="../css/scs.min.css" rel="stylesheet" />
+		<style>
+			body,
+			.mui-content {
+				background: #f2f2f2;
+				max-width: 640px;
+			}
+			
+			.xiougaiBox1 {
+				background: #fff;
+				margin: 6px;
+				border: 1px solid #cececd;
+				border-radius: 6px;
+			}
+			
+			.xiougaiBox1 .mui-col-xs-4 img {
+				display: block;
+				width: 80px;
+				height: 80px;
+				margin: 15px auto;
+				border-radius: 50%;
+			}
+			
+			.xiougaiBox1 .mui-col-xs-8 input {
+				width: 80%;
+				margin: 35px auto;
+				padding-right: 35px !important;
+				border-radius: 6px;
+				font-size: 14px;
+				color: #6d6d6d;
+			}
+			
+			.xiougaiBox1 .mui-col-xs-12 {
+				height: 45px;
+				border-top: 1px solid #cececd;
+				line-height: 45px;
+				font-size: 14px;
+			}
+			
+			.xiougaiBox1 .mui-col-xs-12 div:nth-of-type(1) {
+				padding-left: 20px;
+			}
+			
+			.xiougaiBox2 {
+				margin: 6px 6px 0px 6px;
+				padding: 6px 0px;
+				background: #fff;
+				font-size: 14px !important;
+				color: #6d6d6d !important;
+				position: relative;
+				border-left: 1px solid #cececd;
+				border-top: 1px solid #cececd;
+				border-right: 1px solid #cececd;
+				border-top-left-radius: 6px;
+				border-top-right-radius: 6px;
+			}
+			
+			.xiougaiBox2 input#appDate {
+				width: 65%;
+				margin-left: 60px;
+				margin-bottom: 0px;
+			}
+			
+			.xiougaiBox2 label {
+				position: absolute;
+				top: 10px;
+				left: 22px;
+			}
+			
+			.xiougaiBox3 {
+				margin: 0px 6px 6px 6px;
+				padding: 6px 0px;
+				background: #fff;
+				font-size: 14px !important;
+				color: #6d6d6d !important;
+				position: relative;
+				border-top: 1px solid #cececd;
+				border-left: 1px solid #cececd;
+				border-bottom: 1px solid #cececd;
+				border-right: 1px solid #cececd;
+				border-bottom-left-radius: 6px;
+				border-bottom-right-radius: 6px;
+				height: 112px;
+				overflow: hidden;
+			}
+			
+			.xiougaiBox3 p {
+				font-size: 16px;
+				text-align: justify;
+				margin-bottom: 4px;
+				color: #010c46;
+				padding: 2px 6px;
+			}
+			
+			.xiougaiBox3 input#myAddrs {
+				position: absolute;
+				width: 80%;
+				left: 50%;
+				font-size: 14px;
+				margin-left: -40%;
+			}
+			
+			.xiougaiBox4 {
+				margin: 6px 6px 0px 6px;
+				padding: 6px 0px;
+				background: #fff;
+				font-size: 14px !important;
+				color: #6d6d6d !important;
+				position: relative;
+				border-top: 1px solid #cececd;
+				border-left: 1px solid #cececd;
+				border-right: 1px solid #cececd;			 
+				height: 89px;
+				overflow: hidden;
+			}
+			.xiougaiBox4 .mui-col-xs-12 p{
+				margin-bottom: 2px;
+				padding: 4px 6px;
+				text-align: justify;
+			}
+			.xiougaiBox4 .mui-col-xs-12 input{
+				position: absolute;
+				width: 80%;
+				padding-right: 35px;
+				left: 50%;
+				font-size: 14px;
+				margin-left: -40%;
+			}			
+			.xiougaiBox5 {
+				margin: 0px 6px 6px 6px;
+				padding: 6px 0px;
+				background: #fff;
+				font-size: 14px !important;
+				color: #6d6d6d !important;
+				position: relative;
+				border-top: 1px solid #cececd;
+				border-left: 1px solid #cececd;
+				border-bottom: 1px solid #cececd;
+				border-right: 1px solid #cececd;
+				border-bottom-left-radius: 6px;
+				border-bottom-right-radius: 6px;			 
+				height: 89px;
+				overflow: hidden;
+			}
+			.xiougaiBox5 .mui-col-xs-12 p{
+				margin-bottom: 2px;
+				padding: 4px 6px;
+				text-align: justify;
+			}
+			.xiougaiBox5 .mui-col-xs-12 input{
+				position: absolute;
+				width: 80%;
+				padding-right: 35px;
+				left: 50%;
+				font-size: 14px;
+				margin-left: -40%;
+			}
+			/*button#xiougaiBtnsv{
+				border: none;
+				display: block;
+				background: #0c97f8;
+				color: #fff;
+				margin: 0 auto;
+				padding: 8px 24px;
+			}
+			button:active{
+				color:#fff !important;
+				background: #0c97f8 !important;
+			}*/
+			.xiou-position{
+				position: relative;
+			}
+			.clear-button{
+				width: 20px;
+				height: 20px;
+				position: absolute;
+				right: 40px;
+				top: 41px;
+				display: none;
+				background: url("../img/delete-add.png") no-repeat scroll 0 0;
+			}
+			.clear-but-top{
+				top: 45px !important;
+				padding-right: 30px;
+			}
+			.public-g-btn-box{
+				height: 90px;
+				position: fixed;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				background:rgba(255,255,255,.85);
+			}
+			.public-g-btn{
+				position: relative;
+				border:1px solid #09b6f2;
+				color:#09b6f2;
+				display: block;
+				width: 85%;
+				height:40px;
+				line-height: 25px;
+				font-size: 16px;
+				border-radius: 35px;
+				margin-top: 20px;
+				margin-left: auto;
+				margin-right: auto;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">修改个人设置</h1>
+			 <span class="mui-pull-right mui-action-back" style="color: #fff;font-size: 13px;line-height: 44px;">关闭</span>
+		</header>
+		<div class="mui-content">
+            <!--上传头像弹窗-->
+			<div class="touxiang_Img">
+				<div class="touxiang_Img_cont">
+				<form method="post" action="/Gans/person/updatePerson.do" id="mForm" enctype="multipart/form-data">
+					<input id="upload" name="images" runat="server" type="file" accept="image/*" capture="camera"  style="display: none" />
+					<p id="pic" class="paizaoBtns_">拍照</p>
+					<input id="upload2" type="file" name="images" accept="image/*" style="display: none" />
+					<p id="pic2" class="xangceBtns_">从手机相册选择</p>
+					<p class="colesBtns_">取消</p>
+					</form>
+				</div>
+			</div>
+			<!--上传头像弹窗-->
+			<div class="mui-row xiougaiBox1">
+				<div class="mui-col-xs-4 imgborderP33">
+					<img src="../img/smallImg/abc.png" />
+				</div>
+				<div class="mui-col-xs-8 xiou-position">
+					<input id="name_useIfo" type="text" class="text-clear-content" value="吟唱的幸福" />
+					<span class="clear-button clear-but-top"></span>
+				</div>
+				<div class="mui-col-xs-12 clearfix">
+					<div class="mui-pull-left">性别:</div>
+					<div class="mui-radio mui-left mui-pull-left">
+						<label>男</label>
+						<input value="男" name="sex" type="radio">
+					</div>
+					<div class=" mui-radio mui-left mui-pull-left">
+						<label>女</label>
+						<input value="女" name="sex" type="radio" checked>
+					</div>
+				</div>
+			</div>
+
+			<div class="mui-row xiougaiBox2">
+				<div class="mui-col-xs-12">
+					<div class="demos">
+						<label for="appDate">生日:</label>
+						<input value="2017-03-21" class="" readonly="readonly" name="appDate" id="appDate" type="text">
+					</div>
+				</div>
+			</div>
+
+			<div class="mui-row xiougaiBox3">
+				<div class="mui-col-xs-12">
+					<p>请选择您所在的城市，以便为您推荐当地的优惠活动：</p>
+					<select  id="myAddrs" class="text-clear-city" style="border: 1px solid rgba(0, 0, 0, .2) !important;border-radius: 3px;width:90%;display:block;margin: 4px auto;">
+						 
+					</select>
+					<!-- <input id="myAddrs" type="text" class="text-clear-city" value="兰州" readonly/> -->
+					<!-- <input type="text" readonly placeholder="Click me to pick an address" id="myAddrs" name="addr" data-key="4-84-1298" value="山西省 太原市 万柏林区" /> -->
+				</div>
+			</div>
+			
+			
+			<div class="mui-row xiougaiBox4">
+				<div class="mui-col-xs-12 xiou-position">
+					<p>手机号: (不可更改)</p>
+					<input id="phoen_user"  readonly="readonly" type="text"  value="18397651234" />
+					<!-- <span class="clear-button"></span> -->
+				</div>
+			</div>
+			<div class="mui-row xiougaiBox5">
+				<div class="mui-col-xs-12 xiou-position">
+					<p>邮箱: (不会公开)</p>
+					<input id="youxiang_num" type="text"  class="text-clear-content" value="8888888@163.com" />
+					<span class="clear-button"></span>
+				</div>
+			</div>
+			
+			<div class="public-g-btn-box">
+				<button class="public-g-btn" id="xiougaiBtnsv">提交修改</button>
+			</div>
+		</div>
+		 <div style="height: 100px;"></div>
+	</body>
+	<script type="text/javascript" src="../js/mui.min.js"></script>
+	<script src="../js/jquery.scs.min.js"></script>
+	<!-- <script src="../js/CNAddrArr.min.js"></script> -->
+	<script charset="UTF-8" type="text/javascript" src="../js/publicAddress.js" ></script>
+	<script type="text/javascript" src="../js/person/person.js"></script>
+	<script type="text/javascript" src="../js/area/area.js"></script>
+   <script type="text/javascript" src="../js/jquery.form.js" ></script>
+	<script>
+		mui.init();	
+		
+		/*表单内容删除按钮*/
+        $(".text-clear-content").focus(function() {
+        	$(".clear-button").hide();
+        	$(this).next(".clear-button").show();
+            
+        });
+        $(".clear-button").click(function() {
+        	$(this).prev().val("");
+        	$(this).prev().focus();
+        });
+        $(".text-clear-city").click(function() {
+        	$(".clear-button").hide();
+        });
+        /**
+         * 获取登陆用户
+         * @returns 没有登陆返回字符串"notLogin" 否则返回user的JSON串
+         */
+         /**
+          * 获取登陆用户
+          * @returns 没有登陆返回字符串"notLogin" 否则返回user的JSON串
+          */
+         function getUserByLogin(){
+         	var url = "user/getUserByLogin.do";
+         	var data = {
+         		
+             };
+         	async = false;
+         	var result = ajaxSubmit(url, data, async);
+         	//console.log("我是获取登陆用户的返回值"+result);
+         	return result;
+         }
+         useaddinit();
+        function useaddinit(){
+        	 var getUserByLogin_ =getUserByLogin();
+             //console.log("获取登陆用户"+getUserByLogin_)
+     		 getUserByLogin_ = JSON.parse(getUserByLogin_);
+           //用户名
+    		    var name_useIfo_ =$("#name_useIfo").val(getUserByLogin_.nickname);
+    			//性别选择
+    			//var val_=$('input:radio[name="sex"]:checked').val();
+    			//生日选择
+    			var appDate_ =$("#appDate").val(getUserByLogin_.birthday)
+    			//区域选择
+    			var address_ =$("#myAddrs option:checked").text(getUserByLogin_.area);
+    			//头像
+    			  $('.imgborderP33 img').attr("src",getUserByLogin_.head_picture);
+    			//电话
+    			$("#phoen_user").val(getUserByLogin_.phone);
+        }
+        //所选区域
+		var area_List =getArea();
+		//console.log("所选区域"+area_List)
+		area_List = JSON.parse(area_List);
+		$("#myAddrs").empty();
+		var option_html ="";
+		for(var i = 0 ; i < area_List.length; i++){
+			option_html +="<option area_id='"+area_List[i].id+"' value='"+area_List[i].name+"'>"+area_List[i].name+"</option>";
+		}
+		$("#myAddrs").append(option_html);	
+		var getCheckedArea_true =getCheckedArea();
+		//console.log("所选择区域"+getCheckedArea_true)
+		getCheckedArea_true = JSON.parse(getCheckedArea_true);
+		$("#myAddrs option:checked").text(getCheckedArea_true.name);
+		//生日选择
+		$(function() {
+			var currYear = (new Date()).getFullYear();
+			var opt = {};
+			opt.date = {
+				preset: 'date'
+			};
+			opt.datetime = {
+				preset: 'datetime'
+			};
+			opt.time = {
+				preset: 'time'
+			};
+			opt.default = {
+				theme: 'android-ics light', //皮肤样式
+				display: 'modal', //显示方式 
+				mode: 'scroller', //日期选择模式
+				dateFormat: 'yyyy-mm-dd',
+				lang: 'zh',
+				showNow: true,
+				nowText: "今天",
+				startYear: currYear - 180, //开始年份
+				endYear: currYear + 10 //结束年份
+			};
+		
+			$("#appDate").mobiscroll($.extend(opt['date'], opt['default']));
+		});
+		
+		//上传头像
+	//上传头像修改
+	$(".imgborderP33").click(function(){
+		$(".touxiang_Img").css("transform", "translateY(0px)");
+	});
+	//上传头像修改拍照
+	$(".paizaoBtns_").click(function(){
+		$(".touxiang_Img").css("transform", "translateY(-1000px)");
+	});
+	$("#pic").click(function() {
+		$("#upload").click(); //隐藏了input:file样式后，点击头像就可以本地上传
+		$("#upload").on("change", function() {
+			var objUrl = getObjectURL(this.files[0]); //获取图片的路径，该路径不是图片在本地的路径
+			if(objUrl) {
+				handleUploadImage();
+				//$(".imgborderP33 img").attr("src", objUrl); //将图片路径存入src中，显示出图片
+
+			}
+			
+		});
+
+	});
+
+	//建立一個可存取到該file的url
+	function getObjectURL(file) {
+		var url = null;
+		if(window.createObjectURL != undefined) { // basic
+			url = window.createObjectURL(file);
+		} else if(window.URL != undefined) { // mozilla(firefox)
+			url = window.URL.createObjectURL(file);
+		} else if(window.webkitURL != undefined) { // webkit or chrome
+			url = window.webkitURL.createObjectURL(file);
+		}
+		return url;
+	};
+	
+	function handleUploadImage(){
+        var options = {
+            url: "/Gans/files/uploadImage.do",
+            type: 'post',
+            beforeSubmit: function (formData, jqForm, options) {
+                var queryString = $.param(formData);
+            },
+            success: function (data) {
+
+                if (data) {
+                    $('.imgborderP33 img').attr('src', data);
+                    
+                }
+            }
+        };
+
+       $('#mForm').ajaxSubmit(options);
+};
+
+	//上传头像修改从手机相册选择
+	$(".xangceBtns_").click(function(){
+		$(".touxiang_Img").css("transform", "translateY(-1000px)");
+	});
+	$("#pic2").click(function() {
+		$("#upload2").click(); //隐藏了input:file样式后，点击头像就可以本地上传
+		$("#upload2").on("change", function() {
+			var objUrl = getObjectURL2(this.files[0]); //获取图片的路径，该路径不是图片在本地的路径
+			
+			if(objUrl) {
+				handleUploadImage()
+				//$(".imgborderP33 img").attr("src", objUrl); //将图片路径存入src中，显示出图片
+
+			}
+			//handleUploadImage()
+		});
+
+	});
+
+	//建立一個可存取到該file的url
+	function getObjectURL2(file) {
+		var url = null;
+		if(window.createObjectURL != undefined) { // basic
+			url = window.createObjectURL(file);
+		} else if(window.URL != undefined) { // mozilla(firefox)
+			url = window.URL.createObjectURL(file);
+		} else if(window.webkitURL != undefined) { // webkit or chrome
+			url = window.webkitURL.createObjectURL(file);
+		}
+		return url;
+	};
+	//上传头像修改取消
+	$(".colesBtns_").click(function(){
+		$(".touxiang_Img").css("transform", "translateY(-1000px)");
+	});
+		//提交按钮
+		 $("#xiougaiBtnsv").click(function(){
+			//用户名
+		    var name_useIfo_ =$("#name_useIfo").val();
+			//性别选择
+			var val_=$('input:radio[name="sex"]:checked').val();
+			//生日选择
+			var appDate_ =$("#appDate").val()
+			//区域选择
+			var address_ =$("#myAddrs option:checked").text();
+			var aear_id = $("#myAddrs option:checked").attr("area_id");
+			var  changeArea_ =changeArea(aear_id);
+			//邮箱
+			var youxiang_num_ =$("#youxiang_num").val();
+        	var  updatePerson_ =updatePerson(name_useIfo_, val_, appDate_, address_, youxiang_num_);
+        	
+        	if(updatePerson_  == "ok"){
+        		alert("修改个人资料成功")
+        		//console.log("提交的内容"+updatePerson_)
+        		useaddinit();
+        		 setTimeout(function(){
+						mui.openWindow({
+							url: 'personalcenter.html',
+							id: 'personalcenter',
+							showType: 'zoom-fade-out',
+							showTime: 200
+						});
+					},200); 
+        	}
+        });
+		
+	</script>
+
+</html>

@@ -1,0 +1,316 @@
+var thisURL = document.URL;
+var getval = thisURL.split('?')[1];
+var shop_details_Id = getval.split("=")[1];
+
+
+//让指定的DIV始终显示在屏幕正中间   
+left_w=($(document).width()-$('#loadingicon').width())/2;  
+top_w = $('html').scrollTop()+($(window).height()-$('#loadingicon').height())/2;  
+$('#loadingicon').offset({top:top_w,left:left_w});  
+
+$('#loadingicon').show();
+$('#loadingicon').offset({top:top_w,left:left_w});  
+setTimeout(function(){
+	$('#loadingicon').hide();
+	shop_details_();
+},200);
+
+function shop_details_(){
+	var getAreaShop_ =getShopById(shop_details_Id);
+	console.log("获取店铺=="+getAreaShop_);
+	getAreaShop_ = JSON.parse(getAreaShop_);
+	//获取店铺名
+	$("#dianpu_name").text(getAreaShop_.shop_name);
+	//获取店铺地址
+	$("#dianpu_address_1").text(getAreaShop_.address);
+	//获取店铺联系方式
+	$("#kefu_dianpu").text(getAreaShop_.phone);
+	//店铺活动提示
+	$("#contentShopDetails").append(getAreaShop_.content)
+	function addshophtml_(){
+		//传商户id获取商品数据
+		var shopGoods_html =getGoodsByShopId(getAreaShop_.id);
+		console.log("传商户id获取商品数据=="+shopGoods_html);
+		shopGoods_html = JSON.parse(shopGoods_html);
+		
+		/**
+		 * 根据供应商ID查询商品
+		 * @param shopId 供应商ID
+		 * @returns 商品集合
+		 */
+		var shop_List_add ="",miaosha_ = ""; 
+		for(var i = 0; i <shopGoods_html.length ; i++ ){
+			var youxiaoqi_ ="<dt></dt>";
+			var part ="";
+			/**
+			  * 根据商品ID获取周周惠活动详情
+			  * @param goodsId 商品ID
+			  * @returns 活动详情对象
+			  */
+            var getActivityByGoods_ =null;
+			 //var getActivityByGoods_ =getActivityByGoods(shopGoods_html[i].id);
+			 console.log("根据商品ID获取周周惠活动详情"+getActivityByGoods_);
+			 getActivityByGoods_ = JSON.parse(getActivityByGoods_);
+		
+			/**
+			  * 根据商品Id获取团购活动详情
+			  * @param goodsId
+			  * @param response
+			  * @return
+			  * @throws IOException 
+			  */
+            var getTuangouByGoodsId_=null;
+			 //var getTuangouByGoodsId_=getTuangouByGoodsId(shopGoods_html[i].id);
+			 console.log("根据商品Id获取团购活动详情"+getTuangouByGoodsId_);
+			 getTuangouByGoodsId_ = JSON.parse(getTuangouByGoodsId_);
+			 console.log(getTuangouByGoodsId_);
+			 /**
+			  * 根据商品Id 获取秒杀活动详情
+			  * @param goodsId
+			  * @param response
+			  * @return
+			  * @throws IOException
+			  */
+             var getseckillByGoodsId_ =null;
+			 //var getseckillByGoodsId_ =getseckillByGoodsId(shopGoods_html[i].id);
+			 console.log("根据商品Id 获取秒杀活动详情"+getseckillByGoodsId_);
+			 getseckillByGoodsId_ = JSON.parse(getseckillByGoodsId_);
+			 console.log(getseckillByGoodsId_);
+			 /**
+			  * 根据商品ID获取龙支付活详情
+			  * @param goodsId
+			  * @param response
+			  * @return
+			  * @throws IOException
+			  */
+             var getLongpayhuodongByGoodsId_ =null;
+			 //var getLongpayhuodongByGoodsId_ = getLongpayhuodongByGoodsId(shopGoods_html[i].id);
+			 console.log("根据商品ID获取龙支付活详情"+getLongpayhuodongByGoodsId_);
+			 getLongpayhuodongByGoodsId_ = JSON.parse(getLongpayhuodongByGoodsId_);
+			 console.log(getLongpayhuodongByGoodsId_);
+			 if(getseckillByGoodsId_ !=null ){
+				 if(getseckillByGoodsId_.label ==1){//秒杀
+					// alert("秒杀")
+					 console.log(getseckillByGoodsId_.goods_id )
+					  var endtime=getseckillByGoodsId_.end_time;
+					 	var startime =getseckillByGoodsId_.start_time;
+					 	var systemtime = getNowFormatDate();
+					 	systemtime=systemtime.replace("-", "").replace(" ", "").replace(":", "").replace("-", "").replace(":", "");
+					 	endtime=endtime.replace("-", "").replace(" ", "").replace(":", "").replace("-", "").replace(":", "");
+						startime =startime.replace("-", "").replace(" ", "").replace(":", "").replace("-", "").replace(":", "");
+						var m1 =systemtime-startime;
+						var m2 =systemtime-endtime;
+						/*//console.log(startime)
+						//console.log(endtime)
+						//console.log(systemtime);
+						//console.log(m1)
+						//console.log(m2)
+*/						
+						if(m1 >0 &&  m2 <0){
+							pric_ =getseckillByGoodsId_.real_price;
+						}else{
+							pric_ =shopGoods_html[i].price;
+						}
+					    miaosha_ ="<img src='../img/smallImg/a4.png' />";
+						youxiaoqi_ ="<dt>有效期:<span>"+getseckillByGoodsId_.end_time+"</span></dt>";
+					
+						part = -2;
+				 }else{
+					 if(getTuangouByGoodsId_ !=null){//团购价格
+							if(getTuangouByGoodsId_.label ==2){
+								//alert("团购")
+								miaosha_ ="<img src='../img/smallImg/a3.png' />";
+								youxiaoqi_ ="<dt>有效期:<span>"+getTuangouByGoodsId_.end_time+"</span></dt>";
+								pric_ =getTuangouByGoodsId_.real_price;
+								part = 0;
+							}else{
+								 if(getLongpayhuodongByGoodsId_ != null){//龙支付
+									 if(getLongpayhuodongByGoodsId_.label ==3){
+										 //alert("龙支付")
+											miaosha_ ="<img src='../img/smallImg/a2.png' />";
+											youxiaoqi_ ="<dt>有效期:<span>"+getLongpayhuodongByGoodsId_.end_time+"</span></dt>";
+											pric_ =getLongpayhuodongByGoodsId_.real_price;
+											part = -1;
+										} 
+								 }else{
+									 if(getActivityByGoods_ != null){//周周惠价格
+								   			if(getActivityByGoods_.activity_id !=0){
+								   			 //alert("周周惠")
+								   				miaosha_ ="<img width='45' height='20'  src='' alt='周周惠' style='margin-left: 6px;font-size: 12px;line-height: 20px; color:#09b6f2;text-align: center;'/>";
+								   			    youxiaoqi_ ="<dt>有效期:<span>"+getActivityByGoods_.end_time+"</span></dt>";
+								   			    pric_ =getActivityByGoods_.real_price;
+								   			    part ="";
+								   			}
+										}else{
+											//alert("都不是")
+											youxiaoqi_ ="<dt style='visibility: hidden;'>有效期:<span></span></dt>";
+											miaosha_ ="";
+											pric_ =shopGoods_html[i].price;
+											part = -4;
+										}
+								}
+							}
+						}
+				 }
+			 }else{
+				 if(getTuangouByGoodsId_ !=null){//团购价格
+						if(getTuangouByGoodsId_.label ==2){
+							//alert("团购")
+							miaosha_ ="<img src='../img/smallImg/a3.png' />";
+							youxiaoqi_ ="<dt>有效期:<span>"+getTuangouByGoodsId_.end_time+"</span></dt>";
+							pric_ =getTuangouByGoodsId_.real_price;
+							part = 0;
+						}
+				 }
+					else if(getLongpayhuodongByGoodsId_ != null){//龙支付
+					 if(getLongpayhuodongByGoodsId_.label ==3){
+						 //alert("龙支付")
+							miaosha_ ="<img src='../img/smallImg/a2.png' />";
+							youxiaoqi_ ="<dt>有效期:<span>"+getLongpayhuodongByGoodsId_.end_time+"</span></dt>";
+							pric_ =getLongpayhuodongByGoodsId_.real_price;
+							part = -1;
+						} 
+				 }
+				 else  if(getActivityByGoods_ != null){//周周惠价格
+			   			if(getActivityByGoods_.activity_id !=0){
+			   			// alert("周周惠")
+			   				miaosha_ ="<img width='45' height='20'  src='' alt='周周惠' style='margin-left: 6px;font-size: 12px;line-height: 20px; color:#09b6f2;text-align: center;'/>";
+			   			    youxiaoqi_ ="<dt>有效期:<span>"+getActivityByGoods_.end_time+"</span></dt>";
+			   			    pric_ =getActivityByGoods_.real_price;
+			   			    part ="";
+			   			}
+					}else{
+						//alert("都不是")
+						youxiaoqi_ ="<dt style='visibility: hidden;'>有效期:<span></span></dt>";
+						miaosha_ ="";
+						pric_ =shopGoods_html[i].price;
+						part = -4;
+					}
+			 }
+				shop_List_add +="<div part='"+part+"' id='"+shopGoods_html[i].id+"' class='mui-col-xs-6 dssssdf'>"
+									+"<img  src='"+shopGoods_html[i].picture_address+"' />"
+									+"<p>"+shopGoods_html[i].goods_name+"</p>"
+									+youxiaoqi_
+									+"<div class='picdetails'>优惠价：¥<span>"+pric_+"</span>元</div>"
+									+"<dd class='clearfix'>"
+										+"<del>市场价："+shopGoods_html[i].cost_price+"元</del>"
+										+miaosha_
+									+"</dd>"
+									+"<button class='picBttns'>立即购买</button>"
+								+"</div>";
+		 
+		}
+		$("#shopListBox").append(shop_List_add);
+		  //跳转对应的商品详情     
+	    var abc = $(".dssssdf")
+	    var url_="";
+			for (var i = 0; i < abc.length; i++) {
+			    (function(e){  //自执行函数实时把i传入e
+			        abc[e].onclick=function(){  //  通过传入的e获取到哪个按钮发生了点击事件
+//			            alert(e) //弹出e（此处e为i实时对应值）
+	                    var shop_details_Id =$(this).attr("id");
+	                    var part =$(this).attr("part");
+	               
+                        	url_ ='details.html?id='+shop_details_Id+'&part='+part
+	            	
+	                    setTimeout(function(){
+							mui.openWindow({
+								url: url_,
+								id: 'details',
+								showType: 'zoom-fade-out',
+								showTime: 200
+							});
+						},200);
+			        }
+			    })(i)    
+			};   //采用闭包和自执行函数获取i
+	} 
+	
+	//客服电话
+	var datekefu = getAreaShop_.phone;
+	$("#kefu").click(function() {
+		if(confirm("确定拨打电话吗")) {
+			window.location.href = 'tel:' + datekefu;
+		}
+	});
+	//对应店铺轮播图
+	function getAdvertByStatus(shop_id){
+		var url = "shopBanner/listByShopId.do";
+		var data = {
+				shop_id:shop_id
+	    };
+		async = false;
+		var result = ajaxSubmit(url, data, async);
+		console.log(result)
+		return result;
+	}
+	var getAdvertByStatusShopImg_ =getAdvertByStatus(shop_details_Id);
+	console.log("获取广告图片集合==="+getAdvertByStatusShopImg_)
+	getAdvertByStatusShopImg_=JSON.parse(getAdvertByStatusShopImg_); 
+	$("#ShopImgbannerImg").empty();
+	var ShopImgbannerImg ="";
+	for(var i = 0 ; i < getAdvertByStatusShopImg_.length; i++){
+		ShopImgbannerImg +="<div  onclick=\"javascript:window.location.href='"+getAdvertByStatusShopImg_[i].url+"'\" class='swiper-slide' style='background-image:url("+getAdvertByStatusShopImg_[i].picture_address+")'></div>";
+	}
+	$("#ShopImgbannerImg").append(ShopImgbannerImg);
+	//轮播图
+	var swiper = new Swiper('.swiper-container', {
+		pagination: '.swiper-pagination',
+		paginationClickable: '.swiper-pagination',
+		loop: true,
+		spaceBetween: 30,
+		autoplay: 2500,
+		autoplayDisableOnInteraction: false,
+		effect: 'fade'
+	});
+	//shop_details_Id
+	/*var getAdvertByStatusShopImg_ =getAdvertByStatus("E");
+	console.log("获取广告图片集合==="+getAdvertByStatusShopImg_)
+	getAdvertByStatusShopImg_=JSON.parse(getAdvertByStatusShopImg_); 
+	
+	var ShopImgbannerImg ="";
+	for(var i = 0 ; i < getAdvertByStatusShopImg_.length; i++){
+		ShopImgbannerImg +="<div  onclick=\"javascript:window.location.href='"+getAdvertByStatusShopImg_[i].ad_url+"'\" class='swiper-slide' style='background-image:url("+getAdvertByStatusShopImg_[i].ad_path+")'></div>";
+	}
+	$("#ShopImgbannerImg").append(ShopImgbannerImg);
+	
+	var swiper = new Swiper('.swiper-container', {
+		pagination: '.swiper-pagination',
+		paginationClickable: '.swiper-pagination',
+		loop: true,
+		spaceBetween: 30,
+		autoplay: 2500,
+		autoplayDisableOnInteraction: false,
+		effect: 'fade'
+	});*/
+	addshophtml_();//查询商品
+	
+}
+
+
+/**
+ * 获取当前时间
+ * meiyong
+ * @returns {String}
+ */
+function getNowFormatDate() {
+    var date = new Date();
+    var seperator1 = "-";
+    var seperator2 = ":";
+    var month = date.getMonth() + 1;
+    var strDate = date.getDate();
+    if (month >= 1 && month <= 9) {
+        month = "0" + month;
+    }
+    if (strDate >= 0 && strDate <= 9) {
+        strDate = "0" + strDate;
+    }
+    var seconds=date.getSeconds();
+    if(seconds<10){
+    	seconds="0"+seconds;
+    }
+    var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate
+            + " " + date.getHours() + seperator2 + date.getMinutes()
+            + seperator2 + seconds;
+    return currentdate;
+}

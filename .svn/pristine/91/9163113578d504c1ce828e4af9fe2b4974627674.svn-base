@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<link rel="stylesheet" href="css/frame.css">
+	<link rel="stylesheet" href="css/minPublicBenefit.css">
+	<link rel="stylesheet" href="css/common.css">
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="js/popUpWin.js"></script>
+	<title>汇聚甘肃后台管理系统-平台管理-系统管理-角色管理</title>
+    <script type="text/javascript" src="js/angular-1.0.1.min.js"></script>
+</head>
+<body>
+	<div class="frameRall">
+		<!-- 头部通知搜索栏 -->
+		<div ng-app="">
+            <div ng-include="'head.htm'"></div>
+        </div>
+		<div class="headlineBig ml40 mb20 clearfix">
+			<h1 class="stair">平台管理<span>工作平台</span></h1>
+			<h1 class="secondLevel">角色管理</h1>
+		</div>
+		<div class="prizeManage ml40 clearfix">
+			<!-- 该页面展示了所有入驻平台的管理员列表。可手动添加管理员并分配权限、查看日志等操作 -->
+			<div class="commodityBox mt30">
+				<table class="commodityTab orderFormTab">
+					<thead>
+						<tr class="salesManageTr">
+							<th>用户名</th>
+							<th>姓名</th>
+							<th>手机号</th>
+							<th>Email</th>
+							<th>加入时间</th>
+							<th>最后登录时间</th>
+							<th class="tc">操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>admin</td>
+							<td>户田惠梨香</td>
+							<td>134745874787</td>
+							<td>8478475@qq.com</td>
+							<td>2017-06-02 08:00:00</td>
+							<td>2017-06-02 23:00:00</td>
+							<td>
+								<span class="operationButBox">
+									<a href="javascript:;" class="butBox">查看日志</a>
+									<a href="javascript:;" class="butBox ml10">编辑</a>
+									<a href="javascript:;" class="butBox ml10">移除</a>
+								</span>
+							</td>
+						</tr>
+					</tbody>
+					<tfoot class="commFootTd">
+						<tr>
+							<td colspan="5" class="commFootFont textar">总计<span>23351</span>条数据&emsp;&emsp;分为<span>280</span>页&emsp;每页<span>10</span>个</td>
+							<td colspan="2" class="commPageBut">
+								<div class="commPageBut2 fr pr30">
+									<a href="javascript:;" title="第一页" class="commPage1"></a>
+									<a href="javascript:;" title="上一页" class="commPage2"></a>
+									<select name="">
+										<option value="">1</option>
+									</select>
+									<a href="javascript:;" title="下一页" class="commPage3"></a>
+									<a href="javascript:;" title="尾页" class="commPage4"></a>
+								</div>
+							</td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

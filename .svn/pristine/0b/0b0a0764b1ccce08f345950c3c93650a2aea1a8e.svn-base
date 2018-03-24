@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>入学季礼品详情</title>
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/bass.css" />
+		<link rel="stylesheet" href="../css/tiny.css" />
+		<link rel="stylesheet" href="../css/student.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">入学季礼品详情</h1>
+			<span class="mui-pull-right mui-action-back" style="color: #fff;font-size: 13px;line-height: 44px;">关闭</span>
+		</header>
+		<div style="height: 44px;"></div>
+		<div class="giftBox">
+			<!--学生领取礼品名单-->
+			<div class="giftModel">
+				<img class="gifTopTitleImg" src="../img/person/giftBGtop1.png" alt="" />
+				<div  class="gifsorBox" id="stScorllOne">
+				<ul id="giftLiContent">
+					<!--li 个数大于 4 条才能滚动-->
+					<!-- <li>
+						<div class="giftModelScorll clearfix">
+							<p class="giftModelTop"><span class="giftModelTopl">136****3627</span><span class="giftModelTopr">2017.8.20</span></p>
+							<p class="giftModelContent">1赠送移动话费50元，移动流量包1G</p>
+						</div>
+					</li>
+					<li>
+						<div class="giftModelScorll clearfix">
+							<p class="giftModelTop"><span class="giftModelTopl">136****3627</span><span class="giftModelTopr">2017.8.20</span></p>
+							<p class="giftModelContent">2赠送移动话费50元，移动流量包1G</p>
+						</div>
+					</li>
+					<li>
+						<div class="giftModelScorll clearfix">
+							<p class="giftModelTop"><span class="giftModelTopl">136****3627</span><span class="giftModelTopr">2017.8.20</span></p>
+							<p class="giftModelContent">3赠送移动话费50元，移动流量包1G</p>
+						</div>
+					</li>
+					<li>
+						<div class="giftModelScorll clearfix">
+							<p class="giftModelTop"><span class="giftModelTopl">136****3627</span><span class="giftModelTopr">2017.8.20</span></p>
+							<p class="giftModelContent">4赠送移动话费50元，移动流量包1G</p>
+						</div>
+					</li>
+					<li>
+						<div class="giftModelScorll clearfix">
+							<p class="giftModelTop"><span class="giftModelTopl">136****3627</span><span class="giftModelTopr">2017.8.20</span></p>
+							<p class="giftModelContent">5赠送移动话费50元，移动流量包1G</p>
+						</div>
+					</li> -->
+				</ul>
+				</div>
+			</div>
+			<!--家长领取礼品名单-->
+			<div class="giftModel">
+				<img class="gifTopTitleImg" src="../img/person/giftBGtop2.png" alt="" />
+				<div  class="gifsorBox" id="stScorllTwo">
+				<ul id="patrLiContent">
+
+					<!--li 个数大于 4 条才能滚动-->
+					<!-- <li>
+						<div class="giftModelScorll clearfix">
+							<p class="giftModelTop"><span class="giftModelTopl">136****3627</span><span class="giftModelTopr">2017.8.20</span></p>
+							<p class="giftModelContent">1赠送移动话费50元，移动流量包1G</p>
+						</div>
+					</li>
+					<li>
+						<div class="giftModelScorll clearfix">
+							<p class="giftModelTop"><span class="giftModelTopl">136****3627</span><span class="giftModelTopr">2017.8.20</span></p>
+							<p class="giftModelContent">2赠送移动话费50元，移动流量包1G</p>
+						</div>
+					</li>
+					<li>
+						<div class="giftModelScorll clearfix">
+							<p class="giftModelTop"><span class="giftModelTopl">136****3627</span><span class="giftModelTopr">2017.8.20</span></p>
+							<p class="giftModelContent">3赠送移动话费50元，移动流量包1G</p>
+						</div>
+					</li>
+					<li>
+						<div class="giftModelScorll clearfix">
+							<p class="giftModelTop"><span class="giftModelTopl">136****3627</span><span class="giftModelTopr">2017.8.20</span></p>
+							<p class="giftModelContent">4赠送移动话费50元，移动流量包1G</p>
+						</div>
+					</li>
+					<li>
+						<div class="giftModelScorll clearfix">
+							<p class="giftModelTop"><span class="giftModelTopl">136****3627</span><span class="giftModelTopr">2017.8.20</span></p>
+							<p class="giftModelContent">5赠送移动话费50元，移动流量包1G</p>
+						</div>
+					</li> -->
+				</ul>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+		<script type="text/javascript" src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/tiny_.js" ></script>
+		<!--文字上下滚动jq-->
+		<script type="text/javascript" src="../js/jQuery.textSlider.js" ></script>
+		<script type="text/javascript" src="../js/publicAddress.js" ></script>
+		<script>
+			mui.init();
+			/**
+			 * 根据label标签（1、2）{学生、家长}获取所有中奖人的信息
+			 * @param response
+			 * @param label
+			 * @return
+			 * @throws IOException 
+			 */
+			 function PrizephonegetList(label){
+				    var url = "userSp/getList.do";
+					var data = {
+							label:label
+				    };
+					async = false;
+					var result = ajaxSubmit(url, data, async);
+					//console.log(result)
+					return result;
+			}
+			$(document).ready(function(){
+				//学生礼包
+				
+				//通过PrizephonegetList(label)方法得到数据,label的参数为1(学生),获取所有学生的数据集合
+				var getCheckedArea_true =PrizephonegetList(1);
+				//转换JSON对象
+				getCheckedArea_true = JSON.parse(getCheckedArea_true);
+				//打印
+				//console.log(getCheckedArea_true)
+				//清空节点内容
+				$("#giftLiContent").empty();
+				//定义变量
+				var giftLiContent_ ="";
+				//循环得到数据的长度
+				for(var i = 0;i<getCheckedArea_true.length;i++){
+					giftLiContent_+="<li>"
+						+"<div class='giftModelScorll clearfix'>"
+							+"<p class='giftModelTop'><span class='giftModelTopl'>"+getCheckedArea_true[i].phone.substr(0, 3) + '****' + getCheckedArea_true[i].phone.substr(7)+"</span><span class='giftModelTopr'>"+getCheckedArea_true[i].time+"</span></p>"
+							+"<p class='giftModelContent'>"+getCheckedArea_true[i].prize+"</p>"
+						+"</div>"
+					+"</li>";
+					
+				}
+				//添加到所对应节点，并显示所有内容
+				$("#giftLiContent").append(giftLiContent_);
+				
+				/*id:stScorllOne下面的ul li 个数大于 4 条才能滚动*/
+				if($("#stScorllOne ul").children("li").length > 4){
+		        	$("#stScorllOne").textSlider({line:1,speed:500,timer:3000});
+				}
+				
+
+				//家长礼包
+				var getCheckedArea_true2 =PrizephonegetList(2);
+				getCheckedArea_true2 = JSON.parse(getCheckedArea_true2);
+				//console.log(getCheckedArea_true2)
+				$("#patrLiContent").empty();
+				var giftLiContent_2 ="";
+				for(var i = 0;i<getCheckedArea_true2.length;i++){
+					giftLiContent_2+="<li>"
+						+"<div class='giftModelScorll clearfix'>"
+							+"<p class='giftModelTop'><span class='giftModelTopl'>"+getCheckedArea_true2[i].phone.substr(0, 3) + '****' + getCheckedArea_true2[i].phone.substr(7)+"</span><span class='giftModelTopr'>"+getCheckedArea_true2[i].time+"</span></p>"
+							+"<p class='giftModelContent'>"+getCheckedArea_true2[i].prize+"</p>"
+						+"</div>"
+					+"</li>";
+					
+				}
+				$("#patrLiContent").append(giftLiContent_2);
+
+				/*id:stScorllTwo下面的ul li 个数大于 4 条才能滚动*/
+				if($("#stScorllTwo ul").children("li").length > 4){
+		        	$("#stScorllTwo").textSlider({line:1,speed:500,timer:3000});
+				}
+			});
+
+		</script>
+	</body>
+</html>

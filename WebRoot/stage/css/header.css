@@ -1,0 +1,250 @@
+/*头部导航*/
+.headerLeft span{
+	float: left;
+	line-height: 45px;
+	font-size: 14px;
+	color: #fff;
+}
+.headerLeft i{
+	float: left;
+	margin-top: 4px;
+}
+.headerRight{
+	float: left;
+	height: 44px;
+	position: relative;
+}
+.headerRight img:nth-of-type(1){
+	float: left;
+	width: 24px;
+	margin-top: 11px;
+	margin-right: 2px;
+}
+.headerRight img:nth-of-type(2){
+	float: right;
+	width: 24px;
+	margin-top: 13px;
+	margin-right: -4px;
+}
+.headerConts{
+	position: relative;
+}
+.headerConts span{
+	position: absolute;
+	top: 0px;
+    left: 15px;
+}
+.headerConts .mui-icon {
+    font-size: 20px;
+    position: absolute;
+    z-index: 20;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.headerConts input{
+	display: block;
+	width: 90%;
+	border: none;
+	background: #fff;
+	border-radius: 45px;
+	
+}
+.mui-bar input[type=search] {
+    margin: 7px 10px;
+    font-size: 14px;
+    text-align: left;
+    padding: 6px 0px 6px 29px;
+       
+}
+.headerConts h1{
+	font-size: 16px;
+}
+.headerRight .mui-icon {
+    font-size: 20px;
+    position: absolute;
+    z-index: 20;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.headerRight input{
+	display: block;
+	width: 90%;
+	border: none;
+	background: #fff;
+	border-radius: 45px;
+	
+}
+/*底部导航*/
+/*.mui-icon-home1{
+	background: url(../img/smallImg/nav1.png) no-repeat;
+	background-size:100% 23px ;
+}
+.mui-icon-phone1{
+	background: url(../img/smallImg/nav2.png) no-repeat;
+	background-size:100% 22px ;
+}
+.mui-icon-email1{
+	background: url(../img/smallImg/nav3.png) no-repeat;
+	background-size:100% 19px;
+}
+.mui-icon-gear1{
+	background: url(../img/smallImg/nav4.png) no-repeat;
+	    background-size: 95% 23px;
+}
+.mui-icon-email12{
+	background: url(../img/smallImg/18.png) no-repeat;
+	background-size:100% 22px;
+}
+.mui-icon-email13{
+	background: url(../img/smallImg/19.png) no-repeat;
+	background-size:100% 22px;
+}
+.mui-icon-email14{
+	background: url(../img/smallImg/20.png) no-repeat;
+	background-size:100% 22px;
+}*/
+/*轮播图部分*/
+.banner{
+	width: 100%;
+	height: 160px;
+	overflow: hidden;
+}
+.banner .swiper-container{
+	width: 100%;
+    height: 100%;
+}
+.banner .swiper-slide {
+        background-position: center;
+        background-size: cover;
+}
+.banner .swiper-container .swiper-pagination {
+    position: absolute;
+    text-align: right;
+    -webkit-transition: 300ms;
+    -moz-transition: 300ms;
+    -o-transition: 300ms;
+    transition: 300ms;
+    -webkit-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    z-index: 10;
+    right: 0px;
+    bottom: 0px;
+}
+.banner .swiper-container .swiper-pagination-white .swiper-pagination-bullet-active {
+    background: #ef1932;
+}
+/*首页背景*/
+.indexConts{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	
+}
+.footer{
+	position: fixed;
+	width: 100%;
+	height: 50px;
+	left: 0px;
+    bottom: 0px;
+    max-width: 640px;
+}
+.footer1{
+	display: block;
+	padding: 6px;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+}
+.footer1 .mui-icon-home1{
+	display: block;
+    width: 29px;
+    height: 23px;
+    margin: 0 auto;
+}
+.footer1 p{
+	font-size: 14px;
+	color: #fff;
+}
+
+.footer1 .mui-icon-phone1{
+	display: block;
+    width: 29px;
+    height: 22px;
+    margin: 0 auto;
+}
+.footer1  .mui-icon-email1{
+	display: block;
+    width: 29px;
+    height: 19px;
+    margin: 0 auto 3px auto;
+}
+.footer1 .mui-icon-gear1{
+	display: block;
+    width: 27px;
+    height: 23px;
+    margin: 0 auto;
+}
+/*.mui-icon-email12{
+	background: url(../img/smallImg/18.png) no-repeat;
+	background-size:100% 22px;
+}
+.mui-icon-email13{
+	background: url(../img/smallImg/19.png) no-repeat;
+	background-size:100% 22px;
+}
+.mui-icon-email14{
+	background: url(../img/smallImg/20.png) no-repeat;
+	background-size:100% 22px;
+}*/
+.footer22{
+	position: fixed;
+	width: 100%;
+	height: 50px;
+	left: 0px;
+    bottom: 0px;
+    max-width: 640px;
+    z-index: 123456789932;
+}
+.footer144{
+	padding: 6px;
+	float: left;
+	width: 20%;
+	height: 50px;
+}
+.footer22 .mui-icon-home1{
+	display: block;
+    width: 29px;
+    height: 23px;
+    margin: 0 auto;
+}
+.footer22 p{
+	font-size: 13px;
+	color: #fff;
+	text-align: center;
+}
+.footer22 .mui-icon-gear1{
+	display: block;
+    width: 27px;
+    height: 23px;
+    margin: 0 auto;
+}
+.footer22 .mui-icon-email12{
+	display: block;
+    width: 27px;
+    height: 23px;
+    margin: 0 auto;
+}
+.footer22 .mui-icon-email13{
+	display: block;
+    width: 27px;
+    height: 23px;
+    margin: 0 auto;
+}
+.footer22 .mui-icon-email14{
+	display: block;
+    width: 27px;
+    height: 23px;
+    margin: 0 auto;
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <link rel="stylesheet" href="css/frame.css">
+        <link rel="stylesheet" href="css/minPublicBenefit.css">
+        <link rel="stylesheet" href="css/common.css">
+        <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="js/popUpWin.js"></script>
+        <!-- 奖品管理js -->
+        <script type="text/javascript" src="js/activity.js"></script>
+        <title>汇聚甘肃后台管理系统--商城管理-商品管理--活动管理</title>
+    <script type="text/javascript" src="js/angular-1.0.1.min.js"></script>
+    </head>
+    <body style="background-color: #f1f1f1;">
+        <div class="frameRall">
+            <!-- 头部通知搜索栏 -->
+            <div ng-app="">
+                <div ng-include="'head.htm'"></div>
+            </div>
+            <div class="headlineBig ml40 mb20 clearfix">
+                <h1 class="stair">
+                    商城管理
+                    <span>地区管理</span>
+                </h1>
+                <h1 class="secondLevel">
+                    活动管理
+                </h1>
+            </div>
+            <div class="prizeManage ml40 clearfix">
+                <a href="javascript:;" class="butBox seckillAdd mb30 addType">添加活动</a>
+                
+                <!-- 点击添加奖项，弹出 -->
+                <div class="seckillAddBox grouponAddBox prizeManAddBox seckillWin"
+                    style="height: 120px;">
+                    <i class="seckillClose"></i>
+                    <form action="" id="addArea"
+                        method="post">
+                        <ul>
+                            <li>
+                                <span><i class="colorRed">*</i>活动名称：</span>
+                                <input type="text" class="seckillUpInp w120"
+                                    placeholder="请输入活动名称" name="name" value="" />
+                            </li>
+                            <!--<li>
+                                <span><i class="colorRed">*</i>开始时间：</span>
+                                <input type="text" class="seckillUpInp w120" id="startDate"
+                                    placeholder="请输入开始时间" name="start_time" value="" />
+                            </li>
+                            <li>
+                                <span><i class="colorRed">*</i>结束时间：</span>
+                                <input type="text" class="seckillUpInp w120" id="endDate"
+                                    placeholder="请输入结束时间" name="end_time" value="" />
+                            </li>
+                            <li>
+                                <span><i class="colorRed">*</i>活动价格：</span>
+                                <input type="text" class="seckillUpInp w120"
+                                    placeholder="请输入活动价格" name="real_price" value="" />
+                            </li>--><li>
+                                <a href="javascript:;" class="butBox submitAddActivity">提交</a>
+                            </li>
+
+                        </ul>
+                    </form>
+                </div>
+                <table class="infoTabShow przeInKind areaTabelList">
+                    <thead>
+                        <tr>
+                            <td>
+                                序号
+                            </td>
+                            <td>
+                                活动名称
+                            </td>
+                            <td width="380">
+                                操作
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript" src="js/laydate.js"></script>
+</html>

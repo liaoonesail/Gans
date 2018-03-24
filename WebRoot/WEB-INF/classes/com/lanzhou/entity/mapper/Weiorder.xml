@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC 
+    "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanzhou.entity.Weiorder">
+
+
+	<insert id="add" parameterType="com.lanzhou.entity.Weiorder"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into
+		weiorder(orderNum,phone,price,status,addTime,isLotto,pageId,area)
+		values(#{orderNum},#{phone},#{price},#{status},#{addTime},#{isLotto},#{pageId},#{area})
+	</insert>
+
+	<delete id="del" parameterType="int">
+		delete from
+		weiorder where id=#{id}
+	</delete>
+
+	<update id="update" parameterType="com.lanzhou.entity.Weiorder">
+		update weiorder
+		set
+		orderNum=#{orderNum},
+		phone=#{phone},
+		price=#{price},
+		status=#{status},
+		total=#{total},
+		addTime=#{addTime},
+		isLotto=#{isLotto},
+		pageId=#{pageId}
+		where
+		id=#{id}
+	</update>
+	<update id="updateStatus" parameterType="map">
+		update weiorder
+		set
+		status=#{status}
+		where
+		id=#{id}
+	</update>
+	<update id="updateisLotto" parameterType="map">
+		update weiorder
+		set
+		isLotto=#{isLotto}
+		where
+		orderNum=#{orderNum}
+	</update>
+	<select id="getNumByPrice" parameterType="int" resultType="int">
+		select count(price) from weiorder a where a.status=1 and
+		a.pageId=#{id}
+	</select>
+
+	<select id="getPeopleByPhone" parameterType="int" resultType="int">
+		select count(*) from (select * from weiorder a where a.status=1 and
+		a.pageId=#{id} GROUP BY a.phone) as c
+	</select>
+
+	<select id="getSumByPrice" parameterType="int" resultType="double">
+		select sum(price) from weiorder a where a.status=1 and a.pageId=#{id}
+	</select>
+
+	<select id="getById" parameterType="int" resultType="com.lanzhou.entity.Weiorder">
+		select *
+		from
+		weiorder where id=#{id}
+	</select>
+
+	<select id="getorder_num" parameterType="string"
+		resultType="com.lanzhou.entity.Weiorder">
+		select * from
+		weiorder where orderNum=#{orderNum}
+	</select>
+	<select id="getByPhone" parameterType="string"
+		resultType="com.lanzhou.entity.Weiorder">
+		select * from
+		weiorder where phone=#{phone} and status=1
+	</select>
+	<select id="getListALL" resultType="com.lanzhou.entity.Weiorder">
+		select * from weiorder order
+		by id desc
+	</select>
+	<select id="count" resultType="int">
+		select count(*) from weiorder
+		a,page_parameter b where a.pageId=b.id and a.status=1 and
+		a.pageId=(select id from page_parameter ORDER BY id desc limit 1)
+		order by a.id desc
+
+	</select>
+	<select id="listpage" parameterType="map"
+		resultType="com.lanzhou.entity.Weiorder">
+		select * from weiorder a,page_parameter b where
+		a.pageId=b.id and a.status=1 and a.pageId=(select id from
+		page_parameter ORDER BY id desc limit 1) order by a.id desc limit
+		#{startRecord},#{pageSize}
+	</select>
+
+	<select id="total" resultType="int">
+		select count(*) from (select *
+		from (select a.pageId from weiorder a,page_parameter b where
+		a.pageId=b.id and a.status=1 and a.pageId!=(select id from
+		page_parameter ORDER BY id desc limit 1) order by a.pageId) as d GROUP
+		BY pageId) as e
+	</select>
+	<select id="pagelist" parameterType="map"
+		resultType="com.lanzhou.entity.Weiorder">
+		select * from (select a.pageId from weiorder
+		a,page_parameter b where a.pageId=b.id and a.status=1 and
+		a.pageId!=(select id from page_parameter ORDER BY id desc limit 1)
+		order by a.pageId) as d GROUP BY pageId limit
+		#{startRecord},#{pageSize}
+	</select>
+	<select id="getNewPageId" resultType="int">
+		select id from page_parameter ORDER BY id desc limit 1
+	</select>
+	<select id="baibiao" parameterType="map" resultType="com.lanzhou.entity.Baobiao">
+		select x.area,x.countNum,x.totlePrice,x.countPerson,y.countNum
+		ZcountNum,y.totlePrice ZtotlePrice,y.countPerson ZcountPerson from (
+		SELECT a.*,b.countPerson from (select count(price) countNum,sum(price)
+		totlePrice,area from weiorder where status=1
+		<if test="status==1">
+			and STR_TO_DATE(addTime,'%Y-%m-%d')>=DATE_SUB(curdate(),INTERVAL #{days}
+			DAY)
+		</if>
+		<if test="status==2">
+			and
+			STR_TO_DATE(#{endTime},'%Y-%m-%d')>=STR_TO_DATE(addTime,'%Y-%m-%d')
+			and
+			STR_TO_DATE(addTime,'%Y-%m-%d')>=STR_TO_DATE(#{startTime},'%Y-%m-%d')
+		</if>
+		GROUP BY area) a INNER JOIN
+		(select area,count(countPerson) countPerson from (select
+		area,phone,count(phone) countPerson from weiorder where status=1
+		<if test="status==1">
+			and STR_TO_DATE(addTime,'%Y-%m-%d')>=DATE_SUB(curdate(),INTERVAL #{days}
+			DAY)
+		</if>
+		<if test="status==2">
+			and
+			STR_TO_DATE(#{endTime},'%Y-%m-%d')>=STR_TO_DATE(addTime,'%Y-%m-%d')
+			and
+			STR_TO_DATE(addTime,'%Y-%m-%d')>=STR_TO_DATE(#{startTime},'%Y-%m-%d')
+		</if>
+		GROUP BY phone) c GROUP BY area) b
+		on a.area=b.area
+		) x
+		left JOIN
+		(
+		SELECT a.*,b.countPerson from (select count(price) countNum,sum(price)
+		totlePrice,area from weiorder where status=1 and
+		STR_TO_DATE(addTime,'%Y-%m-%d')=DATE_SUB(curdate(),INTERVAL 1 DAY)
+		GROUP BY area) a INNER JOIN
+		(select count(countPerson) countPerson,area from (select phone,count(phone)
+		countPerson,area from weiorder where status=1 and
+		STR_TO_DATE(addTime,'%Y-%m-%d')=DATE_SUB(curdate(),INTERVAL 1 DAY)
+		GROUP BY phone) c GROUP BY area) b
+		on a.area=b.area
+		) y
+		on x.area=y.area
+	</select>
+</mapper>

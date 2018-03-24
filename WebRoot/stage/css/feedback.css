@@ -1,0 +1,38 @@
+.textareapp textarea {
+	width: 94%;
+	display: block;
+	height: 130px;
+	margin: 0 auto;
+	font-size: 13px;
+	color: #999;
+	text-align: justify;
+	font-family: "微软雅黑";
+	resize: none;
+}
+
+.mui-inline {
+	vertical-align: bottom;
+	font-size: 14px;
+	color: #8f8f94;
+}
+
+.mui-icon-star {
+	color: #B5B5B5;
+	font-size: 22px;
+}
+
+.mui-icon-star-filled {
+	color: #FFB400;
+	font-size: 22px;
+}
+.feedbackBtns_{
+	width: 90%;
+	background: #0c97f8;
+	color: #fff;
+	text-align: center;
+	line-height: 40px;
+	font-size: 15px;
+	display: block;
+	margin: 20px auto;
+	cursor: pointer;
+}

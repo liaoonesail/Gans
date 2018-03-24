@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC 
+    "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanzhou.entity.Whitephone" >
+
+
+	<insert id="add"  parameterType="com.lanzhou.entity.Whitephone" >
+		insert into whitephone(phone,nameId) values(#{phone},#{nameId})
+	</insert>
+	
+	<delete id="del"  parameterType="int"  >
+		delete  from whitephone where id=#{id}
+	</delete>
+	<delete id="delAll" parameterType="int">
+		delete  from whitephone where nameId=#{nameId}
+	</delete>
+	<delete id="delByNameId" parameterType="int">
+		delete from whitephone where nameId=#{nameId}
+	</delete>
+	<select  id="getById" parameterType="int"  resultType="com.lanzhou.entity.Whitephone">
+		select * from whitephone where id=#{id}
+	</select>
+	<select id="getByPhone" parameterType="string" resultType="com.lanzhou.entity.Whitephone">
+		select * from whitephone where phone=#{phone}
+	</select>
+</mapper>

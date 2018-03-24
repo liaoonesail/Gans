@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<link rel="stylesheet" href="css/frame.css">
+	<link rel="stylesheet" href="css/minPublicBenefit.css">
+	<link rel="stylesheet" href="css/common.css">
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="js/popUpWin.js"></script>
+	<title>汇聚甘肃后台管理系统-商城管理-供应商管理-物流模板</title>
+    <script type="text/javascript" src="js/angular-1.0.1.min.js"></script>
+</head>
+<body>
+	<div class="frameRall">
+		<!-- 头部通知搜索栏 -->
+		<div ng-app="">
+            <div ng-include="'head.htm'"></div>
+        </div>
+		<div class="headlineBig ml40 mb20 clearfix">
+			<h1 class="stair">商城管理<span>工作平台</span></h1>
+			<h1 class="secondLevel">物流模板</h1>
+		</div>
+		<div class="prizeManage ml40 clearfix">
+			<div class="commodityBox">
+				<!-- 操作提示 -->
+				<div class="promptInfo">
+					<div class="clearfix">
+						<i class="promptInfoIco"></i>
+						<span class="promptInfoTit">操作提示</span>
+					</div>
+					<ul>
+						<li>展示所有仓库配送方式。</li>
+						<li>给仓库配送方式设置模板，如果仓库单个地区没有设置仓库运费时，系统会默认调用运费模板。</li>
+					</ul>
+				</div>
+				<div class="commodityButBox clearfix mt30 mb30">
+					<a href="javascript:;" class="butBox seckillAdd">添加新物流模板</a>
+				</div>
+				<!-- 点击添加新物流模板，弹出 -->
+				<div class="seckillAddBox grouponAddBox logisticsAddBox seckillWin">
+					<i class="seckillClose"></i>
+					<form action="" method="get">
+						<ul class="logisticsAddUl">
+							<li>
+								<span><i class="colorRed">*</i>模板名称：</span>
+								<input type="text" class="seckillUpInp w120" name="" value="" />
+							</li>
+							<li>
+								<span><i class="colorRed">*</i>始发地：</span>
+								<input type="checkbox" name="" checked="checked" value="">
+								<label>北京仓库</label>
+								<input type="checkbox" name="" value="">
+								<label>上海仓库</label>
+								<input type="checkbox" name="" value="">
+								<label>广州仓库</label>
+							</li>
+							<li>
+								<span>物流配送</span>
+								<select name="" class="wi_300">
+									<option value="">申通快递</option>
+									<option value="">顺丰快递</option>
+								</select>
+							</li>
+							<li>
+								<span>费用计算方式</span>
+								<input type="radio" name="costCalculate" checked="checked" value="">
+								<label>按重量计算</label>
+								<input type="radio" name="costCalculate" value="">
+								<label>按商品件数计算</label>
+							</li>
+							<li>
+								<span><i class="colorRed">*</i>首重1KG以内费用：</span>
+								<input type="text" class="seckillUpInp w120" name="" value="" />
+							</li>
+							<li>
+								<span><i class="colorRed">*</i>续重1KG或其零数的费用：</span>
+								<input type="text" class="seckillUpInp w120" name="" value="" />
+							</li>
+							<li>
+								<span><i class="colorRed">*</i>免费额度：</span>
+								<input type="text" class="seckillUpInp w120" name="" value="" />
+							</li>
+							<li>
+								<span><i class="colorRed">*</i>到达目的地</span>
+								<select name="">
+									<option value="">请选择省</option>
+									<option value="">新疆维吾尔族自治区</option>
+								</select>
+								<select name="" class="ml10">
+									<option value="">请选择市</option>
+									<option value="">乌鲁木齐</option>
+								</select>
+								<select name="" class="ml10">
+									<option value="">请选择区/县</option>
+								</select>
+							</li>
+							<li class="seckillUpBut"><a href="javascript:;" class="butBox logisticsBut">提交</a></li>
+						</ul>
+					</form>
+				</div>
+				<table class="commodityTab">
+					<thead>
+						<tr>
+							<th class="tc">模板名称</th>
+							<th class="tc">配送方式描述</th>
+							<th class="tc">操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="tc">顺丰快递</td>
+							<td class="tc">江、浙、沪地区首重为15元/KG，其他地区18元/KG， 续重均为5-6元/KG， 云南地区为8元</td>
+							<td class="tc">
+								<span class="operationButBox">
+									<a href="javascript:;" class="butBox">默认</a>
+									<a href="javascript:;" class="butBox ml10">修改</a>
+								</span>
+							</td>
+						</tr>
+					</tbody>
+					<tfoot class="commFootTd">
+						<tr>
+							<td colspan="2" class="commFootFont textar">总计<span>23351</span>条数据&emsp;&emsp;分为<span>280</span>页&emsp;每页<span>10</span>个</td>
+							<td class="commPageBut">
+								<div class="commPageBut2 fr pr30">
+									<a href="javascript:;" title="第一页" class="commPage1"></a>
+									<a href="javascript:;" title="上一页" class="commPage2"></a>
+									<select name="">
+										<option value="">1</option>
+									</select>
+									<a href="javascript:;" title="下一页" class="commPage3"></a>
+									<a href="javascript:;" title="尾页" class="commPage4"></a>
+								</div>
+							</td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

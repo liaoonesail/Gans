@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC 
+    "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanzhou.entity.Address" >
+
+
+	<insert id="add"  parameterType="com.lanzhou.entity.Address" >
+		insert into address(address,user_id,status,details,user_name,phone) values(#{address},#{user_id},#{status},#{details},#{user_name},#{phone})
+	</insert>
+	
+	<delete id="del"  parameterType="int"  >
+		delete  from address where id=#{id}
+	</delete>
+	
+	<update id="update" parameterType="com.lanzhou.entity.Address" >
+		update address 
+			set 
+			address=#{address},
+			user_id=#{user_id},
+			status=#{status},
+			details=#{details},
+			user_name=#{user_name},
+			phone=#{phone}
+			where 
+				id=#{id}
+	</update>
+	<update id="updateAll">
+		update address set status=0 where user_id=#{user_id}
+	</update>
+	<select id="getListBy_user_id" parameterType="int" resultType="com.lanzhou.entity.Address">
+		select * from address where user_id=#{user_id}
+	</select>
+	<select  id="getById" parameterType="int"  resultType="com.lanzhou.entity.Address">
+		select * from address where id=#{id}
+	</select>
+	<select id="getuser_id" parameterType="int" resultType="com.lanzhou.entity.Address">
+		select * from address where status=1 and user_id=#{user_id}
+	</select>
+</mapper>

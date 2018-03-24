@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanzhou.entity.User">
+
+
+    <insert id="add" parameterType="com.lanzhou.entity.User">
+		insert into user(name,nickname,phone,head_picture,email,birthday,type,card,password,area,sex) values(#{name},#{nickname},#{phone},#{head_picture},#{email},#{birthday},#{type},#{card},#{password},#{area},#{sex})
+	</insert>
+    <insert id="reg" parameterType="com.lanzhou.entity.User">
+		insert into user(phone,type,card,password) values(#{phone},#{type},#{card},#{password})
+	</insert>
+    <delete id="del" parameterType="int">
+		delete  from user where id=#{id}
+	</delete>
+
+    <update id="update" parameterType="com.lanzhou.entity.User">
+		update user 
+			set 
+			name=#{name},
+			nickname=#{nickname},
+			phone=#{phone},
+			email=#{email},
+			birthday=#{birthday},
+			type=#{type},
+			password=#{password},
+			card=#{card},
+			area=#{area},
+			sex=#{sex}
+			where 
+				id=#{id}
+	</update>
+    <update id="updateHead" parameterType="com.lanzhou.entity.User">
+	update user 
+			set 
+			head_picture=#{head_picture}
+			where 
+				id=#{id}
+	</update>
+    <select id="getById" parameterType="int" resultType="com.lanzhou.entity.User">
+		select * from user where id=#{id}
+	</select>
+    <select id="getphone" parameterType="string" resultType="com.lanzhou.entity.User">
+		select * from user where phone=#{phone}
+	</select>
+    <select id="list" resultType="com.lanzhou.entity.User">
+		select * from user
+	</select>
+    <select id="count" parameterType="string" resultType="int">
+		select count(*) from user where name like '%${value}%'or phone like '%${value}%'
+	</select>
+    <select id="listpage" parameterType="map" resultType="com.lanzhou.entity.User">
+		select * from user where 
+		name like '%${name}%' or phone like '%${name}%'
+		order by id desc limit #{startRecord},#{pageSize}
+	</select>
+    <select id="getShuju" parameterType="map" resultType="com.lanzhou.entity.Shuju">
+		select address1,areaOrder,IFNULL(areaOrder2,0) areaOrder2,ifnull(sr_amount,0) sr_amount,areaPerson,IFNULL(areaPerson2,0) areaPerson2 from (
+select i.*,j.areaPerson,j.areaPerson2 from (
+select f.*,h.sr_amount from(
+select c.address1,c.areaOrder,c.areaOrder2 from (select d.*,count(d.id) areaOrder,e.areaOrder2 from (select *,right(left(address,5),2) as address1 from goods_order g  where g.address like '%甘肃%'
+		<if test="status==1">
+			and STR_TO_DATE(order_time,'%Y-%m-%d')>=DATE_SUB(curdate(),INTERVAL #{days}
+			DAY)
+		</if>
+		<if test="status==2">
+			and
+			STR_TO_DATE(#{endTime},'%Y-%m-%d')>=STR_TO_DATE(order_time,'%Y-%m-%d')
+			and
+			STR_TO_DATE(order_time,'%Y-%m-%d')>=STR_TO_DATE(#{startTime},'%Y-%m-%d')
+		</if>
+) d left JOIN
+(select *,count(id) areaOrder2,right(left(address,5),2) as address1 from goods_order g  where g.address like '%甘肃%' and g.status>=1
+		<if test="status==1">
+			and STR_TO_DATE(order_time,'%Y-%m-%d')>=DATE_SUB(curdate(),INTERVAL #{days}
+			DAY)
+		</if>
+		<if test="status==2">
+			and
+			STR_TO_DATE(#{endTime},'%Y-%m-%d')>=STR_TO_DATE(order_time,'%Y-%m-%d')
+			and
+			STR_TO_DATE(order_time,'%Y-%m-%d')>=STR_TO_DATE(#{startTime},'%Y-%m-%d')
+		</if>
+		GROUP BY address
+		) e on d.address=e.address GROUP BY address1) as c
+) f LEFT JOIN (select a.name address1,sr_amount from area a) h on f.address1=h.address1
+) i LEFT JOIN (select k.address1,k.areaPerson,l.areaPerson2 from (
+select count(*) areaPerson,right(left(b.address,5),2)as address1  from (select * from goods_order g  where g.address like '%甘肃%' GROUP BY g.user_id) as b GROUP BY address1
+) k LEFT JOIN (select count(*) areaPerson2,right(left(b.address,5),2)as address1  from (select * from goods_order g  where g.address like '%甘肃%' and STR_TO_DATE(order_time,'%Y-%m-%d')=DATE_SUB(curdate(),INTERVAL 1 DAY) GROUP BY g.user_id) as b GROUP BY address1
+)l on k.address1=l.address1) j
+on i.address1=j.address1
+) m
+	</select>
+</mapper>

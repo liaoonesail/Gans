@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC 
+    "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanzhou.entity.Ticket" >
+
+
+	<insert id="add"  parameterType="com.lanzhou.entity.Ticket" >
+		insert into ticket(ticketNum,validateNum,time,status) values(#{ticketNum},#{validateNum},#{time},#{status})
+	</insert>
+	
+	<delete id="del"  parameterType="int"  >
+		delete  from ticket where id=#{id}
+	</delete>
+	<delete id="delAll">
+		delete  from ticket
+	</delete>
+	
+	<update id="update" parameterType="com.lanzhou.entity.Ticket" >
+		update ticket 
+			set 
+			ticketNum=#{ticketNum},
+			validateNum=#{validateNum},
+			time=#{time},
+			status=#{status}
+			where 
+				id=#{id}
+	</update>
+	<select  id="getById" parameterType="int"  resultType="com.lanzhou.entity.Ticket">
+		select * from ticket where id=#{id}
+	</select>
+	<select id="getByStatus" parameterType="int" resultType="com.lanzhou.entity.Ticket">
+		select * from ticket where status=#{status} limit 1
+	</select>
+	<!-- <select id="count" parameterType="string" resultType="int">
+		select count(*) from ticket where phone like '%${value}%'
+	</select>
+	<select id="listpage" parameterType="map" resultType="com.lanzhou.entity.Ticket">
+		select * from ticket where phone like '%${name}%' order by id desc limit #{startRecord},#{pageSize}
+	</select>
+	<select id="getPrize" parameterType="map" resultType="com.lanzhou.entity.Ticket">
+		select * from ticket where phone=#{phone} and label=#{label}
+	</select>
+	<select id="getList" parameterType="int" resultType="com.lanzhou.entity.Ticket">
+		select a.*,b.time time from ticket a,user_sp b where b.sp_id=a.id and a.label=#{label}
+	</select> -->
+</mapper>

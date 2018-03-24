@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC 
+    "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanzhou.entity.TwelvePrize" >
+
+
+	<insert id="add"  parameterType="com.lanzhou.entity.TwelvePrize" >
+		insert into twelveprize(level,name,probability,amount,overplus) values(#{level},#{name},#{probability},#{amount},#{overplus})
+	</insert>
+	
+	<delete id="del"  parameterType="int"  >
+		delete  from twelveprize where id=#{id}
+	</delete>
+	
+	<update id="update" parameterType="com.lanzhou.entity.TwelvePrize" >
+		update twelveprize 
+			set 
+			name=#{name},
+			probability=#{probability},
+			amount=#{amount},
+			overplus=#{overplus}
+			where 
+				id=#{id}
+	</update>
+	<select  id="getById" parameterType="int"  resultType="com.lanzhou.entity.TwelvePrize">
+		select * from twelveprize where id=#{id}
+	</select>
+	<select id="list" resultType="com.lanzhou.entity.TwelvePrize">
+		select * from twelveprize order by level
+	</select>
+	<select id="getLevel" parameterType="int" resultType="com.lanzhou.entity.TwelvePrize">
+		select * from twelveprize where level=#{level}
+	</select>
+</mapper>

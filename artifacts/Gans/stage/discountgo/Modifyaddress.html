@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>修改地址</title>
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/jquery-weui.min.css" />
+		<link rel="stylesheet" href="../css/Modifyaddress.css" />
+	</head>
+
+	<body>
+		<div class="lodinbox">
+			<!--头部导航-->
+			<header class="mui-bar mui-bar-nav loginheader">
+				<a class="mui-pull-left mui-action-back backstar">
+					<i class="mui-icon mui-icon-left-nav"></i>
+				</a>
+				<h1 class="mui-title">修改地址</h1>
+				 <span class="mui-pull-right mui-action-back" style="color: #fff;font-size: 13px;line-height: 44px;">关闭</span>
+			</header>
+			<!--头部导航-->
+			<div style="height: 44px;"></div>
+			<!--收货地址内容开始-->
+			<div class="order_dizi">
+				<div class="order_xingming">
+					<label>收货人姓名：</label>
+					<input id="adderssName" class="text-clear-content" type="text" value="" />
+					<span class="clear-button"></span>
+				</div>
+				<div class="order_xingming">
+					<label>联系电话：</label>
+					<input id="Phone" class="text-clear-content" type="tel" value="" />
+					<span class="clear-button"></span>
+				</div>
+				<div class="order_xingming">
+					<label>收货地址：</label>
+					<input id="city-picker"  type="text" placeholder="" readonly="" >
+				</div>
+				<div class="order_xingming" style="border: 0;">
+					<label>详细地址：</label>
+					<input id="contactAddress" class="text-clear-content" type="text" value="" />
+					<span class="clear-button"></span>
+				</div>
+				<div class="public-g-btn-box">
+					<button class="public-g-btn" id="public-g-btn">确定修改</button>
+				</div>
+			</div>
+			<!--收货地址内容结束-->
+		</div>
+		<script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+		<script type="text/javascript" src="../js/jquery-weui.min.js"></script>
+		<script type="text/javascript" src="../js/city-picker.min.js"></script>
+		<script type="text/javascript" src="../js/mui.min.js"></script>
+		<script>
+			mui.init();
+			var addressOdiqu ="";
+			$("#city-picker").cityPicker({
+				title: "选择省市区/县",
+				onChange: function(picker, values, displayValues) {
+					addressOdiqu=displayValues;
+					//console.log(values);
+				}
+			});
+		</script>
+		<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+		<!-- 引入添加地址js -->
+		<script type="text/javascript" src="../js/address/address.js"></script>
+		<script>
+			var thisURL = document.URL;
+			var getval = thisURL.split('?')[1];
+			var id_address = getval.split("=")[1];
+			var $j = jQuery.noConflict(); //自定义一个比较短快捷方式
+			var getidupdata = getAddressById(id_address);
+			/* 默认地址填写 */
+			getidupdata = JSON.parse(getidupdata); 
+			$j("#adderssName").val(getidupdata.user_name);
+			$j("#Phone").val(getidupdata.phone);
+			$j("#city-picker").attr("placeholder",getidupdata.address);
+			$j("#contactAddress").val(getidupdata.details);
+			//确定修改
+			var publicgbtn = document.getElementsByClassName("public-g-btn");
+			publicgbtn[0].addEventListener('tap', function() {
+				var realName = $j("#adderssName").val();
+				var phone = $j("#Phone").val();
+				var area =addressOdiqu.join("");
+				var address = $j("#contactAddress").val();
+				var updateadd_ok_html = updateAddress(id_address, realName, phone, area, address);
+				if(updateadd_ok_html = "ok"){
+					 setTimeout(function(){
+							mui.openWindow({
+								url: 'address.html',
+								id: 'address',
+								showType: 'zoom-fade-out',
+								showTime: 200
+							});
+						},200);
+				}else{
+					alert(updateadd_ok_html);
+				}
+			});
+			 /*表单内容删除按钮*/
+            $j(".text-clear-content").focus(function() {
+            	$j(".clear-button").hide();
+            	$j(this).next(".clear-button").show();
+	            
+            });
+            $j(".clear-button").click(function() {
+            	$j(this).prev().val("");
+            	$j(this).prev().focus();
+	        });
+            $j(".text-clear-city").click(function() {
+            	$j(".clear-button").hide();
+            });
+		</script>
+	</body>
+
+</html>

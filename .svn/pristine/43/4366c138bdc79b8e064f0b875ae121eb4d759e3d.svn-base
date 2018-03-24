@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>搜索商品列表</title>
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/bass.css" />
+		<link rel="stylesheet" href="../css/header.css" />
+		<link rel="stylesheet" href="../css/discoNav.css" />
+		<link rel="stylesheet" href="../css/Local.css" />
+		<link rel="stylesheet" href="../css/zhouzhouhui.css" />
+		 
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">搜索商品列表</h1>
+			 <span class="mui-pull-right mui-action-back" style="color: #fff;font-size: 13px;line-height: 44px;">关闭</span>
+		</header>
+		<div class="mui-content">
+			<!--地方汇搜索-->
+			<div class="mui-row">
+				<div class="mui-col-xs-12 Localsearch clearfix" style="top: 44px;">
+					<span id="searchCode" class="mui-icon mui-icon-search" style="margin-left: 6px;"></span>
+					<input  id="searchName" type="search" class="text-clear-content" placeholder="搜索" />
+					<div class="clear-button22"></div>
+				</div>
+			</div>
+			<!--地方汇搜索-->
+			<div style="margin-top: 45px;">
+				<div class="recommendBox recommendBoxzhou" style="padding: 0px 4px 10px 0px;display: block;">
+					<div id="searchList" class="mui-row">
+						<!-- <div class="mui-col-xs-6 dssssdf">
+							<img  src="../img/detailImg/12.png" />
+							<p>新鲜美味的水果进口海外次日达</p>
+							<dt>有效期:<span>2017.10.21</span></dt>
+							<div class="picdetails">优惠价：¥<span>9.8</span></div>
+							<dd class="clearfix">
+								<del>市场价：15.00元</del>
+								<img src="../img/smallImg/a1.png" />
+							</dd>
+							<button class="picBttns">立即购买</button>
+						</div> -->
+					</div>
+				</div>	
+			</div>
+		</div>
+		<div style="height: 55px;"></div>
+		<!--底部导航-->
+		<div class="bgcolor footer22">
+			<div class="footer144" onclick="javascript:window.location.href='../../index.html'">
+				<img class="mui-icon-home1" src="../img/smallImg/nav1.png" />
+			    <p>首页</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='discountgo.html'">
+				<img class="mui-icon-email12" src="../img/smallImg/18.png" />
+			    <p>善融</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='../../Local1.html'">
+				<img class="mui-icon-home1" src="../img/smallImg/19.png" />
+			    <p>地方汇</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='../../special1.html'">
+				<img class="mui-icon-home1" src="../img/smallImg/20.png" />
+			    <p>专场</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='personalcenter.html'">
+				<img class="mui-icon-gear1" src="../img/smallImg/nav4.png" />
+			    <p>个人中心</p>
+			</div>	
+		</div>
+		<!--底部导航-->
+	</body>
+	<script type="text/javascript" src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/publicAddress.js" ></script>
+	<script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+	<script type="text/javascript" src="../js/search_proud_.js" ></script>
+	<script type="text/javascript" src="../js/search/search.js" ></script>
+	<script type="text/javascript" src="../js/activity/activity.js" ></script>
+	<script>
+		mui.init();
+		var thisURL = document.URL;
+		var getval = thisURL.split('?')[1];
+		var searchName ="";
+		if (getval != null ||getval != undefined) {
+			searchName = getval.split("=")[1];
+			 //console.log(searchName)
+		} else{
+			searchName="";
+			 //console.log(searchName)
+		}
+		if(searchName !=""){
+			var getAdvertByStatus_ =getAdvertByStatus(searchName);
+			getAdvertByStatus_ = JSON.parse(getAdvertByStatus_);
+			//console.log(getAdvertByStatus_)
+			$("#searchList").empty();
+			var searchListHtml_ ="";
+			for(var i = 0; i < getAdvertByStatus_.length ; i ++){
+				var youxiaoqi_ ="<dt></dt>";
+				var part ="";
+				/**
+				  * 根据商品ID获取周周惠活动详情
+				  * @param goodsId 商品ID
+				  * @returns 活动详情对象
+				  */
+				 var getActivityByGoods_ =getActivityByGoods(getAdvertByStatus_[i].id);
+				 //console.log("根据商品ID获取周周惠活动详情"+getActivityByGoods_);
+				 getActivityByGoods_ = JSON.parse(getActivityByGoods_);
+			
+				/**
+				  * 根据商品Id获取团购活动详情
+				  * @param goodsId
+				  * @param response
+				  * @return
+				  * @throws IOException 
+				  */
+				 var getTuangouByGoodsId_=getTuangouByGoodsId(getAdvertByStatus_[i].id);
+				// console.log("根据商品Id获取团购活动详情"+getTuangouByGoodsId_);
+				 getTuangouByGoodsId_ = JSON.parse(getTuangouByGoodsId_);
+				// console.log(getTuangouByGoodsId_);
+				 /**
+				  * 根据商品Id 获取秒杀活动详情
+				  * @param goodsId
+				  * @param response
+				  * @return
+				  * @throws IOException
+				  */
+				 var getseckillByGoodsId_ =getseckillByGoodsId(getAdvertByStatus_[i].id);
+				// console.log("根据商品Id 获取秒杀活动详情"+getseckillByGoodsId_);
+				 getseckillByGoodsId_ = JSON.parse(getseckillByGoodsId_);
+				// console.log(getseckillByGoodsId_);
+				 /**
+				  * 根据商品ID获取龙支付活详情
+				  * @param goodsId
+				  * @param response
+				  * @return
+				  * @throws IOException
+				  */
+				 var getLongpayhuodongByGoodsId_ = getLongpayhuodongByGoodsId(getAdvertByStatus_[i].id);
+				 //console.log("根据商品ID获取龙支付活详情"+getLongpayhuodongByGoodsId_);
+				 getLongpayhuodongByGoodsId_ = JSON.parse(getLongpayhuodongByGoodsId_);
+				// console.log(getLongpayhuodongByGoodsId_);
+				 if(getseckillByGoodsId_ !=null ){
+					 if(getseckillByGoodsId_.label ==1){//秒杀
+						// alert("秒杀")
+						// console.log(getseckillByGoodsId_.goods_id )
+						 var endtime=getseckillByGoodsId_.end_time;
+					 	var startime =getseckillByGoodsId_.start_time;
+					 	var systemtime = getNowFormatDate();
+					 	systemtime=systemtime.replace("-", "").replace(" ", "").replace(":", "").replace("-", "").replace(":", "");
+					 	endtime=endtime.replace("-", "").replace(" ", "").replace(":", "").replace("-", "").replace(":", "");
+						startime =startime.replace("-", "").replace(" ", "").replace(":", "").replace("-", "").replace(":", "");
+						var m1 =systemtime-startime;
+						var m2 =systemtime-endtime;
+						/*//console.log(startime)
+						//console.log(endtime)
+						//console.log(systemtime);
+						//console.log(m1)
+						//console.log(m2)
+*/						
+						if(m1 >0 &&  m2 <0){
+							pric_ =getseckillByGoodsId_.real_price;
+						}else{
+							pric_ =getAdvertByStatus_[i].price;
+						}
+						    miaosha_ ="<img src='../img/smallImg/a4.png' />";
+							youxiaoqi_ ="<dt>有效期:<span>"+getseckillByGoodsId_.end_time+"</span></dt>";
+						
+							part = -2;
+					 }else{
+						 if(getTuangouByGoodsId_ !=null){//团购价格
+								if(getTuangouByGoodsId_.label ==2){
+									//alert("团购")
+									miaosha_ ="<img src='../img/smallImg/a3.png' />";
+									youxiaoqi_ ="<dt>有效期:<span>"+getTuangouByGoodsId_.end_time+"</span></dt>";
+									pric_ =getTuangouByGoodsId_.real_price;
+									part = 0;
+								}else{
+									 if(getLongpayhuodongByGoodsId_ != null){//龙支付
+										 if(getLongpayhuodongByGoodsId_.label ==3){
+											 //alert("龙支付")
+												miaosha_ ="<img src='../img/smallImg/a2.png' />";
+												youxiaoqi_ ="<dt>有效期:<span>"+getLongpayhuodongByGoodsId_.end_time+"</span></dt>";
+												pric_ =getLongpayhuodongByGoodsId_.real_price;
+												part = -1;
+											} 
+									 }else{
+										 if(getActivityByGoods_ != null){//周周惠价格
+									   			if(getActivityByGoods_.activity_id !=0){
+									   			 //alert("周周惠")
+									   				miaosha_ ="<img width='45' height='20'  src='' alt='周周惠' style='margin-left: 6px;font-size: 12px;line-height: 20px; color:#09b6f2;text-align: center;'/>";
+									   			    youxiaoqi_ ="<dt>有效期:<span>"+getActivityByGoods_.end_time+"</span></dt>";
+									   			    pric_ =getActivityByGoods_.real_price;
+									   			    part ="";
+									   			}
+											}else{
+												//alert("都不是")
+												youxiaoqi_ ="<dt style='visibility: hidden;'>有效期:<span></span></dt>";
+												miaosha_ ="";
+												pric_ =getAdvertByStatus_[i].price;
+												part = -4;
+											}
+									}
+								}
+							}
+					 }
+				 }else{
+					 if(getTuangouByGoodsId_ !=null){//团购价格
+							if(getTuangouByGoodsId_.label ==2){
+								//alert("团购")
+								miaosha_ ="<img src='../img/smallImg/a3.png' />";
+								youxiaoqi_ ="<dt>有效期:<span>"+getTuangouByGoodsId_.end_time+"</span></dt>";
+								pric_ =getTuangouByGoodsId_.real_price;
+								part = 0;
+							}
+					 }
+						else if(getLongpayhuodongByGoodsId_ != null){//龙支付
+						 if(getLongpayhuodongByGoodsId_.label ==3){
+							 //alert("龙支付")
+								miaosha_ ="<img src='../img/smallImg/a2.png' />";
+								youxiaoqi_ ="<dt>有效期:<span>"+getLongpayhuodongByGoodsId_.end_time+"</span></dt>";
+								pric_ =getLongpayhuodongByGoodsId_.real_price;
+								part = -1;
+							} 
+					 }
+					 else  if(getActivityByGoods_ != null){//周周惠价格
+				   			if(getActivityByGoods_.activity_id !=0){
+				   			// alert("周周惠")
+				   				miaosha_ ="<img width='45' height='20'  src='' alt='周周惠' style='margin-left: 6px;font-size: 12px;line-height: 20px; color:#09b6f2;text-align: center;'/>";
+				   			    youxiaoqi_ ="<dt>有效期:<span>"+getActivityByGoods_.end_time+"</span></dt>";
+				   			    pric_ =getActivityByGoods_.real_price;
+				   			    part ="";
+				   			}
+						}else{
+							//alert("都不是")
+							youxiaoqi_ ="<dt style='visibility: hidden;'>有效期:<span></span></dt>";
+							miaosha_ ="";
+							pric_ =getAdvertByStatus_[i].price;
+							part = -4;
+						}
+				 }
+		         searchListHtml_ +="<div part='"+part+"' id='"+getAdvertByStatus_[i].id+"' class='mui-col-xs-6 dssssdf'>"
+										+"<img  src='"+getAdvertByStatus_[i].picture_address+"' />"
+										+"<p>"+getAdvertByStatus_[i].goods_name+"</p>"
+										+youxiaoqi_
+										+"<div class='picdetails'>优惠价：¥<span>"+pric_+"</span>元</div>"
+										+"<dd class='clearfix'>"
+											+"<del>市场价："+getAdvertByStatus_[i].cost_price+"元</del>"
+											+miaosha_
+										+"</dd>"
+										+"<button class='picBttns'>立即购买</button>"
+									+"</div>";
+			}
+			$("#searchList").append(searchListHtml_);
+			  //跳转对应的商品详情     
+			  var url_ ="";
+	        var abc = $(".dssssdf")
+				for (var i = 0; i < abc.length; i++) {
+				    (function(e){  //自执行函数实时把i传入e
+				        abc[e].onclick=function(){  //  通过传入的e获取到哪个按钮发生了点击事件
+//				            alert(e) //弹出e（此处e为i实时对应值）
+	                        var shop_details_Id =$(this).attr("id");
+	                        var part =$(this).attr("part");
+	                        url_ ='details.html?id='+shop_details_Id+'&part='+part
+		            	 
+	                         setTimeout(function(){
+								mui.openWindow({
+									url: url_,
+									id: 'details',
+									showType: 'zoom-fade-out',
+									showTime: 200
+								});
+							},200);
+				        }
+				    })(i)    
+				};   //采用闭包和自执行函数获取i
+			
+		}
+		/**
+		 * 获取当前时间
+		 * meiyong
+		 * @returns {String}
+		 */
+		function getNowFormatDate() {
+		    var date = new Date();
+		    var seperator1 = "-";
+		    var seperator2 = ":";
+		    var month = date.getMonth() + 1;
+		    var strDate = date.getDate();
+		    if (month >= 1 && month <= 9) {
+		        month = "0" + month;
+		    }
+		    if (strDate >= 0 && strDate <= 9) {
+		        strDate = "0" + strDate;
+		    }
+		    var seconds=date.getSeconds();
+		    if(seconds<10){
+		    	seconds="0"+seconds;
+		    }
+		    var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate
+		            + " " + date.getHours() + seperator2 + date.getMinutes()
+		            + seperator2 + seconds;
+		    return currentdate;
+		}
+	</script>
+
+</html>

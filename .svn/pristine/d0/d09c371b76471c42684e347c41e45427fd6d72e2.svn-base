@@ -1,0 +1,113 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-family: "微软雅黑";
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+img{
+	border: none;
+}
+a{
+	text-decoration: none;
+}
+ul li,ol li,li{
+	list-style: none;
+}
+input{
+	outline: none;
+	border: none;
+}
+.mui-bar {
+	min-width: 310px;
+    max-width: 640px;
+    position: fixed;
+    z-index: 10;
+    right: 0;
+    left: 0;
+    height: 44px;
+    padding-right: 10px;
+    padding-left: 10px;
+    border-bottom: 0;
+    background-color: #09b6f2;
+    -webkit-box-shadow: 0 0 0px rgba(0, 0, 0,0);
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+.mui-bar-tab .mui-tab-item .mui-icon {
+    top: 5px;
+    width: 24px;
+    height: 24px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+body{
+	background: #ffffff;
+}
+.mui-title{
+	color: #fff;
+}
+.clearfix:after{
+	content: '.';
+	display: block;
+	clear: both;
+	height: 0px;
+	overflow: hidden;
+	visibility: hidden;
+}
+.bgcolor{
+	background: #09b6f2;
+	width: 100%;
+	height: 100%;
+}
+.mui-bar-tab .mui-tab-item {
+    display: table-cell;
+    overflow: hidden;
+    width: 1%;
+    height: 50px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #fff;
+}
+.mui-bar-nav {
+    top: 0;
+    -webkit-box-shadow: 0 0px 0px #fff;
+    box-shadow: 0 0px 0px #fff;
+}
+.mui-content{
+    background-color: #fff;
+    min-width: 310px;
+    max-width: 640px;
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+}
+/**/
+.Popup{
+	position: fixed;
+    z-index: 666;
+    top: 44px;
+    right: 0px;
+    width: 117px;
+    height: 95px;
+    background: rgba(0,0,0,0.4);
+   display: none;
+}
+.sao1{
+	display: block;
+    width: 86px;
+    height: 44px;
+    margin: 2px auto;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    padding: 10px;
+}
+.sao2{
+	display: block;
+    width: 88px;
+    height: 40px;
+    margin: 2px auto;
+    padding: 10px;
+}

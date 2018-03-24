@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>微公益首页</title>
+		<link charset="UTF-8"  rel="stylesheet" href="stage/css/mui.min.css" />
+		<link charset="UTF-8"  rel="stylesheet" href="stage/css/bass.css" />
+		<link charset="UTF-8"  rel="stylesheet" href="stage/css/tiny.css" />
+		<!--弹窗css-->
+		<link rel="stylesheet" href="stage/css/login_box.css" />
+		<link rel="stylesheet" href="stage/css/popup.css" />
+		<link rel="stylesheet" href="stage/css/personalcenter.css" />
+	</head>
+
+	<body>
+		 <header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">微公益首页</h1>
+			<span class="mui-pull-right mui-action-back" style="color: #fff;font-size: 13px;line-height: 44px;">关闭</span>
+		</header>
+		<div style="height: 44px;"></div>
+		<!--未登录的弹窗  -->
+			<div class="notLoggedIn-0">
+				<div class="notLoggedIn-0-List">
+					<h3>会员登录</h3>
+					   <label class="user-label-position">
+							<input id="user_phop_1" class="user_phopeTel1 text-clear-content" type="text" placeholder="请输入手机银行签约手机号" />
+							<span class="clear-button"></span>
+						</label>
+						<label class="user-label-position">
+							<input id="user_password1_1" class="user_password1 text-clear-content" type="password" placeholder="请输入密码" />
+							<span class="clear-button"></span>
+						</label>
+						<p class="wangjipassWordr_m" style="text-align: right;padding-right: 30px;">忘记密码</p>
+						<p id="shuru_alert2" style="text-align: center;font-size: 12px;margin-bottom: 2px;color: red;display: none;"></p> 
+						<input id="submit_ok"  type="button" value="登录" style="width: 80%;margin: 0 auto;display: block;" />
+						<p class="rengzuce_btns" style="margin: 4px 0px;text-align: center;"><span style="color: #666;">还没有账号？</span><span style="color: #666;">立即注册</span></p>
+				        <div class="maiojiaGoods_cancel deliverGoods_box_coles">关闭</div>
+				</div>
+			</div>
+			<!--未登录的弹窗-->
+			<!--登录之后的提示框-->
+			<div class="notLoggedIn-1">
+				<div class="notLoggedIn-1-List">
+					
+					<h3>登录成功！</h3>
+					<p><span id="time">3</span>秒后返回当前界面</p>
+					<div class="maiojiaGoods_cancel deliverGoods_box_coles">关闭</div>
+				</div>
+			</div>
+			<!--登录之后的提示框-->
+			<!--忘记密码弹窗-->
+			<div class="not_passWordBox">
+				<div class="not_passWordBox_0">
+					 
+					<h3>忘记密码！</h3>
+					<label  class="user-label-position">
+						<input  id="xiougai_phone" class="user_phopeTel1 text-clear-content" type="text" placeholder="请输入手机银行签约手机号" />
+					    <span class="clear-button"></span>
+					</label>
+					<div class="clearfix">
+						<input id="xiougai_yzm" class="yzm_box" type="text" placeholder="验证码" />
+						<div class="yzm_box22">获取验证码</div>
+						<!--120s后重新发送-->
+					</div>
+					<label  class="user-label-position">
+						<input id="xiougai_password" class="user_phopeTel1 text-clear-content" type="password" value="" placeholder="请输入新密码" style="text-align: left;"/>
+					    <span class="clear-button"></span>
+					</label>
+					<label  class="user-label-position">
+						<input id="xiougai_password2" class="user_password1 text-clear-content" type="password" value=""placeholder="请再次输入密码" style="text-align: left;"/>
+					    <span class="clear-button"></span>
+					</label>
+					<p id="tishiconts2_" style="text-align: center;font-size: 12px;margin-bottom: 2px;color: red;display: none"></p>
+					<input class="wangjipass_ok" type="button" value="确认修改" style="width: 80%;margin: 0 auto;display: block;" />
+					<p class="rengzuce_btns" style="margin: 4px 0px;text-align: center;"><span style="color: #666;">还没有账号？</span><span style="color:#666;">立即注册</span></p>
+				    <div class="maiojiaGoods_cancel deliverGoods_box_coles">关闭</div>
+				
+				
+				
+			 
+					
+				</div>
+			</div>
+			<!--忘记密码弹窗-->
+			<!--修改密码之后的提示框-->
+			<div class="notLoggedIn-2">
+				<div class="notLoggedIn-2-List">
+					 
+					<h3>修改密码！</h3>
+					<p><span id="time2">3</span>秒后返回当前界面</p>
+					<div class="maiojiaGoods_cancel deliverGoods_box_coles">关闭</div>
+				</div>
+			</div>
+			<!--修改密码之后的提示框-->
+			<!--会员注册弹窗-->
+			<div class="ILoveYou_money">
+				
+				<div class="ILoveYou_money_conts">					
+					
+					<h3>会员注册！</h3>
+					<label class="user-label-position">
+						<input id="phone_" class="user_phopeTel1 text-clear-content" type="text" placeholder="请输入手机银行签约手机号"style="text-align: left;" />
+					    <span class="clear-button"></span>
+					</label>
+					
+					<div class="clearfix">
+						<input id="yzm_" class="yzm_box" type="text" placeholder="验证码" />
+						<div class="yzm_boxMj">获取验证码</div>
+						<!--120s后重新发送-->
+					</div>
+					<label class="user-label-position">
+						<input id="userPassword_" class="user_phopeTel1 text-clear-content" type="password" value="" placeholder="6~16个字符，区分大小写" style="text-align: left;" />
+					    <span class="clear-button"></span>
+					</label>
+					<label class="user-label-position">
+						<input id="userPassword2_" class="user_phopeTel1 text-clear-content" type="password" value="" placeholder="再次确认密码" style="text-align: left;" />
+					    <span class="clear-button"></span>
+					</label>
+					<p id="tishiconts_" style="text-align: center;font-size: 12px;margin-bottom: 2px;color: red;display: none;padding: 0px 28px"></p>
+					<input class="zuce_ok" type="button" value="立即注册" style="width: 80%;margin: 10px auto;display: block;" />
+					<div class="maiojiaGoods_cancel deliverGoods_box_coles">关闭</div>
+				</div>
+			</div>
+			<!--会员注册弹窗-->
+			
+			<!--会员注册之后的提示框-->
+			<div class="notLoggedIn-3">
+				<div class="notLoggedIn-3-List">
+					
+					<h3>注册会员成功！</h3>
+					<p><span id="time3">3</span>秒后返回当前界面</p>
+					<div class="maiojiaGoods_cancel deliverGoods_box_coles">关闭</div>
+				</div>
+			</div>
+			<!--会员注册之后的提示框-->
+		<!--  我要捐款弹窗 -->
+		<div class="notLoggedIn-4">
+			<div class="notLoggedIn-4-List" style="margin: 25% auto;">
+				<h3>我要捐款</h3>
+				<label class="user-label-position">
+					<input id="juankuanphone" class="user_phopeTel1 text-clear-content" type="number" placeholder="请输入手机号"/>
+					<span class="clear-button"></span>
+				</label>
+				<label class="user-label-position">
+					<input id="juankuanprice" class="user_phopeTel1 text-clear-content" type="number" placeholder="请输入捐款金额"/>
+					<span class="clear-button"></span>
+				</label>
+				<p id="shuru_alert_mghjhj" style="text-align: center;font-size: 12px;margin-bottom: 2px;color: red;display: none;"></p> 
+				<input  id="juankuanBtns" type="button" value="确定捐款" style="width: 80%;margin: 15px auto;display: block;height:40px;" />
+				<div class="maiojiaGoods_cancel deliverGoods_box_coles">关闭</div>
+			</div>
+		</div>
+		<!--  我要捐款弹窗 -->
+		<div class="tinyBox">
+			<!--我要捐款的按钮-->
+			<img class="btnsTiny" src="stage/img/smallImg/btns.png" />
+			<!--我要抽奖的按钮-->
+			<img class="btnsTiny688" src="stage/img/smallImg/btnsweigongyi_03.png" />
+		</div>
+		<script charset="UTF-8"  type="text/javascript" src="stage/js/jquery-1.10.2.js"></script>
+		<script charset="UTF-8"  type="text/javascript" src="stage/js/mui.min.js"></script>
+		<script charset="UTF-8"  type="text/javascript" src="stage/js/publicAddress.js" ></script>
+		<script type="text/javascript" src="stage/js/userjs/user.js"></script>
+		<script charset="UTF-8"  type="text/javascript" src="stage/js/gongyi/HPgongyi.js" ></script>
+		<script type="text/javascript">
+		$(".deliverGoods_box_coles").click(function() {
+			$(".notLoggedIn-0").css("transform", "translateY(-60000px)");
+		});
+		
+		//登录之后      
+		$("#submit_ok").click(function() {
+			/**
+			 * 用户登陆信息异步提交
+			 * @param userName      用户名
+			 * @param userPassword  密码
+			 * @param yzm           验证码
+			 * @returns             "ok":登陆成功，其它则为所对应的错误提示
+			 */
+			/*获取页面上输入的内容
+			请输入手机银行签约手机号 #user_phop_1 
+			请输入密码 #user_password1_1*/
+			var user_phop_1 =$("#user_phop_1").val();//手机银行签约手机号
+			var user_password1_1 = $("#user_password1_1").val();//请输入密码
+			
+			/*登录验证内容
+			userName      手机号  
+			userPassword  密码
+			yzm           验证码
+			userLogin(userName, userPassword, yzm)*/
+			
+			var use_denglu_ = userLogin(user_phop_1, user_password1_1, "");
+			if(use_denglu_ == "ok"){
+				$(".notLoggedIn-0").css("transform", "translateY(-60000px)");
+				$(".notLoggedIn-1").css("transform", "translateY(0px)");
+				var i = 3;
+				if(i != 0) {
+					window.close_id = setInterval(function() {
+						if(i > 0) {
+							document.getElementById('time').innerHTML = i;
+							i = i - 1;
+							setTimeout(function() {
+								console.log(notLogin)
+								mui.openWindow({
+									url: 'HPtiny.html',
+									id: 'HPtiny',
+									showType: 'zoom-fade-out',
+									showTime: 200
+								});
+							}, 200);
+						} else {
+							$(".notLoggedIn-1").css("transform", "translateY(-60000px)");
+							clearInterval(window.close_id);
+						}
+					}, 1000);
+				};
+				$("#closeBtns_login_html").html("退出登陆");
+			}else{
+				//登录错误信息提示
+				$("#closeBtns_login_html").html("未登录");
+		    	$("#shuru_alert2").css("display","block");
+		    	$("#shuru_alert2").html(use_denglu_);
+		    	user_phop_1 ="";
+		    	user_password1_1="";
+			}
+			/**/
+		});
+		$("#shouye_btns").click(function() {
+			$(".notLoggedIn-1").css("transform", "translateY(-60000px)");
+		});
+		$(".deliverGoods_box_coles").click(function() {
+			$(".notLoggedIn-1").css("transform", "translateY(-60000px)");
+		});
+		
+		//忘记密码 
+		$(".wangjipassWordr_m").click(function() {
+			$(".notLoggedIn-0").css("transform", "translateY(-60000px)");
+			$(".not_passWordBox").css("transform", "translateY(0px)");
+		});
+		$(".deliverGoods_box_coles").click(function() {
+			$(".not_passWordBox").css("transform", "translateY(-60000px)");
+		});
+
+		//修改密码成功后
+		$(".wangjipass_ok").click(function() {
+			/**
+			 * 重置密码
+			 * @param phone 电话号码，非必填
+			 * @param yzm   平台验证码，非必填
+			 * @param phoneyzm  手机验证码，必填
+			 * @param password  修改的密码 非必填
+			 * @param password2 修改的密码 非必填
+			 * @returns 成功返回 "ok",其余返回失败原因，可直接显示在页面上,重置后密码为 888888
+			 */
+			//手机号码
+			var xiougai_phone =$("#xiougai_phone").val();
+			console.log("修改密码输入的手机号码"+phone_)
+			//验证码输入
+			var xiougai_yzm =$("#xiougai_yzm").val();
+			console.log("修改密码输入的手机号码"+xiougai_yzm)
+			// 密码
+			var xiougai_password = $("#xiougai_password").val();
+			// 第二次输入的密码
+			var xiougai_password2 = $("#xiougai_password2").val();
+			var resetPassword_ =resetPassword(xiougai_phone, "", xiougai_yzm, xiougai_password, xiougai_password2);
+			if(resetPassword_ == "ok"){
+				$(".notLoggedIn-2").css("transform", "translateY(0px)");
+				$(".not_passWordBox").css("transform", "translateY(-60000px)");
+				var i = 3;
+				if(i != 0) {
+					window.close_id = setInterval(function() {
+						if(i > 0) {
+							document.getElementById('time2').innerHTML = i;
+							i = i - 1;
+						} else {
+							clearInterval(window.close_id);
+							$(".notLoggedIn-2").css("transform", "translateY(-60000px)");
+							$(".notLoggedIn-0").css("transform", "translateY(0px)");
+						}
+					}, 1000);
+				};
+			}else{
+				//提示注册信息 #tishiconts_
+				$("#tishiconts2_").css("display","block");
+				$("#tishiconts2_").html(resetPassword_);
+			}
+			/**/
+		});
+//		忘记密码  获取验证码倒计时
+		var yzm_22_off = true;
+		var timer = null;
+		$(".yzm_box22").click(function() {
+			var phone_ =$("#xiougai_phone").val();
+			var phone = phone_;		
+			/**
+			 * 短信发送
+			 * @param     phone
+			 * @returns   "ok":发送成功，其它为发送失败
+			 */
+			var smsSend_ =smsSend(phone);
+			console.log(smsSend_)
+			console.log("忘记密码  获取验证码倒计时值="+phone)
+			if(smsSend_ == "ok"){
+				if(yzm_boxMj_off) {
+					yzm_boxMj_off = false;
+					var i = 120;				
+					timer2 = setInterval(function() {
+						
+						i--;
+						$(".yzm_box22").html(i + '重新发送');
+						if(i == 0) {
+							clearInterval(timer2);
+							$(".yzm_box22").html('获取验证码');
+							yzm_boxMj_off = true;
+						}
+					}, 1000)
+					//提示注册信息 #tishiconts_
+					/*$("#tishiconts2_").css("display","block");
+					$("#tishiconts2_").html(smsSend_);*/
+				} else {
+					return false;
+				}
+				
+			}else{
+				//提示注册信息 #tishiconts_
+				$("#tishiconts2_").css("display","block");
+				$("#tishiconts2_").html(smsSend_);
+			}
+			
+		});
+		$(".deliverGoods_box_coles").click(function() {
+			$(".notLoggedIn-2").css("transform", "translateY(-60000px)");
+		});
+		$("#shouye_btns2").click(function() {
+			$(".notLoggedIn-2").css("transform", "translateY(-60000px)");
+		});
+
+		
+		//会员注册
+		$(".rengzuce_btns").click(function() {
+			$(".notLoggedIn-0").css("transform", "translateY(-60000px)");
+			$(".not_passWordBox").css("transform", "translateY(-60000px)");
+			$(".ILoveYou_money").css("transform", "translateY(0px)");
+		});
+		$(".deliverGoods_box_coles").click(function() {
+			$(".ILoveYou_money").css("transform", "translateY(-60000px)");
+		});
+
+		//注册成功
+		
+		$(".deliverGoods_box_coles").click(function() {
+			$(".notLoggedIn-3").css("transform", "translateY(-60000px)");
+		});
+		$("#shouye_btns3").click(function() {
+			$(".notLoggedIn-3").css("transform", "translateY(-60000px)");
+		});
+		/**
+		 * 获取登陆用户
+		 * @returns 没有登陆返回字符串"notLogin" 否则返回user的JSON串
+		 */
+		var notLogin = getUserByLogin();  
+		login_one();
+		function login_one(){
+			if(notLogin =="notLogin"){
+				//if(isFirst){
+					$('body,html').animate({
+						scrollTop: 0
+					}, 300);
+					$(".notLoggedIn-0").css("transform", "translateY(0px)");
+					$("#closeBtns_login_html").html("未登录");
+				//	isFirst =false;
+				//}
+				$(".personalcenterBox1").css("display","block");
+				$(".personalcenterBox").css("display","none");
+				$("#denglu_btn_pppoidf").click(function(){
+					$(".notLoggedIn-0").css("transform", "translateY(0px)");
+				});
+			}
+		}
+			//注册成功
+			$(".zuce_ok").click(function() {
+				
+				/**
+				 * 用户注册异步提交基础数据
+				 * @param userName       用户名（非必填）
+				 * @param userPassword   密码
+				 * @param userPassword2  第二次输入的密码
+				 * @param phone          手机号码
+				 * @param yzm            验证码
+				 * @param phoneyzm       手机验证码（选项：1，如果注册只有一个步骤，则必填。2，如果分为两个步骤，第一步填基础数据，第二步填手机验证码则不填写）
+				 * @returns              "ok":注册成功，其它则为对应的错误提示
+				 */
+				//手机号码
+				var phone_ =$("#phone_").val();
+				console.log("输入的手机号码"+phone_)
+				//验证码输入
+				var yzm_ =$("#yzm_").val();
+				// 密码
+				var userPassword_ = $("#userPassword_").val();
+				// 第二次输入的密码
+				var userPassword2_ = $("#userPassword2_").val();
+				
+				var userReg_ =userReg("", userPassword_, userPassword2_, phone_, "", yzm_);
+				console.log("注册成功的回调值="+userReg_);
+				if(userReg_ == "ok"){
+					$("#closeBtns_login_html").html("退出登陆");
+					$(".ILoveYou_money").css("transform", "translateY(-60000px)");
+					$(".notLoggedIn-3").css("transform", "translateY(0px)");
+					var i = 3;
+					if(i != 0) {
+						window.close_id = setInterval(function() {
+							if(i > 0) {
+								document.getElementById('time3').innerHTML = i;
+								i = i - 1;
+							} else {
+								clearInterval(window.close_id);
+								$(".notLoggedIn-3").css("transform", "translateY(-60000px)");
+							}
+						}, 1000);
+					};
+				}else{
+					//提示注册信息 #tishiconts_
+					$("#tishiconts_").css("display","block");
+					$("#tishiconts_").html(userReg_);
+				}
+				
+				
+
+			});
+			//会员注册   获取验证码倒计时
+			var yzm_boxMj_off = true;
+			var timer2 = null;
+			$(".yzm_boxMj").click(function() {				
+				var phone_ =$("#phone_").val();
+				var phone = phone_;		
+				/**
+				 * 短信发送
+				 * @param     phone
+				 * @returns   "ok":发送成功，其它为发送失败
+				 */
+				var smsSend_ =smsSend(phone);
+				console.log(smsSend_)
+				console.log("会员注册   获取验证码倒计时手机号码注册成功的回调值="+phone)
+				if(smsSend_ == "ok"){
+					if(yzm_boxMj_off) {
+						yzm_boxMj_off = false;
+						var i = 120;				
+						timer2 = setInterval(function() {
+							i--;
+							$(".yzm_boxMj").html(i + '重新发送');
+							if(i == 0) {
+								clearInterval(timer2);
+								$(".yzm_boxMj").html('获取验证码');
+								yzm_boxMj_off = true;
+							}
+						}, 1000)
+						//提示注册信息 #tishiconts_
+						/*$("#tishiconts_").css("display","block");
+						$("#tishiconts_").html(smsSend_);*/
+					} else {
+						return false;
+					}
+					
+				}else{
+					//提示注册信息 #tishiconts_
+					$("#tishiconts_").css("display","block");
+					$("#tishiconts_").html(smsSend_);
+				}
+				
+			});	
+			/*表单内容删除按钮*/
+		    $(".text-clear-content").focus(function() {
+		    	$(".clear-button").hide();
+		    	$(this).next(".clear-button").show();
+		        
+		    });
+		    $(".clear-button").click(function() {
+		    	$(this).prev().val("");
+		    	$(this).prev().focus();
+		    });
+		    $(".text-clear-code").click(function() {
+		    	$(".clear-button").hide();
+		    });
+		    $(".deliverGoods_box_coles").click(function() {
+				$(".notLoggedIn-4").css("transform", "translateY(-60000px)");
+			});
+			//btnsTiny我要捐款的按钮
+			$(".btnsTiny").click(function() {
+				/**
+				 * 获取登陆用户
+				 * @returns 没有登陆返回字符串"notLogin" 否则返回user的JSON串
+				 */
+				 var notLogin = getUserByLogin();  
+				
+				if(notLogin =="notLogin"){
+					$(".notLoggedIn-0").css("transform", "translateY(0px)");
+				}else{
+					 notLogin = JSON.parse(notLogin);
+					console.log(notLogin)
+					console.log(notLogin.phone)
+					$("#juankuanphone").val(notLogin.phone);
+					$(".notLoggedIn-4").css("transform", "translateY(0px)");
+				}
+				
+			});
+			//juankuanBtns确定捐款按钮
+			$("#juankuanBtns").click(function(){
+				
+				/**
+				 * 提交抽奖检查
+				 * @param phone 电话号码
+				 * @param price 捐款金额
+				 * @returns 允许本次捐款返回 捐款订单ID(为全数字),否则返回对应错误信息(带中文数据)
+				 */
+				
+				 var  phone =$("#juankuanphone").val();
+				 var  price =$("#juankuanprice").val();
+				 if(price ==""){
+					 $("#shuru_alert_mghjhj").css("display","block");
+					 $("#shuru_alert_mghjhj").html("请输入捐款金额");
+				 }else{
+					 var  juankuan_ =juankuan(phone, price);
+					 console.log(juankuan_)
+					 if(!isNaN(juankuan_)){
+						 $("#shuru_alert2").css("display","block");
+						 $("#shuru_alert2").html(juankuan_);
+						 $(".notLoggedIn-4").css("transform", "translateY(-60000px)");
+						 $("#juankuanphone").val("");
+						 $("#juankuanprice").val("");
+						 $("#shuru_alert_mghjhj").css("display","none");
+						 $("#shuru_alert_mghjhj").html("");
+					 }else{
+						 $("#shuru_alert_mghjhj").css("display","block");
+						 $("#shuru_alert_mghjhj").html(juankuan_);
+					 } 
+				 }
+				 
+				
+			})
+			 notLogin = JSON.parse(notLogin);
+			var jiance_num = jiance(notLogin.phone);
+				 console.log(jiance_num)
+				 if(jiance_num !="no"){
+					 console.log(notLogin.phone)
+					 $(".btnsTiny").css("display","none");
+					 $(".btnsTiny688").css("display","block");
+					//btnsTiny我要抽奖的按钮
+						$(".btnsTiny688").click(function() {
+							setTimeout(function() {
+								mui.openWindow({
+									url: 'stage/discountgo/luck.html',
+									id: 'luck',
+									showType: 'zoom-fade-out',
+									showTime: 200
+								});
+							}, 200);
+						}); 
+				 }else{
+					 $(".btnsTiny").css("display","block");
+					 $(".btnsTiny688").css("display","none");
+				 }
+		</script>
+	</body>
+
+</html>

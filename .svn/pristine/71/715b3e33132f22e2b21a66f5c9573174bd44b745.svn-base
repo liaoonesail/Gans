@@ -1,0 +1,313 @@
+package com.lanzhou.controller.gongyi;
+
+import java.io.IOException;
+import java.util.List;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.lanzhou.entity.Page_parameter;
+import com.lanzhou.entity.Prize;
+import com.lanzhou.entity.Weiorder;
+import com.lanzhou.service.Page_parameterService;
+import com.lanzhou.service.PrizeService;
+import com.lanzhou.service.WeiorderService;
+import com.lanzhou.util.MD5ONCE;
+import com.lanzhou.util.PhoneAddress;
+import com.lanzhou.util.ServiceUtil;
+
+@Controller
+@RequestMapping("/gongyi")
+public class GongyiController {
+	
+	private Page_parameterService page_parameterService;
+	private WeiorderService weiorderService;
+	private PrizeService prizeService;
+	
+	public Page_parameterService getPage_parameterService() {
+		return page_parameterService;
+	}
+	@Resource
+	public void setPage_parameterService(Page_parameterService page_parameterService) {
+		this.page_parameterService = page_parameterService;
+	}
+
+	public WeiorderService getWeiorderService() {
+		return weiorderService;
+	}
+	@Resource
+	public void setWeiorderService(WeiorderService weiorderService) {
+		this.weiorderService = weiorderService;
+	}
+	
+	public PrizeService getPrizeService() {
+		return prizeService;
+	}
+	@Resource
+	public void setPrizeService(PrizeService prizeService) {
+		this.prizeService = prizeService;
+	}
+	
+	/**
+	 * 捐款
+	 * @param phone 电话号码
+	 * @param price 捐款金额
+	 * @param response
+	 * @return
+	 * @throws IOException
+	 */
+	@RequestMapping("/juankuan")
+	public String juankuan(String phone, double price, HttpServletResponse response) throws IOException{
+		//获取最小捐款金额
+		String province = PhoneAddress.selectProvince(phone);
+		if(!province.contains("甘肃")){
+			response.getWriter().print("你的手机号归属地不在甘肃,不能捐款！");
+			return null;
+		}
+		Page_parameter jk = page_parameterService.getNewOne();
+		double minPrice = 0;
+		if(jk != null){
+			minPrice = jk.getMin_money();
+		}
+		if(price < minPrice){
+			response.getWriter().print("捐款最小金额为 " + minPrice + "元");
+			return null;
+		}
+		//生成捐款订单
+		int pageId=jk.getId();
+		Weiorder order = new Weiorder();
+		order.setPhone(phone);
+		order.setPrice(price);
+		order.setPageId(pageId);
+		String area=PhoneAddress.selectPhone(phone);
+		order.setArea(area);
+		weiorderService.add(order);
+		response.getWriter().print(order.getId());
+		
+		return null;
+	}
+	
+	/**
+	 * 捐款支付
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping("/juankuanPay")
+	public String juankuanPay(int orderId, HttpServletRequest request){
+		
+		Weiorder order = weiorderService.getid(orderId);
+		if(order == null){
+			return "";
+		}
+		
+		double price = order.getPrice();
+		String orderNum = order.getOrderNum();
+		
+		String MERCHANTID = ServiceUtil.GY_MERCHANTID;
+		String POSID = ServiceUtil.GY_POSID;
+		String BRANCHID = ServiceUtil.GY_BRANCHID;
+		String PUB = ServiceUtil.GY_PUB;
+		
+		MD5ONCE mac = new MD5ONCE("SP7010" + MERCHANTID + orderNum + price);
+		mac.calc();
+		String MAGIC = mac.toString();
+		
+		request.setAttribute("MERCHANTID", MERCHANTID);
+		request.setAttribute("POSID", POSID);
+		request.setAttribute("BRANCHID", BRANCHID);
+		request.setAttribute("PUB", PUB);
+		request.setAttribute("ORDERID", orderNum);
+		request.setAttribute("PAYMENT", price+"");
+		request.setAttribute("MAGIC", MAGIC);
+		request.setAttribute("ErrorMessage", "ok");
+		
+		return "stage/ccb/pay2";
+	}
+	
+	/**
+	 * 查看是否可抽奖，如果可以，则给出几等奖，并给出奖品
+	 * @param phone
+	 * @param response
+	 * @return
+	 * @throws IOException
+	 */
+	@RequestMapping("/kejuankuan")
+	public String kejuankuan(String phone, HttpServletResponse response) throws IOException{
+		boolean flag = false;  //为true表示可抽奖
+		int i = 0;
+		String orderNum=null;
+		List<Weiorder> orderList = weiorderService.getByPhone(phone);
+		for(Weiorder order : orderList){
+			if(order.getIsLotto() == 1&&order.getStatus() == 1){
+				flag = true;
+				orderNum=order.getOrderNum();
+			}else{
+				i++;
+			}
+		}
+		if(flag){ //可抽奖
+			int rom = (int)(Math.random()*1000);
+			int jiang = 0;
+			int gailvSum = 0;
+			int qishus[] = {0,0,0,0,0,0};
+			List<Prize> prizeList = prizeService.list();
+			for(Prize prize : prizeList){
+				int qishu = prize.getLevel();
+				switch (qishu) {
+				case 1:
+					qishus[0] = prize.getProbability();
+					break;
+				case 2:
+					qishus[1] = prize.getProbability();
+					break;
+				case 3:
+					qishus[2] = prize.getProbability();
+					break;
+				case 4:
+					qishus[3] = prize.getProbability();
+					break;
+				case 5:
+					qishus[4] = prize.getProbability();
+					break;
+				case 6:
+					qishus[5] = prize.getProbability();
+					break;
+				default:
+					break;
+				}
+			}
+			/*if(i < 4){
+				//必不中
+				if(rom < 200){
+					jiang = 3;
+				}else if(rom < 500){
+					jiang = 3;
+				}else{
+					jiang = 6;
+				}
+			}else if(i == 4){
+				//必中奖
+				if(rom < 100){
+					jiang = 1;
+				}else if(rom < 300){
+					jiang = 2;
+				}else{
+					jiang = 4;
+				}
+			}else{
+				int m = 0;
+				gailvSum = qishus[m];
+				while(rom > gailvSum){
+					m++;
+					gailvSum += qishus[m];
+				}
+				jiang = m + 1;
+			}*/
+			int m = 0;
+			gailvSum = qishus[m];
+			while(rom > gailvSum){
+				m++;
+				gailvSum += qishus[m];
+			}
+			jiang = m + 1;
+			Prize prize = prizeService.getLevel(jiang);
+
+
+
+			if(!"谢谢参与".equals(prize.getName())){
+				if(prize.getAmount()<=0){
+					prize.setAmount(0);
+					prizeService.update(prize);
+					List<Prize> list = prizeService.list();
+					for (Prize prize1:list
+						 ) {
+						if("谢谢参与".equals(prize1.getName())){
+							if(prize1.getAmount()<=0){
+								prize1.setAmount(0);
+								prize1.setOrderNum(orderNum);
+								prizeService.update(prize1);
+								JSONObject json = JSONObject.fromObject(prize1);
+								response.getWriter().print(json);
+								return null;
+							}
+						}
+					}
+				}
+			}else if(prize.getAmount()<=0){
+				prize.setOrderNum(orderNum);
+				prize.setAmount(0);
+				prizeService.update(prize);
+				JSONObject json = JSONObject.fromObject(prize);
+				response.getWriter().print(json);
+				return null;
+			}
+
+
+
+			prize.setOrderNum(orderNum);
+			prize.setAmount(prize.getAmount()-1);
+			prizeService.update(prize);
+			JSONObject json = JSONObject.fromObject(prize);
+			response.getWriter().print(json);
+		}else{ //没有抽奖次数
+			response.getWriter().print("no");
+		}
+		return null;
+	}
+	
+	/**
+	 * 获取所有奖品信息
+	 * @param response
+	 * @return
+	 * @throws IOException
+	 */
+	@RequestMapping("/showAllPrize")
+	public String showAllPrize(HttpServletResponse response) throws IOException{
+		List<Prize> prizeList = prizeService.list();
+		JSONArray json = JSONArray.fromObject(prizeList);
+		response.getWriter().print(json);
+		return null;
+	}
+	
+	/**
+	 * 查询平台捐款总额
+	 * @param response
+	 * @return
+	 * @throws IOException
+	 */
+	@RequestMapping("/showAllJuankuan")
+	public String showAllJuankuan(HttpServletResponse response) throws IOException{
+		List<Weiorder> orderList = weiorderService.getListAll();
+		double price = 0;
+		for(Weiorder order : orderList){
+			if(order.getStatus() == 1){
+				price += order.getPrice();
+			}
+		}
+		response.getWriter().print(price + "");
+		return null;
+	}
+	
+	/**
+	 * 个人捐款记录
+	 * @param phone
+	 * @param response
+	 * @return
+	 * @throws IOException
+	 */
+	@RequestMapping("/showAllByPhone")
+	public String showAllByPhone(String phone, HttpServletResponse response) throws IOException{
+		List<Weiorder> orderList = weiorderService.getByPhone(phone);
+		JSONArray json = JSONArray.fromObject(orderList);
+		response.getWriter().print(json);
+		return null;
+	}
+	
+}

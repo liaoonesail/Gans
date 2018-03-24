@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>限时秒杀</title>
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/bass.css" />
+		<link rel="stylesheet" href="../css/seckill.css" />
+		<link rel="stylesheet" href="../css/header.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">惠甘肃秒杀</h1>
+		     <span class="mui-pull-right mui-action-back" style="color: #fff;font-size: 13px;line-height: 44px;">关闭</span>
+		</header>
+		<div class="mui-content">
+		   <!--顶部nav-->
+			<div class="topNva">
+				<img class="Shape1" src="../img/smallImg/Shape1.png" />
+				<div class="mui-slider mui-fullscreen topNvaUlLi">
+					<div class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+						<div class="mui-scroll">
+							<ul id="ListNavService" class="clearfix">
+								<!-- <li>
+								   开始秒杀时间
+								    <input type="hidden" value="" />
+								    结束秒杀时间
+								    <input type="hidden" value="" />
+									<span>08:00</span>
+									<p class="miaoshastar">秒杀中</p>
+								</li> -->
+							</ul>
+							<!--这里放置真实显示的DOM内容-->
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--顶部nav-->
+				<!--秒杀看点-->
+				<div class="mui-row seckillLmg">
+					<div class="mui-col-xs-4">
+						<img src="../img/detailImg/spLk.png" />
+					</div>
+					<div class="mui-col-xs-4">
+						<img src="../img/detailImg/12.png" />
+					</div>
+					<div class="mui-col-xs-4">
+						<img src="../img/detailImg/spLk.png" />
+					</div>
+				</div>
+
+				<!--限时限量   疯狂抢购    距离本场结束-->
+			<div class="mui-row seckiliJshubox">
+				<div class="mui-col-xs-12 seckiliJshu clearfix">
+					<h5>限时限量    疯狂抢购</h5>
+					<p><span id="miaoshaTiemContstar"></span></p>
+				</div>
+			</div>
+			<!--限时限量   疯狂抢购    距离本场结束-->
+			<div style="padding: 4px 0px;">
+				<div id="miaoshaHtmlConts_List" class="rightLocalList" style="display: block;">
+					<!-- <div class="mui-row cladssImg">
+						<div class="mui-col-xs-4">
+							<img src="../img/detailImg/sj1.png" />
+						</div>
+						<div class="mui-col-xs-8">
+							<p>Apple iPhone 7 Plus 128G 红色 移动联通电信4G手机</p>
+							<p>iPhone  浪漫呈现</p>
+							<p class="mui-pull-left clearfix">
+								<span>￥6388</span>
+								<del>￥7388</del>
+							</p>
+							<div class="wohISThisRight">
+								<button>去秒杀</button>
+							</div>
+							<div class="clearfix"></div>
+							<div class="wohISThis clearfix">
+								<div class="wohISThisLeft">
+									<div class="qiandaoL">
+										<div class="lanlan">80%</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					 </div> -->
+					
+					</div>
+				</div>
+			</div>
+		</div>
+		<div style="height: 55px;"></div>
+		<!--底部导航-->
+		<div class="bgcolor footer22">
+			<div class="footer144" onclick="javascript:window.location.href='../../index.html'">
+				<img class="mui-icon-home1" src="../img/smallImg/nav1.png" />
+			    <p>首页</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='discountgo.html'">
+				<img class="mui-icon-email12" src="../img/smallImg/18.png" />
+			    <p>善融</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='../../Local1.html'">
+				<img class="mui-icon-home1" src="../img/smallImg/19.png" />
+			    <p>地方汇</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='../../special1.html'">
+				<img class="mui-icon-home1" src="../img/smallImg/20.png" />
+			    <p>专场</p>
+			</div>
+			<div class="footer144" onclick="javascript:window.location.href='personalcenter.html'">
+				<img class="mui-icon-gear1" src="../img/smallImg/nav4.png" />
+			    <p>个人中心</p>
+			</div>	
+		</div>
+		<!--底部导航-->
+	</body>
+    <script type="text/javascript" src="../js/mui.min.js" ></script>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js" ></script>
+    <script type="text/javascript" src="../js/publicAddress.js" ></script>
+    <script type="text/javascript" src="../js/activity/activity.js" ></script>
+    <script type="text/javascript" src="../js/miaoshajs/miaoshajs.js" ></script>
+    <script runat="server" type="text/javascript" src="../js/seckill_.js" ></script>
+    <script>
+    	mui.init();
+    </script>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<link rel="stylesheet" href="css/frame.css">
+	<link rel="stylesheet" href="css/minPublicBenefit.css">
+	<link rel="stylesheet" href="css/common.css">
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="js/popUpWin.js"></script>
+    <script type="text/javascript" src="js/angular-1.0.1.min.js"></script>
+	<title>汇聚甘肃后台管理系统-商城管理-营销管理-满减管理</title>
+    <script type="text/javascript" src="js/angular-1.0.1.min.js"></script>
+</head>
+<body>
+	<div class="frameRall">
+		<!-- 头部通知搜索栏 -->
+		<div ng-app="">
+            <div ng-include="'head.htm'"></div>
+        </div>
+		<div class="headlineBig ml40 mb20 clearfix">
+			<h1 class="stair">营销管理<span>工作平台</span></h1>
+			<h1 class="secondLevel">满减管理</h1>
+		</div>
+		<div class="prizeManage ml40 clearfix">
+			<div class="commodityBox">
+				<div class="commodityButBox clearfix mt30 mb30">
+					<a href="javascript:;" class="butBox seckillAdd">添加满减活动</a>
+					<input type="text" class="commodityInput ml30" name="" value="" placeholder="活动名称" />
+					<a href="javascript:;" class="butBox ml10">搜索</a>
+				</div>
+				<!-- 点击添加满减活动，弹出 -->
+				<div class="seckillAddBox grouponAddBox moneyOffAddBox seckillWin">
+					<i class="seckillClose"></i>
+					<form action="" method="get">
+						<ul>
+							<li>
+								<span><i class="colorRed">*</i>活动名称：</span>
+								<input type="text" class="seckillUpInp" name="" value="" />
+							</li>
+							<li>
+								<span><i class="colorRed">*</i>活动开始：</span>
+								<input type="text" class="seckillUpInp w120" placeholder="请选择结束时间" name="" value="" />
+							</li>
+							<li>
+								<span><i class="colorRed">*</i>活动结束：</span>
+								<input type="text" class="seckillUpInp w120" placeholder="请选择开始时间" name="" value="" />
+							</li>
+							<li class="clearfix">
+								<span class="fl">优惠规则：</span>
+								<table class="moneyOffWinTab">
+									<thead>
+										<tr>
+											<th class="titleMon1">启用</th>
+											<th class="titleMon2">每笔订单满足条件</th>
+											<th class="titleMon3">优惠</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr class="contentMon1">
+											<td>
+												<input type="checkbox" name="" value="" />
+											</td>
+											<td>
+												<span>买满</span>
+												<input type="text" name="" value="" />
+												<span class="pl5">元</span>
+											</td>
+											<td>
+												<span>优惠</span>
+												<input type="text" name="" value="" />
+												<span class="pl5">元</span>
+											</td>
+										</tr>
+										<tr class="contentMon1">
+											<td>
+												<input type="checkbox" name="" value="" />
+											</td>
+											<td>
+												<span>买满</span>
+												<input type="text" name="" value="" />
+												<span class="pl5">元</span>
+											</td>
+											<td>
+												<span>优惠</span>
+												<input type="text" name="" value="" />
+												<span class="pl5">元</span>
+											</td>
+										</tr>
+										<tr class="contentMon1">
+											<td>
+												<input type="checkbox" name="" value="" />
+											</td>
+											<td>
+												<span>买满</span>
+												<input type="text" name="" value="" />
+												<span class="pl5">元</span>
+											</td>
+											<td>
+												<span>优惠</span>
+												<input type="text" name="" value="" />
+												<span class="pl5">元</span>
+											</td>
+										</tr>
+										<tr class="contentMon1">
+											<td>
+												<input type="checkbox" name="" value="" />
+											</td>
+											<td>
+												<span>买满</span>
+												<input type="text" name="" value="" />
+												<span class="pl5">元</span>
+											</td>
+											<td>
+												<span>优惠</span>
+												<input type="text" name="" value="" />
+												<span class="pl5">元</span>
+											</td>
+										</tr>
+										<tr class="contentMon1">
+											<td>
+												<input type="checkbox" name="" value="" />
+											</td>
+											<td>
+												<span>买满</span>
+												<input type="text" name="" value="" />
+												<span class="pl5">元</span>
+											</td>
+											<td>
+												<span>优惠</span>
+												<input type="text" name="" value="" />
+												<span class="pl5">元</span>
+											</td>
+										</tr>
+										<tr class="contentMon2">
+											<td colspan="3">
+												<span>封顶优惠金额：</span>
+												<input type="checkbox" name="" value="" />
+												<span class="pl5">元</span>
+												<!-- 封顶优惠金额应大于或等于规则中的优惠金额 -->
+											</td>
+										</tr>
+										<tr>
+											<td>
+												优惠规则说明：
+											</td>
+											<td colspan="2">
+												（1）若仅启用1条规则，订单按规则等量叠加优惠，如满100元减20元、满200元减40元，以此类推。可以根据活动需要，决定是否设置封顶优惠金额（即订单最大优惠金额）。
+												（2）若启用多条规则，订单优惠按照规则阶梯计算，封顶优惠金额以最后一级优惠规则为准。
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</li>
+							<li class="clearfix">
+								<span class="fl">免邮规则：</span>
+								<table class="moneyOffWinTab">
+									<thead>
+										<tr>
+											<th class="titleMon1">启用</th>
+											<th class="titleMon2">每笔订单满足条件</th>
+											<th class="titleMon3">优惠</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr class="contentMon1">
+											<td>
+												<input type="checkbox" name="" value="" />
+											</td>
+											<td>
+												<span>买满</span>
+												<input type="text" name="" value="" />
+												<span class="pl5">元</span>
+											</td>
+											<td>免邮</td>
+										</tr>
+									</tbody>
+								</table>
+							</li>
+							<li>
+								<span><i class="colorRed">*</i>活动商品：</span>
+								<a href="javascript:;" class="butBox">选择活动商品</a>
+								<input type="checkbox" class="ml30 mr5" value="">
+								<label>全场满立减</label>
+							</li>
+							<li>
+								<span>活动说明：</span>
+								<textarea  class="contentText"></textarea>
+							</li>
+							<li class="seckillUpBut"><a href="javascript:;" class="butBox">创建活动</a></li>
+						</ul>
+					</form>
+				</div>
+				<table class="commodityTab orderFormTab">
+					<thead>
+						<tr class="salesManageTr">
+							<th>编号</th>
+							<th>商品名称</th>
+							<th>开始时间</th>
+							<th>结束时间</th>
+							<th>规则说明</th>
+							<th>活动库存</th>
+							<th>状态</th>
+							<th class="tc">操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>Dior/迪奥小姐花漾淡香氛30ml50ml100ml 甜心香水女士</td>
+							<td>2017-06-02 23:00:00</td>
+							<td>2017-06-02 23:00:00</td>
+							<td>
+								<span class="costList">买满1000元减100元</span>
+								<span class="costList">买满2000元减250元</span>
+							</td>
+							<td>110</td>
+							<td>已发布/已结束</td>
+							<td>
+								<span class="operationButBox">
+									<a href="javascript:;" class="butBox">添加商品</a>
+									<a href="javascript:;" class="butBox ml10">编辑</a>
+									<a href="javascript:;" class="butBox mt10">移除</a>
+								</span>
+							</td>
+						</tr>
+					</tbody>
+					<tfoot class="commFootTd">
+						<tr>
+							<td colspan="5" class="commFootFont textar">总计<span>23351</span>条数据&emsp;&emsp;分为<span>280</span>页&emsp;每页<span>10</span>个</td>
+							<td colspan="3" class="commPageBut">
+								<div class="commPageBut2 fr pr30">
+									<a href="javascript:;" title="第一页" class="commPage1"></a>
+									<a href="javascript:;" title="上一页" class="commPage2"></a>
+									<select name="">
+										<option value="">1</option>
+									</select>
+									<a href="javascript:;" title="下一页" class="commPage3"></a>
+									<a href="javascript:;" title="尾页" class="commPage4"></a>
+								</div>
+							</td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
